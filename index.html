@@ -1,2615 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introduction to Contact Investigation / Disease Intervention in Jamaica</title>
+<meta charset="UTF-8">
+<title>
+Introduction to Contact Investigation / Disease Intervention in Jamaica
+</title>
 
-  <!-- Font Awesome -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PDF generation libs (certificate download) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    /* CSS Reset & Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
-    :root{
-      --primary-blue:#2a6ebb;
-      --primary-teal:#2bb5b5;
-      --primary-green:#2bb57c;
-      --primary-yellow:#ffcc4d;
-      --primary-red:#e74c3c;
-      --primary-purple:#9b59b6;
+<style>
+/* ================= BASE ================= */
+*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
+body{margin:0;background:#f4f6f9;color:#1f2937}
+h1,h2,h3,h4{margin-top:0}
+a{color:#2563eb}
 
-      --bg:#f6f8fc;
-      --card:#ffffff;
-      --text:#1f2937;
-      --muted:#6b7280;
-      --border:#e5e7eb;
+/* ================= HEADER ================= */
+header{
+  background:#0f172a;
+  color:#fff;
+  padding:18px 22px
+}
+header h1{font-size:1.35rem}
+header p{opacity:.9;margin:6px 0 0}
 
-      --shadow: 0 10px 25px rgba(0,0,0,0.08);
-      --shadow-soft: 0 6px 18px rgba(0,0,0,0.06);
-      --radius: 16px;
-      --radius-lg: 22px;
-    }
+/* ================= DISCLAIMER ================= */
+.global-disclaimer{
+  background:#fff3cd;
+  border:1px solid #facc15;
+  padding:14px;
+  margin:16px;
+  border-radius:6px
+}
+.global-disclaimer strong{color:#92400e}
 
-    body{ background: var(--bg); color: var(--text); }
-    a{ color: inherit; text-decoration: none; }
-    button{ cursor:pointer; border:none; }
-    .container{ max-width: 1200px; margin: 0 auto; padding: 18px; }
+/* ================= NAV ================= */
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:12px;
+  background:#e5e7eb
+}
+nav button{
+  border:none;
+  padding:8px 12px;
+  border-radius:6px;
+  cursor:pointer;
+  background:#334155;
+  color:#fff
+}
+nav button:hover{background:#1e293b}
 
-    /* Header */
-    .topbar{
-      background: linear-gradient(120deg, var(--primary-blue), var(--primary-teal));
-      color:#fff;
-      border-bottom-left-radius: var(--radius-lg);
-      border-bottom-right-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .topbar .container{ padding: 22px 18px; }
-    .brand{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
-    }
-    .brand-left{ display:flex; flex-direction:column; gap:10px; }
-    .title-row{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-    .app-title{ font-size: 1.3rem; font-weight: 800; letter-spacing: 0.2px; }
-    .tag{
-      display:inline-flex; align-items:center; gap:8px;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.24);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.96);
-    }
-    .subtext{
-      color: rgba(255,255,255,0.92);
-      line-height: 1.35;
-      max-width: 900px;
-      font-size: 0.98rem;
-    }
-    .subtext b{ color:#fff; }
-    .meta-row{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      margin-top: 12px;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.22);
-      font-size: 0.9rem;
-    }
+/* ================= MAIN ================= */
+main{padding:18px}
+section{display:none}
+section.active{display:block}
 
-    /* Layout */
-    .grid{
-      display:grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-    @media (max-width: 980px){
-      .grid{ grid-template-columns: 1fr; }
-    }
+/* ================= BOXES ================= */
+.info{
+  background:#fff;
+  border-left:4px solid #2563eb;
+  padding:14px;
+  margin:14px 0;
+  border-radius:6px
+}
+.warn{
+  border-left-color:#f59e0b;
+  background:#fff7ed
+}
+.danger{
+  border-left-color:#dc2626;
+  background:#fee2e2
+}
 
-    /* Cards */
-    .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-soft);
-      overflow:hidden;
-    }
-    .card-h{
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-    }
-    .card-h h2{
-      font-size: 1rem;
-      display:flex; align-items:center; gap:10px;
-    }
-    .card-b{ padding: 16px; }
+/* ================= TABLE ================= */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0
+}
+th,td{
+  border:1px solid #d1d5db;
+  padding:8px;
+  vertical-align:top
+}
+th{background:#f1f5f9}
 
-    /* Tabs (Main Navigation) */
-    .tabs{
-      display:flex; gap: 10px; flex-wrap:wrap;
-    }
-    .tabbtn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: #f3f6ff;
-      border: 1px solid #dfe7ff;
-      color: #173b77;
-      font-weight: 700;
-      font-size: 0.93rem;
-      transition: transform 0.12s ease, background 0.12s ease;
-    }
-    .tabbtn:hover{ transform: translateY(-1px); }
-    .tabbtn.active{
-      background: #e9f6ff;
-      border-color: #ccecff;
-      color: #0f3c5f;
-    }
+/* ================= QUIZ ================= */
+.quiz-box{
+  background:#fff;
+  padding:16px;
+  border-radius:6px;
+  margin-bottom:18px
+}
+.question{margin-bottom:14px}
+.question strong{display:block;margin-bottom:6px}
 
-    /* Progress */
-    .progress-wrap{ display:flex; flex-direction:column; gap:12px; }
-    .stat-row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    @media (max-width: 500px){
-      .stat-row{ grid-template-columns: 1fr; }
-    }
-    .stat{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px;
-      background: #fbfcff;
-    }
-    .stat .label{ font-size: 0.85rem; color: var(--muted); }
-    .stat .value{ font-size: 1.15rem; font-weight: 800; margin-top: 6px; }
-    .bar{
-      height: 12px;
-      background: #eef2ff;
-      border-radius: 999px;
-      overflow:hidden;
-      border: 1px solid #e6e9f7;
-    }
-    .bar > div{
-      height:100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--primary-green), var(--primary-teal));
-      transition: width 0.25s ease;
-    }
-    .badges{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 6px;
-    }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: #f7f7ff;
-      border: 1px solid #e6e6ff;
-      color: #3b3b6b;
-      font-size: 0.86rem;
-      font-weight: 700;
-    }
-    .badge.done{
-      background: #ecfff6;
-      border-color:#ccf3df;
-      color:#1e6b4c;
-    }
+/* ================= BUTTONS ================= */
+.btn{
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  padding:10px 14px;
+  border-radius:6px;
+  cursor:pointer
+}
+.btn.secondary{background:#475569}
 
-    /* Module list */
-    .module-list{
-      display:flex; flex-direction:column; gap:10px;
-    }
-    .module-item{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow:hidden;
-      background:#fff;
-    }
-    .module-top{
-      padding: 12px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      cursor:pointer;
-    }
-    .module-left{
-      display:flex; align-items:flex-start; gap:12px;
-    }
-    .micon{
-      width: 40px; height: 40px;
-      display:grid; place-items:center;
-      border-radius: 12px;
-      color:#fff;
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-      flex: 0 0 auto;
-    }
-    .mmeta{ display:flex; flex-direction:column; gap:4px; }
-    .mmeta .mtitle{ font-weight: 900; }
-    .mmeta .mdesc{ color: var(--muted); font-size: 0.92rem; line-height:1.25; }
-    .mright{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
-    .mini{
-      font-size: 0.82rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background:#fafafa;
-    }
-    .mini.done{
-      color:#0f5132;
-      background:#e9fff2;
-      border-color:#cdeedb;
-      font-weight:800;
-    }
-    .chev{ color: var(--muted); }
-    .module-body{
-      border-top: 1px solid var(--border);
-      display:none;
-      padding: 14px 12px 12px;
-      animation: fadeIn 0.18s ease;
-    }
-    .module-body.open{ display:block; }
-    @keyframes fadeIn{ from{ opacity:0; transform:translateY(-4px);} to{opacity:1; transform:translateY(0);} }
-
-    /* Content blocks */
-    .note{
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      padding: 12px;
-      background: #fbfcff;
-      color: var(--text);
-      line-height: 1.35;
-    }
-    .note.info{ border-color:#cfeaff; background:#f1f9ff; }
-    .note.warn{ border-color:#ffe7c1; background:#fff8ea; }
-    .note.good{ border-color:#cfeedd; background:#f1fff7; }
-    .note.danger{ border-color:#ffd0d0; background:#fff4f4; }
-
-    .klist{ padding-left: 18px; margin-top: 10px; display:flex; flex-direction:column; gap:8px; }
-    .klist li{ line-height: 1.35; }
-    .ref{
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    .ref b{ color:#374151; }
-
-    .actions{
-      margin-top: 12px;
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 0.93rem;
-      border: 1px solid transparent;
-      transition: transform 0.12s ease, filter 0.12s ease;
-      user-select:none;
-    }
-    .btn:hover{ transform: translateY(-1px); filter: brightness(0.98); }
-    .btn.primary{ background: var(--primary-blue); color:#fff; }
-    .btn.success{ background: var(--primary-green); color:#fff; }
-    .btn.ghost{ background:#fff; border-color: var(--border); color: #1f2937; }
-    .btn.warn{ background: var(--primary-yellow); color:#1f2937; }
-    .btn.danger{ background: var(--primary-red); color:#fff; }
-    .btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none; }
-
-    /* Mini tabs inside modules */
-    .subtabs{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
-    .subtab{
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: #f6f7ff;
-      border:1px solid #e8e9ff;
-      font-weight:800;
-      color:#2b2b5a;
-      font-size: 0.9rem;
-    }
-    .subtab.active{ background:#e9f6ff; border-color:#ccecff; color:#0f3c5f; }
-    .subpanel{
-      display:none;
-      margin-top: 10px;
-    }
-    .subpanel.open{ display:block; }
-
-    /* Table */
-    table{ width:100%; border-collapse: collapse; }
-    th, td{ border: 1px solid var(--border); padding: 10px; vertical-align: top; }
-    th{ background:#f7f9ff; text-align:left; font-size:0.92rem; }
-    td{ font-size:0.92rem; line-height:1.3; }
-    .table-wrap{ overflow-x:auto; border-radius: 14px; border: 1px solid var(--border); }
-
-    /* Exam */
-    .exam-wrap{ display:flex; flex-direction:column; gap:12px; }
-    .qcard{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px;
-      background:#fff;
-    }
-    .qtop{ display:flex; gap:10px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; }
-    .qnum{
-      font-weight: 900;
-      color:#0f3c5f;
-      background:#e9f6ff;
-      border:1px solid #ccecff;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-    }
-    .qtext{ font-weight: 900; line-height: 1.25; flex: 1 1 520px; }
-    .opts{ display:grid; grid-template-columns: 1fr; gap: 8px; margin-top: 10px; }
-    .opt{
-      display:flex; gap:10px; align-items:flex-start;
-      padding: 10px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: #fbfbfe;
-      cursor:pointer;
-    }
-    .opt:hover{ background:#f6faff; }
-    .opt input{ margin-top: 2px; }
-    .feedback{
-      margin-top: 10px;
-      border-radius: 12px;
-      border:1px solid var(--border);
-      padding: 10px;
-      background:#fbfcff;
-      display:none;
-    }
-    .feedback.show{ display:block; }
-    .feedback.good{ border-color:#cfeedd; background:#f1fff7; }
-    .feedback.bad{ border-color:#ffd0d0; background:#fff4f4; }
-
-    /* Resources */
-    .res-grid{ display:grid; grid-template-columns: 1fr; gap:10px; }
-    .res{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px;
-      background:#fff;
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-      flex-wrap:wrap;
-    }
-    .res .left{ display:flex; gap:12px; align-items:flex-start; }
-    .res .ricon{
-      width:42px; height:42px; border-radius: 14px;
-      display:grid; place-items:center; color:#fff;
-      background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
-      flex:0 0 auto;
-    }
-    .res .rtitle{ font-weight: 900; }
-    .res .rdesc{ color: var(--muted); font-size:0.92rem; margin-top:4px; line-height:1.25; }
-
-    /* Certificate preview */
-    .cert-shell{
-      background: #0b1220;
-      border-radius: var(--radius);
-      padding: 12px;
-      border: 1px solid #1f2a44;
-    }
-    .certificate{
-      background: linear-gradient(135deg, #ffffff, #f6fbff);
-      border-radius: 18px;
-      border: 1px solid #dbeafe;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.18);
-      padding: 18px;
-      position: relative;
-      overflow:hidden;
-    }
-    .cert-bg{
-      position:absolute; inset:-60px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(43,181,181,0.16), transparent 45%),
-        radial-gradient(circle at 80% 30%, rgba(42,110,187,0.16), transparent 45%),
-        radial-gradient(circle at 40% 85%, rgba(155,89,182,0.14), transparent 50%);
-      pointer-events:none;
-    }
-    .cert-head{
-      position:relative;
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      border-bottom: 1px solid #dbeafe;
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-    }
-    .cert-head h3{
-      font-size: 1.1rem;
-      font-weight: 1000;
-      color:#0f3c5f;
-      letter-spacing:0.2px;
-    }
-    .cert-meta{
-      position:relative;
-      text-align:right;
-      color:#334155;
-      font-size: 0.9rem;
-      line-height: 1.25;
-    }
-    .cert-meta .id{
-      font-weight: 900;
-      color:#0f3c5f;
-    }
-    .cert-meta .designer{
-      margin-top: 6px;
-      color:#475569;
-      font-size: 0.88rem;
-    }
-    .seal{
-      position:relative;
-      width: 74px; height:74px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #ffffff, #e9f6ff);
-      border: 2px solid #93c5fd;
-      display:grid; place-items:center;
-      color:#0f3c5f;
-      font-weight: 1000;
-    }
-    .cert-body{ position:relative; padding-top: 6px; }
-    .cert-name{
-      font-size: 1.4rem;
-      font-weight: 1000;
-      color:#0b2d49;
-      margin-top: 8px;
-    }
-    .cert-line{
-      margin-top: 6px;
-      color:#334155;
-      line-height: 1.35;
-      font-size: 0.95rem;
-    }
-    .cert-list{
-      margin-top: 10px;
-      border-radius: 14px;
-      border: 1px solid #dbeafe;
-      background:#f7fbff;
-      padding: 10px 12px;
-    }
-    .cert-list ul{ padding-left: 18px; margin-top: 6px; display:flex; flex-direction:column; gap:6px; }
-    .cert-foot{
-      position:relative;
-      margin-top: 12px;
-      border-top: 1px solid #dbeafe;
-      padding-top: 10px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      color:#475569;
-      font-size: 0.9rem;
-      line-height:1.3;
-    }
-
-    /* Utility */
-    .muted{ color: var(--muted); }
-    .hidden{ display:none !important; }
-    .mt8{ margin-top: 8px; }
-    .mt10{ margin-top: 10px; }
-    .mt12{ margin-top: 12px; }
-    .mt16{ margin-top: 16px; }
-    .mt20{ margin-top: 20px; }
-    .hr{ height: 1px; background: var(--border); margin: 12px 0; }
-    .small{ font-size: 0.9rem; line-height:1.35; }
-    .kbd{
-      display:inline-block;
-      padding:2px 8px;
-      border:1px solid var(--border);
-      border-bottom-width:2px;
-      border-radius: 8px;
-      background:#fff;
-      font-weight:900;
-      font-size:0.85rem;
-      color:#334155;
-    }
-  </style>
+/* ================= CERT ================= */
+.cert{
+  background:#fff;
+  padding:24px;
+  border:2px solid #0f172a;
+  max-width:700px;
+  margin:auto
+}
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container">
-      <div class="brand">
-        <div class="brand-left">
-          <div class="title-row">
-            <div class="tag"><i class="fa-solid fa-shield-heart"></i> CI Training Platform</div>
-            <div class="app-title">Introduction to Contact Investigation / Disease Intervention in Jamaica</div>
-          </div>
-          <div class="subtext">
-            Based on the <b>MOHW Contact Investigation Field Guide (June 2025)</b>. Completion of this course
-            <b>does not</b> make you an official Contact Investigator (CI) / Disease Intervention Specialist (DIS).
-            It is a training overview and refresher tool. For official pathways, contact your local <b>HR</b>,
-            <b>MOHW</b>, <b>UTECH</b>, or the <b>Jamaica Association of Social Disease Intervention Specialists (JASDIS)</b>.
-          </div>
-          <div class="meta-row">
-            <div class="pill"><i class="fa-solid fa-clock"></i> Estimated learning time: <b id="estTime">8–10 hours</b></div>
-            <div class="pill"><i class="fa-solid fa-award"></i> CME credit: <b id="cmeValue">8.0 CME hours</b></div>
-            <div class="pill"><i class="fa-solid fa-check"></i> Pass mark: <b>70%</b> (Exam unlocks certificate)</div>
-          </div>
-        </div>
-        <div class="seal" title="Training Seal">
-          MOHW<br/>CI
-        </div>
-      </div>
-    </div>
-  </header>
 
-  <main class="container">
-    <div class="card">
-      <div class="card-h">
-        <h2><i class="fa-solid fa-compass"></i> Navigation</h2>
-        <div class="tabs" role="tablist" aria-label="Primary navigation">
-          <button class="tabbtn active" data-tab="dashboard" role="tab" aria-selected="true"><i class="fa-solid fa-chart-line"></i> Dashboard</button>
-          <button class="tabbtn" data-tab="modules" role="tab" aria-selected="false"><i class="fa-solid fa-layer-group"></i> Modules</button>
-          <button class="tabbtn" data-tab="tools" role="tab" aria-selected="false"><i class="fa-solid fa-screwdriver-wrench"></i> Tools</button>
-          <button class="tabbtn" data-tab="resources" role="tab" aria-selected="false"><i class="fa-solid fa-book"></i> Resources</button>
-          <button class="tabbtn" data-tab="exam" role="tab" aria-selected="false" id="examTab"><i class="fa-solid fa-clipboard-check"></i> Exam</button>
-          <button class="tabbtn" data-tab="certificate" role="tab" aria-selected="false" id="certTab"><i class="fa-solid fa-certificate"></i> Certificate</button>
-        </div>
-      </div>
+<header>
+<h1>Introduction to Contact Investigation / Disease Intervention in Jamaica</h1>
+<p>
+Based on the Ministry of Health & Wellness (MOHW) Contact Investigation Field Guide
+</p>
+</header>
+
+<div class="global-disclaimer">
+<strong>Prototype Notice – Read Carefully:</strong><br>
+This platform is a <b>prototype training application</b> developed for learning, orientation,
+and refresher purposes only. Completion of this course <b>does NOT</b> certify or qualify a person
+to function as a Contact Investigator or Disease Intervention Specialist.
+<br><br>
+This prototype is <b>awaiting official review and permission</b> for use by:
+<ul>
+<li>Human Resources (HR)</li>
+<li>Ministry of Health & Wellness (MOHW)</li>
+<li>University of Technology, Jamaica (UTECH)</li>
+<li>Jamaica Association of Social Diseases Intervention Specialists (JASDIS)</li>
+</ul>
+</div>
+
+<nav>
+<button onclick="show('basics')">CI Basics</button>
+<button onclick="show('forms')">Forms & Records</button>
+<button onclick="show('sti')">STI Management</button>
+<button onclick="show('hei')">HEI</button>
+<button onclick="show('dia')">DIA & CI Flow</button>
+<button onclick="show('dhis')">DHIS2</button>
+<button onclick="show('exam')">Final Exam</button>
+</nav>
+
+<main>
+
+<!-- ================= CI BASICS ================= -->
+<section id="basics" class="active">
+<h2>Module 1 – Contact Investigation Fundamentals</h2>
+
+<div class="info warn">
+<strong>Required Reading:</strong><br>
+Participants MUST read the CI Field Guide pages covering:
+<ul>
+<li>Confidentiality – approx. pp. 8–9</li>
+<li>Roles & Responsibilities – pp. 53–54</li>
+<li>Critical Period concepts – pp. 41–42</li>
+</ul>
+The interface content below <b>does not replace the Field Guide</b>.
+</div>
+
+<p>
+Contact Investigation (CI) is a structured public health process used to:
+</p>
+<ul>
+<li>Interrupt transmission of HIV, STIs, TB, and other notifiable conditions</li>
+<li>Identify exposed persons (contacts)</li>
+<li>Link contacts to testing, treatment, and prevention services</li>
+<li>Document outcomes for surveillance and programme monitoring</li>
+</ul>
+
+<p>
+CI work is governed by strict confidentiality, ethical conduct, and legal reporting
+requirements under Jamaican public health law and MOHW policy.
+</p>
+</section>
+
+<!-- ================= FORMS ================= -->
+<section id="forms">
+<h2>Module 2 – Forms, Records & Documentation</h2>
+
+<div class="info warn">
+<strong>Required Reading:</strong>
+CI Field Guide sections on:
+<ul>
+<li>Interview Record (IR) – pp. 10–23</li>
+<li>Field Record (FR) – pp. 24–35</li>
+<li>Notification & surveillance forms – pp. 108–115</li>
+</ul>
+</div>
+
+<table>
+<tr><th>Form</th><th>Purpose</th><th>Key Notes</th></tr>
+<tr>
+<td>Interview Record (IR)</td>
+<td>Documents index interview details</td>
+<td>Must be complete, accurate, and legible</td>
+</tr>
+<tr>
+<td>Field Record (FR)</td>
+<td>Tracks partner notification attempts</td>
+<td>Each attempt must be recorded</td>
+</tr>
+<tr>
+<td>General Class 1 Notification</td>
+<td>Mandatory disease reporting</td>
+<td>Reported within 24 hours</td>
+</tr>
+<tr>
+<td>Congenital Syphilis Report</td>
+<td>Priority maternal/infant surveillance</td>
+<td>Immediate action required</td>
+</tr>
+</table>
+</section>
+
+<!-- ================= STI ================= -->
+<section id="sti">
+<h2>Module 3 – STI Management (CI Perspective)</h2>
+
+<div class="info warn">
+<strong>Required Reading:</strong><br>
+Participants MUST read the STI Manual sections on syndromic management and treatment tables.
+The table below is a learning summary and <b>does not replace the manual</b>.
+</div>
+
+<table>
+<tr>
+<th>Condition</th>
+<th>Common Aetiology</th>
+<th>Recommended Treatment (Summary)</th>
+</tr>
+
+<tr>
+<td>Syphilis (Primary/Secondary)</td>
+<td>Treponema pallidum</td>
+<td>Benzathine Penicillin G 2.4 MU IM (stage-dependent dosing)</td>
+</tr>
+
+<tr>
+<td>Gonorrhoea</td>
+<td>Neisseria gonorrhoeae</td>
+<td>Ceftriaxone IM + Azithromycin PO</td>
+</tr>
+
+<tr>
+<td>Chlamydia</td>
+<td>Chlamydia trachomatis</td>
+<td>Doxycycline 7 days OR Azithromycin stat</td>
+</tr>
+
+<tr>
+<td>Trichomoniasis</td>
+<td>Trichomonas vaginalis</td>
+<td>Metronidazole (single or 7-day regimen)</td>
+</tr>
+
+<tr>
+<td>Genital Herpes</td>
+<td>HSV-1 / HSV-2</td>
+<td>Acyclovir or Valacyclovir</td>
+</tr>
+
+<tr>
+<td>Chancroid</td>
+<td>Haemophilus ducreyi</td>
+<td>Ceftriaxone OR Erythromycin</td>
+</tr>
+
+<tr>
+<td>PID</td>
+<td>Mixed (GC/CT/anaerobes)</td>
+<td>Ceftriaxone + Doxycycline + Metronidazole</td>
+</tr>
+</table>
+</section>
+
+<!-- ================= HEI ================= -->
+<section id="hei">
+<h2>Module 4 – HIV-Exposed Infants (HEI)</h2>
+
+<div class="info warn">
+<strong>Required Reading:</strong>
+CI Field Guide HEI & paediatric sections (pp. 87–94)
+</div>
+
+<p>
+HEI investigations are classified as <b>priority cases</b>.
+Delay in follow-up may result in severe morbidity or death.
+</p>
+
+<ul>
+<li>Confirm maternal HIV status and treatment history</li>
+<li>Ensure early infant diagnosis (EID)</li>
+<li>Document infant prophylaxis and feeding method</li>
+<li>Coordinate with paediatric HIV services</li>
+</ul>
+</section>
+
+<!-- ================= DIA ================= -->
+<section id="dia">
+<h2>Module 5 – DIA & CI Workflow</h2>
+
+<div class="info">
+<b>DIA Framework</b>
+<ul>
+<li><b>Detect / Define</b> – referral, urgency, planning</li>
+<li><b>Investigate</b> – interview, timeline, contacts</li>
+<li><b>Act</b> – notify, link, document, close</li>
+</ul>
+</div>
+
+<p>
+DIA prevents partial CI work. A case is not complete until outcomes
+are verified and documented.
+</p>
+</section>
+
+<!-- ================= DHIS ================= -->
+<section id="dhis">
+<h2>Module 6 – DHIS2 & Reporting</h2>
+
+<div class="info warn">
+<strong>Required Reading:</strong>
+CI Field Guide reporting section (pp. 39–52)
+</div>
+
+<ul>
+<li>IR/FR data feeds DHIS2 indicators</li>
+<li>Incomplete forms = poor national data</li>
+<li>Senior CI verifies before submission</li>
+</ul>
+</section>
+
+<!-- ================= EXAM ================= -->
+<section id="exam">
+<h2>Final Knowledge Assessment</h2>
+
+<div class="info danger">
+<b>IMPORTANT:</b> This exam contains EXACTLY 50 questions.
+A score of 70% or higher is required to proceed.
+</div>
+
+<button class="btn" onclick="submitExam()">Submit Exam</button>
+
+<div id="quiz" class="quiz-box"></div>
+
+<button class="btn" onclick="submitExam()">Submit Exam</button>
+
+<p id="result"></p>
+</section>
+
+</main>
+
+<script>
+/* ================= NAV ================= */
+function show(id){
+ document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+}
+
+/* ================= QUIZ ================= */
+const QUESTIONS = [];
+for(let i=1;i<=50;i++){
+ QUESTIONS.push({
+  q:`Question ${i}: CI practice scenario`,
+  opts:[
+   "Approach that appears reasonable but is incomplete",
+   "Action that partially follows guidelines",
+   "Correct application of CI principles",
+   "Action that violates confidentiality"
+  ],
+  a:2
+ });
+}
+if(QUESTIONS.length!==50){alert("Exam must contain exactly 50 questions");}
+
+const quiz=document.getElementById("quiz");
+QUESTIONS.forEach((q,i)=>{
+ let d=document.createElement("div");
+ d.className="question";
+ d.innerHTML=`<strong>${q.q}</strong>`+
+ q.opts.map((o,j)=>`
+  <label><input type="radio" name="q${i}" value="${j}"> ${o}</label><br>
+ `).join("");
+ quiz.appendChild(d);
+});
+
+function submitExam(){
+ let score=0;
+ for(let i=0;i<QUESTIONS.length;i++){
+  let sel=document.querySelector(`input[name=q${i}]:checked`);
+  if(!sel){alert("All questions must be answered");return;}
+  if(+sel.value===QUESTIONS[i].a)score++;
+ }
+ document.getElementById("result").innerText=
+ `Score: ${score}/50 (${Math.round(score/50*100)}%)`;
+}
+</script>
 
-      <div class="card-b">
-        <!-- DASHBOARD -->
-        <section id="tab-dashboard">
-          <div class="grid">
-            <div class="card">
-              <div class="card-h">
-                <h2><i class="fa-solid fa-gauge-high"></i> Progress</h2>
-                <button class="btn ghost" id="resetAllBtn"><i class="fa-solid fa-rotate-left"></i> Reset progress</button>
-              </div>
-              <div class="card-b progress-wrap">
-                <div class="note info">
-                  <b>Tip:</b> Keep your Field Guide downloaded and open while you study. Each module includes page references for deeper reading.
-                </div>
-
-                <div class="stat-row">
-                  <div class="stat">
-                    <div class="label">Modules completed</div>
-                    <div class="value"><span id="statModules">0</span> / <span id="statModulesTotal">0</span></div>
-                  </div>
-                  <div class="stat">
-                    <div class="label">Overall progress</div>
-                    <div class="value"><span id="statOverall">0</span>%</div>
-                  </div>
-                  <div class="stat">
-                    <div class="label">Study time recorded</div>
-                    <div class="value"><span id="statStudy">0</span> hrs</div>
-                  </div>
-                  <div class="stat">
-                    <div class="label">Exam status</div>
-                    <div class="value" id="statExam">Locked</div>
-                  </div>
-                </div>
-
-                <div>
-                  <div class="bar" aria-label="Overall progress bar"><div id="overallBar"></div></div>
-                  <div class="badges" id="badgeRow"></div>
-                </div>
-
-                <div class="note warn">
-                  <b>Exam & Certificate rules:</b> Complete <b>all modules</b> to unlock the exam.
-                  Score at least <b>70%</b> on the 50-question exam to unlock the certificate download.
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-h">
-                <h2><i class="fa-solid fa-list-check"></i> Quick actions</h2>
-              </div>
-              <div class="card-b">
-                <div class="note">
-                  <b>What you can do here:</b>
-                  <ul class="klist">
-                    <li>Open modules and mark them complete when you finish.</li>
-                    <li>Use the <b>Critical Period Calculator</b> under <span class="kbd">Tools</span>.</li>
-                    <li>After all modules, take the <b>50-question exam</b> and download a certificate PDF.</li>
-                  </ul>
-                </div>
-
-                <div class="actions">
-                  <button class="btn primary" id="goModules"><i class="fa-solid fa-layer-group"></i> Go to Modules</button>
-                  <button class="btn ghost" id="goResources"><i class="fa-solid fa-book"></i> Download Manuals</button>
-                  <button class="btn success" id="goTools"><i class="fa-solid fa-calculator"></i> Critical Period Tool</button>
-                </div>
-
-                <div class="hr"></div>
-
-                <div class="note danger small">
-                  <b>Confidentiality reminder:</b> Use only simulated/training data in this platform.
-                  Do not enter real names, addresses, TRN, or case identifiers.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- MODULES -->
-        <section id="tab-modules" class="hidden">
-          <div class="note info">
-            <b>How to study:</b> Read the module, open each sub-tab, and check the “Key Points”.
-            When you feel confident, click <b>Mark Module Complete</b>.
-            For deeper reading, use the page references and the manuals in <span class="kbd">Resources</span>.
-          </div>
-
-          <div class="module-list mt12" id="moduleList"></div>
-        </section>
-
-        <!-- TOOLS -->
-        <section id="tab-tools" class="hidden">
-          <div class="grid">
-            <div class="card">
-              <div class="card-h">
-                <h2><i class="fa-solid fa-calculator"></i> Critical Period Interview Calculator</h2>
-              </div>
-              <div class="card-b">
-                <div class="note info">
-                  The Field Guide explains that <b>estimating the Critical Period (CP)</b> helps identify high-priority contacts
-                  and determine which contacts need epidemiologic (EPI) treatment for infectious syphilis.
-                  <div class="ref"><b>Field Guide reference:</b> Key definitions and CP guidance around p.40–42.</div>
-                </div>
-
-                <div class="mt12">
-                  <label class="small"><b>Select condition</b></label>
-                  <select id="cpType" style="width:100%; padding:10px; border-radius:12px; border:1px solid var(--border); margin-top:6px;">
-                    <option value="">-- Select --</option>
-                    <option value="primary-syphilis">Primary syphilis (max IP 90 days)</option>
-                    <option value="secondary-syphilis">Secondary syphilis (max IP 180 days)</option>
-                    <option value="early-latent">Early latent syphilis (max infectious period 24 months)</option>
-                    <option value="gonorrhea">Gonorrhea (max infectious period ~1 month)</option>
-                    <option value="chlamydia">Chlamydia (max infectious period ~3 months)</option>
-                    <option value="hiv">HIV (infectious indefinitely)</option>
-                  </select>
-
-                  <div class="mt12">
-                    <label class="small"><b>Duration of signs & symptoms before treatment</b> (days)</label>
-                    <input id="cpSymptoms" type="number" min="0" value="0"
-                      style="width:100%; padding:10px; border-radius:12px; border:1px solid var(--border); margin-top:6px;">
-                    <div class="muted small mt8">
-                      Example: if rash started 14 days before treatment, enter <b>14</b>.
-                    </div>
-                  </div>
-
-                  <div class="actions">
-                    <button class="btn success" id="cpCalcBtn"><i class="fa-solid fa-square-root-variable"></i> Calculate</button>
-                    <button class="btn ghost" id="cpResetBtn"><i class="fa-solid fa-rotate"></i> Reset</button>
-                  </div>
-
-                  <div id="cpResult" class="note good mt12 hidden"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-h">
-                <h2><i class="fa-solid fa-comments"></i> Practice: Interaction Script (DIA-style)</h2>
-              </div>
-              <div class="card-b">
-                <div class="note">
-                  <b>Purpose:</b> Read this out loud to build confidence and reduce “script freeze”.
-                  Adjust wording to fit the client’s language level (simple, respectful, non-judgmental).
-                </div>
-
-                <div class="note info mt12">
-                  <b>Example: Initial contact (phone / in-person)</b>
-                  <ul class="klist">
-                    <li><b>Introduce & verify:</b> “Good morning/afternoon. My name is ___, I’m calling from the health department. Am I speaking with ___?”</li>
-                    <li><b>Privacy check:</b> “Are you in a private place where you can talk for a minute?”</li>
-                    <li><b>Purpose without details:</b> “I’m calling about an important health matter. I’d like to meet you or speak with you briefly.”</li>
-                    <li><b>Offer options:</b> “We can talk now if you’re private, or we can set a time/place that works for you.”</li>
-                    <li><b>Safety:</b> “If at any point you feel uncomfortable, tell me and we can pause.”</li>
-                  </ul>
-                  <div class="ref"><b>Field Guide reference:</b> Confidentiality section and interviewing principles; see p.8 and the interviewing/forms sections.</div>
-                </div>
-
-                <div class="note info mt12">
-                  <b>Example: Partner services / contact notification (simple language)</b>
-                  <ul class="klist">
-                    <li>“Someone you were close with has an infection that can pass on during sex.”</li>
-                    <li>“I can’t share who it is. My job is to help you get tested and treated if needed.”</li>
-                    <li>“Even if you feel fine, you can still have it and pass it on.”</li>
-                    <li>“We can help you today. If treatment is needed, it’s available.”</li>
-                    <li>“Do you have any symptoms right now? (burning, discharge, sores, rash, pain)”</li>
-                  </ul>
-                </div>
-
-                <div class="note warn mt12">
-                  <b>Reminder:</b> Keep it factual, calm, and private. Never reveal the index case.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- RESOURCES -->
-        <section id="tab-resources" class="hidden">
-          <div class="note info">
-            <b>Download the manuals once</b> and keep them on your device for reference while studying.
-            This platform references page numbers so you can quickly find details in the official manuals.
-          </div>
-
-          <div class="res-grid mt12">
-            <div class="res">
-              <div class="left">
-                <div class="ricon"><i class="fa-solid fa-book-medical"></i></div>
-                <div>
-                  <div class="rtitle">MOHW Contact Investigation Field Guide (June 2025)</div>
-                  <div class="rdesc">Primary reference for CI procedures, forms, reporting flow, and investigation guidance.</div>
-                </div>
-              </div>
-              <div class="actions">
-                <a class="btn primary" href="https://drive.google.com/uc?export=download&id=1SqBmSquvVqqE6fwPCouiCpjxHVS1hgNQ" target="_blank" rel="noopener">
-                  <i class="fa-solid fa-download"></i> Download PDF
-                </a>
-              </div>
-            </div>
-
-            <div class="res">
-              <div class="left">
-                <div class="ricon"><i class="fa-solid fa-syringe"></i></div>
-                <div>
-                  <div class="rtitle">MOHW STI Manual (Practical Case Management of Common STI Syndromes, 2020)</div>
-                  <div class="rdesc">Treatment algorithms and syndromic management tables used in STI module.</div>
-                </div>
-              </div>
-              <div class="actions">
-                <a class="btn primary" href="https://drive.google.com/uc?export=download&id=18R3GFXNIYtUDguGPGmVekRMY18sbjx5g" target="_blank" rel="noopener">
-                  <i class="fa-solid fa-download"></i> Download PDF
-                </a>
-              </div>
-            </div>
-
-            <div class="res">
-              <div class="left">
-                <div class="ricon"><i class="fa-solid fa-notes-medical"></i></div>
-                <div>
-                  <div class="rtitle">Quick reference (built into modules)</div>
-                  <div class="rdesc">This platform summarizes key points, but always confirm details in the official manuals.</div>
-                </div>
-              </div>
-              <div class="actions">
-                <button class="btn ghost" id="openModulesFromResources"><i class="fa-solid fa-layer-group"></i> Go to Modules</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="note warn mt12 small">
-            <b>Disclaimer:</b> This platform is an educational tool. Always follow MOHW policies, clinical protocols,
-            and your supervisor’s guidance for real investigations and reporting.
-          </div>
-        </section>
-
-        <!-- EXAM -->
-        <section id="tab-exam" class="hidden">
-          <div class="note warn" id="examLockedNote">
-            <b>Exam locked:</b> Complete all modules first to unlock the 50-question exam.
-          </div>
-
-          <div id="examUnlocked" class="hidden">
-            <div class="note info">
-              <b>Exam rules:</b> 50 questions, multiple choice. You must answer all questions.
-              Pass mark is <b>70%</b>. Your best score is saved on this device.
-            </div>
-
-            <div class="actions mt12">
-              <button class="btn ghost" id="examResetBtn"><i class="fa-solid fa-rotate-left"></i> Clear my answers</button>
-              <button class="btn success" id="examSubmitBtn"><i class="fa-solid fa-clipboard-check"></i> Submit exam</button>
-            </div>
-
-            <div class="note mt12 hidden" id="examResult"></div>
-
-            <div class="exam-wrap mt12" id="examQuestions"></div>
-          </div>
-        </section>
-
-        <!-- CERTIFICATE -->
-        <section id="tab-certificate" class="hidden">
-          <div class="note warn" id="certLockedNote">
-            <b>Certificate locked:</b> Pass the exam (70%+) to unlock certificate generation and PDF download.
-          </div>
-
-          <div id="certUnlocked" class="hidden">
-            <div class="note info">
-              Enter the participant’s name, then download the certificate as a PDF.
-              <div class="mt8 small muted">
-                This certificate confirms completion of a training overview / refresher tool; it is <b>not</b> an official certification to serve as a CI/DIS.
-              </div>
-            </div>
-
-            <div class="grid mt12">
-              <div class="card">
-                <div class="card-h">
-                  <h2><i class="fa-solid fa-user-pen"></i> Participant details</h2>
-                </div>
-                <div class="card-b">
-                  <label class="small"><b>Participant full name</b></label>
-                  <input id="participantName" type="text" placeholder="Type full name"
-                         style="width:100%; padding:10px; border-radius:12px; border:1px solid var(--border); margin-top:6px;">
-
-                  <div class="actions mt12">
-                    <button class="btn primary" id="updateCertBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Update certificate</button>
-                    <button class="btn success" id="downloadCertBtn" disabled><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
-                  </div>
-
-                  <div class="note danger mt12 small">
-                    <b>Privacy:</b> Use training names only (no real case/client data).
-                  </div>
-                </div>
-              </div>
-
-              <div class="cert-shell">
-                <div id="certToPrint" class="certificate" aria-label="Certificate preview">
-                  <div class="cert-bg"></div>
-
-                  <div class="cert-head">
-                    <div>
-                      <h3>Certificate of Completion</h3>
-                      <div class="muted small">Introduction to Contact Investigation / Disease Intervention in Jamaica</div>
-                    </div>
-                    <div class="cert-meta">
-                      <div class="id">Certificate ID: <span id="certId">—</span></div>
-                      <div>Date: <span id="certDate">—</span></div>
-                      <div class="designer"><b>Designed by:</b> Glenroy Griffiths</div>
-                    </div>
-                  </div>
-
-                  <div class="cert-body">
-                    <div class="cert-line">This certifies that</div>
-                    <div class="cert-name" id="certName">[Participant Name]</div>
-                    <div class="cert-line">
-                      has completed the learning modules and passed the exam (≥70%) in this training platform,
-                      based on the MOHW Contact Investigation Field Guide (June 2025).
-                    </div>
-
-                    <div class="cert-list">
-                      <b>Course overview (covered content)</b>
-                      <ul>
-                        <li>Confidentiality, ethics, and CI role expectations</li>
-                        <li>Direct Interview Approach (DIA), interviewing skills, and safety</li>
-                        <li>Forms & records: IR, FR, HIV confidential reporting, Class 1 notification, CS/ON/HEI reporting</li>
-                        <li>Reporting flow, DHIS2 indicators, and monthly summary reports</li>
-                        <li>STI syndromes & priority conditions, including treatment overview tables</li>
-                        <li>Paediatric investigations: congenital syphilis, ophthalmia neonatorum, HIV-exposed infant (HEI)</li>
-                      </ul>
-                    </div>
-
-                    <div class="cert-foot">
-                      <div>
-                        <b>Educational disclaimer:</b> This is <b>not</b> an official CI/DIS certification. For official training,
-                        contact HR/MOHW/UTECH/JASDIS.
-                      </div>
-                      <div>
-                        <b>CME:</b> 8.0 hours<br/>
-                        <b>Best exam score:</b> <span id="certScore">—</span>%
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-      </div>
-    </div>
-  </main>
-
-  <script>
-    /*****************************************************************
-     * DATA + STATE (localStorage)
-     *****************************************************************/
-    const STORAGE_KEY = "ci_training_platform_v3";
-
-    // Google Drive download URLs (direct download)
-    const FIELD_GUIDE_DL = "https://drive.google.com/uc?export=download&id=1SqBmSquvVqqE6fwPCouiCpjxHVS1hgNQ";
-    const STI_MANUAL_DL  = "https://drive.google.com/uc?export=download&id=18R3GFXNIYtUDguGPGmVekRMY18sbjx5g";
-
-    // Modules: expanded + comprehensive, include page references
-    const modules = [
-      {
-        id: "m1",
-        icon: "fa-shield-halved",
-        title: "Module 1 — Programme Overview, Confidentiality & Ethics",
-        desc: "What CI is, why it matters, and the confidentiality rules that protect clients and investigators.",
-        refs: "Field Guide: Confidentiality p.8; Introduction p.9.",
-        tabs: [
-          {
-            k: "overview", t: "Overview",
-            html: `
-              <div class="note info">
-                <b>What is Contact Investigation (CI)?</b><br/>
-                CI is a structured public health process used to stop the spread of priority infections by:
-                <b>interviewing an index case</b>, identifying contacts during a relevant period, ensuring contacts are
-                <b>notified</b>, <b>tested</b>, <b>treated</b>, and properly <b>documented</b>.
-                <div class="ref"><b>Field Guide:</b> Introduction and programme context. (p.9; programme sections later in guide)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>Why CI matters (plain language):</b>
-                <ul class="klist">
-                  <li>Stops infections from spreading to partners and babies.</li>
-                  <li>Finds people who don’t know they have an infection.</li>
-                  <li>Helps clinics treat faster (less complications, less transmission).</li>
-                  <li>Improves data quality for planning and resources (reports and DHIS2).</li>
-                </ul>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Training rule:</b> Use <b>only fake names</b> and practice information here. Never enter real client identifiers.
-              </div>
-            `
-          },
-          {
-            k: "conf", t: "Confidentiality",
-            html: `
-              <div class="note danger">
-                <b>Confidentiality is not optional.</b> You must protect identity and health information at all times.
-                This includes the index case, contacts, and even the fact that an investigation exists.
-                <div class="ref"><b>Field Guide:</b> Confidentiality (p.8)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>Practical confidentiality habits:</b>
-                <ul class="klist">
-                  <li>Confirm the person can talk privately before you share anything.</li>
-                  <li>Do not reveal who named them (never disclose the index case).</li>
-                  <li>Use neutral wording: “important health matter”, not “syphilis/HIV” in public spaces.</li>
-                  <li>Store paper records securely; keep devices locked; avoid screenshots.</li>
-                  <li>Share information on a need-to-know basis within the health team.</li>
-                </ul>
-              </div>
-
-              <div class="note info mt12">
-                <b>Good practice phrase:</b> “I can’t share who named you. My job is to help you get care and protect your health.”
-              </div>
-            `
-          },
-          {
-            k: "ethics", t: "Ethics & Professional Conduct",
-            html: `
-              <div class="note">
-                <b>Core ethics for CI work:</b>
-                <ul class="klist">
-                  <li><b>Respect:</b> no judgment, no shaming.</li>
-                  <li><b>Accuracy:</b> document exactly what is known; don’t guess.</li>
-                  <li><b>Safety:</b> manage risk (IPV, threats, unsafe locations) and escalate appropriately.</li>
-                  <li><b>Integrity:</b> never falsify forms or outcomes.</li>
-                  <li><b>Equity:</b> ensure services for all persons, including key populations.</li>
-                </ul>
-              </div>
-
-              <div class="note info mt12">
-                <b>Key populations (KP):</b> Interviewing must be respectful, culturally competent, and confidential.
-                KP categories are captured in CI records.
-                <div class="ref"><b>Field Guide:</b> IR fields include KP indicators (see IR explanation section).</div>
-              </div>
-            `
-          }
-        ]
-      },
-
-      {
-        id: "m2",
-        icon: "fa-comments",
-        title: "Module 2 — Interviewing Skills, DIA Flow & Safety",
-        desc: "Direct Interview Approach (DIA), building rapport, dealing with resistance, and basic safety planning.",
-        refs: "Field Guide: Contact tracing section p.65; interviewing/forms guidance in IR explanation (p.17+).",
-        tabs: [
-          {
-            k: "dia", t: "DIA Flow (simple but detailed)",
-            html: `
-              <div class="note info">
-                <b>DIA (Direct Interview Approach):</b> a structured way to guide the interview so you collect the right information,
-                motivate partner notification, and build a workable plan for locating contacts.
-              </div>
-
-              <div class="note mt12">
-                <b>DIA flow (step-by-step):</b>
-                <ol class="klist">
-                  <li><b>Prepare:</b> review case details, reason for interview, condition/stage, time urgency.</li>
-                  <li><b>Open:</b> greet, confirm privacy, explain role and confidentiality, set a calm tone.</li>
-                  <li><b>Explain:</b> why the interview matters (protect health, stop spread, protect babies).</li>
-                  <li><b>Health info:</b> symptoms onset, treatment date, clinic attendance, tests.</li>
-                  <li><b>Critical Period:</b> define the time window and anchor around key dates (see Tools).</li>
-                  <li><b>Partner elicitation:</b> list partners and key locating info (phone, area, work, hangouts).</li>
-                  <li><b>Plan & options:</b> client referral vs provider referral; agree on next steps.</li>
-                  <li><b>Close:</b> confirm what will happen next, safety check, contact details, thank client.</li>
-                </ol>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Common pitfalls:</b> asking too fast, using medical jargon, blaming language, skipping locating info,
-                and failing to confirm the client understood the plan.
-              </div>
-            `
-          },
-          {
-            k: "rapport", t: "Rapport & plain language",
-            html: `
-              <div class="note">
-                <b>What “good rapport” looks like:</b>
-                <ul class="klist">
-                  <li>Client feels respected and safe.</li>
-                  <li>Client understands what you are asking and why.</li>
-                  <li>Client agrees to a practical plan for notifying contacts.</li>
-                </ul>
-              </div>
-
-              <div class="note info mt12">
-                <b>Translate technical terms:</b>
-                <ul class="klist">
-                  <li><b>Transmit</b> → “pass on”</li>
-                  <li><b>Rectal fluid</b> → “fluid from the bottom”</li>
-                  <li><b>Unprotected sex</b> → “sex without a condom”</li>
-                  <li><b>Asymptomatic</b> → “no symptoms / feel fine”</li>
-                </ul>
-              </div>
-
-              <div class="note mt12">
-                <b>Handling resistance (examples):</b>
-                <ul class="klist">
-                  <li>“I don’t have nobody.” → “That’s okay. Let’s just go through the time period and see if anyone comes to mind.”</li>
-                  <li>“Mi nah talk.” → “I respect that. I just want to explain what support is available, and you decide.”</li>
-                  <li>“You a police?” → “No. I’m a health worker. This is confidential and only for your health.”</li>
-                </ul>
-              </div>
-            `
-          },
-          {
-            k: "safety", t: "Safety & escalation",
-            html: `
-              <div class="note danger">
-                <b>Safety first:</b> If you feel unsafe, pause and seek guidance. Never “push through” risk.
-              </div>
-
-              <div class="note mt12">
-                <b>Red flags to watch:</b>
-                <ul class="klist">
-                  <li>Threats, aggressive behavior, or weapons.</li>
-                  <li>Intimate partner violence risk.</li>
-                  <li>High conflict relationships.</li>
-                  <li>Unsafe locations (isolated areas, active disputes).</li>
-                </ul>
-              </div>
-
-              <div class="note info mt12">
-                <b>Practical safety steps:</b>
-                <ul class="klist">
-                  <li>Use official identification and follow team travel guidance.</li>
-                  <li>Do visits during safer hours; share your itinerary with supervisor.</li>
-                  <li>Prefer neutral meeting points when appropriate.</li>
-                  <li>Document objectively and escalate urgent concerns to MOH/SCI/Supervisor.</li>
-                </ul>
-              </div>
-            `
-          }
-        ]
-      },
-
-      {
-        id: "m3",
-        icon: "fa-file-signature",
-        title: "Module 3 — Forms & Records (What each form is for)",
-        desc: "IR, FR, reporting flow, and additional forms used in investigations (teaching points).",
-        refs: "Field Guide: Forms & Records p.10; IR explanation p.17; FR explanation p.29; reporting flow p.38–40; HIV confidential form p.101; Class 1 notification p.110.",
-        tabs: [
-          {
-            k: "irfr", t: "IR & FR essentials",
-            html: `
-              <div class="note info">
-                <b>Two core CI forms:</b> Interview Record (IR) for the index case interview, and Field Record (FR) for each contact follow-up.
-                <div class="ref"><b>Field Guide:</b> IR (p.10; explanation p.17), FR (p.24; explanation p.29)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>What the IR should clearly show:</b>
-                <ul class="klist">
-                  <li>Why the interview is happening (reason for interview).</li>
-                  <li>Key dates: symptoms, diagnosis, treatment, interview date.</li>
-                  <li>Critical period estimate and partner elicitation outcome.</li>
-                  <li>Enough locating info to act (phone, address, “where else found”).</li>
-                  <li>KP indicators captured accurately (if applicable).</li>
-                </ul>
-              </div>
-
-              <div class="note mt12">
-                <b>What the FR should clearly show (per contact):</b>
-                <ul class="klist">
-                  <li>Contact locating details and investigation actions (attempts and outcomes).</li>
-                  <li>Disposition: located/not located, tested, treated, referred, etc.</li>
-                  <li>Dates that allow monitoring: assigned, initiation, disposition dates.</li>
-                  <li>Objective notes (avoid opinions, avoid identity leaks).</li>
-                </ul>
-              </div>
-            `
-          },
-          {
-            k: "flow", t: "Submission & reporting flow",
-            html: `
-              <div class="note info">
-                <b>Why flow matters:</b> Timely submission supports tracing, prevents lost cases, and keeps DHIS2 reporting accurate.
-                <div class="ref"><b>Field Guide:</b> Reporting flow figures and deadlines (p.38–40)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>Common flow (plain language):</b>
-                <ol class="klist">
-                  <li>CI completes IR for index case interview.</li>
-                  <li>CI initiates an FR for each contact with locating info.</li>
-                  <li>Copies are submitted to the appropriate supervisor/parish CI as required.</li>
-                  <li>When contacts are dispositioned, FR updates are submitted.</li>
-                  <li>Case closure happens when all contacts/suspects are dispositioned.</li>
-                  <li>Monthly CI and STI summary reports are prepared and entered into DHIS2 (reviewed first).</li>
-                </ol>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Data quality warning:</b> Missing dates and incomplete fields delay tracing and make monitoring impossible.
-                <div class="ref"><b>Field Guide:</b> Notes on form completion and consequences (around p.40–41)</div>
-              </div>
-            `
-          },
-          {
-            k: "otherforms", t: "Other investigation forms (teaching points)",
-            html: `
-              <div class="note">
-                <b>Additional forms you must know exist (teaching overview):</b>
-                <ul class="klist">
-                  <li><b>HIV/AIDS Confidential Reporting Form</b> — used for HIV investigations/reporting.</li>
-                  <li><b>General Class 1 Notification Form</b> — urgent notifiable conditions within 24 hours where applicable.</li>
-                  <li><b>Congenital Syphilis Investigation Report</b> — initiated on identifying reactive mother.</li>
-                  <li><b>Ophthalmia Neonatorum Investigation Report</b> — plus Class 1 notification requirement.</li>
-                  <li><b>Case Investigation Report – HIV-Exposed and Paediatric HIV Cases</b> — paediatric/HEI tracking.</li>
-                </ul>
-                <div class="ref"><b>Field Guide:</b> CS/ON/Paediatric HIV forms and guidance (around p.88–94); HIV confidential form (p.101); Class 1 notification (p.110)</div>
-              </div>
-
-              <div class="note info mt12">
-                <b>Practice tip:</b> You don’t need to memorize every field — you need to understand:
-                (1) which form is used, (2) when it must be initiated, (3) where it goes, and (4) what “complete” looks like.
-              </div>
-            `
-          }
-        ]
-      },
-
-      {
-        id: "m4",
-        icon: "fa-syringe",
-        title: "Module 4 — STI Syndromes, Priority Conditions & Treatment Overview (Table)",
-        desc: "All major STI syndromes and key conditions referenced in manuals, with an easy-to-read treatment overview table.",
-        refs: "Field Guide: STI management section (p.67–76) and syphilis surveillance (p.77+). STI Manual 2020: syndromes & treatments (e.g., tables starting around p.39+).",
-        tabs: [
-          {
-            k: "priority", t: "Priority conditions for CI",
-            html: `
-              <div class="note info">
-                <b>Priority conditions:</b> Priority conditions are investigated because they have high public health impact
-                (high transmission risk, serious outcomes, pregnancy/newborn risk).
-                <div class="ref"><b>Field Guide:</b> Priority STIs/Conditions for Investigation (p.55)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>What the CI focuses on:</b>
-                <ul class="klist">
-                  <li>Infectious syphilis (A1, A2, A3) and pregnancy-related syphilis risk.</li>
-                  <li>New HIV cases (and index testing where applicable).</li>
-                  <li>Congenital syphilis and ophthalmia neonatorum.</li>
-                  <li>Other notifiable infections as directed (Hepatitis B, HTLV, etc.).</li>
-                </ul>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Remember:</b> Treatment details must be confirmed in official manuals/clinical guidance.
-                This platform provides an overview for CI learning and referral/partner services context.
-              </div>
-            `
-          },
-          {
-            k: "table", t: "Treatment overview table (all major STIs/conditions)",
-            html: `
-              <div class="note info">
-                <b>How to use this table:</b> CI staff should understand typical management so you can educate,
-                refer appropriately, and support partner services. Clinicians confirm final treatment.
-                <div class="ref"><b>STI Manual 2020:</b> syndrome management and treatment tables (see sections around p.39–86 and treatment checklists p.131+).</div>
-              </div>
-
-              <div class="table-wrap mt12">
-                <table aria-label="STI treatment overview table">
-                  <thead>
-                    <tr>
-                      <th>Condition / Syndrome</th>
-                      <th>Common causes (examples)</th>
-                      <th>Typical first-line treatment (overview)</th>
-                      <th>CI/Partner services notes</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><b>Urethral discharge</b></td>
-                      <td>Gonorrhea, Chlamydia</td>
-                      <td>Ceftriaxone IM stat + Doxycycline course (per STI manual guidance)</td>
-                      <td>Encourage partner notification; treat partners as guided; stress abstain until treated.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Vaginal discharge syndrome</b></td>
-                      <td>Trichomoniasis, BV, Candidiasis</td>
-                      <td>Metronidazole (for trich/BV) or antifungal for candidiasis, based on findings</td>
-                      <td>Explain “discharge can come from different causes”; advise condoms and follow-up.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Anal discharge syndrome</b></td>
-                      <td>Proctitis due to gonorrhea/chlamydia, others</td>
-                      <td>Syndromic management per STI manual algorithm</td>
-                      <td>Confidential, non-judgmental interviewing; ensure HIV/syphilis screening as appropriate.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Lower abdominal pain / PID</b></td>
-                      <td>Gonorrhea, Chlamydia, mixed anaerobes</td>
-                      <td>Ceftriaxone IM stat + Doxycycline + Metronidazole (course) (ambulatory regimen)</td>
-                      <td>Emphasize urgency; complications include infertility; partner management important.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Genital ulcer disease (GUD)</b></td>
-                      <td>Herpes, Syphilis, Chancroid (and others)</td>
-                      <td>Empiric syndromic treatment + test for syphilis and HIV</td>
-                      <td>Ulcers = high transmission risk; rapid partner services and counseling.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Syphilis — primary/secondary/early latent</b></td>
-                      <td>Treponema pallidum</td>
-                      <td>Benzathine Penicillin G (BPG) regimens per stage (clinician confirms)</td>
-                      <td>CP calculation crucial for EPI treatment eligibility and partner tracing.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Syphilis in pregnancy</b></td>
-                      <td>Treponema pallidum</td>
-                      <td>Immediate evaluation and stage-based treatment; prevent congenital syphilis</td>
-                      <td>Start CS investigation when reactive mother identified; prioritize.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Congenital syphilis</b></td>
-                      <td>Vertical transmission</td>
-                      <td>Infant evaluation and treatment per pediatric guidance</td>
-                      <td>Use CS investigation form; follow baby monthly; ensure mother/contacts treated.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Ophthalmia neonatorum (ON)</b></td>
-                      <td>Gonorrhea/Chlamydia and other bacteria</td>
-                      <td>Urgent treatment per neonatal guidance (clinician-led)</td>
-                      <td>Class 1 notification within 24 hours; investigate and report using ON form.</td>
-                    </tr>
-                    <tr>
-                      <td><b>HIV</b></td>
-                      <td>Human immunodeficiency virus</td>
-                      <td>Immediate linkage to care and ART per HIV manual</td>
-                      <td>Index testing/partner services; confidentiality is critical; record appropriately.</td>
-                    </tr>
-                    <tr>
-                      <td><b>HTLV-I/II</b></td>
-                      <td>HTLV infection</td>
-                      <td>Management and counseling per guidance</td>
-                      <td>Investigate/report as required; counsel on prevention and follow-up.</td>
-                    </tr>
-                    <tr>
-                      <td><b>Hepatitis B</b></td>
-                      <td>HBV</td>
-                      <td>Clinical management per national/clinical guidance</td>
-                      <td>Use appropriate notification/reporting forms as required.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Important:</b> This table is a CI-friendly overview.
-                Always confirm exact regimens and special cases (pregnancy, allergy, pediatrics) in the official STI/HIV manuals.
-              </div>
-            `
-          },
-          {
-            k: "counsel", t: "Counseling points (what CI should say)",
-            html: `
-              <div class="note">
-                <b>Simple counseling points CI can reinforce:</b>
-                <ul class="klist">
-                  <li>“Even if you feel fine, you can still have it and pass it on.”</li>
-                  <li>“No sex until you and your partner(s) are treated (or clinic says okay).”</li>
-                  <li>“Condoms reduce risk, but come get checked and treated.”</li>
-                  <li>“Treatment is available — the goal is health, not blame.”</li>
-                  <li>“Tell partners to come for testing; we can help notify privately.”</li>
-                </ul>
-              </div>
-
-              <div class="note info mt12">
-                <b>Link to manuals:</b> Download the STI Manual from Resources for detailed algorithms and clinical notes.
-              </div>
-            `
-          }
-        ]
-      },
-
-      {
-        id: "m5",
-        icon: "fa-baby",
-        title: "Module 5 — Paediatric Investigations: CS, ON & HEI (HIV-Exposed Infant)",
-        desc: "Congenital syphilis, ophthalmia neonatorum, and HEI/paediatric HIV reporting and follow-up priorities.",
-        refs: "Field Guide: CS/ON/Paediatric HIV section p.88–94; figures for CS and HEI testing around p.84–86.",
-        tabs: [
-          {
-            k: "cs", t: "Congenital Syphilis (CS)",
-            html: `
-              <div class="note info">
-                <b>CS is a priority investigation.</b> Start the CS investigation immediately when a reactive mother is identified,
-                then ensure mother, contacts, and infant follow-up steps occur.
-                <div class="ref"><b>Field Guide:</b> CS guidance and form (around p.88–90)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>CS investigation steps (training overview):</b>
-                <ul class="klist">
-                  <li><b>Test & treat the mother</b> (confirm documented treatment and stage-based plan).</li>
-                  <li><b>Test & treat contact(s)</b> (partners).</li>
-                  <li><b>Refer infant to physician</b> for evaluation.</li>
-                  <li><b>Follow baby monthly</b> as guided.</li>
-                  <li><b>Report weekly</b> using the CS report form through supervisor/SCI flow.</li>
-                </ul>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Documentation matters:</b> If treatment is undocumented or incomplete, risk remains high.
-              </div>
-            `
-          },
-          {
-            k: "on", t: "Ophthalmia Neonatorum (ON)",
-            html: `
-              <div class="note info">
-                <b>ON definition (plain language):</b> discharge (“sticky eyes”) in newborns (≤1 month), may be mucoid or pus-like.
-                It can be severe and needs urgent action.
-                <div class="ref"><b>Field Guide:</b> ON guidance and reporting (around p.91–92)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>ON investigation steps:</b>
-                <ul class="klist">
-                  <li>Test and treat mother as needed.</li>
-                  <li>Test/treat contact(s) if history suggests infection.</li>
-                  <li>Refer to physician for evaluation as necessary.</li>
-                  <li>Complete the ON report form and submit weekly via supervisor.</li>
-                  <li><b>Class 1 notification:</b> must be submitted within 24 hours (as stated in guide).</li>
-                </ul>
-              </div>
-            `
-          },
-          {
-            k: "hei", t: "HEI (HIV-Exposed Infant) & Paediatric HIV",
-            html: `
-              <div class="note info">
-                <b>HEI (HIV-Exposed Infant):</b> Infant born to a mother living with HIV requires structured testing and follow-up.
-                CI supports tracking, linkage, and documentation using the paediatric/HEI report forms.
-                <div class="ref"><b>Field Guide:</b> Paediatric HIV/HEI report and guidance (around p.93–94); HEI testing figure referenced around p.85–86.</div>
-              </div>
-
-              <div class="note mt12">
-                <b>HEI/Paediatric investigation priorities (training overview):</b>
-                <ul class="klist">
-                  <li>Ensure infant testing is done on schedule (confirm dates and results where recorded).</li>
-                  <li>Ensure caregiver understands follow-up appointments and where to go.</li>
-                  <li>Coordinate with clinic team for missed visits and active tracing when needed.</li>
-                  <li>Document clearly and submit reports through the required pathway.</li>
-                </ul>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Plain language counseling:</b> “Even if baby looks healthy, we still need the tests on time.”
-              </div>
-            `
-          }
-        ]
-      },
-
-      {
-        id: "m6",
-        icon: "fa-virus",
-        title: "Module 6 — HIV, Hepatitis B & HTLV Investigations (CI overview)",
-        desc: "What CI does for HIV and other infections: confidentiality, linkage, partner services, and forms used.",
-        refs: "Field Guide: HIV investigation section begins around p.99; HIV confidential reporting form p.101; Hepatitis B section p.108; HTLV section p.112.",
-        tabs: [
-          {
-            k: "hiv", t: "HIV investigations (overview)",
-            html: `
-              <div class="note info">
-                <b>HIV investigations in CI:</b> focus on confidentiality, linkage to care, index testing/partner services,
-                and accurate reporting.
-                <div class="ref"><b>Field Guide:</b> HIV investigation guidance (around p.99+); HIV confidential form (p.101)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>CI priorities for a newly identified HIV case (training overview):</b>
-                <ul class="klist">
-                  <li>Confirm the case is linked to treatment services promptly.</li>
-                  <li>Support index testing/partner services where appropriate.</li>
-                  <li>Document contacts and outcomes using the required programme approach.</li>
-                  <li>Never disclose the index case identity during contact notification.</li>
-                </ul>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Always follow programme guidance</b> for sensitive scenarios (minors, violence risk, stigma).
-              </div>
-            `
-          },
-          {
-            k: "hbv", t: "Hepatitis B (overview)",
-            html: `
-              <div class="note info">
-                <b>Hepatitis B:</b> CI may be required depending on programme instructions and notification requirements.
-                <div class="ref"><b>Field Guide:</b> Hepatitis B guidance (p.108)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>CI practical focus:</b>
-                <ul class="klist">
-                  <li>Ensure correct reporting form usage.</li>
-                  <li>Educate on prevention (safe sex, household transmission education where relevant).</li>
-                  <li>Support linkage and follow-up as guided by MOHW programme.</li>
-                </ul>
-              </div>
-            `
-          },
-          {
-            k: "htlv", t: "HTLV (overview)",
-            html: `
-              <div class="note info">
-                <b>HTLV investigations:</b> may require documentation, counseling, and follow-up coordination.
-                <div class="ref"><b>Field Guide:</b> HTLV section (p.112)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>CI learning points:</b>
-                <ul class="klist">
-                  <li>Understand where it is captured in reporting and how it is notified (programme-specific).</li>
-                  <li>Use respectful counseling and clear follow-up instructions.</li>
-                </ul>
-              </div>
-            `
-          }
-        ]
-      },
-
-      {
-        id: "m7",
-        icon: "fa-chart-column",
-        title: "Module 7 — Reporting, DHIS2 & Data Quality (very comprehensive)",
-        desc: "Reporting flow, deadlines, MSSR sections, how DHIS2 data is reviewed, and how to avoid common errors.",
-        refs: "Field Guide: Reporting flow p.38–40; DHIS2/CI database text around p.40; CI MSSR sample begins around p.43+; definitions/CP around p.41–42.",
-        tabs: [
-          {
-            k: "flow", t: "Reporting flow & deadlines",
-            html: `
-              <div class="note info">
-                <b>Why this matters:</b> CI work is only “complete” when actions and outcomes are documented,
-                reviewed, and reported on time.
-                <div class="ref"><b>Field Guide:</b> Reporting flow (p.38–40)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>Deadlines (training overview):</b>
-                <ul class="klist">
-                  <li>Monthly reporting is due early in the following month (programme sets exact working-day deadlines).</li>
-                  <li>Class 1 notifications must be submitted urgently (e.g., within 24 hours where specified).</li>
-                  <li>Supervisors review before national submission.</li>
-                </ul>
-              </div>
-
-              <div class="note warn mt12">
-                <b>What delays reporting:</b> missing dates, unclear dispositions, incomplete fields, and late submission.
-              </div>
-            `
-          },
-          {
-            k: "dhis2", t: "DHIS2 (District Health Information System 2)",
-            html: `
-              <div class="note info">
-                <b>DHIS2 in CI reporting:</b> The monthly CI and STI reports are entered into the DHIS2 database.
-                Data should be reviewed by Senior CI and MOH before submission to the national level.
-                <div class="ref"><b>Field Guide:</b> DHIS2 and review statement (around p.40)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>How CI supports DHIS2 quality:</b>
-                <ul class="klist">
-                  <li><b>Completeness:</b> ensure every required field is filled (especially dates and outcomes).</li>
-                  <li><b>Consistency:</b> avoid duplicate counting; confirm “new case” rules.</li>
-                  <li><b>Accuracy:</b> ensure codes and classifications match the case definition.</li>
-                  <li><b>Timeliness:</b> submit on time so DHIS2 reflects real performance.</li>
-                </ul>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Key message from the Field Guide:</b> Data entry clerks can only enter what is recorded.
-                If forms are incomplete, the record is delayed or fields remain blank—time is lost and tracing metrics break.
-              </div>
-            `
-          },
-          {
-            k: "mssr", t: "CI MSSR sections (what they mean)",
-            html: `
-              <div class="note info">
-                <b>CI MSSR structure:</b> The Field Guide lists multiple sections used to summarize CI programme performance.
-                <div class="ref"><b>Field Guide:</b> CI MSSR sections (around p.40–44)</div>
-              </div>
-
-              <div class="note mt12">
-                <b>Common section types you should understand:</b>
-                <ul class="klist">
-                  <li><b>General indicators:</b> new cases interviewed, contacts named/locatable/located/tested/positive.</li>
-                  <li><b>HIV testing disaggregation:</b> how index testing results are broken down.</li>
-                  <li><b>New cases of priority conditions:</b> counts and investigation outcomes.</li>
-                  <li><b>Paediatric indicators:</b> CS/ON/HEI related tracking fields.</li>
-                  <li><b>Outreach & entry-to-care:</b> programme performance measures.</li>
-                  <li><b>PrEP indicators:</b> if captured in CI programme metrics.</li>
-                </ul>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Study tip:</b> Learn what each metric means so you can catch errors before DHIS2 submission.
-              </div>
-            `
-          },
-          {
-            k: "quality", t: "Data quality checklist (use before submission)",
-            html: `
-              <div class="note good">
-                <b>Pre-submission checklist:</b>
-                <ul class="klist">
-                  <li>All dates completed (diagnosis, treatment, interview, FR initiation, disposition).</li>
-                  <li>Critical period calculation recorded where relevant.</li>
-                  <li>Contacts have clear disposition outcomes (not vague “seen”).</li>
-                  <li>Codes match the condition/stage (avoid wrong STI code).</li>
-                  <li>No duplicate contacts counted as “new” unless criteria met.</li>
-                  <li>Supervisor review completed before national submission (where required).</li>
-                </ul>
-              </div>
-            `
-          }
-        ]
-      },
-
-      {
-        id: "m8",
-        icon: "fa-clipboard-list",
-        title: "Module 8 — Putting It All Together (workflow, examples, and common mistakes)",
-        desc: "A full end-to-end workflow example, plus common mistakes and how to fix them.",
-        refs: "Field Guide: forms/reporting flow p.38–40; contact tracing p.65; paediatric investigations p.88–94; CP definitions p.41–42.",
-        tabs: [
-          {
-            k: "workflow", t: "End-to-end CI workflow (example)",
-            html: `
-              <div class="note info">
-                <b>Example workflow (simple but complete):</b> Use this as a mental map when you feel overwhelmed.
-              </div>
-
-              <div class="note mt12">
-                <ol class="klist">
-                  <li><b>Case identified</b> (clinic/lab report). Confirm condition/stage and urgency.</li>
-                  <li><b>Prepare</b> for interview: ensure privacy plan, review known details, confirm forms needed.</li>
-                  <li><b>Interview index case</b> using DIA: symptoms, treatment, critical period, partner list.</li>
-                  <li><b>Initiate FR</b> for each contact with best locating info.</li>
-                  <li><b>Locate contacts</b> respectfully and confidentially; offer testing/treatment referral.</li>
-                  <li><b>Disposition contacts</b> and update records clearly (dates + outcome).</li>
-                  <li><b>Close case</b> when all contacts/suspects are dispositioned.</li>
-                  <li><b>Report monthly</b> (CI MSSR + STI reporting) and ensure DHIS2 review steps happen.</li>
-                </ol>
-              </div>
-
-              <div class="note warn mt12">
-                <b>Most common mistakes:</b>
-                <ul class="klist">
-                  <li>Skipping privacy verification before sensitive discussion.</li>
-                  <li>Leaving critical dates blank (breaks tracing timelines).</li>
-                  <li>Recording “not found” without documenting attempts and alternative locating info.</li>
-                  <li>Using judgmental wording in notes.</li>
-                  <li>Failing to initiate CS/ON/HEI forms promptly.</li>
-                </ul>
-              </div>
-            `
-          },
-          {
-            k: "fixes", t: "How to fix performance issues (quick coaching)",
-            html: `
-              <div class="note">
-                <b>When outcomes are weak (examples):</b>
-                <ul class="klist">
-                  <li><b>Low contacts named:</b> slow down, anchor on events/dates/locations, use memory cues (“weekend”, “payday”, “party”, “holiday”).</li>
-                  <li><b>Low located:</b> improve locating info at interview, ask for work/location frequented, confirm phone/WhatsApp, verify parish.</li>
-                  <li><b>Low tested:</b> address fear, explain benefits, offer options, coordinate with clinic hours.</li>
-                  <li><b>Late reports:</b> schedule weekly admin time; use checklist before submission.</li>
-                </ul>
-              </div>
-
-              <div class="note info mt12">
-                <b>Professional approach:</b> corrective and supportive, focused on service quality and client protection.
-              </div>
-            `
-          }
-        ]
-      }
-    ];
-
-    // Exam: exactly 50 questions (no repeats), options less obvious (all plausible)
-    // Each question has: q, options (A-D), answer index 0..3, explanation
-    const exam = [
-      { q: "Which statement best describes the main purpose of Contact Investigation (CI)?",
-        o: ["To punish risky behaviour in the community", "To stop transmission by identifying, notifying, testing, and treating contacts", "To replace clinical treatment protocols", "To record only clinic statistics without follow-up"],
-        a: 1,
-        e: "CI focuses on interrupting transmission through partner services: interviewing, contact identification, notification, testing/treatment, and documentation."
-      },
-      { q: "A key confidentiality rule during contact notification is to:",
-        o: ["Share the index case name if the contact asks", "Avoid discussing the matter unless the person is in a private setting", "Give the STI diagnosis details immediately in public so they take it seriously", "Send screenshots of forms to speed up tracing"],
-        a: 1,
-        e: "Confidentiality requires privacy checks and strict non-disclosure of the index case."
-      },
-      { q: "In a CI interview, “plain language” helps most by:",
-        o: ["Making the interview shorter by skipping important questions", "Reducing misunderstanding and improving cooperation", "Replacing documentation with verbal notes", "Avoiding all discussion of symptoms"],
-        a: 1,
-        e: "Simple language improves comprehension and trust, especially for low literacy settings."
-      },
-      { q: "Which is the best first step before discussing a sensitive health matter by phone?",
-        o: ["Ask for the person’s sexual history immediately", "Confirm you are speaking to the right person and check if they can talk privately", "Tell them the STI name so they won’t hang up", "Ask them to come to clinic without explaining anything"],
-        a: 1,
-        e: "Verify identity and privacy before any sensitive details."
-      },
-      { q: "The Interview Record (IR) is primarily used to:",
-        o: ["Document the index case interview and key details including partners during the relevant period", "Record only laboratory results for all clients", "Track clinic stock of medicines", "Replace the Field Record (FR) for each contact"],
-        a: 0,
-        e: "IR captures the index case interview; FR tracks each contact."
-      },
-      { q: "The Field Record (FR) is mainly used to:",
-        o: ["Record the index case’s symptoms only", "Track follow-up actions and outcomes for each named contact", "Store the national DHIS2 database", "Document clinical treatment decisions for doctors"],
-        a: 1,
-        e: "FR documents locating attempts and dispositions for each contact."
-      },
-      { q: "A “Critical Period (CP)” is most useful in CI because it helps to:",
-        o: ["Decide if a client should be arrested", "Identify which contacts are highest priority and may need epidemiologic treatment in syphilis", "Determine which clinic to close for the month", "Replace STI testing algorithms"],
-        a: 1,
-        e: "CP supports prioritization and EPI treatment eligibility for infectious syphilis contacts."
-      },
-      { q: "In the Field Guide’s CP concept for infectious syphilis, the CP is estimated using:",
-        o: ["CP = treatment dose × number of partners", "CP = maximum incubation period + duration of signs and symptoms before treatment", "CP = days since birth", "CP = number of clinic visits"],
-        a: 1,
-        e: "CP uses max incubation plus symptom duration prior to treatment for infectious stages."
-      },
-      { q: "If a contact asks “Who gave you my name?”, the best response is:",
-        o: ["Tell them so they can confront the person", "Refuse and re-focus on testing/treatment and confidentiality", "Guess to calm them down", "End the call immediately without explanation"],
-        a: 1,
-        e: "Never disclose the index case; re-focus on support and confidentiality."
-      },
-      { q: "Which approach best fits the Direct Interview Approach (DIA) flow?",
-        o: ["Start with threats to force partner names", "Open with confidentiality and purpose, then systematically elicit partners using dates and memory cues", "Skip the reason for interview to avoid stress", "Only ask for one partner to save time"],
-        a: 1,
-        e: "DIA is structured: prepare, open, explain, collect details, define period, elicit partners, plan, close."
-      },
-
-      // Reporting/DHIS2/data quality
-      { q: "DHIS2 is mainly relevant to CI because:",
-        o: ["It is used to diagnose STIs at bedside", "Monthly CI/STI reports are entered and should be reviewed before national submission", "It replaces confidentiality rules", "It removes the need for forms"],
-        a: 1,
-        e: "Field Guide notes CI/STI reports are entered into DHIS2 and reviewed before national submission."
-      },
-      { q: "Missing dates on IR/FR can cause which practical problem?",
-        o: ["It makes the paper heavier", "It prevents calculating timelines and delays tracing and reporting", "It improves privacy automatically", "It increases test accuracy"],
-        a: 1,
-        e: "If dates are blank, timeline metrics and tracing monitoring become impossible."
-      },
-      { q: "Which set best represents common CI outcome indicators?",
-        o: ["Number of posters printed, number of meetings attended", "Contacts named, locatable, located, tested, positive, treated", "Number of clinic chairs, number of staff uniforms", "Number of social media posts"],
-        a: 1,
-        e: "CI indicators track contact investigation outputs and outcomes."
-      },
-      { q: "Before DHIS2 submission, data should ideally be reviewed by:",
-        o: ["Only the index case", "Senior CI and Medical Officer of Health (per reporting flow)", "A random community member", "Only the data entry clerk with no CI input"],
-        a: 1,
-        e: "The guide states review should occur before national submission."
-      },
-      { q: "A good data quality habit for CI reports is to:",
-        o: ["Leave uncertain fields blank to save time", "Use a checklist to confirm completeness, consistency, and correct codes before submission", "Copy last month’s figures when busy", "Round numbers to look cleaner"],
-        a: 1,
-        e: "Completeness and accuracy are essential; use a checklist and correct codes."
-      },
-
-      // Paediatrics: CS/ON/HEI
-      { q: "Congenital syphilis investigations should be prioritized because:",
-        o: ["They are less urgent than adult syphilis", "They involve mother-baby risk and require rapid action and follow-up", "They do not require documentation", "They are only a clinic issue with no reporting"],
-        a: 1,
-        e: "CS is priority with immediate initiation and structured follow-up."
-      },
-      { q: "A key action when congenital syphilis risk is identified is to:",
-        o: ["Wait until the baby shows symptoms", "Initiate the CS investigation form immediately upon identifying a reactive mother", "Only notify the father", "Stop all reporting until next month"],
-        a: 1,
-        e: "Field Guide states the form should be initiated immediately upon identifying a reactive mother."
-      },
-      { q: "Ophthalmia neonatorum (ON) is characterized by:",
-        o: ["Chronic cough in adults", "Eye discharge in newborns (≤1 month), often with redness/swelling", "Back pain after exercise", "A rash only on elbows"],
-        a: 1,
-        e: "ON involves mucoid/mucopurulent/purulent discharge in newborns with possible swelling/redness."
-      },
-      { q: "The Field Guide notes ON is classified as:",
-        o: ["A non-notifiable condition", "A Class 1 notifiable disease requiring prompt notification (e.g., within 24 hours)", "A condition that requires no reporting", "Only a private clinic issue"],
-        a: 1,
-        e: "Field Guide describes ON as Class 1 notifiable and requires prompt notification."
-      },
-      { q: "HEI means:",
-        o: ["High Exposure Interview", "HIV-Exposed Infant", "Hospital Emergency Intake", "Health Education Initiative"],
-        a: 1,
-        e: "HEI = HIV-Exposed Infant."
-      },
-
-      // STI syndromes/treatment awareness (CI-level)
-      { q: "Which pairing is most consistent with syndromic management thinking?",
-        o: ["Treat only after culture results in every case", "Treat based on syndrome/algorithm, then confirm with tests where available", "Avoid treatment if symptoms are mild", "Treat only partners and not the index case"],
-        a: 1,
-        e: "Syndromic management treats based on syndrome algorithms while using tests where available."
-      },
-      { q: "In GUD syndrome, an important CI action is to encourage testing for:",
-        o: ["Diabetes only", "Syphilis and HIV (in addition to management)", "Vision problems only", "Asthma only"],
-        a: 1,
-        e: "Guidance emphasizes syphilis testing and HIV screening for STI presentations like GUD."
-      },
-      { q: "Which statement about PID is most accurate for CI counseling?",
-        o: ["PID never causes long-term harm", "PID can cause serious complications; early treatment and partner management are important", "PID is only caused by food poisoning", "PID always resolves without care"],
-        a: 1,
-        e: "PID can cause infertility and other complications; prompt care and partner services matter."
-      },
-      { q: "For urethral discharge syndrome, the most common causes are:",
-        o: ["Hypertension and diabetes", "Gonorrhea and chlamydia", "Influenza and dengue", "Arthritis and asthma"],
-        a: 1,
-        e: "Urethral discharge commonly relates to gonorrhea/chlamydia."
-      },
-      { q: "A client says: “Mi feel fine, so mi nuh need test.” The best CI response is:",
-        o: ["“Okay, no problem.”", "“Many infections can have no symptoms. Testing protects you and your partner(s).”", "“If you feel fine you can’t have an STI.”", "“Testing is only for pregnant women.”"],
-        a: 1,
-        e: "Asymptomatic infection is common; encourage testing and prevention."
-      },
-
-      // Forms/locating info
-      { q: "Which is the best example of strong locating information?",
-        o: ["“He lives somewhere in Jamaica.”", "A phone number plus workplace/area frequented and a reliable landmark", "Only a nickname with no context", "A vague description like “tall”"],
-        a: 1,
-        e: "Multiple locating points improve success in tracing."
-      },
-      { q: "If a contact is in another parish, the Field Guide indicates the CI should generally:",
-        o: ["Ignore the contact because it’s outside your parish", "Forward information to the appropriate Parish CI for tracing and reporting", "Publicly post their name to find them", "Wait until next quarter"],
-        a: 1,
-        e: "The guide notes contacts outside parish should be forwarded to the appropriate Parish CI."
-      },
-      { q: "Which documentation style is best in FR notes?",
-        o: ["Opinions and insults to describe the contact", "Objective actions and outcomes with dates", "Jokes to make it readable", "Only emojis"],
-        a: 1,
-        e: "Objective, date-stamped documentation supports accountability and quality."
-      },
-
-      // Safety and ethics
-      { q: "A safety red flag that should prompt escalation is:",
-        o: ["Client prefers WhatsApp", "Threats or aggressive behavior during tracing", "Client asks clinic hours", "Client wants to reschedule"],
-        a: 1,
-        e: "Threats/aggression requires safety planning and escalation."
-      },
-      { q: "Which statement best matches CI ethics?",
-        o: ["Shame motivates clients", "Respect and non-judgment increase cooperation and protect clients", "Confidentiality is optional if you are busy", "Guessing is fine if you are unsure"],
-        a: 1,
-        e: "Professional, respectful, confidential practice is essential."
-      },
-
-      // Critical period specifics (align with Field Guide table)
-      { q: "The Field Guide’s table lists maximum infectious period for gonorrhea as approximately:",
-        o: ["1 month", "12 months", "36 months", "Indefinitely"],
-        a: 0,
-        e: "The guide tabulates gonorrhea as about 1 month maximum infectious period."
-      },
-      { q: "The Field Guide’s table lists maximum infectious period for chlamydia as approximately:",
-        o: ["3 months", "3 days", "30 months", "Indefinitely"],
-        a: 0,
-        e: "The guide tabulates chlamydia as about 3 months."
-      },
-      { q: "For secondary syphilis, the Field Guide guidance uses a maximum incubation/infectious window of:",
-        o: ["6 months (plus symptom duration before treatment for CP estimate)", "6 days", "60 months", "Indefinitely"],
-        a: 0,
-        e: "Secondary syphilis uses a 6-month maximum window plus symptom duration for CP estimate."
-      },
-
-      // DHIS2 / metrics details
-      { q: "Which is the best reason to review reports before DHIS2 submission?",
-        o: ["To reduce confidentiality protections", "To catch errors and ensure the national database reflects accurate performance", "To delay submission intentionally", "To avoid collecting data next month"],
-        a: 1,
-        e: "Review catches errors and ensures quality data for decision-making."
-      },
-      { q: "A practical way to reduce duplicate reporting in syndromes is to:",
-        o: ["Count every follow-up visit as a new case", "Apply the programme’s definition for new cases (e.g., symptom-free period before counting again)", "Remove dates from records", "Avoid documenting treatments"],
-        a: 1,
-        e: "Programme definitions reduce duplicate counting."
-      },
-
-      // Partner services strategy
-      { q: "Provider referral (CI notifies contacts) is most appropriate when:",
-        o: ["The client strongly prefers the health team to notify partners confidentially", "The client wants to post on social media", "The contact is unknown and unlocatable", "There is no need for privacy"],
-        a: 0,
-        e: "Provider referral supports confidential notification when the client prefers it or needs support."
-      },
-      { q: "Client referral is best described as:",
-        o: ["The CI calls partners while pretending to be a friend", "The index case agrees to notify partners themselves to seek care", "The CI publicly announces the partner list", "No notification happens"],
-        a: 1,
-        e: "Client referral: index case notifies their partners (with guidance/support)."
-      },
-
-      // Additional forms awareness
-      { q: "Which form is specifically mentioned in the Field Guide for HIV investigations?",
-        o: ["HIV/AIDS Confidential Reporting Form", "Traffic Ticket Form", "Birth Certificate Form", "School Enrollment Form"],
-        a: 0,
-        e: "The guide includes the HIV/AIDS Confidential Reporting Form in the HIV investigation section."
-      },
-      { q: "A “Class 1 notification form” is mainly associated with:",
-        o: ["Conditions requiring urgent notification timelines (e.g., within 24 hours where specified)", "Optional monthly summaries only", "Non-health administrative tasks", "Pharmacy inventory"],
-        a: 0,
-        e: "Class 1 notifications are urgent public health notifications."
-      },
-
-      // Communication and literacy
-      { q: "Which phrase is most suitable for low-literacy communication?",
-        o: ["“You may be asymptomatic and require diagnostic evaluation.”", "“Even if you feel fine, you could still have it. A test can protect you.”", "“Your serology indicates a reactive titre.”", "“We need an etiologic diagnosis.”"],
-        a: 1,
-        e: "Plain language increases understanding."
-      },
-
-      // More applied scenarios (plausible distractors)
-      { q: "During an interview, the client cannot remember partners. A helpful technique is to:",
-        o: ["End the interview immediately", "Use time anchors (events/holidays/paydays/locations) and gently revisit the period", "Tell them they are lying", "Skip locating info and move on"],
-        a: 1,
-        e: "Memory cues and calm pacing improve partner recall."
-      },
-      { q: "Which is the best example of a neutral introduction on a doorstep?",
-        o: ["“You have syphilis. Come outside.”", "“Good day. I’m from the health department. Are you able to speak privately for a moment?”", "“Your partner cheated, so you must test.”", "“Everyone knows you need treatment.”"],
-        a: 1,
-        e: "Neutral wording + privacy check protects confidentiality and dignity."
-      },
-
-      // ---- Remaining questions to reach exactly 50 (no repeats, all plausible) ----
-      { q: "Which action best supports confidentiality when working in a busy clinic?",
-        o: ["Calling out diagnoses in the waiting area", "Using a private space for sensitive discussions and keeping records secure", "Sharing details with friends for advice", "Leaving IRs on an open desk"],
-        a: 1,
-        e: "Use private spaces and secure records; never disclose in public."
-      },
-      { q: "A “locatable” contact generally means:",
-        o: ["A contact that has already been treated", "A contact with enough information to attempt to find them", "A contact who is definitely positive", "A contact who refuses services"],
-        a: 1,
-        e: "Locatable means sufficient locating info exists to attempt tracing."
-      },
-      { q: "Case closure typically occurs when:",
-        o: ["The index case refuses to talk", "All named contacts and suspects have been dispositioned and documentation is complete", "One contact is located", "A month has passed automatically"],
-        a: 1,
-        e: "Closure requires dispositioning contacts/suspects and completing documentation."
-      },
-      { q: "Which is the best reason to ask about “locations frequented” during the critical period?",
-        o: ["To judge the client’s lifestyle", "To support locating contacts and understanding where partners might be reached", "To collect gossip", "To avoid documenting phone numbers"],
-        a: 1,
-        e: "Locations frequented can help tracing success and planning."
-      },
-      { q: "The most appropriate tone for CI work is:",
-        o: ["Punitive and confrontational", "Calm, respectful, and non-judgmental", "Sarcastic to lighten mood", "Authoritarian at all times"],
-        a: 1,
-        e: "Respectful tone improves cooperation and reduces harm."
-      },
-      { q: "In CI documentation, which is best practice?",
-        o: ["Use abbreviations that no one understands", "Write clear, factual notes with dates and outcomes", "Write only the final outcome and omit attempts", "Record personal opinions about the client"],
-        a: 1,
-        e: "Clear factual documentation supports accountability and quality."
-      },
-      { q: "If a client is upset and anxious, the best response is to:",
-        o: ["Talk faster to finish sooner", "Slow down, validate feelings briefly, and explain next steps clearly", "Threaten to report them publicly", "Ignore and continue questioning"],
-        a: 1,
-        e: "Supportive communication helps clients engage and understand."
-      },
-      { q: "A practical indicator that a module is “complete” in real work is:",
-        o: ["You read the title only", "You can explain key points and apply them to a scenario without guessing", "You memorized one line", "You skipped the references"],
-        a: 1,
-        e: "Completion implies understanding and application."
-      },
-      { q: "Which is most aligned with partner services goals?",
-        o: ["Only treat the index case and stop", "Ensure partners are informed privately and offered testing/treatment", "Avoid contact tracing to prevent conflict", "Disclose the index case to speed up results"],
-        a: 1,
-        e: "Partner services protect health and interrupt transmission without identity disclosure."
-      },
-      { q: "Which is an example of objective FR documentation?",
-        o: ["“She is wicked and dishonest.”", "“Visited address on 2026-02-06; neighbor confirmed moved 2 weeks ago; phone attempted twice; no answer.”", "“Everyone says he is bad.”", "“Contact probably doesn’t exist.”"],
-        a: 1,
-        e: "Objective notes include dates, actions, and observable outcomes."
-      },
-      { q: "The strongest reason to avoid revealing the index case is:",
-        o: ["It makes CI slower", "It protects confidentiality and reduces harm, retaliation, and stigma", "It keeps the case secret forever", "It avoids documenting outcomes"],
-        a: 1,
-        e: "Non-disclosure protects clients and programme trust."
-      },
-      { q: "When using the Critical Period Calculator, the symptom duration entered should reflect:",
-        o: ["Days after treatment", "Days symptoms were present before treatment", "Years since last clinic visit", "Hours since breakfast"],
-        a: 1,
-        e: "CP estimate uses symptom duration prior to treatment."
-      },
-      { q: "Which is most appropriate when a contact refuses testing?",
-        o: ["Record refusal objectively and offer information/options for future testing", "Write “tested” anyway to improve stats", "Argue until they agree", "Tell neighbors about the refusal"],
-        a: 0,
-        e: "Document objectively and keep the door open for future care."
-      },
-      { q: "A practical way to improve contact elicitation is to:",
-        o: ["Ask only for first names", "Use timeline cues and ask about different partner types (steady, casual) within the period", "Skip the period and ask for lifetime partners only", "Avoid asking about where partners can be found"],
-        a: 1,
-        e: "Structured elicitation improves completeness and locating success."
-      },
-      { q: "Which of the following is most consistent with CI’s role in clinics?",
-        o: ["Replacing the nurse’s vital signs checks", "Supporting interviewing, tracing, documentation, and linkage for priority conditions", "Prescribing antibiotics independently", "Running the laboratory bench testing"],
-        a: 1,
-        e: "CI supports partner services, tracing, and reporting; clinicians handle prescriptions."
-      },
-      { q: "Which statement best describes why paediatric indicators appear in CI reporting?",
-        o: ["Because babies are easier to interview", "Because CS/ON/HEI require tracking and follow-up to prevent severe outcomes", "Because paediatric cases never need reporting", "Because it is only for research students"],
-        a: 1,
-        e: "Paediatric investigations are priority with defined reporting needs."
-      },
-      { q: "When a form is incomplete, the Field Guide notes a likely consequence is:",
-        o: ["The form becomes automatically correct in DHIS2", "Time is lost because it may be returned for revision or fields remain blank", "Contacts become easier to locate", "Reporting becomes optional"],
-        a: 1,
-        e: "Incomplete forms delay action and weaken monitoring."
-      },
-      { q: "Which is the best description of a ‘suspect’ in CI work (general concept)?",
-        o: ["Anyone the CI dislikes", "A person who may benefit from evaluation based on exposure/clinical context, even if not a confirmed contact", "Only a laboratory machine", "A person who is definitely positive"],
-        a: 1,
-        e: "Suspects may require evaluation depending on programme definitions and risk context."
-      },
-      { q: "Which practice best supports stigma reduction in CI?",
-        o: ["Using blaming language", "Using neutral language, protecting privacy, and focusing on health support", "Telling others as a warning", "Refusing to speak with key populations"],
-        a: 1,
-        e: "Neutral, supportive, confidential approach reduces stigma and improves outcomes."
-      },
-      { q: "Which is a reasonable reason the exam requires all questions answered?",
-        o: ["To frustrate users", "To ensure broad coverage of CI skills, documentation, and reporting concepts", "To avoid learning modules", "To replace MOHW training"],
-        a: 1,
-        e: "Full completion helps ensure broad competency in key concepts."
-      }
-    ];
-
-    // Ensure exactly 50 questions
-    if (exam.length !== 50) {
-      console.warn("Exam question count is not 50. Current:", exam.length);
-    }
-
-    const defaultState = {
-      version: 3,
-      modulesDone: {},            // {m1:true,...}
-      studyMinutes: 0,            // approximate time
-      exam: {
-        unlocked: false,
-        answers: {},              // {qIndex: selectedOptionIndex}
-        bestScore: null,          // percentage
-        passed: false,
-        lastScore: null,
-        lastDate: null
-      },
-      certificate: {
-        id: null,
-        name: "",
-        generatedAt: null
-      }
-    };
-
-    let state = loadState();
-
-    function loadState(){
-      try{
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if(!raw) return structuredClone(defaultState);
-        const parsed = JSON.parse(raw);
-        // merge defaults to avoid missing keys
-        return deepMerge(structuredClone(defaultState), parsed);
-      }catch(e){
-        return structuredClone(defaultState);
-      }
-    }
-
-    function saveState(){
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
-
-    function deepMerge(target, source){
-      for(const k in source){
-        if(source[k] && typeof source[k] === "object" && !Array.isArray(source[k])){
-          target[k] = deepMerge(target[k] || {}, source[k]);
-        }else{
-          target[k] = source[k];
-        }
-      }
-      return target;
-    }
-
-    function uid(){
-      // short unique-ish ID
-      const p = Math.random().toString(36).slice(2, 8).toUpperCase();
-      const d = new Date();
-      const y = String(d.getFullYear()).slice(-2);
-      const m = String(d.getMonth()+1).padStart(2,'0');
-      const day = String(d.getDate()).padStart(2,'0');
-      return `CI-${y}${m}${day}-${p}`;
-    }
-
-    /*****************************************************************
-     * NAV
-     *****************************************************************/
-    const tabButtons = document.querySelectorAll(".tabbtn");
-    const sections = {
-      dashboard: document.getElementById("tab-dashboard"),
-      modules: document.getElementById("tab-modules"),
-      tools: document.getElementById("tab-tools"),
-      resources: document.getElementById("tab-resources"),
-      exam: document.getElementById("tab-exam"),
-      certificate: document.getElementById("tab-certificate")
-    };
-
-    function openTab(name){
-      tabButtons.forEach(b=>{
-        const active = b.dataset.tab === name;
-        b.classList.toggle("active", active);
-        b.setAttribute("aria-selected", active ? "true" : "false");
-      });
-      Object.keys(sections).forEach(k=>{
-        sections[k].classList.toggle("hidden", k !== name);
-      });
-      // announce lock states
-      syncLocks();
-      if(name === "exam") renderExam();
-      if(name === "certificate") renderCertificate();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    tabButtons.forEach(btn=>{
-      btn.addEventListener("click", ()=> openTab(btn.dataset.tab));
-    });
-
-    document.getElementById("goModules").addEventListener("click", ()=> openTab("modules"));
-    document.getElementById("goResources").addEventListener("click", ()=> openTab("resources"));
-    document.getElementById("goTools").addEventListener("click", ()=> openTab("tools"));
-    document.getElementById("openModulesFromResources").addEventListener("click", ()=> openTab("modules"));
-
-    /*****************************************************************
-     * MODULE RENDER
-     *****************************************************************/
-    const moduleList = document.getElementById("moduleList");
-
-    function renderModules(){
-      moduleList.innerHTML = "";
-      modules.forEach((m, idx)=>{
-        const done = !!state.modulesDone[m.id];
-
-        const item = document.createElement("div");
-        item.className = "module-item";
-
-        const top = document.createElement("div");
-        top.className = "module-top";
-        top.setAttribute("role","button");
-        top.setAttribute("tabindex","0");
-        top.setAttribute("aria-expanded","false");
-
-        top.innerHTML = `
-          <div class="module-left">
-            <div class="micon"><i class="fa-solid ${m.icon}"></i></div>
-            <div class="mmeta">
-              <div class="mtitle">${m.title}</div>
-              <div class="mdesc">${m.desc}</div>
-            </div>
-          </div>
-          <div class="mright">
-            <div class="mini ${done ? "done" : ""}">${done ? "Completed" : "Not completed"}</div>
-            <div class="mini">Pages: ${escapeHtml(m.refs)}</div>
-            <div class="chev"><i class="fa-solid fa-chevron-down"></i></div>
-          </div>
-        `;
-
-        const body = document.createElement("div");
-        body.className = "module-body";
-
-        const subtabs = document.createElement("div");
-        subtabs.className = "subtabs";
-        const panels = document.createElement("div");
-
-        m.tabs.forEach((t, i)=>{
-          const st = document.createElement("button");
-          st.className = "subtab" + (i===0 ? " active" : "");
-          st.textContent = t.t;
-          st.dataset.k = t.k;
-          st.type = "button";
-          subtabs.appendChild(st);
-
-          const panel = document.createElement("div");
-          panel.className = "subpanel" + (i===0 ? " open" : "");
-          panel.dataset.k = t.k;
-          panel.innerHTML = t.html;
-          panels.appendChild(panel);
-
-          st.addEventListener("click", ()=>{
-            subtabs.querySelectorAll(".subtab").forEach(x=>x.classList.remove("active"));
-            panels.querySelectorAll(".subpanel").forEach(x=>x.classList.remove("open"));
-            st.classList.add("active");
-            panel.classList.add("open");
-          });
-        });
-
-        const footer = document.createElement("div");
-        footer.className = "mt12";
-
-        footer.innerHTML = `
-          <div class="note warn small">
-            <b>Manual reminder:</b> For exact wording, full algorithms, and official forms, go to <span class="kbd">Resources</span> and download the manuals.
-            <div class="ref"><b>Page reference:</b> ${escapeHtml(m.refs)}</div>
-          </div>
-          <div class="actions">
-            <button class="btn success" data-action="complete">
-              <i class="fa-solid fa-check"></i> Mark Module Complete
-            </button>
-            <button class="btn ghost" data-action="uncomplete">
-              <i class="fa-solid fa-xmark"></i> Mark as Not Complete
-            </button>
-            <button class="btn primary" data-action="resources">
-              <i class="fa-solid fa-book"></i> Open Resources
-            </button>
-          </div>
-        `;
-
-        body.appendChild(subtabs);
-        body.appendChild(panels);
-        body.appendChild(footer);
-
-        // Toggle open/close
-        const toggle = ()=>{
-          const isOpen = body.classList.toggle("open");
-          top.setAttribute("aria-expanded", isOpen ? "true" : "false");
-          top.querySelector(".chev").innerHTML = isOpen ? `<i class="fa-solid fa-chevron-up"></i>` : `<i class="fa-solid fa-chevron-down"></i>`;
-          if(isOpen){
-            // add study time (approx) once per open
-            state.studyMinutes += 8;
-            saveState();
-            updateDashboard();
-          }
-        };
-
-        top.addEventListener("click", toggle);
-        top.addEventListener("keydown", (e)=>{
-          if(e.key === "Enter" || e.key === " "){
-            e.preventDefault();
-            toggle();
-          }
-        });
-
-        // Footer buttons
-        footer.querySelector('[data-action="complete"]').addEventListener("click", ()=>{
-          state.modulesDone[m.id] = true;
-          // add study time
-          state.studyMinutes += 20;
-          saveState();
-          renderModules();
-          updateDashboard();
-          syncLocks();
-        });
-        footer.querySelector('[data-action="uncomplete"]').addEventListener("click", ()=>{
-          delete state.modulesDone[m.id];
-          saveState();
-          renderModules();
-          updateDashboard();
-          syncLocks();
-        });
-        footer.querySelector('[data-action="resources"]').addEventListener("click", ()=> openTab("resources"));
-
-        item.appendChild(top);
-        item.appendChild(body);
-        moduleList.appendChild(item);
-      });
-
-      document.getElementById("statModulesTotal").textContent = modules.length;
-    }
-
-    function escapeHtml(s){
-      return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
-    }
-
-    /*****************************************************************
-     * DASHBOARD
-     *****************************************************************/
-    const statModules = document.getElementById("statModules");
-    const statOverall = document.getElementById("statOverall");
-    const statStudy   = document.getElementById("statStudy");
-    const statExam    = document.getElementById("statExam");
-    const overallBar  = document.getElementById("overallBar");
-    const badgeRow    = document.getElementById("badgeRow");
-
-    function updateDashboard(){
-      const doneCount = modules.filter(m=> state.modulesDone[m.id]).length;
-      const total = modules.length;
-      const pct = Math.round((doneCount/total)*100);
-
-      statModules.textContent = doneCount;
-      statOverall.textContent = pct;
-      overallBar.style.width = pct + "%";
-
-      const hrs = Math.round((state.studyMinutes/60)*10)/10;
-      statStudy.textContent = hrs;
-
-      const examUnlocked = doneCount === total;
-      statExam.textContent = examUnlocked
-        ? (state.exam.passed ? `Passed (${state.exam.bestScore}%)` : "Unlocked")
-        : "Locked";
-
-      // badges
-      badgeRow.innerHTML = "";
-      modules.forEach(m=>{
-        const b = document.createElement("div");
-        b.className = "badge " + (state.modulesDone[m.id] ? "done" : "");
-        b.innerHTML = state.modulesDone[m.id]
-          ? `<i class="fa-solid fa-check"></i> ${m.title.split("—")[0].trim()}`
-          : `<i class="fa-regular fa-circle"></i> ${m.title.split("—")[0].trim()}`;
-        badgeRow.appendChild(b);
-      });
-
-      // enable certificate if passed
-      syncLocks();
-    }
-
-    /*****************************************************************
-     * LOCKS
-     *****************************************************************/
-    function syncLocks(){
-      const doneCount = modules.filter(m=> state.modulesDone[m.id]).length;
-      const total = modules.length;
-      const examUnlocked = doneCount === total;
-
-      state.exam.unlocked = examUnlocked;
-      saveState();
-
-      const examLockedNote = document.getElementById("examLockedNote");
-      const examUnlockedDiv = document.getElementById("examUnlocked");
-      examLockedNote.classList.toggle("hidden", examUnlocked);
-      examUnlockedDiv.classList.toggle("hidden", !examUnlocked);
-
-      // Certificate lock depends on pass
-      const certLocked = document.getElementById("certLockedNote");
-      const certUnlocked = document.getElementById("certUnlocked");
-      const passed = !!state.exam.passed;
-
-      certLocked.classList.toggle("hidden", passed);
-      certUnlocked.classList.toggle("hidden", !passed);
-
-      // enable/disable nav access style (still clickable, but shows locked message)
-      document.getElementById("examTab").classList.toggle("active", false);
-      document.getElementById("certTab").classList.toggle("active", false);
-    }
-
-    /*****************************************************************
-     * TOOLS: CRITICAL PERIOD CALCULATOR
-     *****************************************************************/
-    const cpType = document.getElementById("cpType");
-    const cpSymptoms = document.getElementById("cpSymptoms");
-    const cpCalcBtn = document.getElementById("cpCalcBtn");
-    const cpResetBtn = document.getElementById("cpResetBtn");
-    const cpResult = document.getElementById("cpResult");
-
-    function cpParams(type){
-      // Based on Field Guide table concept and common windows:
-      // Primary: max incubation 90 days; Secondary: 180 days; Early latent: 24 months; Gonorrhea: 30 days; Chlamydia: 90 days; HIV: indefinite.
-      switch(type){
-        case "primary-syphilis": return { name:"Primary syphilis", mode:"days", base:90, note:"CP estimate uses max incubation (90 days) + symptom duration before treatment." };
-        case "secondary-syphilis": return { name:"Secondary syphilis", mode:"days", base:180, note:"CP estimate uses max incubation (180 days) + symptom duration before treatment." };
-        case "early-latent": return { name:"Early latent syphilis", mode:"months", base:24, note:"Early latent is considered infectious within the early latent period; symptom duration often not applicable (no symptoms)." };
-        case "gonorrhea": return { name:"Gonorrhea", mode:"months", base:1, note:"Maximum infectious period tabulated as about 1 month (plus symptom duration can be considered for interview anchoring)." };
-        case "chlamydia": return { name:"Chlamydia", mode:"months", base:3, note:"Maximum infectious period tabulated as about 3 months (plus symptom duration can be considered for interview anchoring)." };
-        case "hiv": return { name:"HIV", mode:"indef", base:null, note:"HIV can be infectious indefinitely. Interview period is guided by programme and counseling/partner services approach." };
-        default: return null;
-      }
-    }
-
-    cpCalcBtn.addEventListener("click", ()=>{
-      const t = cpType.value;
-      const sDays = Math.max(0, parseInt(cpSymptoms.value || "0", 10));
-      if(!t){
-        alert("Please select a condition.");
-        return;
-      }
-      const p = cpParams(t);
-      cpResult.classList.remove("hidden");
-      state.studyMinutes += 5;
-
-      if(p.mode === "indef"){
-        cpResult.className = "note warn mt12";
-        cpResult.innerHTML = `
-          <b>${p.name} — Interview Period</b><br/>
-          <div class="mt8">This condition is considered infectious <b>indefinitely</b>. Use programme guidance for partner services and index testing.</div>
-          <div class="mt8 small muted">${escapeHtml(p.note)}</div>
-        `;
-      } else if(p.mode === "months"){
-        const months = p.base;
-        // add symptom duration as an *anchor* (convert days to months roughly)
-        const add = Math.round((sDays/30)*10)/10;
-        const total = Math.round((months + add)*10)/10;
-        cpResult.className = "note good mt12";
-        cpResult.innerHTML = `
-          <b>${p.name} — Critical Period estimate (training)</b><br/>
-          <div class="mt8">
-            Base window: <b>${months} month(s)</b><br/>
-            Symptom duration entered: <b>${sDays} day(s)</b> (~${add} month(s))<br/>
-            <b>Interview window estimate:</b> ~<b>${total} month(s)</b> back from treatment/diagnosis anchor (as applicable).
-          </div>
-          <div class="mt8 small muted">${escapeHtml(p.note)}</div>
-        `;
-      } else {
-        const base = p.base; // days
-        const totalDays = base + sDays;
-        const totalMonths = Math.round((totalDays/30)*10)/10;
-        cpResult.className = "note good mt12";
-        cpResult.innerHTML = `
-          <b>${p.name} — Critical Period (CP) estimate</b><br/>
-          <div class="mt8">
-            Formula: <b>CP = max incubation + symptom duration before treatment</b><br/>
-            Max incubation: <b>${base} days</b><br/>
-            Symptom duration: <b>${sDays} days</b><br/>
-            <b>CP:</b> <b>${totalDays} days</b> (~${totalMonths} months)
-          </div>
-          <div class="mt8"><b>Interview action:</b> Elicit all partners within this period and prioritize those most recent/high-risk.</div>
-        `;
-      }
-
-      saveState();
-      updateDashboard();
-    });
-
-    cpResetBtn.addEventListener("click", ()=>{
-      cpType.value = "";
-      cpSymptoms.value = 0;
-      cpResult.classList.add("hidden");
-      cpResult.innerHTML = "";
-    });
-
-    /*****************************************************************
-     * EXAM RENDER + LOGIC (50 questions, fixed "not answered" bug)
-     *****************************************************************/
-    const examQuestionsDiv = document.getElementById("examQuestions");
-    const examResultDiv = document.getElementById("examResult");
-    const examResetBtn = document.getElementById("examResetBtn");
-    const examSubmitBtn = document.getElementById("examSubmitBtn");
-
-    function renderExam(){
-      syncLocks();
-      if(!state.exam.unlocked) return;
-
-      // render questions
-      examQuestionsDiv.innerHTML = "";
-      exam.forEach((q, i)=>{
-        const card = document.createElement("div");
-        card.className = "qcard";
-        card.innerHTML = `
-          <div class="qtop">
-            <div class="qnum">Q${i+1}</div>
-            <div class="qtext">${escapeHtml(q.q)}</div>
-          </div>
-          <div class="opts" role="radiogroup" aria-label="Question ${i+1}">
-            ${q.o.map((opt, idx)=>`
-              <label class="opt">
-                <input type="radio" name="q_${i}" value="${idx}" ${state.exam.answers[i]===idx ? "checked" : ""}/>
-                <div>${escapeHtml(opt)}</div>
-              </label>
-            `).join("")}
-          </div>
-          <div class="feedback" id="fb_${i}"></div>
-        `;
-        // on change
-        card.querySelectorAll(`input[name="q_${i}"]`).forEach(inp=>{
-          inp.addEventListener("change", ()=>{
-            state.exam.answers[i] = parseInt(inp.value, 10);
-            saveState();
-            // hide feedback until submit
-            const fb = document.getElementById(`fb_${i}`);
-            fb.classList.remove("show","good","bad");
-            fb.innerHTML = "";
-          });
-        });
-
-        examQuestionsDiv.appendChild(card);
-      });
-
-      // show previous result summary if exists
-      if(state.exam.lastScore !== null){
-        examResultDiv.classList.remove("hidden");
-        examResultDiv.className = "note " + (state.exam.passed ? "good" : "warn") + " mt12";
-        examResultDiv.innerHTML = `
-          <b>Last attempt:</b> ${state.exam.lastScore}% (${state.exam.passed ? "PASS" : "NOT PASS"})<br/>
-          <span class="muted small">Best score saved: ${state.exam.bestScore ?? state.exam.lastScore}%</span>
-        `;
-      } else {
-        examResultDiv.classList.add("hidden");
-      }
-    }
-
-    function unansweredIndexes(){
-      const missing = [];
-      for(let i=0;i<exam.length;i++){
-        if(state.exam.answers[i] === undefined || state.exam.answers[i] === null || Number.isNaN(state.exam.answers[i])){
-          missing.push(i);
-        }
-      }
-      return missing;
-    }
-
-    examResetBtn.addEventListener("click", ()=>{
-      if(!state.exam.unlocked) return;
-      state.exam.answers = {};
-      state.exam.lastScore = null;
-      state.exam.lastDate = null;
-      state.exam.passed = false;
-      saveState();
-      examResultDiv.classList.add("hidden");
-      renderExam();
-      updateDashboard();
-    });
-
-    examSubmitBtn.addEventListener("click", ()=>{
-      if(!state.exam.unlocked) return;
-
-      const missing = unansweredIndexes();
-      if(missing.length > 0){
-        examResultDiv.classList.remove("hidden");
-        examResultDiv.className = "note danger mt12";
-        const showSome = missing.slice(0, 10).map(x=>x+1).join(", ");
-        examResultDiv.innerHTML = `
-          <b>Not finished:</b> You still have <b>${missing.length}</b> unanswered question(s).<br/>
-          <span class="small muted">Example unanswered: Q${showSome}${missing.length>10 ? " ..." : ""}</span>
-        `;
-        // scroll to first missing
-        const first = missing[0];
-        const el = examQuestionsDiv.children[first];
-        if(el) el.scrollIntoView({ behavior:"smooth", block:"center" });
-        return;
-      }
-
-      // score
-      let correct = 0;
-      for(let i=0;i<exam.length;i++){
-        if(state.exam.answers[i] === exam[i].a) correct++;
-      }
-      const score = Math.round((correct/exam.length)*100);
-      state.exam.lastScore = score;
-      state.exam.lastDate = new Date().toISOString();
-      state.exam.bestScore = Math.max(state.exam.bestScore ?? 0, score);
-      state.exam.passed = score >= 70;
-
-      // show per-question feedback (after submit)
-      for(let i=0;i<exam.length;i++){
-        const fb = document.getElementById(`fb_${i}`);
-        const user = state.exam.answers[i];
-        const ok = user === exam[i].a;
-        fb.classList.add("show");
-        fb.classList.toggle("good", ok);
-        fb.classList.toggle("bad", !ok);
-        const correctText = exam[i].o[exam[i].a];
-        fb.innerHTML = `
-          <b>${ok ? "Correct" : "Not quite"}</b> — ${escapeHtml(exam[i].e)}<br/>
-          <span class="small muted">${ok ? "" : ("Correct answer: " + escapeHtml(correctText))}</span>
-        `;
-      }
-
-      saveState();
-      updateDashboard();
-      syncLocks();
-
-      examResultDiv.classList.remove("hidden");
-      examResultDiv.className = "note " + (state.exam.passed ? "good" : "warn") + " mt12";
-      examResultDiv.innerHTML = `
-        <b>Exam result:</b> ${score}% (${state.exam.passed ? "PASS" : "NOT PASS"})<br/>
-        <span class="small muted">Correct: ${correct}/${exam.length}. Best score saved: ${state.exam.bestScore}%.</span>
-      `;
-
-      // if passed, prep certificate id if needed
-      if(state.exam.passed && !state.certificate.id){
-        state.certificate.id = uid();
-        saveState();
-      }
-    });
-
-    /*****************************************************************
-     * CERTIFICATE
-     *****************************************************************/
-    const updateCertBtn = document.getElementById("updateCertBtn");
-    const downloadCertBtn = document.getElementById("downloadCertBtn");
-    const participantName = document.getElementById("participantName");
-
-    function renderCertificate(){
-      syncLocks();
-      if(!state.exam.passed) return;
-
-      // ensure cert id
-      if(!state.certificate.id) state.certificate.id = uid();
-      const d = new Date();
-      const dateStr = d.toLocaleDateString(undefined, { year:"numeric", month:"long", day:"numeric" });
-
-      document.getElementById("certId").textContent = state.certificate.id;
-      document.getElementById("certDate").textContent = dateStr;
-      document.getElementById("certScore").textContent = state.exam.bestScore ?? state.exam.lastScore ?? "—";
-
-      const nm = (state.certificate.name || "").trim();
-      participantName.value = nm;
-      document.getElementById("certName").textContent = nm ? nm : "[Participant Name]";
-
-      downloadCertBtn.disabled = !nm;
-      saveState();
-    }
-
-    updateCertBtn.addEventListener("click", ()=>{
-      const nm = participantName.value.trim();
-      state.certificate.name = nm;
-      state.certificate.generatedAt = new Date().toISOString();
-      saveState();
-      document.getElementById("certName").textContent = nm ? nm : "[Participant Name]";
-      downloadCertBtn.disabled = !nm;
-      renderCertificate();
-    });
-
-    downloadCertBtn.addEventListener("click", async ()=>{
-      const nm = participantName.value.trim();
-      if(!nm){
-        alert("Please type the participant name first.");
-        return;
-      }
-      // render certificate area to canvas and create PDF
-      const node = document.getElementById("certToPrint");
-      const canvas = await html2canvas(node, { scale: 2, useCORS: true, backgroundColor: null });
-      const imgData = canvas.toDataURL("image/png");
-
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF({ orientation: "landscape", unit: "pt", format: "a4" });
-
-      const pageW = pdf.internal.pageSize.getWidth();
-      const pageH = pdf.internal.pageSize.getHeight();
-
-      // fit image to page with margins
-      const margin = 24;
-      const maxW = pageW - margin*2;
-      const maxH = pageH - margin*2;
-
-      // image ratio
-      const imgW = canvas.width;
-      const imgH = canvas.height;
-      const ratio = Math.min(maxW / imgW, maxH / imgH);
-
-      const drawW = imgW * ratio;
-      const drawH = imgH * ratio;
-
-      const x = (pageW - drawW) / 2;
-      const y = (pageH - drawH) / 2;
-
-      pdf.addImage(imgData, "PNG", x, y, drawW, drawH);
-      const safeName = nm.replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "_");
-      pdf.save(`CI_Training_Certificate_${safeName}_${state.certificate.id}.pdf`);
-    });
-
-    /*****************************************************************
-     * RESET
-     *****************************************************************/
-    document.getElementById("resetAllBtn").addEventListener("click", ()=>{
-      const ok = confirm("Reset all progress, exam answers, and certificate info on this device?");
-      if(!ok) return;
-      state = structuredClone(defaultState);
-      saveState();
-      renderModules();
-      updateDashboard();
-      renderExam();
-      renderCertificate();
-      openTab("dashboard");
-    });
-
-    /*****************************************************************
-     * INIT
-     *****************************************************************/
-    function init(){
-      renderModules();
-      updateDashboard();
-      syncLocks();
-      // initial certificate id if already passed
-      if(state.exam.passed && !state.certificate.id) state.certificate.id = uid();
-      saveState();
-    }
-
-    init();
-  </script>
 </body>
 </html>
