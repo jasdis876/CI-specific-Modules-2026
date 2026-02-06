@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Investigation (Disease Intervention) 101</title>
 
-  <!-- FontAwesome (fix: load correctly) -->
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
-    /* ===== CSS RESET & BASE ===== */
     :root{
       --primary-blue:#1a5f9e;
       --primary-green:#2e8b57;
@@ -24,14 +23,13 @@
       --shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
       --radius:8px;
       --transition:all 0.25s ease;
-      --focus:0 0 0 3px rgba(26,95,158,0.18); /* fix: rgba */
+      --focus:0 0 0 3px rgba(26,95,158,0.18);
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
     body{background:var(--light-bg);color:var(--text-dark);line-height:1.6;min-height:100vh;padding:20px;}
     .container{max-width:1200px;margin:0 auto;}
     a{color:inherit}
 
-    /* ===== HEADER ===== */
     .header{
       background:linear-gradient(135deg,var(--primary-blue),#2c5282);
       color:#fff;padding:30px;border-radius:var(--radius);margin-bottom:30px;
@@ -57,7 +55,6 @@
     }
     .field-guide-link:hover{background:rgba(255,255,255,0.42);transform:translateY(-2px);}
 
-    /* ===== NAVIGATION ===== */
     .main-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:30px;}
     .nav-btn{
       background:#fff;border:none;padding:13px 18px;border-radius:var(--radius);
@@ -68,7 +65,6 @@
     .nav-btn.active{background:var(--primary-blue);color:#fff;}
     .nav-btn:focus-visible{outline:none;box-shadow:var(--shadow),var(--focus);}
 
-    /* ===== MAIN CONTENT ===== */
     .content-section{
       background:var(--card-bg);border-radius:var(--radius);padding:26px;margin-bottom:30px;box-shadow:var(--shadow);
       display:none;
@@ -82,7 +78,6 @@
     }
     .section-title i{font-size:1.6rem;}
 
-    /* ===== DASHBOARD ===== */
     .dashboard-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:22px;}
     .stat-card{background:#fff;padding:20px;border-radius:var(--radius);box-shadow:var(--shadow);text-align:center;transition:var(--transition);}
     .stat-card:hover{transform:translateY(-4px);}
@@ -107,7 +102,6 @@
     .progress-fill{height:100%;background:var(--primary-green);border-radius:999px;transition:width .45s ease;}
     .module-footer{padding:12px 18px;background:#f7fafc;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
 
-    /* ===== BUTTONS ===== */
     .btn{
       padding:10px 16px;border:none;border-radius:var(--radius);font-weight:800;cursor:pointer;transition:var(--transition);
       display:inline-flex;align-items:center;gap:8px;
@@ -121,8 +115,11 @@
     .btn-success:hover{background:#276749;}
     .btn-danger{background:var(--primary-red);color:#fff;}
     .btn-danger:hover{filter:brightness(0.95);}
+    .btn-link{
+      background:#edf2f7;color:var(--text-dark);
+    }
+    .btn-link:hover{background:#e2e8f0}
 
-    /* ===== LAYOUT ===== */
     .content-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;}
     @media(max-width:992px){.content-grid{grid-template-columns:1fr;}}
     .content-main,.content-sidebar{background:#fff;padding:20px;border-radius:var(--radius);box-shadow:var(--shadow);}
@@ -131,11 +128,8 @@
     }
     .info-box.warning{background:#fff5f5;border-left-color:var(--primary-red);}
     .info-box.success{background:#f0fff4;border-left-color:var(--primary-green);}
-    .term-list{list-style:none;}
-    .term-item{padding:12px;background:#f7fafc;margin-bottom:10px;border-radius:var(--radius);border-left:3px solid var(--primary-blue);}
-    .term-item strong{color:var(--primary-blue);}
+    .info-box.orange{background:#fffaf0;border-left-color:var(--primary-orange);}
 
-    /* ===== TABS ===== */
     .tab-nav{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--border-color);margin-bottom:16px;gap:6px;}
     .tab-btn{
       padding:10px 14px;background:none;border:none;border-bottom:3px solid transparent;font-weight:800;cursor:pointer;transition:var(--transition);
@@ -146,8 +140,6 @@
     .tab-content{display:none;}
     .tab-content.active{display:block;}
 
-    /* ===== ACCORDION (collapsible sections) ===== */
-    .accordion{margin-top:14px;}
     details.accordion-item{
       background:#fff;border:1px solid var(--border-color);border-radius:var(--radius);padding:12px 14px;margin-bottom:10px;
     }
@@ -160,7 +152,6 @@
     details[open] .chev{transform:rotate(180deg);}
     .accordion-body{margin-top:10px;color:var(--text-dark);}
 
-    /* ===== FORMS ===== */
     .form-simulator{background:#fff;border:1px solid var(--border-color);border-radius:var(--radius);padding:18px;margin:14px 0;}
     .form-header{background:#f7fafc;padding:12px;border-radius:var(--radius);margin-bottom:14px;border-left:4px solid var(--primary-blue);}
     .form-field{margin-bottom:14px;}
@@ -178,60 +169,37 @@
     .error .form-input{border-color:var(--primary-red);}
     .ok .form-input{border-color:var(--primary-green);}
 
-    /* ===== QUIZ ===== */
-    .quiz-container{background:#fff;padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);}
-    .quiz-meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--text-light);margin:8px 0 14px;}
-    .quiz-question{font-size:1.2rem;margin-bottom:14px;font-weight:900;color:var(--text-dark);}
-    .quiz-options{display:grid;gap:12px;margin-bottom:14px;}
-    .quiz-option{
-      padding:14px 14px;background:#f7fafc;border:2px solid var(--border-color);border-radius:var(--radius);
-      cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:12px;
+    /* Resources */
+    .resource-toolbar{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+      background:#f7fafc;border:1px solid var(--border-color);border-radius:12px;padding:12px;margin-bottom:12px;
     }
-    .quiz-option:hover{background:#edf2f7;border-color:var(--primary-blue);}
-    .quiz-option.selected{background:#e6fffa;border-color:var(--primary-green);}
-    .quiz-option.correct{background:#c6f6d5;border-color:var(--primary-green);}
-    .quiz-option.incorrect{background:#fed7d7;border-color:var(--primary-red);}
-    .option-letter{width:34px;height:34px;background:#e2e8f0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;}
-    .quiz-feedback{padding:14px;background:#f0f9ff;border-radius:var(--radius);border-left:4px solid var(--primary-blue);display:none;}
-    .quiz-feedback.show{display:block;}
-    .quiz-navigation{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:14px;}
-
-    /* ===== CASE SIMULATION ===== */
-    .case-scenario{background:#f7fafc;padding:18px;border-radius:var(--radius);margin-bottom:14px;border-left:4px solid var(--primary-orange);}
-    .patient-profile{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:14px 0;}
-    .profile-item{background:#fff;padding:12px;border-radius:var(--radius);box-shadow:var(--shadow);}
-    .profile-label{font-size:.9rem;color:var(--text-light);margin-bottom:4px;}
-    .profile-value{font-weight:900;color:var(--text-dark);}
-    .decision-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px;}
-    .decision-card{background:#fff;padding:14px;border-radius:var(--radius);box-shadow:var(--shadow);cursor:pointer;transition:var(--transition);border:2px solid transparent;}
-    .decision-card:hover{transform:translateY(-4px);border-color:var(--primary-blue);}
-    .decision-card.selected{border-color:var(--primary-green);background:#f0fff4;}
-
-    /* ===== CERTIFICATE ===== */
-    .certificate-container{background:#fff;padding:26px;border-radius:var(--radius);box-shadow:var(--shadow);text-align:center;max-width:880px;margin:0 auto;}
-    .certificate-border{border:18px solid var(--primary-blue);border-image:linear-gradient(45deg,var(--primary-blue),var(--primary-purple)) 1;padding:26px;position:relative;}
-    .certificate-seal{
-      width:110px;height:110px;background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));
-      border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2.6rem;
+    .resource-toolbar .left{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+    .chip{
+      display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:#edf2f7;font-weight:800;
+      border:1px solid var(--border-color);
     }
-    .certificate-title{font-size:2.2rem;color:var(--primary-blue);margin-bottom:8px;font-weight:1000;}
-    .certificate-subtitle{color:var(--text-light);margin-bottom:18px;}
-    .certificate-name{
-      font-size:2rem;margin:20px 0;padding:14px 0;border-top:2px solid var(--border-color);border-bottom:2px solid var(--border-color);
-      color:var(--text-dark);font-weight:1000;min-height:70px;display:flex;align-items:center;justify-content:center;
+    .toc-list{display:grid;gap:10px;margin-top:12px;}
+    .toc-item{
+      display:flex;gap:10px;align-items:flex-start;justify-content:space-between;
+      background:#fff;border:1px solid var(--border-color);border-radius:12px;padding:12px;
     }
-    .certificate-details{display:flex;justify-content:space-around;margin:18px 0;flex-wrap:wrap;gap:14px;}
-    .detail-label{font-size:.9rem;color:var(--text-light);margin-bottom:4px;}
-    .detail-value{font-size:1.05rem;color:var(--primary-blue);font-weight:900;}
-    .certificate-signature{margin-top:18px;padding-top:14px;border-top:1px solid var(--border-color);}
+    .toc-item strong{display:block}
+    .toc-item .meta{color:var(--text-light);font-size:.92rem;margin-top:2px}
+    .toc-item .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .viewer-box{
+      border:1px solid var(--border-color);border-radius:14px;overflow:hidden;background:#fff;
+      height:600px;
+    }
+    .viewer-box iframe{width:100%;height:100%;border:0}
 
-    /* ===== MODAL (print preview / messages) ===== */
+    /* Modal */
     .modal-backdrop{
       position:fixed;inset:0;background:rgba(0,0,0,0.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:9999;
     }
     .modal-backdrop.show{display:flex;}
     .modal{
-      width:min(920px, 96vw);max-height:90vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,0.25);
+      width:min(1100px, 96vw);max-height:90vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,0.25);
       padding:18px;
     }
     .modal-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
@@ -240,28 +208,19 @@
     .modal-close:hover{background:#cbd5e0;}
     .print-area{background:#fff;border:1px dashed var(--border-color);padding:14px;border-radius:12px;}
 
-    /* ===== FOOTER ===== */
     .footer{text-align:center;padding:26px 0;margin-top:40px;color:var(--text-light);border-top:1px solid var(--border-color);}
     .designer-credit{font-size:.92rem;margin-top:8px;opacity:.9;}
-
-    /* ===== UTIL ===== */
     .hidden{display:none !important;}
     .text-center{text-align:center;}
     .mt-20{margin-top:20px;}
     .mb-20{margin-bottom:20px;}
     .full-width{width:100%;}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
-    /* ===== ACCESSIBILITY HELPERS ===== */
-    .sr-only{
-      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
-    }
-
-    /* ===== PRINT ===== */
     @media print{
       body{padding:0;background:#fff;}
       .main-nav,.header,.footer,.no-print{display:none !important;}
       .content-section{display:block !important;box-shadow:none;border-radius:0;margin:0;padding:0;}
-      .certificate-container{box-shadow:none;}
       .modal-backdrop{display:none !important;}
     }
   </style>
@@ -269,38 +228,31 @@
 
 <body>
 <div class="container">
-  <!-- HEADER -->
   <header class="header">
     <div class="header-content">
       <div class="logo"><i class="fas fa-user-md"></i></div>
       <h1>Contact Investigation (Disease Intervention) 101</h1>
       <p class="subtitle">
-        An interactive training platform for new Contact Investigators and those seeking refresher training.
+        Interactive training for Contact Investigators / prospective CIs in Jamaica, aligned to the MOHW CI Field Guide 2025.
       </p>
-      <div class="badge">
-        <i class="fas fa-shield-alt"></i> Based on Jamaica MOHW Contact Investigation Field Guide 2025
-      </div>
+      <div class="badge"><i class="fas fa-shield-alt"></i> Jamaica MOHW CI Field Guide 2025</div>
       <a href="#resources" class="field-guide-link" id="jump-to-resources">
-        <i class="fas fa-book-medical"></i> Access Field Guide Resources
+        <i class="fas fa-book-medical"></i> Open Field Guide Resources
       </a>
     </div>
   </header>
 
-  <!-- NAVIGATION -->
   <nav class="main-nav" aria-label="Main navigation">
     <button class="nav-btn active" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</button>
     <button class="nav-btn" data-section="ci-basics"><i class="fas fa-book"></i> CI Basics</button>
     <button class="nav-btn" data-section="forms-records"><i class="fas fa-file-alt"></i> Forms & Records</button>
     <button class="nav-btn" data-section="sti-management"><i class="fas fa-stethoscope"></i> STI Management</button>
-    <button class="nav-btn" data-section="case-simulation"><i class="fas fa-user-injured"></i> Case Simulation</button>
-    <button class="nav-btn" data-section="quizzes"><i class="fas fa-question-circle"></i> Knowledge Tests</button>
     <button class="nav-btn" data-section="resources"><i class="fas fa-folder-open"></i> Resources</button>
-    <button class="nav-btn" data-section="certificate"><i class="fas fa-award"></i> Certificate</button>
   </nav>
 
   <!-- DASHBOARD -->
-  <section id="dashboard" class="content-section active" aria-labelledby="dash-title">
-    <h2 class="section-title" id="dash-title"><i class="fas fa-tachometer-alt"></i> Learning Dashboard</h2>
+  <section id="dashboard" class="content-section active">
+    <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> Learning Dashboard</h2>
 
     <div class="dashboard-stats" role="status" aria-live="polite">
       <div class="stat-card">
@@ -319,108 +271,94 @@
         <div class="stat-label">Study Time</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-star"></i></div>
-        <div class="stat-number" id="quiz-score">0%</div>
-        <div class="stat-label">Average Quiz Score</div>
+        <div class="stat-icon"><i class="fas fa-book"></i></div>
+        <div class="stat-number" id="fieldguide-status">Ready</div>
+        <div class="stat-label">Field Guide Access</div>
       </div>
     </div>
 
     <div class="info-box">
-      <h4><i class="fas fa-lightbulb"></i> How progress works</h4>
+      <h4><i class="fas fa-lightbulb"></i> Quick start</h4>
       <p>
-        Complete the learning pages (Mark as Complete), pass module quizzes, and finish the case simulation.
-        Your progress saves automatically on this device.
+        Use <strong>Resources</strong> to open the Field Guide and jump to exact pages.
+        Each “View in Field Guide” button takes you directly to the relevant manual page.
       </p>
+      <div class="mt-20">
+        <button class="btn btn-primary" onclick="openGuideToToc()"><i class="fas fa-book-open"></i> Open Field Guide TOC</button>
+        <button class="btn btn-secondary" onclick="goSection('ci-basics')"><i class="fas fa-play"></i> Start CI Basics</button>
+      </div>
     </div>
 
-    <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Learning Modules</h3>
-
-    <div class="module-grid" id="dashboard-modules">
-      <!-- Module 1 -->
+    <div class="module-grid">
       <div class="module-card">
         <div class="module-header">
-          <div class="module-icon"><i class="fas fa-info-circle"></i></div>
-          <div class="module-title">Module 1: CI Introduction & Principles</div>
+          <div class="module-icon"><i class="fas fa-user-secret"></i></div>
+          <div class="module-title">Confidentiality</div>
         </div>
         <div class="module-body">
-          <p class="module-desc">
-            Fundamentals of Contact Investigation (CI), confidentiality, core terms, and timelines.
-          </p>
+          <p class="module-desc">Why confidentiality matters, risks, and practical protections.</p>
           <div class="progress-container">
-            <div class="progress-label"><span>Progress</span><span id="module1-progress">0%</span></div>
-            <div class="progress-bar"><div class="progress-fill" id="module1-fill" style="width:0%"></div></div>
+            <div class="progress-label"><span>Progress</span><span id="m1p">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="m1f" style="width:0%"></div></div>
           </div>
-          <div class="help">Tip: Finish all tabs in CI Basics, then mark complete.</div>
         </div>
         <div class="module-footer">
-          <button class="btn btn-secondary" onclick="startModule(1)"><i class="fas fa-play"></i> Start</button>
-          <button class="btn btn-primary hidden" id="module1-quiz-btn" onclick="startQuiz(1)"><i class="fas fa-question-circle"></i> Take Quiz</button>
+          <button class="btn btn-secondary" onclick="goSection('ci-basics')"><i class="fas fa-play"></i> Open</button>
+          <button class="btn btn-link" onclick="openGuideByTitle('CONFIDENTIALITY')"><i class="fas fa-book"></i> View in Field Guide (p.8)</button>
         </div>
       </div>
 
-      <!-- Module 2 -->
       <div class="module-card">
         <div class="module-header">
           <div class="module-icon"><i class="fas fa-file-medical"></i></div>
-          <div class="module-title">Module 2: Forms & Records (IR / FR)</div>
+          <div class="module-title">Interview Record (IR)</div>
         </div>
         <div class="module-body">
-          <p class="module-desc">
-            Practice completing Interview Record (IR) and Field Record (FR) with validation and print preview.
-          </p>
+          <p class="module-desc">IR form and field-by-field guidance.</p>
           <div class="progress-container">
-            <div class="progress-label"><span>Progress</span><span id="module2-progress">0%</span></div>
-            <div class="progress-bar"><div class="progress-fill" id="module2-fill" style="width:0%"></div></div>
+            <div class="progress-label"><span>Progress</span><span id="m2p">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="m2f" style="width:0%"></div></div>
           </div>
-          <div class="help">Tip: Validate both forms at least once.</div>
         </div>
         <div class="module-footer">
-          <button class="btn btn-secondary" onclick="startModule(2)"><i class="fas fa-play"></i> Start</button>
-          <button class="btn btn-primary hidden" id="module2-quiz-btn" onclick="startQuiz(2)"><i class="fas fa-question-circle"></i> Take Quiz</button>
+          <button class="btn btn-secondary" onclick="goSection('forms-records')"><i class="fas fa-play"></i> Practice</button>
+          <button class="btn btn-link" onclick="openGuideByTitle('STI Interview Record (IR) Form')"><i class="fas fa-book"></i> View (p.10)</button>
         </div>
       </div>
 
-      <!-- Module 3 -->
       <div class="module-card">
         <div class="module-header">
-          <div class="module-icon"><i class="fas fa-virus"></i></div>
-          <div class="module-title">Module 3: STI Syndromes & Management</div>
+          <div class="module-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="module-title">Field Record (FR)</div>
         </div>
         <div class="module-body">
-          <p class="module-desc">
-            Syndromes, coding, critical period calculation, and practical next steps in CI work.
-          </p>
+          <p class="module-desc">FR form and field-by-field guidance.</p>
           <div class="progress-container">
-            <div class="progress-label"><span>Progress</span><span id="module3-progress">0%</span></div>
-            <div class="progress-bar"><div class="progress-fill" id="module3-fill" style="width:0%"></div></div>
+            <div class="progress-label"><span>Progress</span><span id="m3p">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="m3f" style="width:0%"></div></div>
           </div>
-          <div class="help">Tip: Use the Critical Period calculator tool.</div>
         </div>
         <div class="module-footer">
-          <button class="btn btn-secondary" onclick="startModule(3)"><i class="fas fa-play"></i> Start</button>
-          <button class="btn btn-primary hidden" id="module3-quiz-btn" onclick="startQuiz(3)"><i class="fas fa-question-circle"></i> Take Quiz</button>
+          <button class="btn btn-secondary" onclick="goSection('forms-records')"><i class="fas fa-play"></i> Practice</button>
+          <button class="btn btn-link" onclick="openGuideByTitle('STI Field Record (FR)')"><i class="fas fa-book"></i> View (p.24)</button>
         </div>
       </div>
 
-      <!-- Module 4 -->
       <div class="module-card">
         <div class="module-header">
-          <div class="module-icon"><i class="fas fa-syringe"></i></div>
-          <div class="module-title">Module 4: Syphilis & HIV Investigation</div>
+          <div class="module-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="module-title">Reports & Flow</div>
         </div>
         <div class="module-body">
-          <p class="module-desc">
-            Priority conditions, timelines, safe partner notification approaches, and documentation standards.
-          </p>
+          <p class="module-desc">Reporting flow, CI monthly summary statistics, and key terms.</p>
           <div class="progress-container">
-            <div class="progress-label"><span>Progress</span><span id="module4-progress">0%</span></div>
-            <div class="progress-bar"><div class="progress-fill" id="module4-fill" style="width:0%"></div></div>
+            <div class="progress-label"><span>Progress</span><span id="m4p">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="m4f" style="width:0%"></div></div>
           </div>
-          <div class="help">Tip: Complete Case Simulation to finish the course.</div>
         </div>
         <div class="module-footer">
-          <button class="btn btn-secondary" onclick="startModule(4)"><i class="fas fa-play"></i> Start</button>
-          <button class="btn btn-primary hidden" id="module4-quiz-btn" onclick="startQuiz(4)"><i class="fas fa-question-circle"></i> Take Quiz</button>
+          <button class="btn btn-secondary" onclick="goSection('resources')"><i class="fas fa-play"></i> Open</button>
+          <button class="btn btn-link" onclick="openGuideByTitle('Reports and Reporting Flow')"><i class="fas fa-book"></i> View (p.38)</button>
         </div>
       </div>
     </div>
@@ -428,239 +366,89 @@
 
   <!-- CI BASICS -->
   <section id="ci-basics" class="content-section">
-    <div class="tab-nav" id="ci-basics-tabs" role="tablist" aria-label="CI basics tabs">
-      <button class="tab-btn active" data-tab="ci-overview" role="tab" aria-selected="true">Overview</button>
-      <button class="tab-btn" data-tab="ci-confidentiality" role="tab" aria-selected="false">Confidentiality</button>
-      <button class="tab-btn" data-tab="ci-roles" role="tab" aria-selected="false">Roles & Responsibilities</button>
-      <button class="tab-btn" data-tab="ci-keyterms" role="tab" aria-selected="false">Key Terms</button>
-    </div>
+    <h2 class="section-title"><i class="fas fa-book"></i> CI Basics (Expanded)</h2>
 
-    <div class="tab-content active" id="ci-overview" role="tabpanel">
-      <h2 class="section-title"><i class="fas fa-book"></i> Contact Investigation Basics</h2>
-
-      <div class="content-grid">
-        <div class="content-main">
-          <h3>What is Contact Investigation (CI)?</h3>
+    <div class="content-grid">
+      <div class="content-main">
+        <div class="info-box orange">
+          <h4><i class="fas fa-book-open"></i> Manual cross-reference</h4>
           <p>
-            Contact Investigation (CI) is a public health method used to reduce the spread of infections by
-            identifying people who may have been exposed, helping them get tested, and linking them to treatment.
+            Use these buttons to open the Field Guide exactly where the topic is explained.
           </p>
-
-          <div class="info-box">
-            <h4><i class="fas fa-lightbulb"></i> Core strategy</h4>
-            <p>
-              The goal is to find contacts safely and confidentially, support testing, and prevent re-infection.
-              Each new infected contact may become a new starting point for CI work.
-            </p>
-          </div>
-
-          <div class="accordion">
-            <details class="accordion-item">
-              <summary>Why CI matters <i class="fas fa-chevron-down chev"></i></summary>
-              <div class="accordion-body">
-                CI reduces onward transmission, supports early treatment, and strengthens national reporting and surveillance.
-              </div>
-            </details>
-            <details class="accordion-item">
-              <summary>Ways contacts are notified <i class="fas fa-chevron-down chev"></i></summary>
-              <div class="accordion-body">
-                <ol style="padding-left:18px;">
-                  <li><strong>Client referral:</strong> the client tells partners and encourages them to attend.</li>
-                  <li><strong>Assisted partner notification:</strong> with consent, the provider supports notification, including anonymous options.</li>
-                </ol>
-              </div>
-            </details>
-          </div>
-
-          <div class="text-center mt-20">
-            <button class="btn btn-success" onclick="markModuleComplete(1)">
-              <i class="fas fa-check"></i> Mark Module 1 as Complete
-            </button>
+          <div class="mt-20">
+            <button class="btn btn-link" onclick="openGuideByTitle('INTRODUCTION')"><i class="fas fa-book"></i> Introduction (p.9)</button>
+            <button class="btn btn-link" onclick="openGuideByTitle('CONFIDENTIALITY')"><i class="fas fa-book"></i> Confidentiality (p.8)</button>
+            <button class="btn btn-link" onclick="openGuideByTitle('The Contact Investigation Programme')"><i class="fas fa-book"></i> CI Programme (p.42)</button>
           </div>
         </div>
 
-        <div class="content-sidebar">
-          <h3>Core responsibilities</h3>
-          <div class="term-list">
-            <div class="term-item"><strong>Contact tracing:</strong> identify and notify contacts</div>
-            <div class="term-item"><strong>Linkage to care:</strong> support clinic attendance & treatment</div>
-            <div class="term-item"><strong>Risk reduction:</strong> safer sex counselling & prevention</div>
-            <div class="term-item"><strong>Records:</strong> accurate IR/FR documentation</div>
-          </div>
-          <div class="info-box success mt-20">
-            <h4><i class="fas fa-check-circle"></i> Program goal</h4>
-            <p>Standardized CI improves outcomes and strengthens surveillance and program reporting across Jamaica.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="ci-confidentiality" role="tabpanel">
-      <h2 class="section-title"><i class="fas fa-user-secret"></i> Confidentiality in CI Work</h2>
-
-      <div class="content-grid">
-        <div class="content-main">
-          <h3>Why confidentiality is critical</h3>
-          <p>
-            Confidentiality builds trust. If people feel unsafe, they may refuse to name contacts or return for care.
-          </p>
-
-          <div class="info-box warning">
-            <h4><i class="fas fa-exclamation-triangle"></i> Risks if confidentiality is broken</h4>
+        <details class="accordion-item" open>
+          <summary>1) What CI is (simple + practical) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
             <ul style="padding-left:18px;">
-              <li>Stigma and discrimination</li>
-              <li>Relationship conflict or violence</li>
-              <li>Loss of trust in health services</li>
-              <li>Reduced program participation</li>
+              <li><strong>CI is a public health process</strong> to stop infections from spreading.</li>
+              <li>You interview a person with a priority infection (the “index case”), identify contacts, and support confidential notification.</li>
+              <li>You document properly (IR + FR) and follow up outcomes for reporting.</li>
             </ul>
-          </div>
-
-          <h3 class="mt-20">Practical ways to protect privacy</h3>
-          <ul style="padding-left:18px;">
-            <li>Interview in a private setting</li>
-            <li>Use codes (avoid disclosing diagnosis to others)</li>
-            <li>Secure storage of records (paper & digital)</li>
-            <li>Share information only on a need-to-know basis</li>
-            <li>Use respectful language and safe approaches</li>
-          </ul>
-
-          <div class="text-center mt-20">
-            <button class="btn btn-success" onclick="markModuleComplete(1)">
-              <i class="fas fa-check"></i> Mark Module 1 as Complete
-            </button>
-          </div>
-        </div>
-
-        <div class="content-sidebar">
-          <h3>When safety is a concern</h3>
-          <div class="info-box warning">
-            <h4><i class="fas fa-shield-alt"></i> IPV / violence risk</h4>
-            <p>
-              If there is risk of harm, choose safer notification options and involve the clinical team.
-              Document clearly and follow protocol.
-            </p>
-          </div>
-          <h3 class="mt-20">Key acronyms</h3>
-          <div class="term-list">
-            <div class="term-item"><strong>CI:</strong> Contact Investigation</div>
-            <div class="term-item"><strong>IR:</strong> Interview Record</div>
-            <div class="term-item"><strong>FR:</strong> Field Record</div>
-            <div class="term-item"><strong>IC:</strong> Index Case</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="ci-roles" role="tabpanel">
-      <h2 class="section-title"><i class="fas fa-tasks"></i> Roles & Responsibilities</h2>
-
-      <div class="content-grid">
-        <div class="content-main">
-          <h3>What a Contact Investigator does</h3>
-          <div class="info-box">
-            <h4><i class="fas fa-list-check"></i> Key activities</h4>
-            <ul style="padding-left:18px;">
-              <li>Interview clients diagnosed with priority infections</li>
-              <li>Elicit contacts and plan safe notification</li>
-              <li>Initiate FRs and follow up outcomes</li>
-              <li>Support reporting (monthly summaries and indicators)</li>
-              <li>Strengthen linkage to care and re-interview where needed</li>
-            </ul>
-          </div>
-
-          <div class="info-box success">
-            <h4><i class="fas fa-clock"></i> Timeliness matters</h4>
-            <p>
-              Priority cases should be handled quickly. Track dates and follow-up status carefully to prevent missed opportunities.
-            </p>
-          </div>
-
-          <div class="text-center mt-20">
-            <button class="btn btn-success" onclick="markModuleComplete(1)">
-              <i class="fas fa-check"></i> Mark Module 1 as Complete
-            </button>
-          </div>
-        </div>
-
-        <div class="content-sidebar">
-          <h3>Good CI habits</h3>
-          <div class="term-list">
-            <div class="term-item"><strong>Be accurate:</strong> write clear notes</div>
-            <div class="term-item"><strong>Be safe:</strong> avoid outing the client</div>
-            <div class="term-item"><strong>Be consistent:</strong> follow the same process each time</div>
-          </div>
-          <div class="info-box mt-20">
-            <h4><i class="fas fa-clipboard-check"></i> Quality checks</h4>
-            <p>Use validation, double-check codes, and keep timelines visible.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="ci-keyterms" role="tabpanel">
-      <h2 class="section-title"><i class="fas fa-bookmark"></i> Key Terms</h2>
-
-      <div class="content-grid">
-        <div class="content-main">
-          <div class="info-box">
-            <h4><i class="fas fa-abacus"></i> Terms you must know</h4>
-            <ul style="padding-left:18px;">
-              <li><strong>Index Case (IC):</strong> the first identified case in an investigation</li>
-              <li><strong>Contact:</strong> a person exposed (sexual contact, household contact, etc., depending on condition)</li>
-              <li><strong>Critical Period (CP):</strong> time window used to decide which contacts to prioritize</li>
-              <li><strong>Cluster suspect:</strong> non-sexual person linked to risk or exposure</li>
-            </ul>
-          </div>
-
-          <h3 class="mt-20">Critical Period calculator</h3>
-          <p class="help">
-            Choose a condition and enter symptom duration (if any). The tool will estimate the tracing window.
-            (This is for training practice; always follow MOHW guidance and clinical direction.)
-          </p>
-
-          <div class="form-simulator">
-            <div class="form-group">
-              <div class="form-field">
-                <label class="form-label">Condition / Code</label>
-                <select class="form-input" id="cp-condition">
-                  <option value="">Select…</option>
-                  <option value="A1">Primary Syphilis (A1)</option>
-                  <option value="A2">Secondary Syphilis (A2)</option>
-                  <option value="A3">Early Latent Syphilis (A3)</option>
-                  <option value="B1">Gonorrhea (B1)</option>
-                  <option value="CHLAM">Chlamydia</option>
-                  <option value="C13">HIV (C13)</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label class="form-label">Symptom duration (days)</label>
-                <input type="number" class="form-input" id="cp-symptom-days" min="0" value="0" />
-                <div class="help">If unsure, enter 0.</div>
-              </div>
+            <div class="mt-20">
+              <button class="btn btn-link" onclick="openGuideByTitle('INTRODUCTION')"><i class="fas fa-book"></i> View manual section (p.9)</button>
             </div>
-            <button class="btn btn-primary" onclick="calculateCriticalPeriod()"><i class="fas fa-calculator"></i> Calculate CP</button>
-            <div class="info-box mt-20 hidden" id="cp-result"></div>
           </div>
+        </details>
 
-          <div class="text-center mt-20">
-            <button class="btn btn-success" onclick="markModuleComplete(1)">
-              <i class="fas fa-check"></i> Mark Module 1 as Complete
+        <details class="accordion-item">
+          <summary>2) Confidentiality (what it means in CI work) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <ul style="padding-left:18px;">
+              <li>Keep personal details private.</li>
+              <li>Do not reveal diagnosis to contacts.</li>
+              <li>Use codes when documenting and following up.</li>
+              <li>Protect files and avoid discussing cases in public.</li>
+            </ul>
+            <div class="info-box warning">
+              <h4><i class="fas fa-exclamation-triangle"></i> Safety note</h4>
+              <p>
+                Poor confidentiality can cause stigma and harm, including relationship conflict/violence.
+              </p>
+            </div>
+            <button class="btn btn-link" onclick="openGuideByTitle('CONFIDENTIALITY')"><i class="fas fa-book"></i> Confidentiality (p.8)</button>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>3) Priority STIs / conditions for investigation <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <p>Priority conditions require faster investigation and stronger follow-up.</p>
+            <button class="btn btn-link" onclick="openGuideByTitle('Priority STIs/Conditions for Investigation')">
+              <i class="fas fa-book"></i> Priority conditions (p.55)
             </button>
           </div>
-        </div>
+        </details>
 
-        <div class="content-sidebar">
-          <h3>Common codes (training)</h3>
-          <div class="term-list">
-            <div class="term-item"><strong>A1:</strong> Primary syphilis</div>
-            <div class="term-item"><strong>A2:</strong> Secondary syphilis</div>
-            <div class="term-item"><strong>A3:</strong> Early latent syphilis</div>
-            <div class="term-item"><strong>C13:</strong> HIV</div>
+        <details class="accordion-item">
+          <summary>4) Contact tracing & follow-up workflow (high level) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <ol style="padding-left:18px;">
+              <li>Receive referral / diagnosis notification</li>
+              <li>Interview (IR) → identify contacts within tracing window</li>
+              <li>Open FRs and document attempts/outcomes</li>
+              <li>Ensure contacts are tested/treated (as per clinician direction)</li>
+              <li>Close investigation with complete documentation and reporting</li>
+            </ol>
+            <button class="btn btn-link" onclick="openGuideByTitle('Contact Tracing')"><i class="fas fa-book"></i> Contact Tracing (p.65)</button>
           </div>
-          <div class="info-box mt-20">
-            <h4><i class="fas fa-info-circle"></i> Reminder</h4>
-            <p>Codes help protect confidentiality during follow-up and documentation.</p>
-          </div>
+        </details>
+
+        <div class="text-center mt-20">
+          <button class="btn btn-success" onclick="markModuleComplete(1)"><i class="fas fa-check"></i> Mark CI Basics Complete</button>
+        </div>
+      </div>
+
+      <div class="content-sidebar">
+        <div class="info-box">
+          <h4><i class="fas fa-magnifying-glass"></i> Need a page fast?</h4>
+          <p class="help">Go to Resources → search any topic (IR, FR, Confidentiality, Coding, Syphilis, HIV).</p>
+          <button class="btn btn-primary full-width mt-20" onclick="goSection('resources')"><i class="fas fa-folder-open"></i> Open Resources</button>
         </div>
       </div>
     </div>
@@ -668,530 +456,211 @@
 
   <!-- FORMS & RECORDS -->
   <section id="forms-records" class="content-section">
-    <div class="tab-nav" id="forms-tabs" role="tablist" aria-label="Forms tabs">
-      <button class="tab-btn active" data-tab="ir-form" role="tab" aria-selected="true">Interview Record (IR)</button>
-      <button class="tab-btn" data-tab="fr-form" role="tab" aria-selected="false">Field Record (FR)</button>
-      <button class="tab-btn" data-tab="routing" role="tab" aria-selected="false">Routing & Submission</button>
-      <button class="tab-btn" data-tab="form-tips" role="tab" aria-selected="false">Completion Tips</button>
-    </div>
+    <h2 class="section-title"><i class="fas fa-file-alt"></i> Forms & Records (IR / FR)</h2>
 
-    <!-- IR -->
-    <div class="tab-content active" id="ir-form" role="tabpanel">
-      <h2 class="section-title"><i class="fas fa-clipboard-list"></i> Interview Record (IR) – Practice</h2>
-
-      <div class="content-grid">
-        <div class="content-main">
-          <div class="form-simulator" id="ir-form-simulator">
-            <div class="form-header">
-              <h4><i class="fas fa-clipboard-list"></i> Simulated IR Form</h4>
-              <p class="help">Fields with * are required. Validation checks update instantly.</p>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-ir-date">
-                <label class="form-label">* Interview Date</label>
-                <input type="date" class="form-input" id="ir-date" />
-                <div class="error-text">Interview date is required.</div>
-              </div>
-              <div class="form-field" id="wrap-ir-parish">
-                <label class="form-label">* Parish Code (3 letters)</label>
-                <input type="text" class="form-input" id="ir-parish" placeholder="e.g., HAN" maxlength="3" />
-                <div class="error-text">Enter a 3-letter parish code.</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-ir-lastname">
-                <label class="form-label">* Patient Last Name</label>
-                <input type="text" class="form-input" id="ir-lastname" placeholder="Required" />
-                <div class="error-text">Last name is required.</div>
-              </div>
-              <div class="form-field" id="wrap-ir-firstname">
-                <label class="form-label">* Patient First Name</label>
-                <input type="text" class="form-input" id="ir-firstname" placeholder="Required" />
-                <div class="error-text">First name is required.</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field">
-                <label class="form-label">Middle Initial</label>
-                <input type="text" class="form-input" id="ir-mi" placeholder="MI" maxlength="1" />
-              </div>
-              <div class="form-field">
-                <label class="form-label">Pet Name / Alias</label>
-                <input type="text" class="form-input" id="ir-alias" placeholder="Any aliases used" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-ir-sex">
-                <label class="form-label">* Sex at Birth</label>
-                <div class="radio-group" role="radiogroup" aria-label="Sex at birth">
-                  <div class="radio-option"><input type="radio" id="ir-male" name="ir-sex" value="M" /><label for="ir-male">Male (M)</label></div>
-                  <div class="radio-option"><input type="radio" id="ir-female" name="ir-sex" value="F" /><label for="ir-female">Female (F)</label></div>
-                </div>
-                <div class="error-text">Select sex at birth.</div>
-              </div>
-              <div class="form-field" id="wrap-ir-dob">
-                <label class="form-label">* Date of Birth</label>
-                <input type="date" class="form-input" id="ir-dob" />
-                <div class="error-text">Date of birth is required.</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field">
-                <label class="form-label">Age (if known)</label>
-                <input type="number" class="form-input" id="ir-age" min="0" max="120" placeholder="Age" />
-              </div>
-              <div class="form-field" id="wrap-ir-phone">
-                <label class="form-label">Telephone Number</label>
-                <input type="tel" class="form-input" id="ir-phone" placeholder="8761234567" />
-                <div class="help">Digits only recommended.</div>
-              </div>
-            </div>
-
-            <div class="form-field" id="wrap-ir-address">
-              <label class="form-label">* Address</label>
-              <textarea class="form-input" id="ir-address" rows="2" placeholder="Full address or 'UNKNOWN' if unavailable"></textarea>
-              <div class="error-text">Address is required (or write UNKNOWN).</div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-ir-reason">
-                <label class="form-label">* Reason for Interview</label>
-                <select class="form-input" id="ir-reason">
-                  <option value="">Select a reason</option>
-                  <option value="antenatal">Antenatal reactor</option>
-                  <option value="keypop">Key population member</option>
-                  <option value="symptoms">Presenting with symptoms</option>
-                  <option value="contact">Contact of known case</option>
-                  <option value="routine">Routine screening</option>
-                </select>
-                <div class="error-text">Select a reason.</div>
-              </div>
-              <div class="form-field" id="wrap-ir-location">
-                <label class="form-label">* Where interviewed</label>
-                <div class="radio-group" role="radiogroup" aria-label="Interview location">
-                  <div class="radio-option"><input type="radio" id="ir-clinic" name="ir-location" value="Clinic" /><label for="ir-clinic">Clinic</label></div>
-                  <div class="radio-option"><input type="radio" id="ir-hospital" name="ir-location" value="Hospital" /><label for="ir-hospital">Hospital</label></div>
-                  <div class="radio-option"><input type="radio" id="ir-field" name="ir-location" value="Field" /><label for="ir-field">Field</label></div>
-                </div>
-                <div class="error-text">Select where interviewed.</div>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label class="form-label">STI Code(s)</label>
-              <input type="text" class="form-input" id="ir-sticode" placeholder="e.g., A1, C13" />
-              <div class="help">Use codes for confidentiality (training).</div>
-            </div>
-
-            <div class="form-field" id="wrap-ir-contacts">
-              <label class="form-label">* Number of sexual contacts named</label>
-              <input type="number" class="form-input" id="ir-contacts" min="0" max="50" value="0" />
-              <div class="error-text">Enter a number (0 or more).</div>
-            </div>
-
-            <div class="form-field">
-              <label class="form-label">Education topics covered (optional)</label>
-              <div class="checkbox-group">
-                <div class="checkbox-option"><input type="checkbox" id="ir-ed-severity" value="severity" /><label for="ir-ed-severity">Severity & complications</label></div>
-                <div class="checkbox-option"><input type="checkbox" id="ir-ed-trans" value="transmission" /><label for="ir-ed-trans">Transmission</label></div>
-                <div class="checkbox-option"><input type="checkbox" id="ir-ed-sym" value="symptoms" /><label for="ir-ed-sym">Symptoms</label></div>
-                <div class="checkbox-option"><input type="checkbox" id="ir-ed-cond" value="condoms" /><label for="ir-ed-cond">Condom use</label></div>
-              </div>
-            </div>
-
-            <div class="text-center mt-20 no-print">
-              <button class="btn btn-primary" onclick="validateIRForm()"><i class="fas fa-check"></i> Validate IR</button>
-              <button class="btn btn-secondary" onclick="previewIRPrint()"><i class="fas fa-print"></i> Print Preview</button>
-              <button class="btn btn-secondary" onclick="resetIRForm()"><i class="fas fa-redo"></i> Reset</button>
-              <button class="btn btn-success" onclick="markModuleComplete(2)"><i class="fas fa-check-circle"></i> Mark Module 2 Complete</button>
-            </div>
-
-            <div class="info-box mt-20 hidden" id="ir-validation-msg" aria-live="polite"></div>
-          </div>
-        </div>
-
-        <div class="content-sidebar">
-          <h3>Quick checks</h3>
-          <div class="term-list">
-            <div class="term-item"><strong>Names + date:</strong> required</div>
-            <div class="term-item"><strong>Parish code:</strong> 3 letters</div>
-            <div class="term-item"><strong>Contacts named:</strong> numeric</div>
-          </div>
-          <div class="info-box mt-20">
-            <h4><i class="fas fa-info-circle"></i> Training note</h4>
-            <p>Use the preview to see how a clean, readable IR should look before filing.</p>
-          </div>
-        </div>
+    <div class="info-box orange">
+      <h4><i class="fas fa-book-open"></i> Manual cross-reference</h4>
+      <div class="mt-20">
+        <button class="btn btn-link" onclick="openGuideByTitle('STI Interview Record (IR) Form')"><i class="fas fa-book"></i> IR Form (p.10)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('STI Interview Record - A Field by Field Explanation')"><i class="fas fa-book"></i> IR Explanation (p.17)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('STI Field Record (FR)')"><i class="fas fa-book"></i> FR Form (p.24)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('STI Field Record - A Field by Field Explanation')"><i class="fas fa-book"></i> FR Explanation (p.29)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('Summarized Procedures for Completion and Submission of Interview and Field Record Forms')"><i class="fas fa-book"></i> Submission procedures (p.37)</button>
       </div>
     </div>
 
-    <!-- FR -->
-    <div class="tab-content" id="fr-form" role="tabpanel">
-      <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Field Record (FR) – Practice</h2>
-
-      <div class="content-grid">
-        <div class="content-main">
-          <div class="form-simulator" id="fr-form-simulator">
-            <div class="form-header">
-              <h4><i class="fas fa-map-marked-alt"></i> Simulated FR Form</h4>
-              <p class="help">Practice contact follow-up and outcome documentation.</p>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-fr-initiation">
-                <label class="form-label">* Date FR initiated</label>
-                <input type="date" class="form-input" id="fr-initiation" />
-                <div class="error-text">Initiation date is required.</div>
-              </div>
-              <div class="form-field" id="wrap-fr-assigned">
-                <label class="form-label">* Date assigned</label>
-                <input type="date" class="form-input" id="fr-assigned" />
-                <div class="error-text">Assigned date is required.</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-fr-contactname">
-                <label class="form-label">* Contact name (or alias)</label>
-                <input type="text" class="form-input" id="fr-contactname" placeholder="Required" />
-                <div class="error-text">Contact name is required.</div>
-              </div>
-              <div class="form-field" id="wrap-fr-dob">
-                <label class="form-label">* Contact DOB</label>
-                <input type="date" class="form-input" id="fr-dob" />
-                <div class="error-text">DOB is required.</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-fr-sex">
-                <label class="form-label">* Sex at birth</label>
-                <div class="radio-group" role="radiogroup" aria-label="FR sex">
-                  <div class="radio-option"><input type="radio" id="fr-m" name="fr-sex" value="M"/><label for="fr-m">Male (M)</label></div>
-                  <div class="radio-option"><input type="radio" id="fr-f" name="fr-sex" value="F"/><label for="fr-f">Female (F)</label></div>
-                </div>
-                <div class="error-text">Select sex.</div>
-              </div>
-              <div class="form-field" id="wrap-fr-phone">
-                <label class="form-label">Contact phone</label>
-                <input type="tel" class="form-input" id="fr-phone" placeholder="8761234567" />
-              </div>
-            </div>
-
-            <div class="form-field" id="wrap-fr-address">
-              <label class="form-label">* Contact address / directions</label>
-              <textarea class="form-input" id="fr-address" rows="2" placeholder="Required"></textarea>
-              <div class="error-text">Address/directions required.</div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-fr-exposure-start">
-                <label class="form-label">* Exposure start date</label>
-                <input type="date" class="form-input" id="fr-exposure-start"/>
-                <div class="error-text">Exposure start date required.</div>
-              </div>
-              <div class="form-field" id="wrap-fr-exposure-end">
-                <label class="form-label">Exposure end date (optional)</label>
-                <input type="date" class="form-input" id="fr-exposure-end"/>
-                <div class="help">Leave blank if ongoing / unknown.</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-field" id="wrap-fr-outcome">
-                <label class="form-label">* Outcome</label>
-                <select class="form-input" id="fr-outcome">
-                  <option value="">Select…</option>
-                  <option value="located-treated">Located and treated</option>
-                  <option value="located-tested">Located and tested (pending)</option>
-                  <option value="not-located">Not located</option>
-                  <option value="refused">Refused</option>
-                  <option value="moved">Moved / left area</option>
-                </select>
-                <div class="error-text">Select an outcome.</div>
-              </div>
-              <div class="form-field">
-                <label class="form-label">Attempts (number)</label>
-                <input type="number" class="form-input" id="fr-attempts" min="0" value="1"/>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label class="form-label">Notes (what you did)</label>
-              <textarea class="form-input" id="fr-notes" rows="3" placeholder="Document actions, dates, and what happened."></textarea>
-            </div>
-
-            <div class="text-center mt-20 no-print">
-              <button class="btn btn-primary" onclick="validateFRForm()"><i class="fas fa-check"></i> Validate FR</button>
-              <button class="btn btn-secondary" onclick="previewFRPrint()"><i class="fas fa-print"></i> Print Preview</button>
-              <button class="btn btn-secondary" onclick="resetFRForm()"><i class="fas fa-redo"></i> Reset</button>
-              <button class="btn btn-success" onclick="markModuleComplete(2)"><i class="fas fa-check-circle"></i> Mark Module 2 Complete</button>
-            </div>
-
-            <div class="info-box mt-20 hidden" id="fr-validation-msg" aria-live="polite"></div>
+    <!-- (Keeping your original simulated forms idea – trimmed here for brevity) -->
+    <div class="content-grid">
+      <div class="content-main">
+        <div class="form-simulator" id="ir-form-simulator">
+          <div class="form-header">
+            <h4><i class="fas fa-clipboard-list"></i> Simulated IR Form</h4>
+            <p class="help">Required fields are validated in real time. Use Print Preview for a clean layout.</p>
           </div>
+
+          <div class="form-group">
+            <div class="form-field" id="wrap-ir-date">
+              <label class="form-label">* Interview Date</label>
+              <input type="date" class="form-input" id="ir-date" />
+              <div class="error-text">Interview date is required.</div>
+            </div>
+            <div class="form-field" id="wrap-ir-parish">
+              <label class="form-label">* Parish Code (3 letters)</label>
+              <input type="text" class="form-input" id="ir-parish" placeholder="e.g., HAN" maxlength="3" />
+              <div class="error-text">Enter a 3-letter parish code.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-field" id="wrap-ir-lastname">
+              <label class="form-label">* Patient Last Name</label>
+              <input type="text" class="form-input" id="ir-lastname" placeholder="Required" />
+              <div class="error-text">Last name is required.</div>
+            </div>
+            <div class="form-field" id="wrap-ir-firstname">
+              <label class="form-label">* Patient First Name</label>
+              <input type="text" class="form-input" id="ir-firstname" placeholder="Required" />
+              <div class="error-text">First name is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-field" id="wrap-ir-sex">
+              <label class="form-label">* Sex at Birth</label>
+              <div class="radio-group">
+                <div class="radio-option"><input type="radio" id="ir-male" name="ir-sex" value="M" /><label for="ir-male">Male (M)</label></div>
+                <div class="radio-option"><input type="radio" id="ir-female" name="ir-sex" value="F" /><label for="ir-female">Female (F)</label></div>
+              </div>
+              <div class="error-text">Select sex at birth.</div>
+            </div>
+            <div class="form-field" id="wrap-ir-dob">
+              <label class="form-label">* Date of Birth</label>
+              <input type="date" class="form-input" id="ir-dob" />
+              <div class="error-text">Date of birth is required.</div>
+            </div>
+          </div>
+
+          <div class="form-field" id="wrap-ir-address">
+            <label class="form-label">* Address</label>
+            <textarea class="form-input" id="ir-address" rows="2" placeholder="Full address or 'UNKNOWN' if unavailable"></textarea>
+            <div class="error-text">Address is required (or write UNKNOWN).</div>
+          </div>
+
+          <div class="form-field" id="wrap-ir-contacts">
+            <label class="form-label">* Number of sexual contacts named</label>
+            <input type="number" class="form-input" id="ir-contacts" min="0" max="50" value="0" />
+            <div class="error-text">Enter a number (0 or more).</div>
+          </div>
+
+          <div class="mt-20 no-print" style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="validateIRForm()"><i class="fas fa-check"></i> Validate IR</button>
+            <button class="btn btn-secondary" onclick="previewIRPrint()"><i class="fas fa-print"></i> Print Preview</button>
+            <button class="btn btn-secondary" onclick="resetIRForm()"><i class="fas fa-redo"></i> Reset</button>
+            <button class="btn btn-success" onclick="markModuleComplete(2)"><i class="fas fa-check-circle"></i> Mark Forms Complete</button>
+          </div>
+
+          <div class="info-box mt-20 hidden" id="ir-validation-msg"></div>
         </div>
 
-        <div class="content-sidebar">
-          <h3>What “good FR” looks like</h3>
-          <div class="term-list">
-            <div class="term-item"><strong>Dates:</strong> clear and consistent</div>
-            <div class="term-item"><strong>Outcome:</strong> selected + explained</div>
-            <div class="term-item"><strong>Notes:</strong> short but complete</div>
-          </div>
-          <div class="info-box mt-20">
-            <h4><i class="fas fa-info-circle"></i> Tip</h4>
-            <p>If “not located”, record attempts + next step plan.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Routing -->
-    <div class="tab-content" id="routing" role="tabpanel">
-      <h2 class="section-title"><i class="fas fa-route"></i> Routing & Submission</h2>
-      <div class="content-grid">
-        <div class="content-main">
-          <p>
-            Forms should be completed neatly, checked for missing fields, and routed according to your parish/region procedures.
-            This platform supports training practice with validation and clean print output.
-          </p>
-
-          <div class="accordion">
-            <details class="accordion-item">
-              <summary>Before you submit <i class="fas fa-chevron-down chev"></i></summary>
-              <div class="accordion-body">
-                <ul style="padding-left:18px;">
-                  <li>Confirm required fields are complete</li>
-                  <li>Confirm codes are correct and protect confidentiality</li>
-                  <li>Confirm dates and outcomes are consistent</li>
-                  <li>Attach notes if needed (short and factual)</li>
-                </ul>
-              </div>
-            </details>
-            <details class="accordion-item">
-              <summary>Common mistakes <i class="fas fa-chevron-down chev"></i></summary>
-              <div class="accordion-body">
-                <ul style="padding-left:18px;">
-                  <li>Missing parish code or dates</li>
-                  <li>Unreadable notes</li>
-                  <li>Not documenting attempts</li>
-                  <li>Using names in unsafe ways during notification</li>
-                </ul>
-              </div>
-            </details>
+        <div class="form-simulator" id="fr-form-simulator">
+          <div class="form-header">
+            <h4><i class="fas fa-map-marked-alt"></i> Simulated FR Form</h4>
+            <p class="help">Practice outcome documentation and follow-up attempts.</p>
           </div>
 
-          <div class="text-center mt-20">
-            <button class="btn btn-success" onclick="markModuleComplete(2)"><i class="fas fa-check"></i> Mark Module 2 as Complete</button>
+          <div class="form-group">
+            <div class="form-field" id="wrap-fr-initiation">
+              <label class="form-label">* Date FR initiated</label>
+              <input type="date" class="form-input" id="fr-initiation" />
+              <div class="error-text">Initiation date is required.</div>
+            </div>
+            <div class="form-field" id="wrap-fr-contactname">
+              <label class="form-label">* Contact name (or alias)</label>
+              <input type="text" class="form-input" id="fr-contactname" placeholder="Required" />
+              <div class="error-text">Contact name is required.</div>
+            </div>
           </div>
-        </div>
 
-        <div class="content-sidebar">
-          <div class="info-box">
-            <h4><i class="fas fa-shield-alt"></i> Confidentiality reminder</h4>
-            <p>Only share necessary information, using approved approaches and documentation rules.</p>
+          <div class="form-field" id="wrap-fr-address">
+            <label class="form-label">* Contact address / directions</label>
+            <textarea class="form-input" id="fr-address" rows="2" placeholder="Required"></textarea>
+            <div class="error-text">Address/directions required.</div>
           </div>
+
+          <div class="form-field" id="wrap-fr-outcome">
+            <label class="form-label">* Outcome</label>
+            <select class="form-input" id="fr-outcome">
+              <option value="">Select…</option>
+              <option value="located-treated">Located and treated</option>
+              <option value="located-tested">Located and tested</option>
+              <option value="not-located">Not located</option>
+              <option value="refused">Refused</option>
+              <option value="moved">Moved / left area</option>
+            </select>
+            <div class="error-text">Select an outcome.</div>
+          </div>
+
+          <div class="mt-20 no-print" style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="validateFRForm()"><i class="fas fa-check"></i> Validate FR</button>
+            <button class="btn btn-secondary" onclick="previewFRPrint()"><i class="fas fa-print"></i> Print Preview</button>
+            <button class="btn btn-secondary" onclick="resetFRForm()"><i class="fas fa-redo"></i> Reset</button>
+            <button class="btn btn-success" onclick="markModuleComplete(2)"><i class="fas fa-check-circle"></i> Mark Forms Complete</button>
+          </div>
+
+          <div class="info-box mt-20 hidden" id="fr-validation-msg"></div>
         </div>
       </div>
-    </div>
 
-    <!-- Tips -->
-    <div class="tab-content" id="form-tips" role="tabpanel">
-      <h2 class="section-title"><i class="fas fa-pen-nib"></i> Form Completion Tips</h2>
-      <div class="content-grid">
-        <div class="content-main">
-          <div class="info-box success">
-            <h4><i class="fas fa-check-circle"></i> The “3C” rule</h4>
-            <p><strong>Clear</strong>, <strong>Complete</strong>, <strong>Consistent</strong>.</p>
-          </div>
-
-          <div class="accordion">
-            <details class="accordion-item">
-              <summary>Write notes that help you later <i class="fas fa-chevron-down chev"></i></summary>
-              <div class="accordion-body">
-                Use short sentences: what you did, when you did it, what happened next.
-              </div>
-            </details>
-            <details class="accordion-item">
-              <summary>Use dates everywhere <i class="fas fa-chevron-down chev"></i></summary>
-              <div class="accordion-body">
-                Dates keep investigations defensible and help supervisors review progress.
-              </div>
-            </details>
-          </div>
-
-          <div class="text-center mt-20">
-            <button class="btn btn-success" onclick="markModuleComplete(2)"><i class="fas fa-check"></i> Mark Module 2 as Complete</button>
-          </div>
-        </div>
-
-        <div class="content-sidebar">
-          <h3>Practice targets</h3>
-          <div class="term-list">
-            <div class="term-item"><strong>IR:</strong> Validate at least once</div>
-            <div class="term-item"><strong>FR:</strong> Validate at least once</div>
-            <div class="term-item"><strong>Print:</strong> Preview clean output</div>
-          </div>
+      <div class="content-sidebar">
+        <div class="info-box">
+          <h4><i class="fas fa-book-open"></i> Field-by-field guidance</h4>
+          <p class="help">If you’re unsure what a field means, open the manual’s explanations.</p>
+          <button class="btn btn-link full-width mt-20" onclick="openGuideByTitle('STI Interview Record - A Field by Field Explanation')">
+            <i class="fas fa-book"></i> IR Explanation (p.17)
+          </button>
+          <button class="btn btn-link full-width mt-20" onclick="openGuideByTitle('STI Field Record - A Field by Field Explanation')">
+            <i class="fas fa-book"></i> FR Explanation (p.29)
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STI MANAGEMENT -->
+  <!-- STI MANAGEMENT (linked to exact TOC pages) -->
   <section id="sti-management" class="content-section">
-    <h2 class="section-title"><i class="fas fa-stethoscope"></i> STI Syndromes & Management (Training)</h2>
+    <h2 class="section-title"><i class="fas fa-stethoscope"></i> STI Management (Manual-Linked)</h2>
+
+    <div class="info-box orange">
+      <h4><i class="fas fa-book-open"></i> Jump to management algorithms</h4>
+      <div class="mt-20" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-link" onclick="openGuideByTitle('STI Management Algorithms')"><i class="fas fa-book"></i> Algorithms (p.68)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('Management of Urethral Discharge')"><i class="fas fa-book"></i> Urethral discharge (p.69)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('Management of Vaginal Discharge')"><i class="fas fa-book"></i> Vaginal discharge (p.72)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('Management of Genital Ulcer Syndrome')"><i class="fas fa-book"></i> Genital ulcer syndrome (p.75)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('Syphilis')"><i class="fas fa-book"></i> Syphilis (p.77)</button>
+        <button class="btn btn-link" onclick="openGuideByTitle('GUIDELINES FOR THE INVESTIGATION OF HUMAN IMMUNODEFICIENCY VIRUS (HIV)')"><i class="fas fa-book"></i> HIV Investigation (p.99)</button>
+      </div>
+    </div>
 
     <div class="content-grid">
       <div class="content-main">
-        <p>
-          This section supports CI work: syndromes, coding, and prioritization. Clinical treatment decisions
-          are guided by MOHW clinical algorithms and clinician direction.
-        </p>
+        <details class="accordion-item" open>
+          <summary>STI Coding (used in CI records) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <p>Codes protect confidentiality and support consistent reporting.</p>
+            <button class="btn btn-link" onclick="openGuideByTitle('STI Coding')"><i class="fas fa-book"></i> STI Coding (p.56)</button>
+          </div>
+        </details>
 
-        <div class="info-box">
-          <h4><i class="fas fa-code"></i> Why coding matters</h4>
-          <p>Codes protect confidentiality and help reporting and analysis.</p>
-        </div>
+        <details class="accordion-item">
+          <summary>Surveillance guidance for syphilis + other syndromes <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <button class="btn btn-link" onclick="openGuideByTitle('SURVEILLANCE GUIDELINES FOR DIAGNOSIS, MANAGEMENT AND REPORTING OF NEW SYPHILIS CASES AND OTHER STI SYNDROMES')">
+              <i class="fas fa-book"></i> Surveillance Guidance (p.77)
+            </button>
+            <div class="help">Use Resources search to jump to specific parts.</div>
+          </div>
+        </details>
 
-        <div class="accordion">
-          <details class="accordion-item">
-            <summary>Common syndromes you may see <i class="fas fa-chevron-down chev"></i></summary>
-            <div class="accordion-body">
-              <ul style="padding-left:18px;">
-                <li>Urethral discharge</li>
-                <li>Vaginal discharge</li>
-                <li>Genital ulcer disease (GUD)</li>
-                <li>Pelvic inflammatory disease (PID)</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="accordion-item">
-            <summary>CI actions after diagnosis <i class="fas fa-chevron-down chev"></i></summary>
-            <div class="accordion-body">
-              <ol style="padding-left:18px;">
-                <li>Interview the client (IR)</li>
-                <li>Determine critical period (CP)</li>
-                <li>Elicit and document contacts</li>
-                <li>Initiate FRs and follow outcomes</li>
-                <li>Support risk reduction counselling</li>
-              </ol>
-            </div>
-          </details>
-        </div>
+        <details class="accordion-item">
+          <summary>Congenital syphilis / paediatric HIV / ophthalmia neonatorum <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <button class="btn btn-link" onclick="openGuideByTitle('GUIDELINES FOR THE INVESTIGATION OF CONGENITAL SYPHILIS, PAEDIATRIC HIV AND OPHTHALMIA NEONATORUM')">
+              <i class="fas fa-book"></i> Investigation Guidelines (p.88)
+            </button>
+          </div>
+        </details>
 
         <div class="text-center mt-20">
-          <button class="btn btn-success" onclick="markModuleComplete(3)"><i class="fas fa-check"></i> Mark Module 3 as Complete</button>
+          <button class="btn btn-success" onclick="markModuleComplete(3)"><i class="fas fa-check"></i> Mark STI Management Complete</button>
         </div>
       </div>
 
       <div class="content-sidebar">
-        <h3>Critical Period tool</h3>
-        <p class="help">Use the CP calculator under CI Basics → Key Terms.</p>
-        <div class="info-box warning">
-          <h4><i class="fas fa-exclamation-triangle"></i> Safety note</h4>
-          <p>Do not disclose diagnosis to contacts. Use safe notification scripts and approved processes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE SIMULATION -->
-  <section id="case-simulation" class="content-section">
-    <h2 class="section-title"><i class="fas fa-user-injured"></i> Case Simulation</h2>
-
-    <div class="case-scenario">
-      <h3>Scenario: New priority case</h3>
-      <p>
-        You received a referral for a priority infection. Your job is to plan a safe interview and take the next steps.
-      </p>
-
-      <div class="patient-profile" aria-label="Patient profile">
-        <div class="profile-item"><div class="profile-label">Client</div><div class="profile-value">Male, 24</div></div>
-        <div class="profile-item"><div class="profile-label">Reason for referral</div><div class="profile-value">Reactive test (priority)</div></div>
-        <div class="profile-item"><div class="profile-label">Setting</div><div class="profile-value">Parish clinic</div></div>
-        <div class="profile-item"><div class="profile-label">Risk concern</div><div class="profile-value">Possible partner conflict</div></div>
-      </div>
-
-      <div class="info-box warning" id="sim-status">
-        <h4><i class="fas fa-route"></i> Step 1</h4>
-        <p>Select your first action.</p>
-      </div>
-
-      <div class="decision-points" id="sim-choices" aria-label="Decision points">
-        <!-- Filled by JS -->
-      </div>
-
-      <div class="info-box mt-20 hidden" id="sim-feedback"></div>
-
-      <div class="text-center mt-20 no-print">
-        <button class="btn btn-secondary" onclick="resetSimulation()"><i class="fas fa-redo"></i> Reset Simulation</button>
-        <button class="btn btn-success" onclick="completeSimulation()"><i class="fas fa-check-circle"></i> Mark Simulation Complete</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUIZZES -->
-  <section id="quizzes" class="content-section">
-    <h2 class="section-title"><i class="fas fa-question-circle"></i> Knowledge Tests</h2>
-
-    <div class="info-box">
-      <h4><i class="fas fa-info-circle"></i> How quizzes work</h4>
-      <p>
-        Each module quiz gives instant feedback and explanations. Your best score is saved.
-        Passing score (default): <strong>70%</strong>.
-      </p>
-    </div>
-
-    <div class="content-grid">
-      <div class="content-main">
-        <div class="quiz-container" id="quiz-container">
-          <div class="quiz-meta">
-            <span><i class="fas fa-layer-group"></i> Module: <strong id="quiz-module-label">—</strong></span>
-            <span><i class="fas fa-list-ol"></i> Question: <strong id="quiz-qcount">—</strong></span>
-            <span><i class="fas fa-star"></i> Score: <strong id="quiz-score-live">0%</strong></span>
-          </div>
-
-          <div class="quiz-question" id="quiz-question">Select a module quiz to start.</div>
-          <div class="quiz-options" id="quiz-options"></div>
-          <div class="quiz-feedback" id="quiz-feedback" aria-live="polite"></div>
-
-          <div class="quiz-navigation no-print">
-            <button class="btn btn-secondary" id="quiz-prev" onclick="quizPrev()" disabled><i class="fas fa-arrow-left"></i> Prev</button>
-            <button class="btn btn-secondary" id="quiz-retry" onclick="quizRetry()" disabled><i class="fas fa-redo"></i> Retry</button>
-            <button class="btn btn-primary" id="quiz-next" onclick="quizNext()" disabled>Next <i class="fas fa-arrow-right"></i></button>
-          </div>
-
-          <div class="info-box mt-20 hidden" id="quiz-final"></div>
-        </div>
-      </div>
-
-      <div class="content-sidebar">
-        <h3>Start a quiz</h3>
-        <div class="term-list">
-          <div class="term-item">
-            <button class="btn btn-primary full-width" onclick="startQuiz(1)"><i class="fas fa-play"></i> Module 1 Quiz</button>
-          </div>
-          <div class="term-item">
-            <button class="btn btn-primary full-width" onclick="startQuiz(2)"><i class="fas fa-play"></i> Module 2 Quiz</button>
-          </div>
-          <div class="term-item">
-            <button class="btn btn-primary full-width" onclick="startQuiz(3)"><i class="fas fa-play"></i> Module 3 Quiz</button>
-          </div>
-          <div class="term-item">
-            <button class="btn btn-primary full-width" onclick="startQuiz(4)"><i class="fas fa-play"></i> Module 4 Quiz</button>
-          </div>
-        </div>
-
-        <div class="info-box mt-20">
-          <h4><i class="fas fa-save"></i> Saved results</h4>
-          <p class="help">Scores save automatically to your profile on this device.</p>
+        <div class="info-box">
+          <h4><i class="fas fa-magnifying-glass"></i> Find anything fast</h4>
+          <p class="help">Resources has an indexed TOC with accurate pages + search.</p>
+          <button class="btn btn-primary full-width" onclick="goSection('resources')"><i class="fas fa-folder-open"></i> Open Resources</button>
         </div>
       </div>
     </div>
@@ -1199,135 +668,62 @@
 
   <!-- RESOURCES -->
   <section id="resources" class="content-section">
-    <h2 class="section-title"><i class="fas fa-folder-open"></i> Resources & Reference Materials</h2>
+    <h2 class="section-title"><i class="fas fa-folder-open"></i> Resources (Fixed + Page-Accurate)</h2>
+
+    <div class="resource-toolbar">
+      <div class="left">
+        <span class="chip"><i class="fas fa-file-pdf"></i> Field Guide</span>
+        <span class="chip"><i class="fas fa-link"></i> Google Drive linked</span>
+        <span class="chip"><i class="fas fa-hashtag"></i> Page-accurate TOC</span>
+      </div>
+      <div class="right" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="openGuideToToc()"><i class="fas fa-book-open"></i> Open TOC</button>
+        <button class="btn btn-secondary" onclick="openGuideDownload()"><i class="fas fa-download"></i> Download PDF</button>
+      </div>
+    </div>
 
     <div class="content-grid">
       <div class="content-main">
-        <h3>Downloadable resources (local files)</h3>
-        <p class="help">
-          Put your PDFs in the same folder as this HTML file. The buttons open the PDFs in a new tab.
-        </p>
-
-        <div class="module-grid">
-          <div class="module-card">
-            <div class="module-header"><div class="module-icon"><i class="fas fa-file-pdf"></i></div><div class="module-title">MOHW CI Field Guide 2025</div></div>
-            <div class="module-body"><p class="module-desc">Full Field Guide PDF (2025).</p></div>
-            <div class="module-footer"><button class="btn btn-primary" onclick="openResource('Final CI Field Guide 17.06.25.pdf')"><i class="fas fa-external-link-alt"></i> Open PDF</button></div>
-          </div>
-
-          <div class="module-card">
-            <div class="module-header"><div class="module-icon"><i class="fas fa-file-pdf"></i></div><div class="module-title">IR Form Template</div></div>
-            <div class="module-body"><p class="module-desc">Blank Interview Record (IR) template.</p></div>
-            <div class="module-footer"><button class="btn btn-primary" onclick="openResource('IR_template.pdf')"><i class="fas fa-external-link-alt"></i> Open PDF</button></div>
-          </div>
-
-          <div class="module-card">
-            <div class="module-header"><div class="module-icon"><i class="fas fa-file-pdf"></i></div><div class="module-title">FR Form Template</div></div>
-            <div class="module-body"><p class="module-desc">Blank Field Record (FR) template.</p></div>
-            <div class="module-footer"><button class="btn btn-primary" onclick="openResource('FR_template.pdf')"><i class="fas fa-external-link-alt"></i> Open PDF</button></div>
-          </div>
-
-          <div class="module-card">
-            <div class="module-header"><div class="module-icon"><i class="fas fa-sitemap"></i></div><div class="module-title">CI Flowchart</div></div>
-            <div class="module-body"><p class="module-desc">Quick visual: steps from referral to closure.</p></div>
-            <div class="module-footer"><button class="btn btn-primary" onclick="openResource('CI_flowchart.pdf')"><i class="fas fa-external-link-alt"></i> Open PDF</button></div>
-          </div>
+        <div class="info-box">
+          <h4><i class="fas fa-search"></i> Search the Field Guide TOC</h4>
+          <p class="help">Type a keyword (e.g., “Confidentiality”, “IR”, “Field Record”, “Reporting Flow”, “Syphilis”, “HIV”).</p>
+          <input class="form-input" id="toc-search" placeholder="Search TOC… (e.g., Confidentiality, IR, FR, Syphilis, HIV)" />
+          <div class="help">Results below are from the Field Guide Table of Contents (doc pages), mapped to PDF pages.</div>
         </div>
 
-        <h3 class="mt-20">Parish codes (training list)</h3>
-        <div style="overflow-x:auto;margin-top:10px;">
-          <table style="width:100%;border-collapse:collapse;">
-            <thead>
-              <tr style="background:#f7fafc;">
-                <th style="padding:10px;text-align:left;border-bottom:2px solid var(--border-color);">Parish</th>
-                <th style="padding:10px;text-align:left;border-bottom:2px solid var(--border-color);">Code</th>
-              </tr>
-            </thead>
-            <tbody id="parish-codes"></tbody>
-          </table>
+        <div class="toc-list" id="toc-results"></div>
+
+        <div class="info-box orange mt-20">
+          <h4><i class="fas fa-tv"></i> Built-in viewer</h4>
+          <p class="help">
+            Use “Open in Viewer” to read inside this app. Use “Open to Page” for a new tab.
+          </p>
         </div>
       </div>
 
       <div class="content-sidebar">
-        <div class="info-box">
-          <h4><i class="fas fa-book-medical"></i> Field Guide note</h4>
-          <p>
-            The 2025 guide includes revised IR/FR forms, updated reporting tools, and updated algorithms. :contentReference[oaicite:2]{index=2}
+        <div class="info-box success">
+          <h4><i class="fas fa-check-circle"></i> Drive link fixed</h4>
+          <p class="help">
+            This app uses Drive <strong>/preview</strong> for embedding and <strong>uc?export=download</strong> for direct PDF.
           </p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CERTIFICATE -->
-  <section id="certificate" class="content-section">
-    <h2 class="section-title"><i class="fas fa-award"></i> Training Certificate</h2>
-
-    <div class="certificate-container" id="certificate-preview">
-      <div class="certificate-border">
-        <div class="certificate-seal"><i class="fas fa-shield-alt"></i></div>
-        <h1 class="certificate-title">Certificate of Completion</h1>
-        <p class="certificate-subtitle">Contact Investigation (Disease Intervention) 101 Training Program</p>
-
-        <p>This certifies that</p>
-        <div class="certificate-name" id="certificate-name-display">[Your Name Here]</div>
-
-        <p>has successfully completed required components and demonstrated competency in CI fundamentals.</p>
-
-        <ul style="text-align:left;max-width:640px;margin:18px auto;padding-left:28px;">
-          <li>CI principles and confidentiality</li>
-          <li>Completion of Interview and Field Records</li>
-          <li>Critical period and contact prioritization</li>
-          <li>Safe partner notification approaches</li>
-          <li>Case simulation and decision-making</li>
-        </ul>
-
-        <div class="certificate-details">
-          <div class="certificate-detail">
-            <div class="detail-label">Date of Completion</div>
-            <div class="detail-value" id="certificate-date">—</div>
-          </div>
-          <div class="certificate-detail">
-            <div class="detail-label">Certificate ID</div>
-            <div class="detail-value" id="certificate-id">CI-101-00000</div>
-          </div>
-          <div class="certificate-detail">
-            <div class="detail-label">Status</div>
-            <div class="detail-value" id="certificate-status">In Progress</div>
-          </div>
+        <div class="viewer-box">
+          <iframe id="guide-iframe" title="Field Guide Viewer" src=""></iframe>
         </div>
 
-        <div class="certificate-signature">
-          <p>Contact Investigation Training Platform</p>
-          <div style="height:1px;background:var(--border-color);margin:14px 0;"></div>
-          <p>Designed by Glenroy Griffiths | Based on Jamaica MOHW Field Guide 2025</p>
-        </div>
-      </div>
-
-      <div class="mt-20 no-print" id="certificate-actions">
-        <div class="form-field" style="max-width:420px;margin:0 auto 12px;">
-          <label class="form-label">Enter your name for the certificate:</label>
-          <input type="text" class="form-input" id="user-name-input" placeholder="Your Full Name" />
-        </div>
-
-        <div class="text-center">
-          <button class="btn btn-primary" onclick="updateCertificateName()"><i class="fas fa-user-edit"></i> Update Name</button>
-          <button class="btn btn-success" id="download-cert-btn" onclick="printCertificate()" disabled><i class="fas fa-print"></i> Print / Save as PDF</button>
-          <button class="btn btn-secondary" onclick="checkCertificateEligibility()"><i class="fas fa-question-circle"></i> Check Eligibility</button>
-        </div>
-
-        <div class="info-box mt-20 hidden" id="eligibility-message">
-          <h4 id="eligibility-title"></h4>
-          <p id="eligibility-text"></p>
+        <div class="mt-20" style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-secondary full-width" onclick="openGuideInViewer(1)"><i class="fas fa-book-reader"></i> Load Viewer (start)</button>
+          <button class="btn btn-secondary full-width" onclick="clearViewer()"><i class="fas fa-eraser"></i> Clear Viewer</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <p>Contact Investigation (Disease Intervention) 101 - Interactive Training Platform</p>
-    <p class="designer-credit">Designed by Glenroy Griffiths | Based on Jamaica MOHW Contact Investigation Field Guide 2025</p>
+    <p class="designer-credit">Designed by Glenroy Griffiths | Based on Jamaica MOHW CI Field Guide 2025</p>
     <p style="margin-top:10px;font-size:.9rem;" class="no-print">
       <button class="btn btn-secondary" onclick="resetAllProgress()" style="padding:6px 14px;font-size:.9rem;">
         <i class="fas fa-redo"></i> Reset All Progress
@@ -1344,117 +740,125 @@
       <button class="modal-close" onclick="closeModal()" aria-label="Close preview">Close</button>
     </div>
     <div class="print-area" id="modal-body"></div>
-    <div class="text-center mt-20 no-print">
-      <button class="btn btn-primary" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
-    </div>
   </div>
 </div>
 
 <script>
   /***********************
+   * FIELD GUIDE CONFIG (Google Drive + Local)
+   ***********************/
+  const FIELD_GUIDE = {
+    driveId: "1SqBmSquvVqqE6fwPCouiCpjxHVS1hgNQ",
+    // Embeddable viewer
+    drivePreviewUrl() { return `https://drive.google.com/file/d/${this.driveId}/preview`; },
+    // Direct download
+    driveDownloadUrl() { return `https://drive.google.com/uc?export=download&id=${this.driveId}`; },
+    // Local fallback (place file next to this HTML)
+    localFilename: "Final CI Field Guide 17.06.25.pdf"
+  };
+
+  /**
+   * Page accuracy note:
+   * The Field Guide TOC uses "document page numbers" (printed pages).
+   * In your PDF file, PDF page = document page + 1 (because the TOC shows doc page 2 on PDF page 3).
+   * So: pdfPage = docPage + 1
+   */
+  const PDF_PAGE_OFFSET = 1;
+
+  /***********************
+   * FIELD GUIDE TOC INDEX (page-accurate to your manual)
+   * docPage is the printed/manual page; pdfPage is the PDF page index in the file (docPage + 1).
+   ***********************/
+  const FIELD_GUIDE_TOC = [
+    { title:"ACRONYMS", docPage:4, pdfPage:5 },
+    { title:"FOREWORD", docPage:6, pdfPage:7 },
+    { title:"PREFACE", docPage:7, pdfPage:8 },
+    { title:"CONFIDENTIALITY", docPage:8, pdfPage:9 },
+    { title:"INTRODUCTION", docPage:9, pdfPage:10 },
+    { title:"FORMS, RECORDS, AND REPORTS USED TO GUIDE THE INTERVIEWING AND INVESTIGATION PROCESS", docPage:10, pdfPage:11 },
+    { title:"STI Interview Record (IR) Form", docPage:10, pdfPage:11 },
+    { title:"STI Interview Record - A Field by Field Explanation", docPage:17, pdfPage:18 },
+    { title:"STI Field Record (FR)", docPage:24, pdfPage:25 },
+    { title:"STI Field Record - A Field by Field Explanation", docPage:29, pdfPage:30 },
+    { title:"Summarized Procedures for Completion and Submission of Interview and Field Record Forms", docPage:37, pdfPage:38 },
+    { title:"Reports and Reporting Flow", docPage:38, pdfPage:39 },
+    { title:"The Contact Investigation Programme", docPage:42, pdfPage:43 },
+    { title:"The CI Monthly Summary Statistics Report – An explanation of key terms", docPage:48, pdfPage:49 },
+    { title:"Contact Investigator Programme Targets and Expectations", docPage:53, pdfPage:54 },
+    { title:"Priority STIs/Conditions for Investigation", docPage:55, pdfPage:56 },
+    { title:"STI Coding", docPage:56, pdfPage:57 },
+    { title:"STI Monthly Summary Statistics Report", docPage:58, pdfPage:59 },
+    { title:"STI Monthly Summary Statistics Report – An Explanation of Key Terms", docPage:61, pdfPage:62 },
+    { title:"STI Medical Record", docPage:62, pdfPage:63 },
+    { title:"Contact Tracing", docPage:65, pdfPage:66 },
+    { title:"PRACTICAL CASE MANAGEMENT OF COMMON STI SYNDROMES", docPage:67, pdfPage:68 },
+    { title:"STI Management Algorithms", docPage:68, pdfPage:69 },
+    { title:"Management of Urethral Discharge", docPage:69, pdfPage:70 },
+    { title:"Management of Testicular Pain", docPage:70, pdfPage:71 },
+    { title:"Management of Persistent Discharge", docPage:71, pdfPage:72 },
+    { title:"Management of Vaginal Discharge", docPage:72, pdfPage:73 },
+    { title:"Management of Anal Discharge", docPage:73, pdfPage:74 },
+    { title:"Management of Genital Ulcer Syndrome", docPage:75, pdfPage:76 },
+    { title:"Management of Human T Lymphotrophic Virus Type I/II", docPage:76, pdfPage:77 },
+    { title:"SURVEILLANCE GUIDELINES FOR DIAGNOSIS, MANAGEMENT AND REPORTING OF NEW SYPHILIS CASES AND OTHER STI SYNDROMES", docPage:77, pdfPage:78 },
+    { title:"Syphilis", docPage:77, pdfPage:78 },
+    { title:"Other STI Syndromes", docPage:86, pdfPage:87 },
+    { title:"GUIDELINES FOR THE INVESTIGATION OF CONGENITAL SYPHILIS, PAEDIATRIC HIV AND OPHTHALMIA NEONATORUM", docPage:88, pdfPage:89 },
+    { title:"Investigation of Congenital Syphilis (CS)", docPage:88, pdfPage:89 },
+    { title:"Congenital Syphilis Report Form", docPage:89, pdfPage:90 },
+    { title:"Investigation of Ophthalmia Neonatorum (ON)", docPage:91, pdfPage:92 },
+    { title:"Ophthalmia Neonatorum Investigation Report", docPage:92, pdfPage:93 },
+    { title:"Investigation of Paediatric HIV Infection", docPage:93, pdfPage:94 },
+    { title:"Case Investigation Report – HIV-Exposed and Paediatric HIV Cases", docPage:94, pdfPage:95 },
+    { title:"GUIDELINES FOR THE INVESTIGATION OF HUMAN IMMUNODEFICIENCY VIRUS (HIV)", docPage:99, pdfPage:100 },
+    { title:"The HIV/AIDS Confidential Reporting Form", docPage:101, pdfPage:102 },
+    { title:"GUIDELINES FOR THE INVESTIGATION OF HEPATITIS B", docPage:108, pdfPage:109 },
+    { title:"The General Class 1 Notification Form", docPage:110, pdfPage:111 },
+    { title:"GUIDELINES FOR THE INVESTIGATION OF HTLV", docPage:112, pdfPage:113 },
+    { title:"Social Services", docPage:114, pdfPage:115 },
+    { title:"CODE AND NUMBER ASSIGNED TO REGIONS AND PARISHES", docPage:115, pdfPage:116 }
+  ];
+
+  /***********************
    * STATE (localStorage)
    ***********************/
-  const STORAGE_KEY = "ci101-training-state-v2";
-
+  const STORAGE_KEY = "ci101-training-state-v3";
   const appState = {
-    completedModules: [false,false,false,false],
-    moduleProgress: [0,0,0,0],         // 0-100
-    quizBestScores: [0,0,0,0],         // best % per module
-    quizPassed: [false,false,false,false],
-    studyTime: 0,                      // minutes
-    userName: "",
-    certificateEarned: false,
-    certificateId: "",
-    simulationComplete: false,
-    formAttempts: 0,
-    quizAttempts: 0,
-    simulationAttempts: 0,
+    completedModules: [false,false,false],
+    moduleProgress: [0,0,0],
+    studyTime: 0,
     lastActiveISO: new Date().toISOString()
   };
 
-  const PASS_SCORE = 70;
-
-  /***********************
-   * INIT
-   ***********************/
   document.addEventListener("DOMContentLoaded", () => {
     loadState();
     setupNavigation();
-    setupTabNavigation();
-    setupLiveFormValidation();
     setupJumpLink();
-    populateParishCodes();
-    setupSimulationInteractivity();
-    ensureCertificateId();
+    setupLiveFormValidation();
+    setupResourcesSearch();
     setDefaultDates();
     updateDashboard();
-    updateCertificate();
 
-    // study timer: add 1 minute each minute user is active in tab
     setInterval(updateStudyTime, 60000);
-    // autosave
     setInterval(saveState, 30000);
 
-    // keyboard: esc closes modal
     document.addEventListener("keydown", (e) => {
       if(e.key === "Escape") closeModal();
     });
+
+    // preload TOC list
+    renderTocResults("");
   });
 
-  function setDefaultDates(){
-    const today = new Date().toISOString().split("T")[0];
-    setIfExists("ir-date", today);
-    setIfExists("ir-dob", "2000-01-01");
-    setIfExists("fr-initiation", today);
-    setIfExists("fr-assigned", today);
-    setIfExists("fr-dob", "1995-01-01");
-    setIfExists("fr-exposure-start", today);
-  }
-  function setIfExists(id, val){
-    const el = document.getElementById(id);
-    if(el && !el.value) el.value = val;
+  function goSection(id){
+    document.querySelector(`.nav-btn[data-section="${CSS.escape(id)}"]`)?.click();
   }
 
-  function ensureCertificateId(){
-    if(!appState.certificateId){
-      appState.certificateId = generateCertificateId();
-      saveState();
-    }
-  }
-  function generateCertificateId(){
-    const n = Math.floor(10000 + Math.random()*90000);
-    return `CI-101-${n}`;
-  }
-
-  function saveState(){
-    appState.lastActiveISO = new Date().toISOString();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
-  }
-  function loadState(){
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if(!saved) return;
-    try{
-      const parsed = JSON.parse(saved);
-      Object.assign(appState, parsed);
-    }catch(_){
-      // ignore and start fresh
-    }
-  }
-
-  function resetAllProgress(){
-    if(!confirm("Reset ALL progress? This removes completion, quiz scores, and certificate access.")) return;
-    localStorage.removeItem(STORAGE_KEY);
-    location.reload();
-  }
-
-  /***********************
-   * NAVIGATION
-   ***********************/
   function setupJumpLink(){
     const btn = document.getElementById("jump-to-resources");
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      document.querySelector('.nav-btn[data-section="resources"]').click();
+      goSection("resources");
     });
   }
 
@@ -1470,264 +874,242 @@
         const target = document.getElementById(sectionId);
         if(target) target.classList.add("active");
 
-        // update dashboard/cert whenever you move around
         updateDashboard();
-        updateCertificate();
 
-        // accessibility: move focus to first heading
         const h = target?.querySelector(".section-title");
         if(h) h.setAttribute("tabindex","-1"), h.focus({preventScroll:false});
       });
     });
   }
 
-  function setupTabNavigation(){
-    document.querySelectorAll(".tab-nav").forEach(tabNav => {
-      tabNav.addEventListener("click", (e) => {
-        const btn = e.target.closest(".tab-btn");
-        if(!btn) return;
-        const tabId = btn.getAttribute("data-tab");
-
-        // find related tab container: same parent section
-        const section = tabNav.closest(".content-section");
-        const buttons = tabNav.querySelectorAll(".tab-btn");
-        const tabs = section.querySelectorAll(".tab-content");
-
-        buttons.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected","false"); });
-        btn.classList.add("active");
-        btn.setAttribute("aria-selected","true");
-
-        tabs.forEach(t => t.classList.remove("active"));
-        const target = section.querySelector(`#${CSS.escape(tabId)}`);
-        if(target) target.classList.add("active");
-      });
-    });
+  function saveState(){
+    appState.lastActiveISO = new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
   }
-
-  /***********************
-   * MODULES
-   ***********************/
-  function startModule(moduleNumber){
-    // map: 1->ci-basics, 2->forms-records, 3->sti-management, 4->case-simulation
-    const map = {1:"ci-basics",2:"forms-records",3:"sti-management",4:"case-simulation"};
-    const section = map[moduleNumber] || "dashboard";
-    document.querySelector(`.nav-btn[data-section="${section}"]`)?.click();
-
-    // show quiz button after module is complete OR after user visits module at least once
-    // (we keep it simple: unlock quiz after mark complete)
+  function loadState(){
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(!saved) return;
+    try{
+      const parsed = JSON.parse(saved);
+      Object.assign(appState, parsed);
+    }catch(_){}
   }
-
-  function markModuleComplete(moduleNumber){
-    const i = moduleNumber - 1;
-    appState.completedModules[i] = true;
-    appState.moduleProgress[i] = 100;
-
-    // unlock quiz button for this module
-    const quizBtn = document.getElementById(`module${moduleNumber}-quiz-btn`);
-    if(quizBtn) quizBtn.classList.remove("hidden");
-
-    saveState();
-    updateDashboard();
-    updateCertificate();
-
-    toastInfo(`Module ${moduleNumber} marked complete.`);
-  }
-
-  function completeSimulation(){
-    appState.simulationComplete = true;
-    appState.simulationAttempts += 1;
-    // module 4 usually includes simulation completion as part; mark module 4 complete automatically if not already
-    if(!appState.completedModules[3]) {
-      appState.completedModules[3] = true;
-      appState.moduleProgress[3] = 100;
-      const quizBtn = document.getElementById("module4-quiz-btn");
-      if(quizBtn) quizBtn.classList.remove("hidden");
-    }
-    saveState();
-    updateDashboard();
-    updateCertificate();
-    toastInfo("Simulation marked complete.");
-  }
-
-  /***********************
-   * DASHBOARD
-   ***********************/
-  function updateDashboard(){
-    const completedCount = appState.completedModules.filter(Boolean).length;
-    document.getElementById("completed-modules").textContent = completedCount;
-
-    const overall = Math.round(appState.moduleProgress.reduce((a,b)=>a+b,0) / 4);
-    document.getElementById("progress-percent").textContent = `${overall}%`;
-
-    // Study time label
-    const hrs = Math.floor(appState.studyTime / 60);
-    const mins = appState.studyTime % 60;
-    document.getElementById("study-time").textContent = hrs > 0 ? `${hrs}h ${mins}m` : `${mins}m`;
-
-    // Quiz average
-    const avgQuiz = Math.round(appState.quizBestScores.reduce((a,b)=>a+b,0) / 4);
-    document.getElementById("quiz-score").textContent = `${avgQuiz}%`;
-
-    // module bars
-    for(let m=1; m<=4; m++){
-      const pct = clamp(appState.moduleProgress[m-1],0,100);
-      const label = document.getElementById(`module${m}-progress`);
-      const fill = document.getElementById(`module${m}-fill`);
-      if(label) label.textContent = `${pct}%`;
-      if(fill) fill.style.width = `${pct}%`;
-
-      // show quiz btn if module complete
-      const qb = document.getElementById(`module${m}-quiz-btn`);
-      if(qb){
-        if(appState.completedModules[m-1]) qb.classList.remove("hidden");
-        else qb.classList.add("hidden");
-      }
-    }
+  function resetAllProgress(){
+    if(!confirm("Reset ALL progress?")) return;
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
   }
 
   function updateStudyTime(){
-    // only count if tab visible
     if(document.hidden) return;
     appState.studyTime += 1;
     saveState();
     updateDashboard();
   }
 
-  /***********************
-   * CRITICAL PERIOD CALCULATOR
-   ***********************/
-  function calculateCriticalPeriod(){
-    const code = document.getElementById("cp-condition").value;
-    const symptomDays = parseInt(document.getElementById("cp-symptom-days").value || "0", 10);
-    const resultBox = document.getElementById("cp-result");
+  function updateDashboard(){
+    const completedCount = appState.completedModules.filter(Boolean).length;
+    document.getElementById("completed-modules").textContent = completedCount;
 
-    if(!code){
-      resultBox.className = "info-box warning mt-20";
-      resultBox.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> Select a condition</h4><p>Please choose a condition/code first.</p>`;
-      resultBox.classList.remove("hidden");
-      return;
-    }
+    const overall = Math.round(appState.moduleProgress.reduce((a,b)=>a+b,0) / appState.moduleProgress.length);
+    document.getElementById("progress-percent").textContent = `${overall}%`;
 
-    // Training table (simple). Use the prototype idea: CP = max incubation + duration of symptoms
-    // Values are expressed as maximum tracing window back from symptom onset/diagnosis (approx, training use).
-    const maxIncubationDays = {
-      "A1": 90,          // ~3 months
-      "A2": 180,         // ~6 months
-      "A3": 730,         // ~24 months
-      "B1": 30,          // ~1 month
-      "CHLAM": 90,       // ~3 months
-      "C13": null        // indefinite (special handling)
-    };
+    const hrs = Math.floor(appState.studyTime / 60);
+    const mins = appState.studyTime % 60;
+    document.getElementById("study-time").textContent = hrs > 0 ? `${hrs}h ${mins}m` : `${mins}m`;
 
-    if(code === "C13"){
-      resultBox.className = "info-box mt-20";
-      resultBox.innerHTML = `
-        <h4><i class="fas fa-info-circle"></i> HIV (C13) – training note</h4>
-        <p>HIV infectiousness is not treated like a short incubation window. Follow MOHW guidance and clinician direction for contact elicitation timeframes.</p>
-      `;
-      resultBox.classList.remove("hidden");
-      return;
-    }
+    // simple module bars
+    const ids = [["m1p","m1f",0],["m2p","m2f",1],["m3p","m3f",2],["m4p","m4f",3]];
+    ids.forEach(([lp, lf, idx])=>{
+      if(idx >= appState.moduleProgress.length) return;
+      const pct = clamp(appState.moduleProgress[idx],0,100);
+      const a = document.getElementById(lp), b = document.getElementById(lf);
+      if(a) a.textContent = `${pct}%`;
+      if(b) b.style.width = `${pct}%`;
+    });
 
-    const inc = maxIncubationDays[code];
-    const cpDays = inc + Math.max(0, symptomDays);
+    // Field guide status indicator
+    document.getElementById("fieldguide-status").textContent = "Ready";
+  }
 
-    // show results
-    const approxMonths = Math.round((cpDays/30)*10)/10;
-
-    resultBox.className = "info-box success mt-20";
-    resultBox.innerHTML = `
-      <h4><i class="fas fa-calculator"></i> Critical Period estimate</h4>
-      <p><strong>Condition:</strong> ${escapeHtml(code)}<br/>
-         <strong>Max incubation (training):</strong> ${inc} days<br/>
-         <strong>Symptom duration entered:</strong> ${symptomDays} days<br/>
-         <strong>Estimated CP:</strong> <span style="font-weight:1000">${cpDays} days</span> (≈ ${approxMonths} months)
-      </p>
-      <p class="help">Use this estimate to think about which contacts to prioritize. Always follow MOHW guidance and clinical direction.</p>
-    `;
-    resultBox.classList.remove("hidden");
+  function markModuleComplete(moduleNumber){
+    const i = moduleNumber - 1;
+    if(i < 0 || i >= appState.completedModules.length) return;
+    appState.completedModules[i] = true;
+    appState.moduleProgress[i] = 100;
+    saveState();
+    updateDashboard();
+    alert(`Module ${moduleNumber} marked complete.`);
   }
 
   /***********************
-   * FORMS: VALIDATION + PREVIEW
+   * RESOURCES: WORKING FIELD GUIDE OPENERS
+   ***********************/
+  function openGuideDownload(){
+    window.open(FIELD_GUIDE.driveDownloadUrl(), "_blank", "noopener,noreferrer");
+  }
+
+  function openGuideToToc(){
+    // TOC is doc page 2 -> pdf page 3
+    openGuideInViewer(3);
+    goSection("resources");
+  }
+
+  function clearViewer(){
+    const iframe = document.getElementById("guide-iframe");
+    iframe.src = "";
+  }
+
+  function openGuideInViewer(pdfPage){
+    // Drive preview cannot reliably deep-link to page, but we can show the viewer and also provide "open to page" buttons
+    const iframe = document.getElementById("guide-iframe");
+    iframe.src = FIELD_GUIDE.drivePreviewUrl();
+  }
+
+  function openGuideToPdfPageInNewTab(pdfPage){
+    // Best effort deep link: if browser treats as PDF, #page may work. (Works perfectly for LOCAL file.)
+    // For Drive download, some browsers still honor #page after download.
+    const url = `${FIELD_GUIDE.driveDownloadUrl()}#page=${encodeURIComponent(pdfPage)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  function openGuideLocalToPdfPage(pdfPage){
+    // If the PDF is placed beside this HTML, this works reliably with #page
+    const url = `${FIELD_GUIDE.localFilename}#page=${encodeURIComponent(pdfPage)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  function openGuideByTitle(title){
+    const item = FIELD_GUIDE_TOC.find(x => x.title.toLowerCase() === title.toLowerCase());
+    if(!item){
+      // fallback: try partial match
+      const alt = FIELD_GUIDE_TOC.find(x => x.title.toLowerCase().includes(title.toLowerCase()));
+      if(!alt){
+        alert("Could not find that topic in the TOC index. Try Resources search.");
+        goSection("resources");
+        return;
+      }
+      openGuideToPage(alt);
+      return;
+    }
+    openGuideToPage(item);
+  }
+
+  function openGuideToPage(item){
+    goSection("resources");
+    // Load viewer (general)
+    openGuideInViewer(item.pdfPage);
+
+    // Also open best effort deep link:
+    // Try local first if available to user; then drive download
+    // (We can’t truly “check file exists” reliably without a server; so we provide both actions in the UI too.)
+    openGuideToPdfPageInNewTab(item.pdfPage);
+  }
+
+  /***********************
+   * RESOURCES SEARCH UI
+   ***********************/
+  function setupResourcesSearch(){
+    const input = document.getElementById("toc-search");
+    input.addEventListener("input", () => renderTocResults(input.value));
+  }
+
+  function renderTocResults(query){
+    const q = (query || "").trim().toLowerCase();
+
+    const results = !q
+      ? FIELD_GUIDE_TOC
+      : FIELD_GUIDE_TOC.filter(x =>
+          x.title.toLowerCase().includes(q) ||
+          String(x.docPage).includes(q) ||
+          String(x.pdfPage).includes(q)
+        );
+
+    const box = document.getElementById("toc-results");
+    box.innerHTML = "";
+
+    if(results.length === 0){
+      box.innerHTML = `<div class="info-box warning"><h4><i class="fas fa-exclamation-triangle"></i> No matches</h4><p>Try another keyword (e.g., IR, FR, Confidentiality, Coding, Syphilis, HIV).</p></div>`;
+      return;
+    }
+
+    results.slice(0, 60).forEach(item => {
+      const div = document.createElement("div");
+      div.className = "toc-item";
+
+      div.innerHTML = `
+        <div>
+          <strong>${escapeHtml(item.title)}</strong>
+          <div class="meta">Manual page: <strong>${item.docPage}</strong> • PDF page: <strong>${item.pdfPage}</strong></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="openGuideInViewer(${item.pdfPage})"><i class="fas fa-tv"></i> Open in Viewer</button>
+          <button class="btn btn-primary" onclick="openGuideToPdfPageInNewTab(${item.pdfPage})"><i class="fas fa-up-right-from-square"></i> Open to Page</button>
+          <button class="btn btn-link" onclick="openGuideLocalToPdfPage(${item.pdfPage})"><i class="fas fa-desktop"></i> Open Local</button>
+        </div>
+      `;
+      box.appendChild(div);
+    });
+  }
+
+  /***********************
+   * FORMS: VALIDATION + PREVIEW (same idea, tightened)
    ***********************/
   function setupLiveFormValidation(){
-    const irIds = ["ir-date","ir-parish","ir-lastname","ir-firstname","ir-dob","ir-address","ir-reason","ir-contacts"];
+    const irIds = ["ir-date","ir-parish","ir-lastname","ir-firstname","ir-dob","ir-address","ir-contacts"];
     irIds.forEach(id => document.getElementById(id)?.addEventListener("input", () => softValidateIR()));
-
     document.querySelectorAll('input[name="ir-sex"]').forEach(r => r.addEventListener("change", softValidateIR));
-    document.querySelectorAll('input[name="ir-location"]').forEach(r => r.addEventListener("change", softValidateIR));
 
-    const frIds = ["fr-initiation","fr-assigned","fr-contactname","fr-dob","fr-address","fr-exposure-start","fr-outcome"];
+    const frIds = ["fr-initiation","fr-contactname","fr-address","fr-outcome"];
     frIds.forEach(id => document.getElementById(id)?.addEventListener("input", () => softValidateFR()));
-    document.querySelectorAll('input[name="fr-sex"]').forEach(r => r.addEventListener("change", softValidateFR));
   }
 
   function validateIRForm(){
     const ok = softValidateIR(true);
-    appState.formAttempts += 1;
-    saveState();
-    updateDashboard();
-
     const msg = document.getElementById("ir-validation-msg");
     if(ok){
       msg.className = "info-box success mt-20";
-      msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> IR looks good</h4><p>All required fields were completed correctly. You can print preview now.</p>`;
+      msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> IR looks good</h4><p>All required fields were completed correctly.</p>`;
       msg.classList.remove("hidden");
     }else{
       msg.className = "info-box warning mt-20";
-      msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> IR needs attention</h4><p>Please fix the highlighted fields and validate again.</p>`;
+      msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> IR needs attention</h4><p>Please fix the highlighted fields.</p>`;
       msg.classList.remove("hidden");
     }
     return ok;
   }
 
-  function softValidateIR(showMessages=false){
+  function softValidateIR(){
     let ok = true;
-
     ok &= validateRequired("wrap-ir-date", !!val("ir-date"));
     ok &= validateParishCode("wrap-ir-parish", val("ir-parish"));
     ok &= validateRequired("wrap-ir-lastname", !!val("ir-lastname"));
     ok &= validateRequired("wrap-ir-firstname", !!val("ir-firstname"));
     ok &= validateRequired("wrap-ir-dob", !!val("ir-dob"));
     ok &= validateRequired("wrap-ir-address", !!val("ir-address").trim());
-    ok &= validateRequired("wrap-ir-reason", !!val("ir-reason"));
     ok &= validateNonNegInt("wrap-ir-contacts", val("ir-contacts"));
     ok &= validateRadio("wrap-ir-sex", "ir-sex");
-    ok &= validateRadio("wrap-ir-location", "ir-location");
-
-    // toggle message only when explicit validation
-    if(showMessages){
-      // nothing extra here; msg handled in validateIRForm()
-    }
     return !!ok;
   }
 
   function resetIRForm(){
-    ["ir-parish","ir-lastname","ir-firstname","ir-mi","ir-alias","ir-age","ir-phone","ir-address","ir-reason","ir-sticode","ir-contacts"].forEach(id => setVal(id,""));
+    ["ir-parish","ir-lastname","ir-firstname","ir-address","ir-contacts"].forEach(id => setVal(id,""));
     setVal("ir-contacts","0");
     document.querySelectorAll('input[name="ir-sex"]').forEach(r => r.checked=false);
-    document.querySelectorAll('input[name="ir-location"]').forEach(r => r.checked=false);
-    document.querySelectorAll('#ir-form-simulator input[type="checkbox"]').forEach(c => c.checked=false);
-
-    clearValidationStyles(["wrap-ir-date","wrap-ir-parish","wrap-ir-lastname","wrap-ir-firstname","wrap-ir-sex","wrap-ir-dob","wrap-ir-address","wrap-ir-reason","wrap-ir-location","wrap-ir-contacts"]);
+    clearValidationStyles(["wrap-ir-date","wrap-ir-parish","wrap-ir-lastname","wrap-ir-firstname","wrap-ir-sex","wrap-ir-dob","wrap-ir-address","wrap-ir-contacts"]);
     document.getElementById("ir-validation-msg").classList.add("hidden");
   }
 
   function validateFRForm(){
     const ok = softValidateFR(true);
-    appState.formAttempts += 1;
-    saveState();
-    updateDashboard();
-
     const msg = document.getElementById("fr-validation-msg");
     if(ok){
       msg.className = "info-box success mt-20";
-      msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> FR looks good</h4><p>All required fields were completed correctly. You can print preview now.</p>`;
+      msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> FR looks good</h4><p>All required fields were completed correctly.</p>`;
       msg.classList.remove("hidden");
     }else{
       msg.className = "info-box warning mt-20";
-      msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> FR needs attention</h4><p>Please fix the highlighted fields and validate again.</p>`;
+      msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> FR needs attention</h4><p>Please fix the highlighted fields.</p>`;
       msg.classList.remove("hidden");
     }
     return ok;
@@ -1735,761 +1117,54 @@
 
   function softValidateFR(){
     let ok = true;
-
     ok &= validateRequired("wrap-fr-initiation", !!val("fr-initiation"));
-    ok &= validateRequired("wrap-fr-assigned", !!val("fr-assigned"));
     ok &= validateRequired("wrap-fr-contactname", !!val("fr-contactname"));
-    ok &= validateRequired("wrap-fr-dob", !!val("fr-dob"));
-    ok &= validateRadio("wrap-fr-sex", "fr-sex");
     ok &= validateRequired("wrap-fr-address", !!val("fr-address").trim());
-    ok &= validateRequired("wrap-fr-exposure-start", !!val("fr-exposure-start"));
     ok &= validateRequired("wrap-fr-outcome", !!val("fr-outcome"));
-
-    // simple date logic: end date >= start date (if provided)
-    const end = val("fr-exposure-end");
-    if(end){
-      const start = val("fr-exposure-start");
-      if(start && new Date(end) < new Date(start)){
-        ok = false;
-        setWrapState("wrap-fr-exposure-end", "error");
-      }else{
-        setWrapState("wrap-fr-exposure-end", "ok");
-      }
-    }else{
-      setWrapState("wrap-fr-exposure-end", "");
-    }
-
     return !!ok;
   }
 
   function resetFRForm(){
-    ["fr-initiation","fr-assigned","fr-contactname","fr-dob","fr-phone","fr-address","fr-exposure-start","fr-exposure-end","fr-outcome","fr-attempts","fr-notes"].forEach(id => setVal(id,""));
-    setVal("fr-attempts","1");
-    document.querySelectorAll('input[name="fr-sex"]').forEach(r => r.checked=false);
-
-    clearValidationStyles(["wrap-fr-initiation","wrap-fr-assigned","wrap-fr-contactname","wrap-fr-dob","wrap-fr-sex","wrap-fr-address","wrap-fr-exposure-start","wrap-fr-exposure-end","wrap-fr-outcome"]);
+    ["fr-initiation","fr-contactname","fr-address","fr-outcome"].forEach(id => setVal(id,""));
+    clearValidationStyles(["wrap-fr-initiation","wrap-fr-contactname","wrap-fr-address","wrap-fr-outcome"]);
     document.getElementById("fr-validation-msg").classList.add("hidden");
   }
 
   function previewIRPrint(){
     const ok = validateIRForm();
     if(!ok) return;
-
-    const education = [];
-    if(document.getElementById("ir-ed-severity").checked) education.push("Severity/complications");
-    if(document.getElementById("ir-ed-trans").checked) education.push("Transmission");
-    if(document.getElementById("ir-ed-sym").checked) education.push("Symptoms");
-    if(document.getElementById("ir-ed-cond").checked) education.push("Condom use");
-
     const html = `
-      <h3>Interview Record (IR) – Print Preview</h3>
+      <h3>Interview Record (IR) – Training Print Preview</h3>
       <p><strong>Interview Date:</strong> ${escapeHtml(val("ir-date"))}</p>
       <p><strong>Parish Code:</strong> ${escapeHtml(val("ir-parish").toUpperCase())}</p>
       <hr/>
-      <p><strong>Patient:</strong> ${escapeHtml(val("ir-lastname"))}, ${escapeHtml(val("ir-firstname"))} ${escapeHtml(val("ir-mi"))}</p>
-      <p><strong>Alias:</strong> ${escapeHtml(val("ir-alias")||"—")}</p>
+      <p><strong>Patient:</strong> ${escapeHtml(val("ir-lastname"))}, ${escapeHtml(val("ir-firstname"))}</p>
       <p><strong>Sex:</strong> ${escapeHtml(getRadio("ir-sex")||"—")}</p>
       <p><strong>DOB:</strong> ${escapeHtml(val("ir-dob"))}</p>
-      <p><strong>Age:</strong> ${escapeHtml(val("ir-age")||"—")}</p>
-      <p><strong>Phone:</strong> ${escapeHtml(val("ir-phone")||"—")}</p>
       <p><strong>Address:</strong> ${escapeHtml(val("ir-address"))}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(val("ir-reason"))}</p>
-      <p><strong>Where interviewed:</strong> ${escapeHtml(getRadio("ir-location")||"—")}</p>
-      <p><strong>STI Code(s):</strong> ${escapeHtml(val("ir-sticode")||"—")}</p>
       <p><strong>Contacts named:</strong> ${escapeHtml(val("ir-contacts"))}</p>
-      <p><strong>Education topics:</strong> ${escapeHtml(education.join(", ") || "—")}</p>
       <hr/>
       <p style="color:#666;font-size:0.92rem;">Training printout (not an official MOHW form).</p>
+      <p><button class="btn btn-link" onclick="openGuideByTitle('STI Interview Record - A Field by Field Explanation')"><i class="fas fa-book"></i> Open manual guidance (p.17)</button></p>
     `;
-    openModal("IR Print Preview", html);
+    openModal("IR Preview", html);
   }
 
   function previewFRPrint(){
     const ok = validateFRForm();
     if(!ok) return;
-
     const html = `
-      <h3>Field Record (FR) – Print Preview</h3>
+      <h3>Field Record (FR) – Training Print Preview</h3>
       <p><strong>FR initiated:</strong> ${escapeHtml(val("fr-initiation"))}</p>
-      <p><strong>Assigned:</strong> ${escapeHtml(val("fr-assigned"))}</p>
       <hr/>
       <p><strong>Contact:</strong> ${escapeHtml(val("fr-contactname"))}</p>
-      <p><strong>Sex:</strong> ${escapeHtml(getRadio("fr-sex")||"—")}</p>
-      <p><strong>DOB:</strong> ${escapeHtml(val("fr-dob"))}</p>
-      <p><strong>Phone:</strong> ${escapeHtml(val("fr-phone")||"—")}</p>
       <p><strong>Address / directions:</strong> ${escapeHtml(val("fr-address"))}</p>
-      <hr/>
-      <p><strong>Exposure start:</strong> ${escapeHtml(val("fr-exposure-start"))}</p>
-      <p><strong>Exposure end:</strong> ${escapeHtml(val("fr-exposure-end")||"—")}</p>
       <p><strong>Outcome:</strong> ${escapeHtml(val("fr-outcome"))}</p>
-      <p><strong>Attempts:</strong> ${escapeHtml(val("fr-attempts")||"—")}</p>
-      <p><strong>Notes:</strong><br/>${escapeHtml(val("fr-notes")||"—").replaceAll("\n","<br/>")}</p>
       <hr/>
       <p style="color:#666;font-size:0.92rem;">Training printout (not an official MOHW form).</p>
+      <p><button class="btn btn-link" onclick="openGuideByTitle('STI Field Record - A Field by Field Explanation')"><i class="fas fa-book"></i> Open manual guidance (p.29)</button></p>
     `;
-    openModal("FR Print Preview", html);
-  }
-
-  /***********************
-   * QUIZ SYSTEM
-   ***********************/
-  const quizBank = {
-    1: [
-      {
-        q: "What is the main goal of Contact Investigation (CI)?",
-        options: [
-          "To punish people who have an STI",
-          "To stop spread by finding contacts and linking them to testing and care",
-          "To tell the community who has infections",
-          "To replace clinic services"
-        ],
-        answerIndex: 1,
-        explain: "CI reduces transmission by identifying exposed contacts and supporting testing and treatment, while protecting confidentiality."
-      },
-      {
-        q: "Which is the BEST reason confidentiality is important?",
-        options: [
-          "So clients will feel safe to share contact information",
-          "So CIs can work faster without records",
-          "So partners never get tested",
-          "So clinics can avoid reporting"
-        ],
-        answerIndex: 0,
-        explain: "Confidentiality builds trust and improves cooperation, which makes CI effective."
-      },
-      {
-        q: "A good CI note should be:",
-        options: [
-          "Long and emotional",
-          "Short, factual, and dated",
-          "Only verbal, never written",
-          "Shared with anyone who asks"
-        ],
-        answerIndex: 1,
-        explain: "Documentation should be clear, factual, and include dates so it can be reviewed and followed up."
-      }
-    ],
-    2: [
-      {
-        q: "The Interview Record (IR) is mainly used to:",
-        options: [
-          "Track clinic electricity usage",
-          "Collect interview details, contacts named, and support reporting",
-          "Replace lab testing",
-          "Record only medication doses"
-        ],
-        answerIndex: 1,
-        explain: "IR captures interview information and supports reporting and future investigations."
-      },
-      {
-        q: "The Field Record (FR) is best described as:",
-        options: [
-          "A contact follow-up record that tracks attempts and outcomes",
-          "A payroll document",
-          "A lab results sheet only",
-          "A hospital discharge summary"
-        ],
-        answerIndex: 0,
-        explain: "FR documents contact follow-up, attempts, and outcomes."
-      },
-      {
-        q: "Which is MOST important before routing a form?",
-        options: [
-          "Ensure required fields and dates are complete and consistent",
-          "Use only pencil",
-          "Remove all codes",
-          "Share it with the community for transparency"
-        ],
-        answerIndex: 0,
-        explain: "Completeness and consistency are key for quality and follow-up."
-      }
-    ],
-    3: [
-      {
-        q: "Why do CIs use codes (e.g., A1, C13) in documentation?",
-        options: [
-          "To make records confusing",
-          "To protect confidentiality and support reporting",
-          "To avoid doing interviews",
-          "To replace diagnosis"
-        ],
-        answerIndex: 1,
-        explain: "Codes help protect privacy and standardize reporting."
-      },
-      {
-        q: "Critical Period (CP) helps a CI to:",
-        options: [
-          "Decide which contacts to prioritize in a tracing window",
-          "Choose a clinic paint color",
-          "Avoid contact follow-up",
-          "Replace counseling"
-        ],
-        answerIndex: 0,
-        explain: "CP helps prioritize contacts based on likely exposure timing."
-      },
-      {
-        q: "After identifying contacts, the next best step is usually to:",
-        options: [
-          "Post their names publicly",
-          "Initiate follow-up safely using approved notification approaches and document outcomes",
-          "Ignore them unless they call first",
-          "Only call once and close the case"
-        ],
-        answerIndex: 1,
-        explain: "Follow-up should be safe, documented, and linked to testing and treatment."
-      }
-    ],
-    4: [
-      {
-        q: "When partner conflict/violence risk is possible, the best approach is to:",
-        options: [
-          "Force immediate disclosure in front of others",
-          "Plan safer notification options and involve the clinical team",
-          "Stop all follow-up",
-          "Tell the partner the client’s diagnosis directly"
-        ],
-        answerIndex: 1,
-        explain: "Safety first. Use safer options and follow protocol."
-      },
-      {
-        q: "Good CI practice is:",
-        options: [
-          "Skipping documentation to save time",
-          "Accurate records, clear dates, and safe confidentiality practices",
-          "Sharing details with friends for support",
-          "Only tracing contacts if the client is famous"
-        ],
-        answerIndex: 1,
-        explain: "Good practice means safe work and strong documentation."
-      },
-      {
-        q: "A course certificate is unlocked when:",
-        options: [
-          "Only dashboard is visited",
-          "All modules are marked complete AND all module quizzes are passed",
-          "One quiz is attempted",
-          "A form is printed"
-        ],
-        answerIndex: 1,
-        explain: "This platform requires all modules + passing quizzes before certificate unlock."
-      }
-    ]
-  };
-
-  let activeQuiz = {
-    module: null,
-    index: 0,
-    answers: [],           // user answers by question index
-    correct: 0,
-    locked: false
-  };
-
-  function startQuiz(moduleNumber){
-    // navigate to quizzes
-    document.querySelector('.nav-btn[data-section="quizzes"]')?.click();
-
-    activeQuiz = {
-      module: moduleNumber,
-      index: 0,
-      answers: new Array(quizBank[moduleNumber].length).fill(null),
-      correct: 0,
-      locked: false
-    };
-
-    appState.quizAttempts += 1;
-    saveState();
-
-    document.getElementById("quiz-final").classList.add("hidden");
-    document.getElementById("quiz-module-label").textContent = `Module ${moduleNumber}`;
-    renderQuizQuestion();
-  }
-
-  function renderQuizQuestion(){
-    const mod = activeQuiz.module;
-    const bank = quizBank[mod];
-    const qObj = bank[activeQuiz.index];
-
-    document.getElementById("quiz-qcount").textContent = `${activeQuiz.index+1}/${bank.length}`;
-    document.getElementById("quiz-question").textContent = qObj.q;
-
-    const optionsEl = document.getElementById("quiz-options");
-    optionsEl.innerHTML = "";
-
-    const letters = ["A","B","C","D","E"];
-    qObj.options.forEach((text, idx) => {
-      const btn = document.createElement("div");
-      btn.className = "quiz-option";
-      btn.setAttribute("role","button");
-      btn.setAttribute("tabindex","0");
-      btn.setAttribute("aria-label", `Answer ${letters[idx]}: ${text}`);
-      btn.addEventListener("click", () => selectAnswer(idx));
-      btn.addEventListener("keydown", (e) => { if(e.key==="Enter"||e.key===" ") selectAnswer(idx); });
-
-      btn.innerHTML = `<div class="option-letter">${letters[idx]}</div><div>${escapeHtml(text)}</div>`;
-      optionsEl.appendChild(btn);
-    });
-
-    // reset feedback
-    const fb = document.getElementById("quiz-feedback");
-    fb.classList.remove("show");
-    fb.innerHTML = "";
-
-    // nav buttons
-    document.getElementById("quiz-prev").disabled = activeQuiz.index === 0;
-    document.getElementById("quiz-next").disabled = true;
-    document.getElementById("quiz-retry").disabled = false;
-
-    // show saved selection if exists
-    const savedAns = activeQuiz.answers[activeQuiz.index];
-    if(savedAns !== null){
-      selectAnswer(savedAns, true);
-    }else{
-      activeQuiz.locked = false;
-    }
-
-    updateQuizScoreLive();
-  }
-
-  function selectAnswer(selectedIndex, isReplay=false){
-    if(activeQuiz.locked && !isReplay) return;
-
-    const mod = activeQuiz.module;
-    const qObj = quizBank[mod][activeQuiz.index];
-    const options = document.querySelectorAll("#quiz-options .quiz-option");
-
-    // visual select
-    options.forEach(o => o.classList.remove("selected","correct","incorrect"));
-    options[selectedIndex]?.classList.add("selected");
-
-    // lock + grade only when first time answering this question
-    if(activeQuiz.answers[activeQuiz.index] === null){
-      activeQuiz.answers[activeQuiz.index] = selectedIndex;
-
-      const isCorrect = selectedIndex === qObj.answerIndex;
-      if(isCorrect) activeQuiz.correct += 1;
-
-      // mark correct/incorrect styles
-      options[qObj.answerIndex]?.classList.add("correct");
-      if(!isCorrect) options[selectedIndex]?.classList.add("incorrect");
-
-      // feedback
-      const fb = document.getElementById("quiz-feedback");
-      fb.innerHTML = `<strong>${isCorrect ? "Correct" : "Not quite"}</strong>: ${escapeHtml(qObj.explain)}`;
-      fb.classList.add("show");
-
-      activeQuiz.locked = true;
-      document.getElementById("quiz-next").disabled = false;
-
-      updateQuizScoreLive();
-    }else{
-      // replay state: reveal correct
-      options[qObj.answerIndex]?.classList.add("correct");
-      if(selectedIndex !== qObj.answerIndex) options[selectedIndex]?.classList.add("incorrect");
-      document.getElementById("quiz-next").disabled = false;
-      activeQuiz.locked = true;
-
-      const fb = document.getElementById("quiz-feedback");
-      fb.innerHTML = `<strong>Review</strong>: ${escapeHtml(qObj.explain)}`;
-      fb.classList.add("show");
-    }
-  }
-
-  function quizPrev(){
-    if(activeQuiz.index <= 0) return;
-    activeQuiz.index -= 1;
-    renderQuizQuestion();
-  }
-
-  function quizNext(){
-    const bank = quizBank[activeQuiz.module];
-
-    if(activeQuiz.index < bank.length - 1){
-      activeQuiz.index += 1;
-      renderQuizQuestion();
-      return;
-    }
-
-    // finished
-    const scorePct = Math.round((activeQuiz.correct / bank.length) * 100);
-    const passed = scorePct >= PASS_SCORE;
-
-    // save best score
-    const mIndex = activeQuiz.module - 1;
-    appState.quizBestScores[mIndex] = Math.max(appState.quizBestScores[mIndex], scorePct);
-    appState.quizPassed[mIndex] = appState.quizBestScores[mIndex] >= PASS_SCORE;
-
-    // unlock certificate if eligible
-    saveState();
-    updateDashboard();
-    updateCertificate();
-
-    const final = document.getElementById("quiz-final");
-    final.className = passed ? "info-box success mt-20" : "info-box warning mt-20";
-    final.innerHTML = `
-      <h4><i class="fas ${passed ? "fa-check-circle" : "fa-exclamation-triangle"}"></i>
-        Quiz complete – Score: ${scorePct}% (${passed ? "PASS" : "NOT PASS"})
-      </h4>
-      <p>
-        Best score saved for Module ${activeQuiz.module}: <strong>${appState.quizBestScores[mIndex]}%</strong><br/>
-        Passing score: <strong>${PASS_SCORE}%</strong>
-      </p>
-      <p class="help">${passed ? "Great — continue to the next module." : "Retry the quiz to improve your score."}</p>
-    `;
-    final.classList.remove("hidden");
-
-    // mark quiz button already visible on dashboard; also if module complete show
-    document.getElementById("quiz-next").disabled = true;
-
-    toastInfo(`Module ${activeQuiz.module} quiz saved: ${scorePct}%`);
-  }
-
-  function quizRetry(){
-    if(!activeQuiz.module) return;
-    startQuiz(activeQuiz.module);
-  }
-
-  function updateQuizScoreLive(){
-    const mod = activeQuiz.module;
-    if(!mod){
-      document.getElementById("quiz-score-live").textContent = "0%";
-      return;
-    }
-    const bank = quizBank[mod];
-    const answered = activeQuiz.answers.filter(a => a !== null).length;
-    const pct = answered ? Math.round((activeQuiz.correct / bank.length) * 100) : 0;
-    document.getElementById("quiz-score-live").textContent = `${pct}%`;
-  }
-
-  /***********************
-   * SIMULATION (branching)
-   ***********************/
-  const simulation = {
-    step: 0,
-    history: [],
-    steps: [
-      {
-        title: "Step 1",
-        prompt: "Select your first action.",
-        choices: [
-          {
-            label: "Prepare a private space, introduce yourself, explain confidentiality, and start the interview.",
-            feedback: "Good start. Privacy and confidentiality build trust and increase cooperation.",
-            next: 1,
-            good: true
-          },
-          {
-            label: "Call the client’s partner immediately and explain the diagnosis.",
-            feedback: "Not safe. This can break confidentiality and cause harm. Choose safe notification approaches.",
-            next: 1,
-            good: false
-          },
-          {
-            label: "Skip the interview and just fill out forms from memory.",
-            feedback: "Not appropriate. Interviews and accurate documentation are essential.",
-            next: 1,
-            good: false
-          }
-        ]
-      },
-      {
-        title: "Step 2",
-        prompt: "During the interview, what should you do next?",
-        choices: [
-          {
-            label: "Elicit contacts within the critical period and plan safe notification options.",
-            feedback: "Correct. Contact elicitation + safe follow-up is the core of CI work.",
-            next: 2,
-            good: true
-          },
-          {
-            label: "Tell the client you will post names publicly so contacts come quickly.",
-            feedback: "Not allowed. This violates confidentiality and can cause harm.",
-            next: 2,
-            good: false
-          }
-        ]
-      },
-      {
-        title: "Step 3",
-        prompt: "You suspect there may be partner conflict/violence risk. What is best?",
-        choices: [
-          {
-            label: "Assess safety concerns, use safer notification options, and involve the clinical team.",
-            feedback: "Correct. Safety planning matters when IPV risk is possible.",
-            next: 3,
-            good: true
-          },
-          {
-            label: "Force immediate disclosure in the waiting room so it is ‘done quickly’.",
-            feedback: "Unsafe and inappropriate. Never force disclosure in public spaces.",
-            next: 3,
-            good: false
-          }
-        ]
-      },
-      {
-        title: "Step 4",
-        prompt: "How do you close out the case work properly?",
-        choices: [
-          {
-            label: "Complete IR and FR documentation, record attempts/outcomes, and update your tracking/reporting.",
-            feedback: "Correct. Documentation and outcomes complete the loop for quality and reporting.",
-            next: null,
-            good: true
-          },
-          {
-            label: "Do nothing else once you feel you tried once.",
-            feedback: "Not sufficient. Document attempts and plan follow-up per protocol.",
-            next: null,
-            good: false
-          }
-        ]
-      }
-    ]
-  };
-
-  function setupSimulationInteractivity(){
-    renderSimulation();
-  }
-
-  function renderSimulation(){
-    const status = document.getElementById("sim-status");
-    const choicesEl = document.getElementById("sim-choices");
-    const feedbackEl = document.getElementById("sim-feedback");
-
-    const stepObj = simulation.steps[simulation.step];
-    status.innerHTML = `<h4><i class="fas fa-route"></i> ${stepObj.title}</h4><p>${escapeHtml(stepObj.prompt)}</p>`;
-
-    choicesEl.innerHTML = "";
-    feedbackEl.classList.add("hidden");
-    feedbackEl.innerHTML = "";
-
-    stepObj.choices.forEach((c, idx) => {
-      const card = document.createElement("div");
-      card.className = "decision-card";
-      card.setAttribute("role","button");
-      card.setAttribute("tabindex","0");
-      card.innerHTML = `<strong>Option ${idx+1}</strong><p class="help" style="margin-top:6px;">${escapeHtml(c.label)}</p>`;
-      card.addEventListener("click", () => chooseSimulation(idx, card));
-      card.addEventListener("keydown", (e) => { if(e.key==="Enter"||e.key===" ") chooseSimulation(idx, card); });
-      choicesEl.appendChild(card);
-    });
-  }
-
-  function chooseSimulation(choiceIndex, cardEl){
-    // select style
-    document.querySelectorAll("#sim-choices .decision-card").forEach(c => c.classList.remove("selected"));
-    cardEl.classList.add("selected");
-
-    const stepObj = simulation.steps[simulation.step];
-    const choice = stepObj.choices[choiceIndex];
-
-    const feedbackEl = document.getElementById("sim-feedback");
-    feedbackEl.className = choice.good ? "info-box success mt-20" : "info-box warning mt-20";
-    feedbackEl.innerHTML = `<h4><i class="fas ${choice.good ? "fa-check-circle" : "fa-exclamation-triangle"}"></i> Feedback</h4><p>${escapeHtml(choice.feedback)}</p>`;
-    feedbackEl.classList.remove("hidden");
-
-    // move next after short pause
-    setTimeout(() => {
-      if(choice.next === null){
-        document.getElementById("sim-status").className = "info-box success";
-        document.getElementById("sim-status").innerHTML = `<h4><i class="fas fa-check-circle"></i> Simulation complete</h4><p>You reached the end of the scenario. Mark simulation complete to record progress.</p>`;
-      }else{
-        simulation.step = choice.next;
-        renderSimulation();
-      }
-    }, 700);
-  }
-
-  function resetSimulation(){
-    simulation.step = 0;
-    simulation.history = [];
-    appState.simulationAttempts += 1;
-    saveState();
-    renderSimulation();
-    toastInfo("Simulation reset.");
-  }
-
-  /***********************
-   * CERTIFICATE
-   ***********************/
-  function updateCertificateName(){
-    const name = document.getElementById("user-name-input").value.trim();
-    if(!name){
-      toastWarn("Please enter your full name.");
-      return;
-    }
-    appState.userName = name;
-    saveState();
-    updateCertificate();
-    toastInfo("Name updated.");
-  }
-
-  function isEligibleForCertificate(){
-    const modulesDone = appState.completedModules.every(Boolean);
-    const quizzesPassed = appState.quizPassed.every(Boolean);
-    return modulesDone && quizzesPassed;
-  }
-
-  function updateCertificate(){
-    // name
-    document.getElementById("certificate-name-display").textContent = appState.userName || "[Your Name Here]";
-    document.getElementById("certificate-id").textContent = appState.certificateId || "CI-101-00000";
-
-    const eligible = isEligibleForCertificate();
-    appState.certificateEarned = eligible;
-
-    // status + date
-    const status = document.getElementById("certificate-status");
-    const date = document.getElementById("certificate-date");
-    const downloadBtn = document.getElementById("download-cert-btn");
-
-    if(eligible){
-      status.textContent = "Completed";
-      status.style.color = "var(--primary-green)";
-      date.textContent = new Date().toLocaleDateString();
-      downloadBtn.disabled = !appState.userName;
-    }else{
-      status.textContent = "In Progress";
-      status.style.color = "var(--primary-orange)";
-      date.textContent = "—";
-      downloadBtn.disabled = true;
-    }
-    saveState();
-  }
-
-  function checkCertificateEligibility(){
-    const msgBox = document.getElementById("eligibility-message");
-    const title = document.getElementById("eligibility-title");
-    const text = document.getElementById("eligibility-text");
-
-    const modulesDone = appState.completedModules.filter(Boolean).length;
-    const quizzesPassed = appState.quizPassed.filter(Boolean).length;
-
-    msgBox.classList.remove("hidden");
-
-    if(isEligibleForCertificate()){
-      title.innerHTML = `<i class="fas fa-check-circle"></i> Eligible`;
-      title.style.color = "var(--primary-green)";
-      text.innerHTML = `
-        You completed <strong>all 4 modules</strong> and passed <strong>all 4 quizzes</strong>.<br><br>
-        <strong>Best quiz scores:</strong> ${appState.quizBestScores.map((s,i)=>`M${i+1}: ${s}%`).join(" | ")}<br>
-        <strong>Study time:</strong> ${Math.floor(appState.studyTime/60)}h ${appState.studyTime%60}m<br><br>
-        <em>You can now print / save your certificate.</em>
-      `;
-      msgBox.className = "info-box success mt-20";
-    }else{
-      title.innerHTML = `<i class="fas fa-exclamation-circle"></i> Not yet eligible`;
-      title.style.color = "var(--primary-orange)";
-      const modulesRemaining = appState.completedModules.map((c,i)=>!c?`Module ${i+1}`:null).filter(Boolean);
-      const quizzesRemaining = appState.quizPassed.map((p,i)=>!p?`Module ${i+1}`:null).filter(Boolean);
-
-      text.innerHTML = `
-        <strong>Modules done:</strong> ${modulesDone}/4<br>
-        <strong>Quizzes passed:</strong> ${quizzesPassed}/4<br><br>
-        ${modulesRemaining.length ? `<strong>Modules remaining:</strong> ${modulesRemaining.join(", ")}<br>` : ""}
-        ${quizzesRemaining.length ? `<strong>Quizzes to pass:</strong> ${quizzesRemaining.join(", ")}<br>` : ""}
-        <br>Complete the missing items to unlock the certificate.
-      `;
-      msgBox.className = "info-box warning mt-20";
-    }
-  }
-
-  function printCertificate(){
-    if(!appState.certificateEarned){
-      toastWarn("Complete all modules and pass all quizzes first.");
-      return;
-    }
-    if(!appState.userName){
-      toastWarn("Enter your name first.");
-      return;
-    }
-    // navigate to certificate section, then print
-    document.querySelector('.nav-btn[data-section="certificate"]')?.click();
-    setTimeout(() => window.print(), 250);
-  }
-
-  /***********************
-   * RESOURCES
-   ***********************/
-  function openResource(filename){
-    // open in new tab; requires file in same folder or valid URL
-    window.open(filename, "_blank", "noopener,noreferrer");
-  }
-
-  function populateParishCodes(){
-    const codes = [
-      ["Hanover","HAN"],
-      ["St. James","STJ"],
-      ["Trelawny","TRE"],
-      ["Westmoreland","WES"],
-      ["St. Elizabeth","STE"],
-      ["Manchester","MAN"],
-      ["Clarendon","CLA"],
-      ["St. Catherine","STC"],
-      ["Kingston","KIN"],
-      ["St. Andrew","STA"],
-      ["St. Thomas","STT"],
-      ["Portland","POR"],
-      ["St. Mary","STM"],
-      ["St. Ann","SAN"],
-      ["St. Elizabeth","STE"]
-    ];
-    const tbody = document.getElementById("parish-codes");
-    if(!tbody) return;
-    tbody.innerHTML = "";
-    const unique = new Map();
-    codes.forEach(([p,c]) => unique.set(c, p));
-    [...unique.entries()].sort((a,b)=>a[1].localeCompare(b[1])).forEach(([code, parish]) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td style="padding:10px;border-bottom:1px solid var(--border-color);">${escapeHtml(parish)}</td>
-        <td style="padding:10px;border-bottom:1px solid var(--border-color);"><strong>${escapeHtml(code)}</strong></td>
-      `;
-      tbody.appendChild(tr);
-    });
-  }
-
-  /***********************
-   * VALIDATION HELPERS
-   ***********************/
-  function validateRequired(wrapId, condition){
-    if(condition){
-      setWrapState(wrapId,"ok");
-      return true;
-    }
-    setWrapState(wrapId,"error");
-    return false;
-  }
-
-  function validateParishCode(wrapId, v){
-    const ok = /^[A-Za-z]{3}$/.test((v||"").trim());
-    return validateRequired(wrapId, ok);
-  }
-
-  function validateNonNegInt(wrapId, v){
-    const n = Number(v);
-    const ok = Number.isFinite(n) && n >= 0 && Number.isInteger(n);
-    return validateRequired(wrapId, ok);
-  }
-
-  function validateRadio(wrapId, name){
-    const chosen = !!document.querySelector(`input[name="${CSS.escape(name)}"]:checked`);
-    return validateRequired(wrapId, chosen);
-  }
-
-  function setWrapState(wrapId, state){
-    const el = document.getElementById(wrapId);
-    if(!el) return;
-    el.classList.remove("error","ok");
-    if(state) el.classList.add(state);
-  }
-
-  function clearValidationStyles(wrapIds){
-    wrapIds.forEach(id => {
-      const el = document.getElementById(id);
-      if(el) el.classList.remove("error","ok");
-    });
+    openModal("FR Preview", html);
   }
 
   /***********************
@@ -2500,14 +1175,23 @@
     document.getElementById("modal-body").innerHTML = html;
     document.getElementById("modal-backdrop").classList.add("show");
   }
-
   function closeModal(){
     document.getElementById("modal-backdrop").classList.remove("show");
   }
 
   /***********************
-   * UTIL
+   * UTILS
    ***********************/
+  function setDefaultDates(){
+    const today = new Date().toISOString().split("T")[0];
+    setIfExists("ir-date", today);
+    setIfExists("ir-dob", "2000-01-01");
+    setIfExists("fr-initiation", today);
+  }
+  function setIfExists(id, val){
+    const el = document.getElementById(id);
+    if(el && !el.value) el.value = val;
+  }
   function val(id){ return (document.getElementById(id)?.value ?? ""); }
   function setVal(id, v){ const el = document.getElementById(id); if(el) el.value = v; }
   function getRadio(name){ return document.querySelector(`input[name="${CSS.escape(name)}"]:checked`)?.value || ""; }
@@ -2522,9 +1206,35 @@
       .replaceAll("'","&#039;");
   }
 
-  // Simple “toast” via modal-less info (kept minimal)
-  function toastInfo(msg){ console.log(msg); }
-  function toastWarn(msg){ alert(msg); }
+  function validateRequired(wrapId, condition){
+    if(condition){ setWrapState(wrapId,"ok"); return true; }
+    setWrapState(wrapId,"error"); return false;
+  }
+  function validateParishCode(wrapId, v){
+    const ok = /^[A-Za-z]{3}$/.test((v||"").trim());
+    return validateRequired(wrapId, ok);
+  }
+  function validateNonNegInt(wrapId, v){
+    const n = Number(v);
+    const ok = Number.isFinite(n) && n >= 0 && Number.isInteger(n);
+    return validateRequired(wrapId, ok);
+  }
+  function validateRadio(wrapId, name){
+    const chosen = !!document.querySelector(`input[name="${CSS.escape(name)}"]:checked`);
+    return validateRequired(wrapId, chosen);
+  }
+  function setWrapState(wrapId, state){
+    const el = document.getElementById(wrapId);
+    if(!el) return;
+    el.classList.remove("error","ok");
+    if(state) el.classList.add(state);
+  }
+  function clearValidationStyles(wrapIds){
+    wrapIds.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.classList.remove("error","ok");
+    });
+  }
 </script>
 </body>
 </html>
