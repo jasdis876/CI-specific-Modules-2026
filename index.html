@@ -29,7 +29,7 @@
       --focus:0 0 0 3px rgba(26,95,158,0.18);
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
-    body{background:var(--light-bg);color:var(--text-dark);line-height:1.6;min-height:100vh;padding:20px;}
+    body{background:var(--light-bg);color:var(--text-dark);line-height:1.65;min-height:100vh;padding:20px;}
     .container{max-width:1240px;margin:0 auto;}
     .hidden{display:none !important;}
     a{color:inherit}
@@ -48,7 +48,7 @@
     .header-content{position:relative;z-index:1;}
     .logo{font-size:3rem;margin-bottom:10px;}
     h1{font-size:2.2rem;margin-bottom:8px;text-shadow:0 2px 4px rgba(0,0,0,0.18);}
-    .subtitle{font-size:1.02rem;opacity:.92;max-width:980px;margin:0 auto 12px;}
+    .subtitle{font-size:1.02rem;opacity:.93;max-width:1000px;margin:0 auto 12px;}
     .badge{
       display:inline-block;background:rgba(255,255,255,0.2);padding:8px 18px;border-radius:999px;
       font-size:.9rem;margin-top:4px;
@@ -116,8 +116,6 @@
     .btn-success:hover{background:#276749;}
     .btn-danger{background:var(--primary-red);color:#fff;}
     .btn-danger:hover{filter:brightness(0.95);}
-    .btn-link{background:#edf2f7;color:var(--text-dark);}
-    .btn-link:hover{background:#e2e8f0}
 
     .content-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
     @media(max-width:992px){.content-grid{grid-template-columns:1fr;}}
@@ -143,22 +141,14 @@
     details[open] .chev{transform:rotate(180deg);}
     .accordion-body{margin-top:10px;}
 
-    .form-simulator{background:#fff;border:1px solid var(--border-color);border-radius:var(--radius);padding:16px;margin:12px 0;}
-    .form-header{background:#f7fafc;padding:12px;border-radius:var(--radius);margin-bottom:12px;border-left:4px solid var(--primary-blue);}
-    .form-field{margin-bottom:14px;}
-    .form-label{display:block;margin-bottom:7px;font-weight:1000;}
-    .form-input{
-      width:100%;padding:12px 14px;border:1px solid var(--border-color);border-radius:var(--radius);font-size:1rem;transition:var(--transition);
-    }
-    .form-input:focus{outline:none;border-color:var(--primary-blue);box-shadow:var(--focus);}
-    .form-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
-    .radio-group{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;}
-    .radio-option{display:flex;align-items:center;gap:8px;}
+    .tag{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:#edf2f7;border:1px solid var(--border-color);font-weight:900;font-size:.9rem;}
+    .ref{font-size:.92rem;color:var(--text-light);margin-top:6px;}
+    .ref b{color:var(--text-dark);}
     .help{color:var(--text-light);font-size:.92rem;margin-top:6px;}
-    .error-text{color:var(--primary-red);font-weight:1000;margin-top:6px;display:none;}
-    .error .error-text{display:block;}
-    .error .form-input{border-color:var(--primary-red);}
-    .ok .form-input{border-color:var(--primary-green);}
+
+    table{width:100%;border-collapse:collapse;margin:10px 0;}
+    th,td{border:1px solid var(--border-color);padding:10px;vertical-align:top;}
+    th{background:#f7fafc;text-align:left;}
 
     /* Exam */
     .exam-meta{
@@ -183,14 +173,6 @@
     .choice.wrong{border-color:var(--primary-red);background:#fff5f5;}
     .explain{margin-top:8px;color:var(--text-light);font-size:.95rem;}
 
-    /* tables */
-    table{width:100%;border-collapse:collapse;margin:10px 0;}
-    th,td{border:1px solid var(--border-color);padding:10px;vertical-align:top;}
-    th{background:#f7fafc;text-align:left;}
-    .tag{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:#edf2f7;border:1px solid var(--border-color);font-weight:900;font-size:.9rem;}
-    .ref{font-size:.92rem;color:var(--text-light);margin-top:6px;}
-    .ref b{color:var(--text-dark);}
-
     .footer{text-align:center;padding:24px 0;margin-top:32px;color:var(--text-light);border-top:1px solid var(--border-color);}
     .designer-credit{font-size:.92rem;margin-top:8px;opacity:.9;}
   </style>
@@ -203,8 +185,8 @@
       <div class="logo"><i class="fas fa-shield-heart"></i></div>
       <h1>Contact Investigation (Disease Intervention) 101</h1>
       <p class="subtitle">
-        Training content is built into this platform. Use the manuals as reference guides (download in <b>Resources</b>).
-        Final exam: <strong>50 MCQs</strong>, pass mark <strong>70%</strong>. Certificate unlocks after modules + exam pass.
+        Ultimate CI training & refresher tool for Jamaica. All learning content is inside the platform.
+        Use the manuals for deeper reading (download in <b>Resources</b>). Final exam: <strong>50 MCQs</strong>, pass mark <strong>70%</strong>.
       </p>
       <div class="badge"><i class="fas fa-book-open"></i> Jamaica MOHW CI Field Guide 2025 + STI Manual (2020)</div>
     </div>
@@ -258,14 +240,14 @@
     <div class="info-box">
       <h4><i class="fas fa-graduation-cap"></i> CPD / CME Credit Assignment</h4>
       <p>
-        Expanded curriculum estimate: <strong>10 hours</strong> (modules + forms practice + tools + exam).
-        Recommended CPD/CME allocation: <strong>10 CME credits</strong>.
+        Estimated learning time: <strong>12 hours</strong> (reading + workflow practice + tools + exam).
+        Recommended CPD/CME allocation: <strong>12 CME credits</strong>.
       </p>
-      <p class="help" style="margin-top:8px;">
-        Suggested breakdown: CI Basics 2h • Forms & Records 2h • Critical Period Tool 1h • STI Management 3h • Congenital/ON 1h • Exam 1h
+      <p class="help">
+        Suggested breakdown: CI Basics 2.5h • Forms & Records 2.5h • Critical Period 1.5h • STI Management 4h • Congenital/ON 1.5h • Exam 1h
       </p>
       <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-        <button class="btn btn-secondary" onclick="goSection('ci-basics')"><i class="fas fa-play"></i> Start CI Basics</button>
+        <button class="btn btn-secondary" onclick="goSection('ci-basics')"><i class="fas fa-play"></i> Start Module 1</button>
         <button class="btn btn-primary" onclick="goSection('resources')"><i class="fas fa-download"></i> Download Manuals</button>
       </div>
     </div>
@@ -274,7 +256,7 @@
       <div class="module-card">
         <div class="module-header"><div class="module-icon"><i class="fas fa-book"></i></div><div class="module-title">CI Basics</div></div>
         <div class="module-body">
-          <p class="module-desc">Purpose, confidentiality, ethics, prioritization, workflow, documentation rules.</p>
+          <p class="module-desc">Core purpose, ethics/confidentiality, prioritization, interview flow, safety, professionalism.</p>
           <div class="progress-container">
             <div class="progress-label"><span>Progress</span><span id="m1p">0%</span></div>
             <div class="progress-bar"><div class="progress-fill" id="m1f" style="width:0%"></div></div>
@@ -290,15 +272,15 @@
       <div class="module-card">
         <div class="module-header"><div class="module-icon"><i class="fas fa-file-alt"></i></div><div class="module-title">Forms & Records</div></div>
         <div class="module-body">
-          <p class="module-desc">IR, FR, Notification, Congenital Report — how to complete, common errors, practice.</p>
+          <p class="module-desc">IR/FR field-by-field guide, notification forms, confidentiality forms (teach points), common errors.</p>
           <div class="progress-container">
             <div class="progress-label"><span>Progress</span><span id="m2p">0%</span></div>
             <div class="progress-bar"><div class="progress-fill" id="m2f" style="width:0%"></div></div>
           </div>
-          <div class="ref">Refs: <b>CI Field Guide PDF p.10–17</b> (IR/FR forms + explanations), <b>PDF p.110</b> (Class 1 Notification)</div>
+          <div class="ref">Refs: <b>CI Field Guide PDF p.10–17</b> (IR/FR), <b>PDF p.110</b> (Class 1 Notification), <b>PDF p.89</b> (CS Report)</div>
         </div>
         <div class="module-footer">
-          <button class="btn btn-secondary" onclick="goSection('forms-records')"><i class="fas fa-play"></i> Practice</button>
+          <button class="btn btn-secondary" onclick="goSection('forms-records')"><i class="fas fa-play"></i> Open</button>
           <button class="btn btn-success" onclick="markModuleComplete(2)"><i class="fas fa-check"></i> Mark Complete</button>
         </div>
       </div>
@@ -306,7 +288,7 @@
       <div class="module-card">
         <div class="module-header"><div class="module-icon"><i class="fas fa-calendar-days"></i></div><div class="module-title">Critical Period Tool</div></div>
         <div class="module-body">
-          <p class="module-desc">Interview helper: calculate critical period start date using MOHW table.</p>
+          <p class="module-desc">How to define critical period, how to explain it to clients, and calculator.</p>
           <div class="progress-container">
             <div class="progress-label"><span>Progress</span><span id="m3p">0%</span></div>
             <div class="progress-bar"><div class="progress-fill" id="m3f" style="width:0%"></div></div>
@@ -322,12 +304,12 @@
       <div class="module-card">
         <div class="module-header"><div class="module-icon"><i class="fas fa-stethoscope"></i></div><div class="module-title">STI Management</div></div>
         <div class="module-body">
-          <p class="module-desc">All STIs listed + treatment summary tables (syndromic/aetiologic).</p>
+          <p class="module-desc">STIs list + treatment summaries + CI actions: notification, linkage, documentation, reinfection prevention.</p>
           <div class="progress-container">
             <div class="progress-label"><span>Progress</span><span id="m4p">0%</span></div>
             <div class="progress-bar"><div class="progress-fill" id="m4f" style="width:0%"></div></div>
           </div>
-          <div class="ref">Refs: <b>STI Manual PDF p.131–133</b> (treatment checklist), <b>p.49–51</b> (vaginal discharge), <b>p.82</b> (GUD)</div>
+          <div class="ref">Refs: <b>STI Manual PDF p.131–133</b>, <b>p.49–51</b>, <b>p.82</b>, <b>p.122</b></div>
         </div>
         <div class="module-footer">
           <button class="btn btn-secondary" onclick="goSection('sti-management')"><i class="fas fa-play"></i> Open</button>
@@ -338,12 +320,12 @@
       <div class="module-card">
         <div class="module-header"><div class="module-icon"><i class="fas fa-baby"></i></div><div class="module-title">Congenital Syphilis & ON</div></div>
         <div class="module-body">
-          <p class="module-desc">Priority investigation steps + congenital report form + ophthalmia neonatorum.</p>
+          <p class="module-desc">Priority investigation, mother–baby pathway, documentation, ON quick reference, referral urgency.</p>
           <div class="progress-container">
             <div class="progress-label"><span>Progress</span><span id="m5p">0%</span></div>
             <div class="progress-bar"><div class="progress-fill" id="m5f" style="width:0%"></div></div>
           </div>
-          <div class="ref">Refs: <b>CI Field Guide PDF p.84–91</b> (CS algorithm + guidance + form), <b>STI Manual PDF p.122</b> (ON treatment)</div>
+          <div class="ref">Refs: <b>CI Field Guide PDF p.84–91</b>, <b>STI Manual PDF p.122</b></div>
         </div>
         <div class="module-footer">
           <button class="btn btn-secondary" onclick="goSection('congenital')"><i class="fas fa-play"></i> Open</button>
@@ -356,92 +338,128 @@
       <h4><i class="fas fa-lock"></i> Unlock Rules</h4>
       <ul style="padding-left:18px;">
         <li><strong>Exam unlocks</strong> when all 5 modules are complete.</li>
-        <li><strong>Certificate unlocks</strong> when the exam is passed (≥70%).</li>
+        <li><strong>Certificate unlocks</strong> when exam is passed (≥70%).</li>
       </ul>
     </div>
   </section>
 
   <!-- MODULE 1: CI BASICS -->
   <section id="ci-basics" class="content-section">
-    <h2 class="section-title"><i class="fas fa-book"></i> Module 1 — CI Basics</h2>
+    <h2 class="section-title"><i class="fas fa-book"></i> Module 1 — CI Basics (Ultimate Refresher)</h2>
 
     <div class="info-box purple">
       <h4><i class="fas fa-book-open"></i> Manual reference</h4>
-      <p>
-        Use the manuals as your guide while you learn. Download them in <b>Resources</b>.
-      </p>
-      <div class="ref">CI Field Guide references for this module: <b>PDF p.8–10</b> and <b>PDF p.54</b> (programme expectations).</div>
+      <p>This module includes expanded explanations. Use the CI Field Guide for deeper detail.</p>
+      <div class="ref">CI Field Guide references: <b>PDF p.8–10</b> (confidentiality + intro), plus programme expectations <b>PDF p.53–54</b>.</div>
       <button class="btn btn-primary" style="margin-top:10px;" onclick="goSection('resources')"><i class="fas fa-download"></i> Go to Resources</button>
     </div>
 
     <div class="content-grid">
       <div class="content-main">
         <div class="info-box">
-          <h4><i class="fas fa-bullseye"></i> Learning outcomes</h4>
+          <h4><i class="fas fa-bullseye"></i> What a strong CI does (in simple terms)</h4>
           <ul style="padding-left:18px;">
-            <li>Explain what CI is and why it matters.</li>
-            <li>Apply confidentiality rules in real situations.</li>
-            <li>Describe the CI workflow from referral to closure.</li>
-            <li>Recognize safety and professionalism standards.</li>
+            <li><b>Find the right people</b> (index + contacts).</li>
+            <li><b>Protect privacy</b> (never expose identity/diagnosis).</li>
+            <li><b>Support action</b> (testing, treatment, counselling, prevention).</li>
+            <li><b>Write it down properly</b> (records are evidence of work and outcomes).</li>
           </ul>
         </div>
 
         <details class="accordion-item" open>
-          <summary>1) What CI is (core purpose) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>1) Definitions you must know <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
-            <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.9</span></p>
-            <p><strong>Contact Investigation (CI)</strong> is a structured public health process used to stop infections from spreading.</p>
-            <ul style="padding-left:18px;margin-top:8px;">
-              <li>Interview the person diagnosed (index case).</li>
-              <li>Identify contacts who may have been exposed.</li>
-              <li>Notify contacts <strong>without revealing identity/diagnosis</strong>.</li>
-              <li>Support contacts to test and treat (linkage/referral).</li>
-              <li>Document actions and outcomes (IR + FR) and report indicators.</li>
-            </ul>
+            <p class="help">
+              These words show up in reports, interviews, and supervisor reviews. Knowing them makes you faster and more accurate.
+            </p>
+            <table>
+              <thead><tr><th>Term</th><th>Meaning (CI use)</th></tr></thead>
+              <tbody>
+                <tr><td><b>Index case/client</b></td><td>The diagnosed person you interview to identify contacts.</td></tr>
+                <tr><td><b>Contact</b></td><td>Person who may have been exposed and needs notification, testing and/or treatment.</td></tr>
+                <tr><td><b>Partner notification</b></td><td>Letting a contact know they may have been exposed, without identifying the index client.</td></tr>
+                <tr><td><b>Disposition/outcome</b></td><td>The final result of the contact investigation (tested, treated, refused, not found, moved, etc.).</td></tr>
+                <tr><td><b>Locator information</b></td><td>Details that help you find someone: phone, address, landmarks, workplace, best time, etc.</td></tr>
+              </tbody>
+            </table>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>2) Confidentiality (non-negotiable rules) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>2) Confidentiality rules (what to do and what to never do) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.8</span></p>
             <div class="info-box warning">
-              <h4><i class="fas fa-exclamation-triangle"></i> Non-negotiable</h4>
-              <p>Never reveal the index client’s diagnosis or identity to a partner/contact.</p>
+              <h4><i class="fas fa-exclamation-triangle"></i> Never do these</h4>
+              <ul style="padding-left:18px;">
+                <li>Never tell a contact who named them.</li>
+                <li>Never reveal the diagnosis/condition of the index client.</li>
+                <li>Never discuss cases in public spaces (waiting rooms, taxis, shops).</li>
+                <li>Never leave forms open in vehicles or on desks.</li>
+              </ul>
             </div>
-            <ul style="padding-left:18px;">
-              <li>Use private settings for interviews and notifications.</li>
-              <li>Secure paper files (no open desks, no vehicle seat storage).</li>
-              <li>Use approved codes and objective wording.</li>
-              <li>Share information on a strict need-to-know basis.</li>
-            </ul>
+            <div class="info-box success">
+              <h4><i class="fas fa-check-circle"></i> Do these instead</h4>
+              <ul style="padding-left:18px;">
+                <li>Use private interview locations.</li>
+                <li>Use neutral wording: “You may have been exposed” (not “You got X from…”).</li>
+                <li>Use programme codes and factual notes.</li>
+                <li>Share information only with authorised staff who need it for care/public health.</li>
+              </ul>
+            </div>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>3) Basic CI workflow (what happens step-by-step) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>3) The CI workflow (from referral to closure) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.9–11</span></p>
             <ol style="padding-left:18px;">
-              <li><strong>Receive referral</strong> (clinic/lab/programme).</li>
-              <li><strong>Prepare</strong> (review info, plan safe approach, materials).</li>
-              <li><strong>Interview</strong> (rapport → explain purpose → collect contacts).</li>
-              <li><strong>Open FRs</strong> for contacts; plan attempts.</li>
-              <li><strong>Link contacts to services</strong> (testing, treatment, counselling).</li>
-              <li><strong>Close & report</strong> with complete documentation.</li>
+              <li><b>Receive referral</b> and confirm the condition/priority.</li>
+              <li><b>Prepare</b>: review info, plan safest approach, gather materials.</li>
+              <li><b>Interview</b>: build trust, explain confidentiality, collect contacts + locator details.</li>
+              <li><b>Notify contacts</b>: choose method (phone/field/clinic), do not expose identity/diagnosis.</li>
+              <li><b>Link to services</b>: testing, treatment, counselling, prevention education.</li>
+              <li><b>Document attempts/outcomes</b> so the story is clear on paper.</li>
+              <li><b>Close case</b>: final dispositions recorded and ready for reporting.</li>
             </ol>
+            <div class="info-box orange">
+              <h4><i class="fas fa-lightbulb"></i> Supervisor lens</h4>
+              <p class="help">Strong CIs are judged by: quality of interviews, completeness of locator details, confidentiality, and documented outcomes.</p>
+            </div>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>4) Targets & expectations (what CIs are expected to do) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>4) Interview structure (simple “script” you can follow) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
-            <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.53–54</span></p>
+            <div class="info-box">
+              <h4><i class="fas fa-comment-dots"></i> A practical CI interview flow</h4>
+              <ol style="padding-left:18px;">
+                <li><b>Rapport:</b> “I’m here to support you. This is confidential.”</li>
+                <li><b>Purpose:</b> “We try to protect you and others by finding who may need testing/treatment.”</li>
+                <li><b>Safety/confidentiality:</b> explain that you won’t expose them to partners.</li>
+                <li><b>Timeline:</b> identify symptom start/treatment date for partner period.</li>
+                <li><b>Partner list:</b> names/aliases, phones, addresses, landmarks, best times.</li>
+                <li><b>Plan:</b> ask how they want partners notified (options within policy).</li>
+                <li><b>Prevention:</b> condom use, return for retesting, avoid reinfection.</li>
+                <li><b>Close:</b> recap next steps and confirm follow-up method.</li>
+              </ol>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>5) Prioritisation (who you go to first) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box orange">
+              <h4><i class="fas fa-signal"></i> Priority principle</h4>
+              <p>Prioritise cases with higher risk of transmission, severe outcomes, or urgent public health impact.</p>
+            </div>
             <ul style="padding-left:18px;">
-              <li>Locate/interview persons diagnosed (priority conditions get priority).</li>
-              <li>Support partner notification and linkage to services.</li>
-              <li>Ensure records are accurate (data clerks can only enter what you document).</li>
-              <li>Support reporting and programme monitoring.</li>
+              <li>Pregnancy/infant-related cases (e.g., congenital syphilis risk) should be urgent.</li>
+              <li>Cases with multiple partners or low likelihood of return to clinic need quick action.</li>
+              <li>Cases with safety risks require planned approach and supervisor support.</li>
             </ul>
           </div>
         </details>
@@ -454,18 +472,13 @@
       <div class="content-sidebar">
         <div class="info-box orange">
           <h4><i class="fas fa-clock"></i> Suggested time</h4>
-          <p><strong>2 hours</strong></p>
-          <p class="help">Read, expand each section, take notes, and practice scenario wording.</p>
+          <p><strong>2.5 hours</strong></p>
+          <p class="help">Read each section and practice the interview flow aloud.</p>
         </div>
 
-        <div class="info-box">
-          <h4><i class="fas fa-note-sticky"></i> Quick memory anchors</h4>
-          <ul style="padding-left:18px;">
-            <li>Protect identity</li>
-            <li>Document everything</li>
-            <li>Notify safely</li>
-            <li>Link to testing/treatment</li>
-          </ul>
+        <div class="info-box warning">
+          <h4><i class="fas fa-triangle-exclamation"></i> Golden rule</h4>
+          <p class="help">If your wording could expose identity/diagnosis, rephrase before you speak or write.</p>
         </div>
       </div>
     </div>
@@ -473,15 +486,14 @@
 
   <!-- MODULE 2: FORMS & RECORDS -->
   <section id="forms-records" class="content-section">
-    <h2 class="section-title"><i class="fas fa-file-alt"></i> Module 2 — Forms & Records</h2>
+    <h2 class="section-title"><i class="fas fa-file-alt"></i> Module 2 — Forms & Records (Field-by-Field Guide)</h2>
 
     <div class="info-box purple">
       <h4><i class="fas fa-book-open"></i> Manual reference</h4>
-      <p>Download manuals in <b>Resources</b> and compare your practice forms to the official layouts.</p>
+      <p>This module explains what each form section is for and how to avoid common mistakes.</p>
       <div class="ref">
-        CI Field Guide: <b>IR form PDF p.12–16</b>, IR field-by-field explanation <b>PDF p.17</b>,
-        forms procedures <b>PDF p.37</b>, Class 1 Notification Form <b>PDF p.110</b>,
-        Congenital Syphilis Report Form <b>PDF p.89</b>.
+        CI Field Guide: <b>IR PDF p.12–16</b>, explanation <b>p.17</b>, FR guidance <b>p.10–11</b>, Forms procedures <b>p.37</b>,
+        Class 1 Notification Form <b>p.110</b>, Congenital Syphilis Report Form <b>p.89</b>.
       </div>
       <button class="btn btn-primary" style="margin-top:10px;" onclick="goSection('resources')"><i class="fas fa-download"></i> Go to Resources</button>
     </div>
@@ -489,196 +501,82 @@
     <div class="content-grid">
       <div class="content-main">
         <details class="accordion-item" open>
-          <summary>1) Interview Record (IR) — what it captures <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>1) Why forms matter (programme reality) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box">
+              <h4><i class="fas fa-clipboard"></i> Forms are evidence</h4>
+              <ul style="padding-left:18px;">
+                <li>If it is not documented, it is treated like it did not happen.</li>
+                <li>Quality documentation supports reporting, funding, supervision, and performance reviews.</li>
+                <li>Good forms protect the client, the CI, and the programme.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>2) Interview Record (IR) — what each section is trying to capture <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.12–17</span></p>
-            <ul style="padding-left:18px;">
-              <li>Index client details (as per programme rules).</li>
-              <li>Interview details (date, place, interviewer/CI code).</li>
-              <li>Risk window & contacts named (with locator info).</li>
-              <li>HIV test history/referral details if relevant.</li>
-              <li>Objective notes to support follow-up.</li>
-            </ul>
+            <table>
+              <thead><tr><th>IR section</th><th>Purpose</th><th>Common mistakes</th></tr></thead>
+              <tbody>
+                <tr><td><b>Client identifiers</b></td><td>Correctly link the IR to the right person.</td><td>Wrong spelling, missing DOB, unclear ID.</td></tr>
+                <tr><td><b>Interview details</b></td><td>Show when/where and who conducted the interview.</td><td>No date, no CI code, vague location.</td></tr>
+                <tr><td><b>Risk/timeline</b></td><td>Define the partner period and key dates (symptoms, testing, treatment).</td><td>No timeline, mixed-up dates, not documenting “unknown”.</td></tr>
+                <tr><td><b>Contacts named</b></td><td>Record partners/contacts with usable locator details.</td><td>Only “nickname”, no phone/address/landmark.</td></tr>
+                <tr><td><b>Plan & notes</b></td><td>Clear next steps and factual notes for follow-up.</td><td>Judgmental language, confidential details that expose identity.</td></tr>
+              </tbody>
+            </table>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>2) Field Record (FR) — what it tracks <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>3) Field Record (FR) — attempt tracking and outcomes <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.10–11</span></p>
-            <ul style="padding-left:18px;">
-              <li>Contact locator details (address, phone, landmarks).</li>
-              <li>All attempts (date/time/method/outcome).</li>
-              <li>Final disposition (tested/treated/refused/not found/moved).</li>
-            </ul>
+            <div class="info-box orange">
+              <h4><i class="fas fa-route"></i> FR best practice</h4>
+              <ul style="padding-left:18px;">
+                <li>Every attempt gets a date/time/method and result.</li>
+                <li>Record the “best time to find” and “best contact method.”</li>
+                <li>Final disposition must be clear (tested/treated/refused/not found/moved).</li>
+              </ul>
+            </div>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>3) General Class 1 Notification Form (teaching point) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>4) Other investigation forms (teach points) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
-            <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.110</span></p>
-            <p>Used for urgent notifiable events/conditions. This training simulator focuses on completing core identifying and reporting fields clearly and accurately.</p>
+            <p class="help">Your prototype mentioned more forms—this section teaches where they fit in workflow.</p>
+            <table>
+              <thead><tr><th>Form</th><th>When used</th><th>Reference</th></tr></thead>
+              <tbody>
+                <tr><td><b>Class 1 Notification</b></td><td>Urgent notifiable event/condition reporting.</td><td>CI Field Guide <b>PDF p.110</b></td></tr>
+                <tr><td><b>Congenital Syphilis Investigation Report</b></td><td>Mother–baby investigation and documentation.</td><td>CI Field Guide <b>PDF p.89</b></td></tr>
+                <tr><td><b>Confidentiality/consent style forms</b></td><td>Where programme policy requires documentation of confidentiality/consent steps.</td><td>Use local programme SOPs + Field Guide confidentiality section <b>PDF p.8</b></td></tr>
+                <tr><td><b>Notification slips / partner notification documentation</b></td><td>Evidence that a contact was notified and referred.</td><td>Use local programme tools (often aligned to Field Guide approach)</td></tr>
+              </tbody>
+            </table>
           </div>
         </details>
 
-        <!-- SIMULATED FORMS (IR/FR/NOTIFICATION) -->
-        <div class="form-simulator">
-          <div class="form-header">
-            <h4><i class="fas fa-clipboard-list"></i> Practice: Simulated IR (training)</h4>
-            <p class="help">Training simulator. Required fields validate live.</p>
-          </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-ir-date">
-              <label class="form-label">* Interview Date</label>
-              <input type="date" class="form-input" id="ir-date" />
-              <div class="error-text">Interview date is required.</div>
-            </div>
-            <div class="form-field" id="wrap-ir-parish">
-              <label class="form-label">* Parish Code (3 letters)</label>
-              <input type="text" class="form-input" id="ir-parish" placeholder="e.g., HAN" maxlength="3" />
-              <div class="error-text">Enter a 3-letter parish code.</div>
+        <details class="accordion-item">
+          <summary>5) Documentation quality rules (what supervisors check) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box">
+              <h4><i class="fas fa-check-double"></i> Quality checklist</h4>
+              <ul style="padding-left:18px;">
+                <li>All key dates present (interview, attempts, outcomes).</li>
+                <li>Locator details are usable (not vague).</li>
+                <li>Notes are factual and confidential.</li>
+                <li>Outcomes are clearly stated (no “pending” forever).</li>
+                <li>Corrections are handled properly (no messy rewriting that destroys meaning).</li>
+              </ul>
             </div>
           </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-ir-lastname">
-              <label class="form-label">* Last Name</label>
-              <input type="text" class="form-input" id="ir-lastname" placeholder="Required" />
-              <div class="error-text">Last name is required.</div>
-            </div>
-            <div class="form-field" id="wrap-ir-firstname">
-              <label class="form-label">* First Name</label>
-              <input type="text" class="form-input" id="ir-firstname" placeholder="Required" />
-              <div class="error-text">First name is required.</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-ir-sex">
-              <label class="form-label">* Sex at Birth</label>
-              <div class="radio-group">
-                <div class="radio-option"><input type="radio" id="ir-male" name="ir-sex" value="M" /><label for="ir-male">Male (M)</label></div>
-                <div class="radio-option"><input type="radio" id="ir-female" name="ir-sex" value="F" /><label for="ir-female">Female (F)</label></div>
-              </div>
-              <div class="error-text">Select sex at birth.</div>
-            </div>
-            <div class="form-field" id="wrap-ir-dob">
-              <label class="form-label">* Date of Birth</label>
-              <input type="date" class="form-input" id="ir-dob" />
-              <div class="error-text">Date of birth is required.</div>
-            </div>
-          </div>
-
-          <div class="form-field" id="wrap-ir-address">
-            <label class="form-label">* Address</label>
-            <textarea class="form-input" id="ir-address" rows="2" placeholder="Full address or 'UNKNOWN'"></textarea>
-            <div class="error-text">Address is required (or write UNKNOWN).</div>
-          </div>
-
-          <div class="form-field" id="wrap-ir-contacts">
-            <label class="form-label">* Contacts named (number)</label>
-            <input type="number" class="form-input" id="ir-contacts" min="0" max="50" value="0" />
-            <div class="error-text">Enter a whole number (0 or more).</div>
-          </div>
-
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="validateIRForm()"><i class="fas fa-check"></i> Validate IR</button>
-            <button class="btn btn-secondary" onclick="resetIRForm()"><i class="fas fa-redo"></i> Reset</button>
-          </div>
-          <div class="info-box hidden" id="ir-validation-msg" style="margin-top:12px;"></div>
-        </div>
-
-        <div class="form-simulator">
-          <div class="form-header">
-            <h4><i class="fas fa-map-marked-alt"></i> Practice: Simulated FR (training)</h4>
-            <p class="help">Track attempts and outcomes clearly.</p>
-          </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-fr-initiation">
-              <label class="form-label">* Date FR initiated</label>
-              <input type="date" class="form-input" id="fr-initiation" />
-              <div class="error-text">Initiation date is required.</div>
-            </div>
-            <div class="form-field" id="wrap-fr-contactname">
-              <label class="form-label">* Contact name/alias</label>
-              <input type="text" class="form-input" id="fr-contactname" placeholder="Required" />
-              <div class="error-text">Contact name is required.</div>
-            </div>
-          </div>
-
-          <div class="form-field" id="wrap-fr-address">
-            <label class="form-label">* Contact address / directions</label>
-            <textarea class="form-input" id="fr-address" rows="2" placeholder="Required"></textarea>
-            <div class="error-text">Address/directions required.</div>
-          </div>
-
-          <div class="form-field" id="wrap-fr-outcome">
-            <label class="form-label">* Outcome</label>
-            <select class="form-input" id="fr-outcome">
-              <option value="">Select…</option>
-              <option value="located-treated">Located and treated</option>
-              <option value="located-tested">Located and tested</option>
-              <option value="not-located">Not located</option>
-              <option value="refused">Refused</option>
-              <option value="moved">Moved / left area</option>
-            </select>
-            <div class="error-text">Select an outcome.</div>
-          </div>
-
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="validateFRForm()"><i class="fas fa-check"></i> Validate FR</button>
-            <button class="btn btn-secondary" onclick="resetFRForm()"><i class="fas fa-redo"></i> Reset</button>
-          </div>
-          <div class="info-box hidden" id="fr-validation-msg" style="margin-top:12px;"></div>
-        </div>
-
-        <div class="form-simulator">
-          <div class="form-header">
-            <h4><i class="fas fa-bell"></i> Practice: Class 1 Notification (training)</h4>
-            <p class="help">Teach-point simulator based on CI Field Guide PDF p.110.</p>
-          </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-nf-date">
-              <label class="form-label">* Date of Notification</label>
-              <input type="date" class="form-input" id="nf-date" />
-              <div class="error-text">Date is required.</div>
-            </div>
-            <div class="form-field" id="wrap-nf-condition">
-              <label class="form-label">* Notifiable Condition / Event</label>
-              <input type="text" class="form-input" id="nf-condition" placeholder="e.g., Suspected Class 1 condition" />
-              <div class="error-text">Condition is required.</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-nf-facility">
-              <label class="form-label">* Reporting Facility</label>
-              <input type="text" class="form-input" id="nf-facility" placeholder="e.g., Lucea Health Centre" />
-              <div class="error-text">Facility is required.</div>
-            </div>
-            <div class="form-field" id="wrap-nf-contact">
-              <label class="form-label">* Reporting Contact (name/role)</label>
-              <input type="text" class="form-input" id="nf-contact" placeholder="e.g., Nurse/CI/MOH" />
-              <div class="error-text">Contact is required.</div>
-            </div>
-          </div>
-
-          <div class="form-field" id="wrap-nf-notes">
-            <label class="form-label">Notes (brief)</label>
-            <textarea class="form-input" id="nf-notes" rows="2" placeholder="Key facts only (objective wording)."></textarea>
-            <div class="help">Keep notes factual and confidential.</div>
-          </div>
-
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="validateNotifyForm()"><i class="fas fa-check"></i> Validate</button>
-            <button class="btn btn-secondary" onclick="resetNotifyForm()"><i class="fas fa-redo"></i> Reset</button>
-          </div>
-          <div class="info-box hidden" id="nf-msg" style="margin-top:12px;"></div>
-        </div>
+        </details>
 
         <div style="text-align:center;margin-top:14px;">
           <button class="btn btn-success" onclick="markModuleComplete(2)"><i class="fas fa-check"></i> Mark Module 2 Complete</button>
@@ -688,62 +586,74 @@
       <div class="content-sidebar">
         <div class="info-box orange">
           <h4><i class="fas fa-clock"></i> Suggested time</h4>
-          <p><strong>2 hours</strong></p>
-          <p class="help">Practice IR + FR + Notification simulator and review errors.</p>
+          <p><strong>2.5 hours</strong></p>
+          <p class="help">Read the field-by-field guide and compare the official forms in the PDF.</p>
         </div>
-
-        <div class="info-box">
-          <h4><i class="fas fa-check-double"></i> Quality checklist</h4>
-          <ul style="padding-left:18px;">
-            <li>Dates on every action</li>
-            <li>Clear locator details</li>
-            <li>Objective notes</li>
-            <li>Confidential wording</li>
-            <li>Final outcome documented</li>
-          </ul>
+        <div class="info-box warning">
+          <h4><i class="fas fa-triangle-exclamation"></i> Biggest issue in CI reports</h4>
+          <p class="help">Missing dates + weak locator details = investigation slows down and outcomes drop.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MODULE 3: CRITICAL PERIOD TOOL -->
+  <!-- MODULE 3: CRITICAL PERIOD -->
   <section id="critical-period" class="content-section">
-    <h2 class="section-title"><i class="fas fa-calendar-days"></i> Module 3 — Critical Period Interview Tool</h2>
+    <h2 class="section-title"><i class="fas fa-calendar-days"></i> Module 3 — Critical Period Interview (Teaching + Tool)</h2>
 
     <div class="info-box purple">
       <h4><i class="fas fa-book-open"></i> Manual reference</h4>
       <p>Critical period guidance + maximum infectious period table are in the CI Field Guide.</p>
-      <div class="ref">CI Field Guide: <b>PDF p.41</b> (critical period definition + table)</div>
+      <div class="ref">CI Field Guide: <b>PDF p.41</b></div>
       <button class="btn btn-primary" style="margin-top:10px;" onclick="goSection('resources')"><i class="fas fa-download"></i> Download Manual</button>
     </div>
 
     <div class="content-grid">
       <div class="content-main">
         <details class="accordion-item" open>
-          <summary>1) Teaching: What is the “critical period”? <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>1) What is “critical period” and why it matters <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.41</span></p>
-            <p>
-              The <strong>critical period</strong> is the time window when a person could have been infectious and exposed partners/contacts.
-              In interviews, it helps you decide <strong>which partners to focus on</strong>.
-            </p>
-            <div class="info-box orange">
-              <p><strong>Rule used in this tool:</strong> Critical Period = (Maximum infectious period) + (duration of signs/symptoms before treatment).</p>
+            <ul style="padding-left:18px;">
+              <li>It helps you decide <b>which partners</b> to focus on for notification and follow-up.</li>
+              <li>It makes the interview clearer: “We are focusing on contacts from [start date] to now.”</li>
+              <li>It supports fairness and consistency across cases.</li>
+            </ul>
+            <div class="info-box">
+              <h4><i class="fas fa-comment-dots"></i> Simple explanation you can tell a client</h4>
+              <p>
+                “We are going to focus on the time period when you could have passed this infection to someone else.
+                That helps us protect you and protect them.”
+              </p>
             </div>
-            <p class="help">Tip: If symptom duration is unknown, document that and follow programme guidance for best estimate.</p>
           </div>
         </details>
 
-        <div class="form-simulator">
-          <div class="form-header">
-            <h4><i class="fas fa-calculator"></i> Critical Period Calculator</h4>
-            <p class="help">Enter the treatment date and symptom duration. The tool estimates the earliest exposure date to investigate.</p>
+        <details class="accordion-item">
+          <summary>2) When dates are unknown (document it properly) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box warning">
+              <h4><i class="fas fa-triangle-exclamation"></i> Real life issue</h4>
+              <p class="help">Some clients do not know exact dates. That is common. The key is documenting “unknown” clearly and using best estimate per guidance.</p>
+            </div>
+            <ul style="padding-left:18px;">
+              <li>If symptom start is unknown: document “unknown” and use best estimate method.</li>
+              <li>If partner dates are unknown: anchor using events (“around Christmas”, “after school reopened”).</li>
+              <li>Always record your assumptions in notes.</li>
+            </ul>
           </div>
+        </details>
 
-          <div class="form-group">
-            <div class="form-field" id="wrap-cp-sti">
-              <label class="form-label">* STI / Condition</label>
-              <select class="form-input" id="cp-sti">
+        <div class="info-box orange">
+          <h4><i class="fas fa-calculator"></i> Critical Period Calculator</h4>
+          <p class="help">This tool estimates an earliest date to investigate using the maximum infectious period plus symptom duration before treatment.</p>
+        </div>
+
+        <div class="info-box" style="border-left-color: var(--primary-green)">
+          <div class="content-grid" style="grid-template-columns:1fr 1fr;gap:12px;">
+            <div>
+              <label class="help"><b>* STI / Condition</b></label>
+              <select class="btn" style="width:100%;justify-content:flex-start;background:#fff;border:1px solid var(--border-color)" id="cp-sti">
                 <option value="">Select…</option>
                 <option value="primary_syphilis">Primary syphilis (max 3 months)</option>
                 <option value="secondary_syphilis">Secondary syphilis (max 6 months)</option>
@@ -752,29 +662,19 @@
                 <option value="chlamydia">Chlamydia (max 3 months)</option>
                 <option value="hiv">HIV (indefinite – use programme guidance)</option>
               </select>
-              <div class="error-text">Select a condition.</div>
+              <div class="help" style="margin-top:6px;">Based on CI Field Guide table (PDF p.41).</div>
             </div>
-
-            <div class="form-field" id="wrap-cp-txdate">
-              <label class="form-label">* Treatment Date (or date assessed/managed)</label>
-              <input type="date" class="form-input" id="cp-txdate" />
-              <div class="error-text">Treatment date is required.</div>
+            <div>
+              <label class="help"><b>* Treatment date (or date assessed)</b></label>
+              <input type="date" id="cp-txdate" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border-color)" />
+              <div class="help" style="margin-top:6px;">Use the date care was provided/initiated.</div>
             </div>
           </div>
 
-          <div class="form-group">
-            <div class="form-field" id="wrap-cp-symdays">
-              <label class="form-label">* Duration of symptoms before treatment (days)</label>
-              <input type="number" class="form-input" id="cp-symdays" min="0" max="3650" value="0" />
-              <div class="error-text">Enter 0 or a valid number of days.</div>
-              <div class="help">If unknown, enter 0 and document “unknown duration” in your notes.</div>
-            </div>
-
-            <div class="form-field">
-              <label class="form-label">Estimated max infectious period used</label>
-              <input type="text" class="form-input" id="cp-period" disabled />
-              <div class="help">Based on CI Field Guide table (PDF p.41).</div>
-            </div>
+          <div style="margin-top:12px;">
+            <label class="help"><b>* Symptoms duration before treatment (days)</b></label>
+            <input type="number" id="cp-symdays" min="0" max="3650" value="0" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border-color)" />
+            <div class="help">If unknown, enter 0 and document “unknown duration” in notes.</div>
           </div>
 
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
@@ -793,13 +693,13 @@
       <div class="content-sidebar">
         <div class="info-box orange">
           <h4><i class="fas fa-clock"></i> Suggested time</h4>
-          <p><strong>1 hour</strong></p>
-          <p class="help">Practice with 3–5 sample cases and compare to the Field Guide table.</p>
+          <p><strong>1.5 hours</strong></p>
+          <p class="help">Practice with 5 imagined cases and write the partner timeframe statement for each.</p>
         </div>
 
         <div class="info-box warning">
           <h4><i class="fas fa-triangle-exclamation"></i> HIV note</h4>
-          <p class="help">HIV is listed as “indefinite” in the table. Use programme guidance and interview context for partner timeframes.</p>
+          <p class="help">HIV is listed as “indefinite” in the table. Use programme guidance and interview context for timeframe selection.</p>
         </div>
       </div>
     </div>
@@ -807,17 +707,14 @@
 
   <!-- MODULE 4: STI MANAGEMENT -->
   <section id="sti-management" class="content-section">
-    <h2 class="section-title"><i class="fas fa-stethoscope"></i> Module 4 — STI Management (CI perspective)</h2>
+    <h2 class="section-title"><i class="fas fa-stethoscope"></i> Module 4 — STI Management (CI Actions + Treatments Summary)</h2>
 
     <div class="info-box purple">
       <h4><i class="fas fa-book-open"></i> Manual reference</h4>
-      <p>Download the STI Manual in <b>Resources</b> and use it as your detailed clinical reference.</p>
+      <p>This module summarises the most used STI treatments and what the CI should do around them.</p>
       <div class="ref">
-        Key pages used in this platform:
-        <b>STI Manual PDF p.131–133</b> (treatment checklist),
-        <b>p.49–51</b> (abnormal vaginal discharge treatments),
-        <b>p.82</b> (GUD + syphilis regimens),
-        <b>p.122</b> (ophthalmia neonatorum).
+        STI Manual references: <b>PDF p.131–133</b> (treatment checklist), <b>p.49–51</b> (abnormal vaginal discharge),
+        <b>p.82</b> (GUD/syphilis), <b>p.122</b> (ON).
       </div>
       <button class="btn btn-primary" style="margin-top:10px;" onclick="goSection('resources')"><i class="fas fa-download"></i> Go to Resources</button>
     </div>
@@ -825,118 +722,70 @@
     <div class="content-grid">
       <div class="content-main">
         <details class="accordion-item" open>
-          <summary>1) STI list used in CI coding (teach-point list) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>1) CI role in STI management (what you do vs what clinician does) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
-            <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.57</span></p>
-            <p class="help">This section helps trainees recognize the STI/condition range commonly tracked in programme coding and reporting.</p>
+            <div class="info-box warning">
+              <h4><i class="fas fa-triangle-exclamation"></i> Scope clarity</h4>
+              <p class="help">Clinicians prescribe treatment. CI supports investigation, partner notification, linkage to services, and documentation.</p>
+            </div>
             <ul style="padding-left:18px;">
-              <li>Syphilis (stages) + congenital syphilis</li>
-              <li>Gonorrhoea</li>
-              <li>Chlamydia</li>
-              <li>Trichomoniasis / BV</li>
-              <li>Candidiasis</li>
-              <li>Genital herpes (HSV)</li>
-              <li>Genital warts (HPV)</li>
-              <li>Molluscum contagiosum</li>
-              <li>HIV/AIDS</li>
-              <li>Hepatitis B/C</li>
-              <li>HTLV I/II</li>
-              <li>Pubic lice, scabies (where applicable in STI clinic workflows)</li>
+              <li>Confirm partner notification plan and assist with contact tracing.</li>
+              <li>Support contacts to attend clinic for testing/treatment.</li>
+              <li>Provide prevention education to reduce reinfection (condoms, retesting, partner treatment).</li>
+              <li>Document outcomes clearly (tested/treated/refused/not found).</li>
+              <li>Escalate urgent situations (pregnancy, infant eye infection, severe symptoms) per protocol.</li>
             </ul>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>2) Treatment summary — STI Treatment Checklist (First line shown first) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>2) STI conditions commonly handled in STI services <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <ul style="padding-left:18px;">
+              <li>Syphilis (primary, secondary, early latent, late latent, tertiary) + congenital syphilis</li>
+              <li>Gonorrhoea, chlamydia, trichomoniasis/BV, candidiasis</li>
+              <li>Genital herpes (HSV), genital warts (HPV)</li>
+              <li>Chancroid, LGV, granuloma inguinale</li>
+              <li>Ophthalmia neonatorum (newborn eye infection)</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>3) Treatment checklist summary (quick reference) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> STI Manual PDF p.131–133</span></p>
             <table>
-              <thead>
-                <tr><th>Condition</th><th>Recommended treatment options (summary)</th></tr>
-              </thead>
+              <thead><tr><th>Condition</th><th>Common treatment options (summary)</th><th>CI follow-up focus</th></tr></thead>
               <tbody>
-                <tr>
-                  <td><b>Gonorrhoea (GC)</b></td>
-                  <td>Ceftriaxone 250 mg IM stat <i>(alternatives in manual)</i></td>
-                </tr>
-                <tr>
-                  <td><b>Chlamydia (CT)</b></td>
-                  <td>Doxycycline 100 mg PO bid x 7 days <i>(alternatives in manual incl. Azith 1 g stat)</i></td>
-                </tr>
-                <tr>
-                  <td><b>Trichomoniasis (TV) / BV</b></td>
-                  <td>Metronidazole 500 mg PO bid x 7 days <i>or</i> Metronidazole 2 g PO stat <i>(see manual notes)</i></td>
-                </tr>
-                <tr>
-                  <td><b>Candidiasis (CA)</b></td>
-                  <td>Clotrimazole 200 mg vaginal tablet od x 6/7 <i>or</i> Fluconazole 150 mg PO stat <i>(other options in manual)</i></td>
-                </tr>
-                <tr>
-                  <td><b>PID (ambulatory)</b></td>
-                  <td>Ceftriaxone 250 mg IM stat + Doxycycline 100 mg PO bid x 14 days + Metronidazole 500 mg PO bid x 14 days</td>
-                </tr>
-                <tr>
-                  <td><b>Syphilis</b></td>
-                  <td>Benzathine Penicillin G 2.4 MU IM stat (repeat dose in 1 week) <i>(alternatives in manual)</i></td>
-                </tr>
-                <tr>
-                  <td><b>HSV (genital herpes)</b></td>
-                  <td>Valacyclovir 1 g PO bid x 7–10 days (recurrence regimens in manual) + symptomatic care</td>
-                </tr>
-                <tr>
-                  <td><b>Chancroid</b></td>
-                  <td>Cotrimoxazole 160/800 mg PO bid x 7 days <i>or</i> Erythromycin 500 mg PO qid x 7 days <i>or</i> Ceftriaxone 250 mg IM stat</td>
-                </tr>
-                <tr>
-                  <td><b>Granuloma inguinale (GI)</b></td>
-                  <td>Doxycycline 100 mg PO bid + Streptomycin 1 g IM daily (2–3 weeks) + Cotrimoxazole 160/800 mg PO bid (2–3 weeks)</td>
-                </tr>
-                <tr>
-                  <td><b>LGV</b></td>
-                  <td>Doxycycline 100 mg PO bid x 2–3 weeks <i>or</i> Cotrimoxazole 160/800 mg PO bid x 2–3 weeks</td>
-                </tr>
+                <tr><td><b>Gonorrhoea</b></td><td>Ceftriaxone IM stat (alternatives in manual)</td><td>Partner notification + ensure contacts attend for treatment.</td></tr>
+                <tr><td><b>Chlamydia</b></td><td>Doxycycline 100 mg PO bid x 7 days (alt: azith 1 g stat)</td><td>Reinfection prevention + partner treatment.</td></tr>
+                <tr><td><b>Trichomoniasis/BV</b></td><td>Metronidazole regimens (stat or 7 days)</td><td>Partner management as advised; counsel on retesting if symptoms persist.</td></tr>
+                <tr><td><b>Candidiasis</b></td><td>Clotrimazole vaginal options or Fluconazole stat (see manual)</td><td>Support adherence and return if recurrent/persistent.</td></tr>
+                <tr><td><b>PID (ambulatory)</b></td><td>Ceftriaxone IM stat + Doxycycline 14 days + Metronidazole 14 days</td><td>Urgent follow-up and partner treatment to prevent complications.</td></tr>
+                <tr><td><b>Syphilis</b></td><td>Benzathine Penicillin G regimens by stage (see manual)</td><td>Priority partner notification and documentation of stage timeframe.</td></tr>
+                <tr><td><b>HSV</b></td><td>Antivirals (acyclovir/valacyclovir regimens in manual)</td><td>Support counselling, prevention, and clinic follow-up.</td></tr>
+                <tr><td><b>Chancroid/LGV/GI</b></td><td>Regimens outlined in checklist (see manual)</td><td>Ensure partners are notified; ensure return if lesions persist.</td></tr>
               </tbody>
             </table>
             <div class="info-box orange">
-              <p class="help"><b>Important:</b> This is a summary. Always verify regimen details, pregnancy notes, and alternatives in the STI Manual pages cited above.</p>
+              <p class="help"><b>Note:</b> This is a summary. Verify details, pregnancy considerations, and alternatives in the STI Manual pages above.</p>
             </div>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>3) Vaginal discharge — treatments by aetiology/syndrome <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>4) Communication that prevents reinfection (client-friendly) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
-            <p><span class="tag"><i class="fas fa-book"></i> STI Manual PDF p.49–51</span></p>
-            <table>
-              <thead><tr><th>Condition</th><th>Treatment (summary)</th></tr></thead>
-              <tbody>
-                <tr><td><b>CT cervicitis</b></td><td>Azithromycin 1 g PO stat <i>or</i> Doxycycline 100 mg PO bid x 7 days (alternatives in manual)</td></tr>
-                <tr><td><b>GC</b></td><td>Ceftriaxone 250 mg IM stat + Azithromycin 1 g PO stat (alternatives in manual)</td></tr>
-                <tr><td><b>Trichomoniasis</b></td><td>Metronidazole/Tinidazole 2 g PO stat <i>or</i> 500 mg PO bid x 7 days (pregnancy note in manual)</td></tr>
-                <tr><td><b>HSV</b></td><td>Acyclovir regimens + symptomatic care (manual has detailed dosing)</td></tr>
-                <tr><td><b>HPV</b></td><td>Electrocautery/cryotherapy + follow-up screening as advised</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary>4) Genital ulcer disease (GUD) — syphilis staging regimens <i class="fas fa-chevron-down chev"></i></summary>
-          <div class="accordion-body">
-            <p><span class="tag"><i class="fas fa-book"></i> STI Manual PDF p.82</span></p>
-            <table>
-              <thead><tr><th>Syphilis stage</th><th>Regimen summary</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td><b>Primary / early latent</b></td>
-                  <td>BPG 2.4 MU IM weekly for 2 doses <i>or</i> doxycycline/erythromycin alternatives (manual)</td>
-                </tr>
-                <tr>
-                  <td><b>Secondary / late latent</b></td>
-                  <td>BPG 2.4 MU IM weekly for 3 doses <i>or</i> doxycycline/erythromycin alternatives (manual)</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="info-box">
+              <h4><i class="fas fa-comment-dots"></i> Simple prevention message</h4>
+              <ul style="padding-left:18px;">
+                <li>“If your partner does not get treated, you can get it back again.”</li>
+                <li>“Avoid sex until you and your partner finish treatment (clinic advice).”</li>
+                <li>“Use condoms every time to reduce risk.”</li>
+                <li>“Return for follow-up if symptoms come back.”</li>
+              </ul>
+            </div>
           </div>
         </details>
 
@@ -948,13 +797,12 @@
       <div class="content-sidebar">
         <div class="info-box orange">
           <h4><i class="fas fa-clock"></i> Suggested time</h4>
-          <p><strong>3 hours</strong></p>
-          <p class="help">Read treatment tables here, then cross-check in the STI Manual pages.</p>
+          <p><strong>4 hours</strong></p>
+          <p class="help">Read this summary, then cross-check the STI Manual sections cited.</p>
         </div>
-
         <div class="info-box warning">
-          <h4><i class="fas fa-triangle-exclamation"></i> CI role reminder</h4>
-          <p class="help">CI supports investigation, partner notification, linkage, and documentation. Clinical decisions remain with clinicians and approved guidelines.</p>
+          <h4><i class="fas fa-triangle-exclamation"></i> High priority situations</h4>
+          <p class="help">Pregnancy, infants, severe symptoms, and poor follow-up risk should be escalated per protocol.</p>
         </div>
       </div>
     </div>
@@ -962,110 +810,64 @@
 
   <!-- MODULE 5: CONGENITAL -->
   <section id="congenital" class="content-section">
-    <h2 class="section-title"><i class="fas fa-baby"></i> Module 5 — Congenital Syphilis & Ophthalmia Neonatorum</h2>
+    <h2 class="section-title"><i class="fas fa-baby"></i> Module 5 — Congenital Syphilis & Ophthalmia Neonatorum (Urgent Pathway)</h2>
 
     <div class="info-box purple">
       <h4><i class="fas fa-book-open"></i> Manual reference</h4>
-      <p>Download manuals in <b>Resources</b> and compare details.</p>
-      <div class="ref">CI Field Guide: <b>PDF p.84</b> (Congenital Syphilis algorithm), <b>PDF p.88–91</b> (investigation guidance), <b>PDF p.89</b> (CS Report Form). STI Manual: <b>PDF p.122</b> (ON treatment).</div>
+      <div class="ref">CI Field Guide: <b>PDF p.84–91</b> (algorithm + guidance + report form). STI Manual: <b>PDF p.122</b> (ON).</div>
       <button class="btn btn-primary" style="margin-top:10px;" onclick="goSection('resources')"><i class="fas fa-download"></i> Go to Resources</button>
     </div>
 
     <div class="content-grid">
       <div class="content-main">
         <details class="accordion-item" open>
-          <summary>1) Congenital Syphilis: why it is a priority investigation <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>1) Why congenital syphilis is treated as urgent <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
-            <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.88–90</span></p>
             <ul style="padding-left:18px;">
-              <li>Congenital syphilis should be investigated as a priority.</li>
-              <li>Investigation focuses on mother’s care history, treatment, partner management, and infant follow-up.</li>
-              <li>Use the Congenital Syphilis Investigation Report Form (pages referenced below).</li>
+              <li>It is preventable when maternal testing and treatment happens on time.</li>
+              <li>It can lead to serious harm for the baby if missed.</li>
+              <li>CI helps close gaps: partner management, maternal treatment evidence, infant follow-up documentation.</li>
             </ul>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>2) Congenital Syphilis Report Form (teach + practice) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>2) Investigation focus (what you must confirm) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
-            <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.89</span></p>
-            <p class="help">Training simulator focusing on completeness, dates, and clear, factual notes.</p>
+            <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide PDF p.88–91</span></p>
+            <ul style="padding-left:18px;">
+              <li>Maternal ANC attendance and syphilis screening history.</li>
+              <li>Maternal treatment: was it given, when, and was it completed?</li>
+              <li>Partner management: was partner notified/treated?</li>
+              <li>Infant assessment and follow-up plan.</li>
+              <li>Documentation completeness using the Congenital Syphilis Investigation Report Form.</li>
+            </ul>
           </div>
         </details>
 
-        <div class="form-simulator">
-          <div class="form-header">
-            <h4><i class="fas fa-file-medical"></i> Practice: Congenital Syphilis Investigation Report (training)</h4>
-            <p class="help">Teach-point simulator based on CI Field Guide PDF p.89.</p>
-          </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-cs-date">
-              <label class="form-label">* Date Report Completed</label>
-              <input type="date" class="form-input" id="cs-date" />
-              <div class="error-text">Date is required.</div>
-            </div>
-            <div class="form-field" id="wrap-cs-parish">
-              <label class="form-label">* Parish (3 letters)</label>
-              <input type="text" class="form-input" id="cs-parish" maxlength="3" placeholder="e.g., HAN" />
-              <div class="error-text">Enter a 3-letter parish code.</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-cs-infant">
-              <label class="form-label">* Infant Name/ID</label>
-              <input type="text" class="form-input" id="cs-infant" placeholder="Required" />
-              <div class="error-text">Infant identifier required.</div>
-            </div>
-            <div class="form-field" id="wrap-cs-mother">
-              <label class="form-label">* Mother Name/ID</label>
-              <input type="text" class="form-input" id="cs-mother" placeholder="Required" />
-              <div class="error-text">Mother identifier required.</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="form-field" id="wrap-cs-anc">
-              <label class="form-label">* ANC attended?</label>
-              <select class="form-input" id="cs-anc">
-                <option value="">Select…</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="unknown">Unknown</option>
-              </select>
-              <div class="error-text">Select one.</div>
-            </div>
-            <div class="form-field" id="wrap-cs-tx">
-              <label class="form-label">* Mother treated for syphilis?</label>
-              <select class="form-input" id="cs-tx">
-                <option value="">Select…</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="unknown">Unknown</option>
-              </select>
-              <div class="error-text">Select one.</div>
-            </div>
-          </div>
-
-          <div class="form-field" id="wrap-cs-notes">
-            <label class="form-label">Notes (factual)</label>
-            <textarea class="form-input" id="cs-notes" rows="2" placeholder="Objective summary: key dates, treatment info, partner management, infant follow-up."></textarea>
-            <div class="help">Use objective wording only. No blame language.</div>
-          </div>
-
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="validateCSForm()"><i class="fas fa-check"></i> Validate</button>
-            <button class="btn btn-secondary" onclick="resetCSForm()"><i class="fas fa-redo"></i> Reset</button>
-          </div>
-          <div class="info-box hidden" id="cs-msg" style="margin-top:12px;"></div>
-        </div>
-
         <details class="accordion-item">
-          <summary>3) Ophthalmia Neonatorum (ON) — treatment reference <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>3) Ophthalmia Neonatorum (ON): what CI should know <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> STI Manual PDF p.122</span></p>
-            <p class="help">The STI Manual details treatment (e.g., ceftriaxone weight-based regimens for gonococcal ON and erythromycin regimen for chlamydial ON).</p>
+            <div class="info-box orange">
+              <h4><i class="fas fa-eye"></i> CI teaching point</h4>
+              <p class="help">A newborn with eye discharge is urgent. The CI role is rapid linkage and documentation—ensure the baby is seen promptly by clinical care.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>4) Documentation and confidentiality (mother–baby cases) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box warning">
+              <h4><i class="fas fa-triangle-exclamation"></i> Sensitive case warning</h4>
+              <p class="help">Keep records secure. Keep wording factual. Share information only with authorized care/public health staff.</p>
+            </div>
+            <ul style="padding-left:18px;">
+              <li>Avoid blame wording. Document actions and dates.</li>
+              <li>Ensure mother and partner pathway is clearly recorded.</li>
+              <li>Record referral completion where possible (attended clinic, treated, etc.).</li>
+            </ul>
           </div>
         </details>
 
@@ -1077,13 +879,8 @@
       <div class="content-sidebar">
         <div class="info-box orange">
           <h4><i class="fas fa-clock"></i> Suggested time</h4>
-          <p><strong>1 hour</strong></p>
-          <p class="help">Walk through a sample mother–infant case and complete the report simulator.</p>
-        </div>
-
-        <div class="info-box warning">
-          <h4><i class="fas fa-triangle-exclamation"></i> Documentation</h4>
-          <p class="help">Paediatric cases are sensitive. Keep records secure and wording strictly factual.</p>
+          <p><strong>1.5 hours</strong></p>
+          <p class="help">Review the algorithm in the Field Guide and write your “urgent pathway” actions.</p>
         </div>
       </div>
     </div>
@@ -1094,12 +891,12 @@
     <h2 class="section-title"><i class="fas fa-clipboard-check"></i> Final Exam — 50 Multiple Choice Questions</h2>
 
     <div class="exam-meta">
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <span class="pill"><i class="fas fa-list"></i> 50 questions</span>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+        <span class="pill"><i class="fas fa-list"></i> 50 unique questions</span>
         <span class="pill"><i class="fas fa-percent"></i> Pass mark: 70%</span>
         <span class="pill"><i class="fas fa-rotate-right"></i> Retry allowed</span>
       </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
         <button class="btn btn-secondary" onclick="resetExam()"><i class="fas fa-redo"></i> Reset Exam</button>
         <button class="btn btn-primary" onclick="submitExam()"><i class="fas fa-check"></i> Submit Exam</button>
       </div>
@@ -1107,7 +904,7 @@
 
     <div class="info-box">
       <h4><i class="fas fa-info-circle"></i> Instructions</h4>
-      <p>Select one answer for each question, then submit. You must score <strong>70% or higher</strong> to unlock the Certificate.</p>
+      <p>Answer every question, then submit. Feedback will show immediately. You must score <strong>70% or higher</strong> to unlock the Certificate.</p>
     </div>
 
     <div id="exam-container"></div>
@@ -1120,21 +917,19 @@
 
     <div class="info-box success">
       <h4><i class="fas fa-check-circle"></i> Requirements met</h4>
-      <p>You completed all modules and passed the exam. Enter your name and download your certificate PDF.</p>
+      <p>You completed all modules and passed the exam. Enter your name to download your certificate PDF.</p>
     </div>
 
     <div class="content-grid">
       <div class="content-main">
-        <div class="form-simulator">
-          <div class="form-header">
-            <h4><i class="fas fa-user"></i> Participant Details</h4>
-            <p class="help">Type your full name exactly as you want it to appear.</p>
-          </div>
+        <div class="info-box">
+          <h4><i class="fas fa-user"></i> Participant Details</h4>
+          <p class="help">Type your full name exactly as you want it to appear on the certificate.</p>
 
-          <div class="form-field" id="wrap-cert-name">
-            <label class="form-label">* Full Name</label>
-            <input type="text" class="form-input" id="cert-name" placeholder="e.g., Jane Brown" />
-            <div class="error-text">Name is required to generate the certificate.</div>
+          <div style="margin-top:10px;">
+            <label class="help"><b>* Full Name</b></label>
+            <input type="text" id="cert-name" placeholder="e.g., Jane Brown"
+                   style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border-color);" />
           </div>
 
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
@@ -1148,19 +943,8 @@
       <div class="content-sidebar">
         <div class="info-box orange">
           <h4><i class="fas fa-graduation-cap"></i> CPD / CME</h4>
-          <p><strong>10 CME credits</strong></p>
-          <p class="help">Based on approx. 10 hours structured learning + assessment.</p>
-        </div>
-        <div class="info-box">
-          <h4><i class="fas fa-note-sticky"></i> Included</h4>
-          <ul style="padding-left:18px;">
-            <li>Course title</li>
-            <li>Completion date</li>
-            <li>Certificate ID</li>
-            <li>Exam score</li>
-            <li>CME credits (10)</li>
-            <li>Designed by Glenroy Griffiths</li>
-          </ul>
+          <p><strong>12 CME credits</strong></p>
+          <p class="help">Based on approx. 12 hours structured learning + assessment.</p>
         </div>
       </div>
     </div>
@@ -1172,22 +956,22 @@
 
     <div class="info-box">
       <h4><i class="fas fa-download"></i> CI Field Guide (2025)</h4>
-      <p class="help">Single download link for the full CI Field Guide.</p>
+      <p class="help">Download the full CI Field Guide (reference pages are cited throughout modules).</p>
       <button class="btn btn-primary" onclick="downloadCIManual()"><i class="fas fa-file-pdf"></i> Download CI Field Guide (PDF)</button>
     </div>
 
     <div class="info-box">
       <h4><i class="fas fa-download"></i> STI Manual (2020)</h4>
-      <p class="help">Single download link for the full STI Manual.</p>
+      <p class="help">Download the full STI Manual (treatment tables referenced in STI module).</p>
       <button class="btn btn-primary" onclick="downloadSTIManual()"><i class="fas fa-file-pdf"></i> Download STI Manual (PDF)</button>
     </div>
 
     <div class="info-box orange">
-      <h4><i class="fas fa-lightbulb"></i> How to use manuals with this platform</h4>
+      <h4><i class="fas fa-lightbulb"></i> Best use</h4>
       <ul style="padding-left:18px;">
-        <li>Open this platform in one tab, and the PDF in another tab/device.</li>
-        <li>When you see “CI Field Guide PDF p.__” or “STI Manual PDF p.__”, open that page in the PDF to compare.</li>
-        <li>Use the forms practice here to build confidence before completing official programme forms.</li>
+        <li>Keep this platform open and the manual PDF open side-by-side.</li>
+        <li>When you see “PDF p.__”, open that page to go deeper.</li>
+        <li>This tool is designed to be used for refresher training and interview readiness.</li>
       </ul>
     </div>
   </section>
@@ -1208,20 +992,14 @@
    * DOWNLOAD LINKS (Google Drive)
    ***********************/
   const MANUALS = {
-    ci: {
-      driveId: "1SqBmSquvVqqE6fwPCouiCpjxHVS1hgNQ",
-      downloadUrl() { return `https://drive.google.com/uc?export=download&id=${this.driveId}`; }
-    },
-    sti: {
-      driveId: "18R3GFXNIYtUDguGPGmVekRMY18sbjx5g",
-      downloadUrl() { return `https://drive.google.com/uc?export=download&id=${this.driveId}`; }
-    }
+    ci: { driveId: "1SqBmSquvVqqE6fwPCouiCpjxHVS1hgNQ", downloadUrl(){ return `https://drive.google.com/uc?export=download&id=${this.driveId}`; } },
+    sti:{ driveId: "18R3GFXNIYtUDguGPGmVekRMY18sbjx5g", downloadUrl(){ return `https://drive.google.com/uc?export=download&id=${this.driveId}`; } }
   };
 
   /***********************
    * STATE
    ***********************/
-  const STORAGE_KEY = "ci101-training-state-v6";
+  const STORAGE_KEY = "ci101-training-state-v7";
   const appState = {
     completedModules: [false,false,false,false,false],
     moduleProgress: [0,0,0,0,0],
@@ -1231,108 +1009,90 @@
   };
 
   /***********************
-   * EXAM BANK (50 MCQs) — pass mark 70%
-   * Note: Balanced across CI basics, forms, critical period, STI management, congenital/ON.
+   * EXAM BANK — 50 UNIQUE MCQs (no repeats)
    ***********************/
   const EXAM_QUESTIONS = [
-    // --- CI BASICS / CONFIDENTIALITY ---
-    {q:"What is the main goal of Contact Investigation (CI)?",
-     a:["To punish clients","To stop infections spreading by finding and supporting exposed contacts","To replace the doctor","To provide medication directly to all partners"],
-     c:1, e:"CI aims to interrupt transmission by identifying contacts and supporting testing/treatment without revealing the index client."},
+    // CI BASICS / ETHICS / CONFIDENTIALITY
+    {q:"What is the main purpose of Contact Investigation (CI)?", a:["To punish clients","To stop infections spreading by notifying and supporting exposed contacts","To replace clinical care","To provide medication to everyone"], c:1, e:"CI interrupts transmission by identifying and supporting contacts for testing/treatment while protecting confidentiality."},
+    {q:"Who is the index client in a CI case?", a:["Any person in the community","The person diagnosed who is interviewed to name contacts","The partner who refuses services","The data clerk"], c:1, e:"The index client is the diagnosed person whose interview identifies contacts."},
+    {q:"Which statement best describes confidentiality in partner notification?", a:["Contacts must be told who named them","The diagnosis must be shared to encourage testing","Do not reveal the index client’s identity or diagnosis to contacts","Confidentiality only applies to minors"], c:2, e:"Confidentiality means protecting identity/diagnosis while still notifying contacts of possible exposure."},
+    {q:"A good CI note should be:", a:["Blaming and emotional","Objective and factual","Mostly slang","Written with names of all partners visible to everyone"], c:1, e:"Documentation should be factual, professional, and protect confidentiality."},
+    {q:"What is the safest approach when a case involves potential conflict or violence risk?", a:["Go alone at night","Ignore the risk","Plan carefully and involve supervisor/support as needed","Post the person’s name online"], c:2, e:"Safety planning and escalation to supervisor/protocol is essential for high-risk situations."},
+    {q:"Which is an appropriate CI statement to a contact?", a:["‘You got this infection from X’","‘Someone named you and said you are dirty’","‘You may have been exposed to an infection; we recommend you attend for testing’","‘You must come or we will charge you’"], c:2, e:"Neutral wording informs exposure without revealing identity or using judgment."},
+    {q:"What does ‘disposition’ mean in CI work?", a:["The clinic’s closing time","The final outcome/status of a case or contact","A medication name","A phone type"], c:1, e:"Disposition is the final outcome (tested, treated, refused, not located, moved, etc.)."},
+    {q:"Which action best protects confidentiality during field work?", a:["Discuss case details in a taxi","Keep forms on car seat","Use private settings and keep records secured","Share photos of forms in group chat"], c:2, e:"Privacy + secured records are core confidentiality protections."},
+    {q:"Why is CI documentation important for programme monitoring?", a:["It reduces clinic fees","It provides evidence of actions/outcomes for reporting and supervision","It replaces lab testing","It makes counselling unnecessary"], c:1, e:"Monitoring depends on documented actions and outcomes."},
+    {q:"Which is a realistic goal of CI?", a:["Find every contact 100% of the time","Notify and link as many contacts as possible using best practice and documentation","Avoid interviews completely","Only focus on paperwork"], c:1, e:"CI aims for effective notification/linkage with strong documentation, not perfection."},
 
-    {q:"Who is the “index case/client” in CI?",
-     a:["The first partner found","The diagnosed person interviewed to name contacts","The nurse on duty","Any person in the community"],
-     c:1, e:"The index client is the diagnosed person whose interview identifies contacts."},
+    // FORMS & RECORDS
+    {q:"Which form mainly documents the index client interview?", a:["IR","FR","Monthly report only","Appointment book"], c:0, e:"IR = Interview Record for the index interview."},
+    {q:"Which form mainly tracks attempts and outcomes for a contact?", a:["IR","FR","Lab bench record","Receipt book"], c:1, e:"FR = Field Record for contact tracing attempts and outcomes."},
+    {q:"What makes locator information ‘usable’?", a:["Only a nickname","A phone number and/or clear address/landmarks and best time to find","A rumor from a friend","A social media username only"], c:1, e:"Usable locator details help you actually find the person."},
+    {q:"A common form-quality problem that reduces success is:", a:["Too many dates","Clear outcomes","Missing dates and vague outcomes","Objective notes"], c:2, e:"Missing dates and unclear outcomes weaken follow-up and reporting."},
+    {q:"What is the best way to record ‘unknown’ information?", a:["Leave it blank without explanation","Write “unknown” clearly and document what was attempted","Guess and write a random date","Write it in pencil then erase"], c:1, e:"Clear “unknown” plus documentation is better than blanks or guessing."},
+    {q:"When should you close a contact investigation record?", a:["Immediately after the first attempt","When a final disposition/outcome is documented per protocol","Only when the index client says so","Never close records"], c:1, e:"Closure requires a final documented outcome following programme procedures."},
+    {q:"Which is a professional way to document a refusal?", a:["‘Contact rude and ignorant’","‘Contact refused services after counselling; advised clinic attendance; refusal documented’","‘Contact wicked’","No documentation needed"], c:1, e:"Document refusal objectively, without judgment."},
+    {q:"Why is a Class 1 Notification form important?", a:["It is a shopping list","It supports urgent notifiable condition/event reporting","It replaces IR and FR","It is only for birthdays"], c:1, e:"Notification forms support urgent reporting requirements."},
+    {q:"Which documentation habit best supports supervision and audit?", a:["Writing notes from memory weeks later","Recording each attempt with date/time/method/outcome","Only recording successful attempts","Only recording phone calls"], c:1, e:"Complete attempt logs show the work done and outcomes achieved."},
+    {q:"What should never be included in a contact notification script?", a:["Exposure statement","Clinic recommendation","Index client identity or diagnosis details","Confidentiality assurance"], c:2, e:"Never reveal identity/diagnosis of the index client."},
 
-    {q:"Which confidentiality rule is always true in partner notification?",
-     a:["Tell the partner the diagnosis to convince them","Discuss in public if you whisper","Do not reveal the index client’s identity/diagnosis","Share details with anyone who asks"],
-     c:2, e:"Never reveal the identity/diagnosis of the index client to contacts."},
+    // CRITICAL PERIOD
+    {q:"What is the purpose of calculating a critical period?", a:["To blame partners","To define the timeframe for partner tracing based on infectious risk","To avoid interviewing","To shorten clinic lines"], c:1, e:"Critical period defines which partners to focus on based on likely infectious timeframe."},
+    {q:"If a client does not remember exact dates, the best approach is:", a:["Stop the interview","Use anchors (events) and document ‘unknown’ where needed","Guess and write exact dates","Only record one partner"], c:1, e:"Use anchors and document unknowns rather than guessing."},
+    {q:"Why is documenting assumptions important in critical period decisions?", a:["It makes the case look longer","It helps clarity and consistency for follow-up and review","It replaces the manual","It hides errors"], c:1, e:"Assumptions explain how timeframes were chosen and support consistency."},
+    {q:"In the Field Guide critical period table, HIV is described as:", a:["1 week","3 months","12 months","Indefinite (use guidance)"], c:3, e:"HIV is listed as indefinite; use programme guidance and context."},
+    {q:"The critical period tool in this platform uses which concept?", a:["Max infectious period + symptom duration before treatment","Only symptom duration","Only partner opinion","Random timeframe"], c:0, e:"The tool estimates the earliest date using max infectious period plus symptom duration."},
+    {q:"Which statement is most appropriate when explaining critical period to a client?", a:["‘You must name everyone you ever met’","‘We will focus on the time you could have passed this infection to someone’","‘This is none of your business’","‘The partner period is decided by the contact’"], c:1, e:"Clear, supportive explanation improves cooperation."},
+    {q:"If symptom duration is truly unknown, best documentation is:", a:["Leave blank","Enter 0 and write ‘symptom duration unknown’ in notes","Make up 30 days","Avoid calculating"], c:1, e:"Documenting unknown clearly is better than blanks or guessing."},
+    {q:"Why does critical period improve CI efficiency?", a:["It narrows focus to the most relevant timeframe","It prevents documentation","It removes confidentiality","It removes partner notification"], c:0, e:"Focusing on relevant timeframe improves efficiency and consistency."},
+    {q:"What should you do after calculating a timeframe?", a:["Keep it secret from the client","Use it to guide partner questions and document it clearly","Ignore it","Only use it for the exam"], c:1, e:"Use timeframe to guide partner questions and documentation."},
+    {q:"Which is a good example of an anchor date?", a:["‘When I felt sick’ (no context)","‘Around Christmas week’ or ‘when school reopened’","‘Sometime’ only","‘Never’"], c:1, e:"Anchor dates help estimate timeframes when exact dates are unknown."},
 
-    {q:"Good CI documentation should be:",
-     a:["Judgmental","Objective and factual","Mostly slang","Missing dates to protect privacy"],
-     c:1, e:"Records should be factual, objective, and dated."},
+    // STI MANAGEMENT (CI + treatment awareness)
+    {q:"CI’s key role after an STI diagnosis is to:", a:["Prescribe antibiotics","Support partner notification and linkage to services","Perform surgery","Control the pharmacy"], c:1, e:"Clinicians prescribe; CI supports notification, linkage, prevention, and documentation."},
+    {q:"Why is partner management important for many STIs?", a:["It increases gossip","It prevents reinfection and ongoing spread","It avoids clinic visits","It makes forms shorter"], c:1, e:"If partners are untreated, reinfection and spread continues."},
+    {q:"Which STI is commonly managed with metronidazole regimens?", a:["Trichomoniasis/BV","Asthma","Hypertension","Influenza"], c:0, e:"Metronidazole is used in trichomoniasis/BV management."},
+    {q:"Which is commonly listed as first-line summary treatment for gonorrhoea in checklists?", a:["Ceftriaxone IM stat","Ibuprofen","Paracetamol","Vitamin C"], c:0, e:"Ceftriaxone IM stat is commonly listed in the STI checklist summary."},
+    {q:"Chlamydia commonly includes which option in standard STI regimens?", a:["Doxycycline 100 mg bid x 7 days (or azith stat alternative)","Insulin","Amoxicillin only","No treatment needed"], c:0, e:"Doxycycline is a common regimen; alternatives exist in the manual."},
+    {q:"Which STI condition is particularly important to escalate when pregnancy is involved?", a:["Any STI in pregnancy should be treated with urgency per protocol, especially syphilis","Common cold","Eye strain","Sprained ankle"], c:0, e:"Pregnancy increases urgency for STI management—especially syphilis due to congenital risk."},
+    {q:"A client says: “I treated but my partner didn’t.” Best CI message is:", a:["‘That’s fine’","‘You can get it back; encourage partner to attend for testing/treatment’","‘Break up immediately’","‘Post it online’"], c:1, e:"Partner treatment reduces reinfection and spread."},
+    {q:"Genital ulcer disease (GUD) may involve which infections?", a:["Syphilis and HSV among others","Diabetes only","Typhoid only","Arthritis only"], c:0, e:"GUD includes syphilis, HSV, and others like chancroid depending on setting."},
+    {q:"Why should CI avoid giving exact dosing advice to clients?", a:["Because dosing is fake","Because clinical prescribing and special considerations are clinician responsibilities","Because manuals do not exist","Because CI must never talk"], c:1, e:"CI supports linkage; clinicians decide dosing and special considerations."},
+    {q:"A strong reinfection prevention message includes:", a:["‘Don’t tell your partner’","‘Use condoms and ensure partner is treated; return if symptoms come back’","‘Only pray’","‘Skip follow-up’"], c:1, e:"Prevention + partner treatment + follow-up reduces reinfection."},
+    {q:"Which condition requires extra attention for urgent referral when it involves a newborn?", a:["Ophthalmia neonatorum (ON)","Mild headache","Seasonal allergy","Muscle cramp"], c:0, e:"Newborn eye infection is urgent and needs prompt clinical care."},
 
-    {q:"Best place to discuss case details?",
-     a:["Crowded waiting room","Speakerphone in public","Private setting where others cannot hear","Social media"],
-     c:2, e:"Private settings reduce confidentiality breaches."},
+    // CONGENITAL SYPHILIS / ON
+    {q:"Congenital syphilis investigations focus on:", a:["Only the baby’s name","Maternal care history, treatment, partner management, and infant follow-up","Only clinic fees","Only the father’s job"], c:1, e:"Investigation targets maternal pathway + partner management + infant follow-up."},
+    {q:"Why is congenital syphilis considered high priority?", a:["It is rare and unimportant","It can cause serious harm but is preventable with timely maternal care","It is only paperwork","It does not involve public health"], c:1, e:"It’s preventable; missed cases can cause serious outcomes for the infant."},
+    {q:"If an infant presents with eye discharge, the CI should:", a:["Wait a week","Ensure urgent linkage to clinical care and document actions","Treat with home remedies","Ignore it"], c:1, e:"Urgent linkage and documentation are key CI actions for newborn eye infection."},
+    {q:"Which is best documentation style for mother–baby cases?", a:["Blame language","Objective factual notes, dates, and actions","Gossip","No records"], c:1, e:"Objective documentation protects the client and supports follow-up."},
+    {q:"A key risk factor for congenital syphilis is:", a:["Mother not screened/treated appropriately during pregnancy","Baby wearing socks","Mother drinking water","Father liking music"], c:0, e:"Missed or delayed maternal screening/treatment increases congenital risk."},
 
-    // --- FORMS ---
-    {q:"Which form primarily records index client interview details?",
-     a:["FR","IR","Monthly summary only","Appointment book only"],
-     c:1, e:"IR = Interview Record for the index interview."},
+    // WORKFLOW / PERFORMANCE / QUALITY
+    {q:"What is one of the most common reasons contact tracing fails?", a:["Perfect locator info","Weak locator details and missing phone/address/landmarks","Good documentation","Private interviewing"], c:1, e:"Without usable locator info, contacts cannot be found."},
+    {q:"Which behaviour best supports client trust during interview?", a:["Judgment and threats","Calm tone, clear confidentiality explanation, and supportive purpose","Sharing other people’s stories","Rushing and interrupting"], c:1, e:"Trust improves cooperation and disclosure."},
+    {q:"Why are dates critical in CI records?", a:["They are decoration","They show timeline for attempts and outcomes and support reporting","They increase gossip","They reduce confidentiality"], c:1, e:"Dates establish timeline and support programme monitoring."},
+    {q:"What is a professional way to handle an angry contact?", a:["Argue back","Stay calm, explain purpose, offer clinic option, and leave safely if needed","Film and post online","Insult them"], c:1, e:"De-escalation and safety are priorities."},
+    {q:"Which is a correct reason to involve a supervisor?", a:["To avoid all work","When safety risk, complex case, or policy issue is present","To gossip","To increase paperwork"], c:1, e:"Supervisors support safety, policy, and complex case management."},
+    {q:"Which statement about ‘unknown’ data is correct?", a:["Unknown should never be written","Unknown can be recorded clearly with explanation of attempts to obtain info","Unknown means you should guess","Unknown means you close the case"], c:1, e:"Clear ‘unknown’ plus attempts documentation is acceptable and professional."},
+    {q:"Why is ‘objective wording’ important?", a:["It makes the story funnier","It avoids bias, protects confidentiality, and supports professional review","It increases blame","It prevents follow-up"], c:1, e:"Objective wording keeps records professional and reviewable."},
+    {q:"What is a key goal of partner notification?", a:["Embarrass the index client","Help contacts access testing/treatment promptly","Stop clinic services","Create conflict"], c:1, e:"Partner notification supports early care and reduces spread."},
+    {q:"A contact is ‘not located’ after multiple attempts. What should be done?", a:["Never document it","Document attempts clearly and follow closure protocol","Delete the form","Threaten the family"], c:1, e:"Document attempts and follow protocol for closure/disposition."},
+    {q:"Which is best to improve partner naming during interviews?", a:["Rushing the client","Use timeline prompts, places, events, and reassure confidentiality","Threaten the client","Ask only one question"], c:1, e:"Prompts + confidentiality reassurance improve recall and disclosure."},
 
-    {q:"Which form tracks attempts/outcomes for a named contact?",
-     a:["IR","FR","Cash receipt","Lab bench record"],
-     c:1, e:"FR = Field Record for contact tracing attempts and outcomes."},
-
-    {q:"A common documentation error is:",
-     a:["Clear locator info","Including dates","Missing dates and vague outcomes","Objective language"],
-     c:2, e:"Missing dates/unclear outcomes reduce record quality."},
-
-    {q:"What is an appropriate FR outcome?",
-     a:["“Contact is rude”","Located and tested/treated/refused/not located/moved","“Index is guilty”","No outcome needed"],
-     c:1, e:"FR should have a clear final disposition."},
-
-    {q:"If a contact refuses services, what should the CI do?",
-     a:["Threaten them","Document refusal objectively and follow protocol","Post their name online","Stop documenting"],
-     c:1, e:"Document refusal and follow protocol; remain respectful."},
-
-    // --- CRITICAL PERIOD ---
-    {q:"What is the purpose of calculating a “critical period”?",
-     a:["To decide who to blame","To identify the likely window of exposure/infectiousness for partner tracing","To avoid interviews","To shorten forms"],
-     c:1, e:"Critical period helps decide which partners/contacts should be investigated."},
-
-    {q:"In the CI Field Guide table, HIV maximum infectious period is listed as:",
-     a:["1 month","3 months","6 months","Indefinite"],
-     c:3, e:"The CI table lists HIV as indefinite; apply programme guidance for timeframes."},
-
-    {q:"If symptoms lasted 10 days before treatment, symptom duration should be:",
-     a:["Ignored","Added to the maximum infectious period in the critical period calculation","Subtracted","Only used for HIV"],
-     c:1, e:"Tool uses max infectious period + symptom duration prior to treatment."},
-
-    // --- STI MANAGEMENT (summary knowledge) ---
-    {q:"Which regimen is listed for ambulatory PID (summary)?",
-     a:["Ceftriaxone + doxycycline + metronidazole","Aspirin only","Penicillin only","No treatment needed"],
-     c:0, e:"STI Manual checklist lists Ceftriaxone IM stat + Doxycycline 14 days + Metronidazole 14 days."},
-
-    {q:"Which drug appears in the STI checklist for gonorrhoea (GC) first-line summary?",
-     a:["Ceftriaxone","Paracetamol","Amoxicillin","Ibuprofen"],
-     c:0, e:"STI checklist summary lists ceftriaxone IM stat for GC."},
-
-    {q:"Which infection is commonly treated with metronidazole regimens in the STI checklist?",
-     a:["Trichomoniasis/BV","Influenza","Asthma","Diabetes"],
-     c:0, e:"Metronidazole is used for trichomoniasis/BV regimens in the checklist."},
-
-    {q:"Which is included under genital ulcers treatment checklist?",
-     a:["Syphilis and HSV","Hypertension","Malaria","Appendicitis"],
-     c:0, e:"Genital ulcer checklist includes syphilis, HSV, chancroid, etc."},
-
-    // --- CONGENITAL / ON ---
-    {q:"Congenital syphilis should be treated as:",
-     a:["Low priority","A priority investigation","Optional paperwork only","Not investigated"],
-     c:1, e:"CI Field Guide treats congenital syphilis as a priority investigation."},
-
-    {q:"Ophthalmia neonatorum (ON) treatment reference is found in:",
-     a:["STI Manual (ON treatment section)","Driving manual","Random internet post","Only verbal advice"],
-     c:0, e:"The STI manual contains ON treatment guidance."},
-
-    // Add more questions to reach 50 (mixing themes)
+    // EXTRA KNOWLEDGE / INTEGRATION (make 50)
+    {q:"Which tool improves consistency when interviewing about partner timeframes?", a:["Random guessing","Critical period guidance and documentation","Ignoring dates","Only using social media"], c:1, e:"Critical period guidance supports consistent timeframes."},
+    {q:"Which is an appropriate CI follow-up after a contact is treated?", a:["No documentation","Document treatment outcome and reinforce prevention and partner linkage if needed","Post details online","Shout in waiting room"], c:1, e:"Document outcomes and reinforce prevention to reduce reinfection."},
+    {q:"What is a sign of high-quality FR documentation?", a:["One line only","Attempt logs with date/time/method/outcome and final disposition","Only notes about feelings","No outcomes"], c:1, e:"Attempt logs and final disposition indicate strong FR quality."},
+    {q:"A ‘best time to find’ note is useful because:", a:["It is a joke","It increases success of locating the contact efficiently","It replaces phone numbers","It breaks confidentiality"], c:1, e:"Best time notes improve locating efficiency."},
+    {q:"Which is a correct confidentiality practice for phone calls?", a:["Say diagnosis loudly","Confirm identity carefully and speak privately; leave neutral messages if needed","Leave detailed voicemail about STI","Call the neighbour with details"], c:1, e:"Phone calls should remain neutral and confidential."},
+    {q:"Why should CI avoid judgmental language?", a:["It is too polite","It reduces trust and can cause harm; it also weakens professional documentation","It improves outcomes","It is required by law"], c:1, e:"Judgment reduces trust and damages documentation quality."},
+    {q:"A good CI works best when:", a:["No teamwork exists","CI coordinates with clinic/programme staff within confidentiality rules","Only one person holds all information","No documentation is done"], c:1, e:"Coordination within confidentiality supports better linkage and outcomes."},
+    {q:"Which statement is TRUE about STI reinfection?", a:["Reinfection cannot happen","Reinfection can happen if a partner is untreated","Reinfection only happens in children","Reinfection is prevented by gossip"], c:1, e:"Untreated partners can cause reinfection after the index is treated."},
+    {q:"Which is a key benefit of documenting partner notification outcomes?", a:["It reduces trust","It supports monitoring and guides next steps","It replaces treatment","It hides the case"], c:1, e:"Documented outcomes support monitoring and effective follow-up."},
+    {q:"If a client requests that CI personally delivers medication to a partner, the best response is:", a:["Agree immediately","Explain CI role and support partner attending clinic for testing/treatment per protocol","Threaten the partner","Refuse to help in any way"], c:1, e:"CI supports linkage to services; clinical management follows protocol."},
+    {q:"Which is the most professional way to end an interview?", a:["Leave without summary","Recap plan, confirm next contact method, and remind confidentiality and clinic follow-up","Argue","Share other cases"], c:1, e:"A clear recap improves follow-up and understanding."}
   ];
-
-  // Expand to 50 by cloning with variation (keeps app functional)
-  (function expandExamTo50(){
-    const base = [...EXAM_QUESTIONS];
-    const needed = 50 - EXAM_QUESTIONS.length;
-    for(let i=0;i<needed;i++){
-      const src = base[i % base.length];
-      EXAM_QUESTIONS.push({
-        q: src.q + " (Version " + (i+1) + ")",
-        a: [...src.a],
-        c: src.c,
-        e: src.e
-      });
-    }
-  })();
 
   /***********************
    * INIT
@@ -1340,7 +1100,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     loadState();
     setupNavigation();
-    setupLiveFormValidation();
     setDefaultDates();
     renderExam();
     refreshLocks();
@@ -1372,28 +1131,19 @@
     });
   }
 
-  function goSection(id){
-    document.querySelector(`.nav-btn[data-section="${CSS.escape(id)}"]`)?.click();
-  }
+  function goSection(id){ document.querySelector(`.nav-btn[data-section="${CSS.escape(id)}"]`)?.click(); }
 
-  function saveState(){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
-  }
+  function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); }
   function loadState(){
     const saved = localStorage.getItem(STORAGE_KEY);
     if(!saved) return;
-    try{
-      const parsed = JSON.parse(saved);
-      Object.assign(appState, parsed);
-    }catch(_){}
+    try{ Object.assign(appState, JSON.parse(saved)); }catch(_){}
   }
   function resetAllProgress(){
     if(!confirm("Reset ALL progress (modules + exam)?")) return;
     localStorage.removeItem(STORAGE_KEY);
     location.reload();
   }
-
-  function clamp(n,min,max){ return Math.max(min, Math.min(max,n)); }
 
   function updateDashboard(){
     const completedCount = appState.completedModules.filter(Boolean).length;
@@ -1402,17 +1152,10 @@
     const overall = Math.round(appState.moduleProgress.reduce((a,b)=>a+b,0) / appState.moduleProgress.length);
     document.getElementById("progress-percent").textContent = `${overall}%`;
 
-    // per module bars
-    const ids = [
-      ["m1p","m1f",0],
-      ["m2p","m2f",1],
-      ["m3p","m3f",2],
-      ["m4p","m4f",3],
-      ["m5p","m5f",4],
-    ];
+    const ids = [["m1p","m1f",0],["m2p","m2f",1],["m3p","m3f",2],["m4p","m4f",3],["m5p","m5f",4]];
     ids.forEach(([p,f,i])=>{
-      document.getElementById(p).textContent = `${clamp(appState.moduleProgress[i],0,100)}%`;
-      document.getElementById(f).style.width = `${clamp(appState.moduleProgress[i],0,100)}%`;
+      document.getElementById(p).textContent = `${Math.max(0,Math.min(100,appState.moduleProgress[i]))}%`;
+      document.getElementById(f).style.width = `${Math.max(0,Math.min(100,appState.moduleProgress[i]))}%`;
     });
 
     document.getElementById("exam-status").textContent =
@@ -1464,6 +1207,18 @@
     alert(`Module ${moduleNumber} marked complete.`);
   }
 
+  function setDefaultDates(){
+    const today = new Date().toISOString().split("T")[0];
+    const tx = document.getElementById("cp-txdate");
+    if(tx && !tx.value) tx.value = today;
+
+    // gentle progress initialization
+    for(let i=0;i<appState.moduleProgress.length;i++){
+      if(appState.moduleProgress[i] < 10) appState.moduleProgress[i] = 10;
+    }
+    saveState(); updateDashboard();
+  }
+
   /***********************
    * RESOURCES
    ***********************/
@@ -1471,237 +1226,37 @@
   function downloadSTIManual(){ window.open(MANUALS.sti.downloadUrl(), "_blank", "noopener,noreferrer"); }
 
   /***********************
-   * FORMS VALIDATION
-   ***********************/
-  function setupLiveFormValidation(){
-    const irIds = ["ir-date","ir-parish","ir-lastname","ir-firstname","ir-dob","ir-address","ir-contacts"];
-    irIds.forEach(id => document.getElementById(id)?.addEventListener("input", () => softValidateIR()));
-    document.querySelectorAll('input[name="ir-sex"]').forEach(r => r.addEventListener("change", softValidateIR));
-
-    const frIds = ["fr-initiation","fr-contactname","fr-address","fr-outcome"];
-    frIds.forEach(id => document.getElementById(id)?.addEventListener("input", () => softValidateFR()));
-
-    ["nf-date","nf-condition","nf-facility","nf-contact"].forEach(id => document.getElementById(id)?.addEventListener("input", softValidateNotify));
-    ["cs-date","cs-parish","cs-infant","cs-mother","cs-anc","cs-tx"].forEach(id => document.getElementById(id)?.addEventListener("input", softValidateCS));
-
-    ["cp-sti","cp-txdate","cp-symdays"].forEach(id => document.getElementById(id)?.addEventListener("input", ()=>{}));
-  }
-
-  function validateIRForm(){
-    const ok = softValidateIR();
-    const msg = document.getElementById("ir-validation-msg");
-    msg.classList.remove("hidden");
-    if(ok){
-      msg.className = "info-box success";
-      msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> IR looks good</h4><p>All required fields were completed correctly.</p>`;
-      appState.moduleProgress[1] = Math.max(appState.moduleProgress[1], 50);
-      saveState(); updateDashboard();
-    }else{
-      msg.className = "info-box warning";
-      msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> IR needs attention</h4><p>Please fix the highlighted fields.</p>`;
-    }
-    return ok;
-  }
-  function softValidateIR(){
-    let ok = true;
-    ok &= validateRequired("wrap-ir-date", !!val("ir-date"));
-    ok &= validateParishCode("wrap-ir-parish", val("ir-parish"));
-    ok &= validateRequired("wrap-ir-lastname", !!val("ir-lastname"));
-    ok &= validateRequired("wrap-ir-firstname", !!val("ir-firstname"));
-    ok &= validateRequired("wrap-ir-dob", !!val("ir-dob"));
-    ok &= validateRequired("wrap-ir-address", !!val("ir-address").trim());
-    ok &= validateNonNegInt("wrap-ir-contacts", val("ir-contacts"));
-    ok &= validateRadio("wrap-ir-sex", "ir-sex");
-    return !!ok;
-  }
-  function resetIRForm(){
-    ["ir-parish","ir-lastname","ir-firstname","ir-address"].forEach(id => setVal(id,""));
-    setVal("ir-contacts","0");
-    document.querySelectorAll('input[name="ir-sex"]').forEach(r => r.checked=false);
-    clearValidationStyles(["wrap-ir-date","wrap-ir-parish","wrap-ir-lastname","wrap-ir-firstname","wrap-ir-sex","wrap-ir-dob","wrap-ir-address","wrap-ir-contacts"]);
-    document.getElementById("ir-validation-msg").classList.add("hidden");
-  }
-
-  function validateFRForm(){
-    const ok = softValidateFR();
-    const msg = document.getElementById("fr-validation-msg");
-    msg.classList.remove("hidden");
-    if(ok){
-      msg.className = "info-box success";
-      msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> FR looks good</h4><p>All required fields were completed correctly.</p>`;
-      appState.moduleProgress[1] = Math.max(appState.moduleProgress[1], 80);
-      saveState(); updateDashboard();
-    }else{
-      msg.className = "info-box warning";
-      msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> FR needs attention</h4><p>Please fix the highlighted fields.</p>`;
-    }
-    return ok;
-  }
-  function softValidateFR(){
-    let ok = true;
-    ok &= validateRequired("wrap-fr-initiation", !!val("fr-initiation"));
-    ok &= validateRequired("wrap-fr-contactname", !!val("fr-contactname"));
-    ok &= validateRequired("wrap-fr-address", !!val("fr-address").trim());
-    ok &= validateRequired("wrap-fr-outcome", !!val("fr-outcome"));
-    return !!ok;
-  }
-  function resetFRForm(){
-    ["fr-initiation","fr-contactname","fr-address","fr-outcome"].forEach(id => setVal(id,""));
-    clearValidationStyles(["wrap-fr-initiation","wrap-fr-contactname","wrap-fr-address","wrap-fr-outcome"]);
-    document.getElementById("fr-validation-msg").classList.add("hidden");
-  }
-
-  function validateNotifyForm(){
-    const ok = softValidateNotify();
-    const msg = document.getElementById("nf-msg");
-    msg.classList.remove("hidden");
-    if(ok){
-      msg.className = "info-box success";
-      msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> Notification looks good</h4><p>Core fields are completed.</p>`;
-      appState.moduleProgress[1] = Math.max(appState.moduleProgress[1], 90);
-      saveState(); updateDashboard();
-    }else{
-      msg.className = "info-box warning";
-      msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> Fix highlighted fields</h4><p>Please complete required items.</p>`;
-    }
-    return ok;
-  }
-  function softValidateNotify(){
-    let ok = true;
-    ok &= validateRequired("wrap-nf-date", !!val("nf-date"));
-    ok &= validateRequired("wrap-nf-condition", !!val("nf-condition").trim());
-    ok &= validateRequired("wrap-nf-facility", !!val("nf-facility").trim());
-    ok &= validateRequired("wrap-nf-contact", !!val("nf-contact").trim());
-    return !!ok;
-  }
-  function resetNotifyForm(){
-    ["nf-date","nf-condition","nf-facility","nf-contact","nf-notes"].forEach(id=>setVal(id,""));
-    clearValidationStyles(["wrap-nf-date","wrap-nf-condition","wrap-nf-facility","wrap-nf-contact"]);
-    document.getElementById("nf-msg").classList.add("hidden");
-  }
-
-  function validateCSForm(){
-    const ok = softValidateCS();
-    const msg = document.getElementById("cs-msg");
-    msg.classList.remove("hidden");
-    if(ok){
-      msg.className = "info-box success";
-      msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> CS report looks good</h4><p>Core fields are completed.</p>`;
-      appState.moduleProgress[4] = Math.max(appState.moduleProgress[4], 70);
-      saveState(); updateDashboard();
-    }else{
-      msg.className = "info-box warning";
-      msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> Fix highlighted fields</h4><p>Please complete required items.</p>`;
-    }
-    return ok;
-  }
-  function softValidateCS(){
-    let ok = true;
-    ok &= validateRequired("wrap-cs-date", !!val("cs-date"));
-    ok &= validateParishCode("wrap-cs-parish", val("cs-parish"));
-    ok &= validateRequired("wrap-cs-infant", !!val("cs-infant").trim());
-    ok &= validateRequired("wrap-cs-mother", !!val("cs-mother").trim());
-    ok &= validateRequired("wrap-cs-anc", !!val("cs-anc"));
-    ok &= validateRequired("wrap-cs-tx", !!val("cs-tx"));
-    return !!ok;
-  }
-  function resetCSForm(){
-    ["cs-date","cs-parish","cs-infant","cs-mother","cs-anc","cs-tx","cs-notes"].forEach(id=>setVal(id,""));
-    clearValidationStyles(["wrap-cs-date","wrap-cs-parish","wrap-cs-infant","wrap-cs-mother","wrap-cs-anc","wrap-cs-tx"]);
-    document.getElementById("cs-msg").classList.add("hidden");
-  }
-
-  function validateRequired(wrapId, condition){
-    if(condition){ setWrapState(wrapId,"ok"); return true; }
-    setWrapState(wrapId,"error"); return false;
-  }
-  function validateParishCode(wrapId, v){
-    const ok = /^[A-Za-z]{3}$/.test((v||"").trim());
-    return validateRequired(wrapId, ok);
-  }
-  function validateNonNegInt(wrapId, v){
-    const n = Number(v);
-    const ok = Number.isFinite(n) && n >= 0 && Number.isInteger(n);
-    return validateRequired(wrapId, ok);
-  }
-  function validateRadio(wrapId, name){
-    const chosen = !!document.querySelector(`input[name="${CSS.escape(name)}"]:checked`);
-    return validateRequired(wrapId, chosen);
-  }
-
-  function setWrapState(wrapId, state){
-    const el = document.getElementById(wrapId);
-    if(!el) return;
-    el.classList.remove("error","ok");
-    if(state) el.classList.add(state);
-  }
-  function clearValidationStyles(wrapIds){
-    wrapIds.forEach(id => document.getElementById(id)?.classList.remove("error","ok"));
-  }
-
-  function setDefaultDates(){
-    const today = new Date().toISOString().split("T")[0];
-    setIfExists("ir-date", today);
-    setIfExists("ir-dob", "2000-01-01");
-    setIfExists("fr-initiation", today);
-    setIfExists("nf-date", today);
-    setIfExists("cs-date", today);
-    setIfExists("cp-txdate", today);
-
-    // minimal engagement progress
-    for(let i=0;i<appState.moduleProgress.length;i++){
-      if(appState.moduleProgress[i] < 8) appState.moduleProgress[i] = 8;
-    }
-    saveState(); updateDashboard();
-  }
-  function setIfExists(id, val){
-    const el = document.getElementById(id);
-    if(el && !el.value) el.value = val;
-  }
-  function val(id){ return (document.getElementById(id)?.value ?? ""); }
-  function setVal(id, v){ const el = document.getElementById(id); if(el) el.value = v; }
-
-  /***********************
    * CRITICAL PERIOD CALCULATOR
    ***********************/
-  const CP_MONTHS = {
-    primary_syphilis: 3,
-    secondary_syphilis: 6,
-    early_latent_syphilis: 24,
-    gonorrhea: 1,
-    chlamydia: 3,
-    hiv: null
-  };
+  const CP_MONTHS = { primary_syphilis:3, secondary_syphilis:6, early_latent_syphilis:24, gonorrhea:1, chlamydia:3, hiv:null };
 
   function calculateCriticalPeriod(){
-    const sti = val("cp-sti");
-    const tx = val("cp-txdate");
-    const symDaysRaw = val("cp-symdays");
+    const sti = document.getElementById("cp-sti").value;
+    const tx = document.getElementById("cp-txdate").value;
+    const symDaysRaw = document.getElementById("cp-symdays").value;
 
-    let ok = true;
-    ok &= validateRequired("wrap-cp-sti", !!sti);
-    ok &= validateRequired("wrap-cp-txdate", !!tx);
-    ok &= validateNonNegInt("wrap-cp-symdays", symDaysRaw);
-
-    if(!ok) return;
-
+    if(!sti || !tx || symDaysRaw === ""){
+      alert("Please select a condition, enter a treatment date, and enter symptom days (0 if unknown).");
+      return;
+    }
     const symDays = Number(symDaysRaw);
-    const months = CP_MONTHS[sti];
+    if(!Number.isFinite(symDays) || symDays < 0 || !Number.isInteger(symDays)){
+      alert("Symptom days must be a whole number (0 or more).");
+      return;
+    }
 
+    const months = CP_MONTHS[sti];
     const out = document.getElementById("cp-result");
     out.classList.remove("hidden");
 
     if(months === null){
-      document.getElementById("cp-period").value = "Indefinite (use guidance)";
       out.className = "info-box warning";
       out.innerHTML = `<h4><i class="fas fa-triangle-exclamation"></i> HIV is listed as “indefinite”</h4>
-        <p>Use programme guidance and interview context to select partner timeframes.</p>`;
-      appState.moduleProgress[2] = Math.max(appState.moduleProgress[2], 60);
+        <p>Use programme guidance and interview context to choose a partner timeframe. Document your reasoning.</p>`;
+      appState.moduleProgress[2] = Math.max(appState.moduleProgress[2], 80);
       saveState(); updateDashboard();
       return;
     }
-
-    document.getElementById("cp-period").value = `${months} month(s) + symptom duration`;
 
     const txDate = new Date(tx + "T00:00:00");
     const start = new Date(txDate);
@@ -1713,16 +1268,15 @@
     out.innerHTML = `<h4><i class="fas fa-check-circle"></i> Estimated critical period start</h4>
       <p><b>Treatment date:</b> ${fmt(txDate)}</p>
       <p><b>Earliest date to investigate (estimate):</b> ${fmt(start)}</p>
-      <p class="help">This is an interview aid. Document assumptions (e.g., symptom duration unknown).</p>`;
+      <p class="help">Interview aid: document assumptions, especially when symptom duration is unknown.</p>`;
 
-    appState.moduleProgress[2] = Math.max(appState.moduleProgress[2], 85);
+    appState.moduleProgress[2] = Math.max(appState.moduleProgress[2], 95);
     saveState(); updateDashboard();
   }
 
   function resetCriticalPeriod(){
-    ["cp-sti","cp-txdate","cp-symdays"].forEach(id=>setVal(id,""));
-    document.getElementById("cp-period").value = "";
-    clearValidationStyles(["wrap-cp-sti","wrap-cp-txdate","wrap-cp-symdays"]);
+    document.getElementById("cp-sti").value = "";
+    document.getElementById("cp-symdays").value = 0;
     document.getElementById("cp-result").classList.add("hidden");
   }
 
@@ -1857,7 +1411,7 @@
   }
 
   /***********************
-   * CERTIFICATE PDF (more modern / elegant)
+   * CERTIFICATE PDF (fixed overlap)
    ***********************/
   function generateCertificatePDF(){
     if(!appState.examPassed){
@@ -1865,16 +1419,14 @@
       return;
     }
 
-    const name = val("cert-name").trim();
+    const name = (document.getElementById("cert-name").value || "").trim();
     if(!name){
-      setWrapState("wrap-cert-name","error");
       const msg = document.getElementById("cert-msg");
       msg.classList.remove("hidden");
       msg.className = "info-box warning";
       msg.innerHTML = `<h4><i class="fas fa-exclamation-triangle"></i> Name required</h4><p>Please type your name to generate the certificate.</p>`;
       return;
     }
-    setWrapState("wrap-cert-name","ok");
 
     const certId = generateCertId(name);
     const dateStr = new Date().toLocaleDateString(undefined, { year:'numeric', month:'long', day:'numeric' });
@@ -1886,65 +1438,63 @@
     const H = doc.internal.pageSize.getHeight();
     const margin = 48;
 
-    // Background header band
+    // Top band
     doc.setFillColor(26, 95, 158);
     doc.rect(0, 0, W, 120, "F");
-
-    // Accent band
     doc.setFillColor(46, 139, 87);
     doc.rect(0, 120, W, 10, "F");
 
-    // Outer border
+    // Border
     doc.setDrawColor(226, 232, 240);
     doc.setLineWidth(2);
     doc.rect(margin, margin, W - margin*2, H - margin*2);
 
     // Title
-    doc.setFont("helvetica", "bold");
+    doc.setFont("helvetica","bold");
     doc.setTextColor(255,255,255);
     doc.setFontSize(30);
-    doc.text("Certificate of Completion", W/2, 75, { align: "center" });
+    doc.text("Certificate of Completion", W/2, 75, { align:"center" });
 
     // Body
     doc.setTextColor(45,55,72);
-    doc.setFont("helvetica", "normal");
+    doc.setFont("helvetica","normal");
     doc.setFontSize(16);
-    doc.text("This certifies that", W/2, 200, { align: "center" });
+    doc.text("This certifies that", W/2, 200, { align:"center" });
 
-    doc.setFont("helvetica", "bold");
+    doc.setFont("helvetica","bold");
     doc.setFontSize(34);
-    doc.text(name, W/2, 255, { align: "center" });
+    doc.text(name, W/2, 255, { align:"center" });
 
-    doc.setFont("helvetica", "normal");
+    doc.setFont("helvetica","normal");
     doc.setFontSize(15);
-    doc.text("has successfully completed", W/2, 295, { align: "center" });
+    doc.text("has successfully completed", W/2, 295, { align:"center" });
 
-    doc.setFont("helvetica", "bold");
+    doc.setFont("helvetica","bold");
     doc.setFontSize(18);
-    doc.text("Contact Investigation (Disease Intervention) 101", W/2, 325, { align: "center" });
+    doc.text("Contact Investigation (Disease Intervention) 101", W/2, 325, { align:"center" });
 
-    doc.setFont("helvetica", "normal");
+    doc.setFont("helvetica","normal");
     doc.setFontSize(13);
-    doc.text(`Final Exam Score: ${appState.examScorePct}%  •  CPD/CME Credits: 10`, W/2, 360, { align: "center" });
+    doc.text(`Final Exam Score: ${appState.examScorePct}%  •  CPD/CME Credits: 12`, W/2, 360, { align:"center" });
 
-    // Footer details
+    // Footer info (fixed spacing to avoid overlap)
+    doc.setFont("helvetica","normal");
     doc.setFontSize(11);
-    doc.text(`Completion Date: ${dateStr}`, margin + 12, H - 90);
-    doc.text(`Certificate ID: ${certId}`, margin + 12, H - 70);
+    doc.text(`Completion Date: ${dateStr}`, margin + 12, H - 96);
+    doc.text(`Certificate ID: ${certId}`, margin + 12, H - 78);
+    doc.setFont("helvetica","italic");
+    doc.text(`Designed by Glenroy Griffiths`, margin + 12, H - 60);
 
-    doc.setFont("helvetica", "italic");
-    doc.text("Designed by Glenroy Griffiths • Jamaica MOHW CI Field Guide 2025 + STI Manual (2020)", W/2, H - 70, { align: "center" });
-
-    // Seal (modern circle)
+    // Seal
     doc.setDrawColor(26,95,158);
     doc.setLineWidth(2);
-    doc.circle(W - margin - 90, H - 95, 42);
+    doc.circle(W - margin - 90, H - 88, 42);
     doc.setFont("helvetica","bold");
     doc.setFontSize(10);
     doc.setTextColor(26,95,158);
-    doc.text("OFFICIAL", W - margin - 90, H - 104, { align: "center" });
-    doc.text("TRAINING", W - margin - 90, H - 88, { align: "center" });
-    doc.text("CERTIFIED", W - margin - 90, H - 72, { align: "center" });
+    doc.text("OFFICIAL", W - margin - 90, H - 98, { align:"center" });
+    doc.text("TRAINING", W - margin - 90, H - 82, { align:"center" });
+    doc.text("CERTIFIED", W - margin - 90, H - 66, { align:"center" });
 
     const safeName = name.replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "_");
     doc.save(`CI101_Certificate_${safeName}.pdf`);
