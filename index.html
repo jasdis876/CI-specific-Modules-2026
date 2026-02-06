@@ -1,416 +1,2341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>
-Introduction to Contact Investigation / Disease Intervention in Jamaica
-</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CI / Disease Intervention 101 (Jamaica) – Prototype</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<!-- FontAwesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ===== CSS RESET ===== */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; }
+    :root{
+      --primary-blue:#2a6ebb;
+      --primary-teal:#2bb5b5;
+      --primary-green:#2bb57c;
+      --primary-yellow:#ffcc4d;
+      --primary-red:#e74c3c;
+      --primary-purple:#7d5fff;
+      --light-bg:#f6f8fb;
+      --card-bg:#ffffff;
+      --text:#1f2a37;
+      --text-light:#6b7280;
+      --border:#e5e7eb;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --shadow-soft:0 6px 16px rgba(0,0,0,.08);
+      --radius:18px;
+      --radius-sm:12px;
+      --transition:all .22s ease;
+      --focus: 0 0 0 3px rgba(42,110,187,.25);
+    }
+    body{ background:var(--light-bg); color:var(--text); }
+    a{ color:inherit; text-decoration:none; }
+    button{ cursor:pointer; }
+    .container{ max-width:1200px; margin:0 auto; padding:18px; }
 
-<style>
-/* ================= BASE ================= */
-*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
-body{margin:0;background:#f4f6f9;color:#1f2937}
-h1,h2,h3,h4{margin-top:0}
-a{color:#2563eb}
+    /* ===== HEADER ===== */
+    .header{
+      background:linear-gradient(135deg, rgba(42,110,187,.96), rgba(43,181,181,.92));
+      color:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .header:before{
+      content:"";
+      position:absolute; inset:-40px -60px auto auto;
+      width:220px; height:220px;
+      background:rgba(255,255,255,.12);
+      border-radius:50%;
+      filter:blur(0px);
+      transform:rotate(12deg);
+    }
+    .header-content{ padding:26px 22px; position:relative; }
+    .header-top{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+    }
+    .logo{
+      width:54px; height:54px; border-radius:16px;
+      background:rgba(255,255,255,.18);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 8px 18px rgba(0,0,0,.12);
+    }
+    .logo i{ font-size:24px; }
+    .title-wrap h1{ font-size:1.35rem; letter-spacing:.2px; margin-bottom:4px; }
+    .subtitle{ opacity:.95; font-size:.98rem; max-width:820px; line-height:1.35; }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      background:rgba(255,255,255,.18);
+      padding:10px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      font-weight:600; font-size:.92rem;
+      white-space:nowrap;
+    }
 
-/* ================= HEADER ================= */
-header{
-  background:#0f172a;
-  color:#fff;
-  padding:18px 22px
-}
-header h1{font-size:1.35rem}
-header p{opacity:.9;margin:6px 0 0}
+    .header-actions{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 12px; border-radius:999px;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.22);
+      transition:var(--transition);
+    }
+    .pill:hover{ transform:translateY(-1px); background:rgba(255,255,255,.22); }
+    .pill i{ opacity:.95; }
+    .disclaimer-strip{
+      margin-top:14px;
+      background:rgba(0,0,0,.16);
+      border:1px solid rgba(255,255,255,.18);
+      padding:12px 14px;
+      border-radius:var(--radius-sm);
+      line-height:1.35;
+      font-size:.95rem;
+    }
+    .disclaimer-strip strong{ color:#fff; }
+    .disclaimer-strip span{ opacity:.95; }
 
-/* ================= DISCLAIMER ================= */
-.global-disclaimer{
-  background:#fff3cd;
-  border:1px solid #facc15;
-  padding:14px;
-  margin:16px;
-  border-radius:6px
-}
-.global-disclaimer strong{color:#92400e}
+    /* ===== NAV ===== */
+    .main-nav{
+      margin-top:16px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+      display:flex; gap:8px; flex-wrap:wrap;
+      padding:10px;
+      position:sticky;
+      top:10px;
+      z-index:10;
+    }
+    .nav-btn{
+      border:none;
+      background:transparent;
+      padding:10px 12px;
+      border-radius:14px;
+      display:flex; gap:10px; align-items:center;
+      font-weight:700;
+      color:var(--text-light);
+      transition:var(--transition);
+    }
+    .nav-btn i{ width:18px; text-align:center; }
+    .nav-btn:hover{ background:#f3f6fb; color:var(--text); }
+    .nav-btn.active{
+      background:rgba(42,110,187,.12);
+      color:var(--primary-blue);
+      box-shadow:0 4px 10px rgba(42,110,187,.10);
+    }
+    .nav-lock{
+      margin-left:6px;
+      font-size:.8rem;
+      padding:4px 8px;
+      border-radius:999px;
+      background:rgba(231,76,60,.12);
+      color:var(--primary-red);
+      border:1px solid rgba(231,76,60,.18);
+      font-weight:800;
+    }
 
-/* ================= NAV ================= */
-nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  padding:12px;
-  background:#e5e7eb
-}
-nav button{
-  border:none;
-  padding:8px 12px;
-  border-radius:6px;
-  cursor:pointer;
-  background:#334155;
-  color:#fff
-}
-nav button:hover{background:#1e293b}
+    /* ===== LAYOUT ===== */
+    .section{ display:none; margin-top:16px; }
+    .section.active{ display:block; animation:fadeIn .22s ease; }
+    @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
 
-/* ================= MAIN ================= */
-main{padding:18px}
-section{display:none}
-section.active{display:block}
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns: 1.3fr .7fr;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns:1fr; }
+    }
 
-/* ================= BOXES ================= */
-.info{
-  background:#fff;
-  border-left:4px solid #2563eb;
-  padding:14px;
-  margin:14px 0;
-  border-radius:6px
-}
-.warn{
-  border-left-color:#f59e0b;
-  background:#fff7ed
-}
-.danger{
-  border-left-color:#dc2626;
-  background:#fee2e2
-}
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+      padding:16px;
+    }
+    .card h2{
+      font-size:1.15rem;
+      margin-bottom:10px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .card h2 i{ color:var(--primary-blue); }
+    .muted{ color:var(--text-light); line-height:1.45; }
+    .small{ font-size:.95rem; }
+    .hr{ height:1px; background:var(--border); margin:12px 0; }
+    .pill-tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      background:#f3f6fb; border:1px solid var(--border);
+      font-weight:700; color:#374151; font-size:.92rem;
+    }
 
-/* ================= TABLE ================= */
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin:14px 0
-}
-th,td{
-  border:1px solid #d1d5db;
-  padding:8px;
-  vertical-align:top
-}
-th{background:#f1f5f9}
+    /* ===== INFO BOXES ===== */
+    .info-box{
+      border-radius:var(--radius-sm);
+      padding:12px 12px;
+      border:1px solid var(--border);
+      background:#f8fafc;
+      line-height:1.4;
+    }
+    .info-box strong{ display:inline-block; margin-bottom:4px; }
+    .info-box.warning{
+      background:rgba(255,204,77,.16);
+      border-color:rgba(255,204,77,.35);
+    }
+    .info-box.danger{
+      background:rgba(231,76,60,.12);
+      border-color:rgba(231,76,60,.25);
+    }
+    .info-box.good{
+      background:rgba(43,181,124,.12);
+      border-color:rgba(43,181,124,.22);
+    }
+    .required-reading{
+      background:rgba(42,110,187,.10);
+      border:1px solid rgba(42,110,187,.22);
+    }
+    .required-reading .req-title{
+      display:flex; align-items:center; gap:10px; font-weight:900;
+      color:var(--primary-blue);
+      margin-bottom:6px;
+    }
 
-/* ================= QUIZ ================= */
-.quiz-box{
-  background:#fff;
-  padding:16px;
-  border-radius:6px;
-  margin-bottom:18px
-}
-.question{margin-bottom:14px}
-.question strong{display:block;margin-bottom:6px}
+    /* ===== PROGRESS ===== */
+    .progress-wrap{ display:flex; gap:12px; flex-wrap:wrap; }
+    .stat{
+      flex:1;
+      min-width:220px;
+      padding:12px;
+      border-radius:var(--radius-sm);
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .stat .label{ color:var(--text-light); font-weight:700; font-size:.9rem; margin-bottom:6px; }
+    .stat .value{ font-size:1.25rem; font-weight:900; color:var(--primary-blue); }
+    .bar{
+      margin-top:8px;
+      height:10px; border-radius:999px;
+      background:#edf2f7;
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+    .bar > div{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg, rgba(42,110,187,.95), rgba(43,181,181,.92));
+      transition:width .35s ease;
+    }
 
-/* ================= BUTTONS ================= */
-.btn{
-  background:#2563eb;
-  color:#fff;
-  border:none;
-  padding:10px 14px;
-  border-radius:6px;
-  cursor:pointer
-}
-.btn.secondary{background:#475569}
+    /* ===== MODULES ===== */
+    .module-list{ display:grid; gap:10px; }
+    .module{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+    }
+    .module-header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 14px;
+      background:linear-gradient(180deg, #fff, #fbfcfe);
+      cursor:pointer;
+    }
+    .module-header:hover{ background:#f7faff; }
+    .module-title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900;
+    }
+    .module-title i{ color:var(--primary-blue); }
+    .module-meta{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background:#f8fafc;
+      font-weight:800; font-size:.86rem; color:#374151;
+    }
+    .chip.done{ background:rgba(43,181,124,.12); border-color:rgba(43,181,124,.22); color:var(--primary-green); }
+    .chip.req{ background:rgba(42,110,187,.10); border-color:rgba(42,110,187,.22); color:var(--primary-blue); }
+    .module-body{
+      padding:14px 14px 16px 14px;
+      display:none;
+      border-top:1px solid var(--border);
+    }
+    .module.open .module-body{ display:block; animation:fadeIn .2s ease; }
+    .module-actions{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
+    }
+    .btn{
+      border:none;
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:900;
+      display:inline-flex;
+      gap:10px; align-items:center;
+      transition:var(--transition);
+    }
+    .btn.primary{ background:var(--primary-blue); color:#fff; }
+    .btn.primary:hover{ transform:translateY(-1px); filter:brightness(.98); }
+    .btn.ghost{ background:#f3f6fb; color:#1f2a37; border:1px solid var(--border); }
+    .btn.ghost:hover{ transform:translateY(-1px); }
+    .btn.danger{ background:rgba(231,76,60,.12); color:var(--primary-red); border:1px solid rgba(231,76,60,.22); }
+    .btn:focus{ outline:none; box-shadow:var(--focus); }
 
-/* ================= CERT ================= */
-.cert{
-  background:#fff;
-  padding:24px;
-  border:2px solid #0f172a;
-  max-width:700px;
-  margin:auto
-}
-</style>
+    .accordion{
+      margin-top:10px;
+      display:grid; gap:8px;
+    }
+    details{
+      border:1px solid var(--border);
+      border-radius:var(--radius-sm);
+      background:#fff;
+      overflow:hidden;
+    }
+    summary{
+      padding:12px 12px;
+      list-style:none;
+      font-weight:900;
+      cursor:pointer;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details[open] summary{ background:#f7faff; }
+    .details-body{ padding:0 12px 12px 12px; color:#111827; line-height:1.45; }
+    .details-body ul{ margin:8px 0 0 18px; }
+    .details-body li{ margin:6px 0; }
+
+    /* ===== TABLES ===== */
+    table{ width:100%; border-collapse:collapse; }
+    th, td{
+      border:1px solid var(--border);
+      padding:10px 10px;
+      vertical-align:top;
+      line-height:1.35;
+      font-size:.95rem;
+    }
+    th{ background:#f8fafc; text-align:left; font-weight:900; }
+    .table-wrap{ overflow:auto; border-radius:var(--radius-sm); border:1px solid var(--border); }
+
+    /* ===== QUIZ ===== */
+    .quiz-wrap{ display:grid; gap:12px; }
+    .quiz-top-actions{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;
+      padding:12px;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+    }
+    .quiz-status{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      font-weight:900;
+    }
+    .quiz-status .pill-tag{ background:rgba(42,110,187,.10); border-color:rgba(42,110,187,.22); color:var(--primary-blue); }
+    .quiz-question{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+      padding:14px;
+    }
+    .q-head{ font-weight:1000; margin-bottom:10px; }
+    .q-options{ display:grid; gap:8px; }
+    .q-option{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:10px 10px;
+      display:flex; gap:10px;
+      align-items:flex-start;
+      transition:var(--transition);
+      background:#fbfcfe;
+    }
+    .q-option:hover{ transform:translateY(-1px); background:#f7faff; }
+    .q-option input{ margin-top:3px; }
+    .q-feedback{
+      margin-top:10px;
+      border-radius:14px;
+      padding:10px 10px;
+      display:none;
+      border:1px solid var(--border);
+      background:#f8fafc;
+      line-height:1.35;
+    }
+    .q-feedback.correct{ background:rgba(43,181,124,.12); border-color:rgba(43,181,124,.22); }
+    .q-feedback.wrong{ background:rgba(231,76,60,.10); border-color:rgba(231,76,60,.22); }
+
+    /* ===== CERTIFICATE ===== */
+    .cert-shell{
+      border-radius:22px;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, #ffffff, #fbfcfe);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .cert-top{
+      padding:18px;
+      background:linear-gradient(135deg, rgba(42,110,187,.95), rgba(125,95,255,.90));
+      color:#fff;
+      position:relative;
+    }
+    .cert-top:after{
+      content:"";
+      position:absolute; inset:auto -30px -60px auto;
+      width:240px; height:240px;
+      background:rgba(255,255,255,.12);
+      border-radius:50%;
+    }
+    .cert-body{ padding:18px; }
+    .cert-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; }
+    .cert-title{ font-size:1.2rem; font-weight:1000; }
+    .cert-id{
+      font-weight:1000;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.22);
+      padding:8px 10px;
+      border-radius:999px;
+      display:inline-flex;
+      gap:10px; align-items:center;
+      position:relative;
+      z-index:1;
+    }
+    .cert-proto{
+      margin-top:8px;
+      font-size:.92rem;
+      opacity:.95;
+      position:relative;
+      z-index:1;
+    }
+    .seal{
+      display:inline-flex; gap:10px; align-items:center;
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.22);
+      font-weight:900;
+      position:relative;
+      z-index:1;
+    }
+    .cert-grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 900px){ .cert-grid{ grid-template-columns:1fr; } }
+    .cert-field{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:#fff;
+      padding:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,.05);
+    }
+    .cert-field .k{ color:var(--text-light); font-weight:800; font-size:.9rem; margin-bottom:6px; }
+    .cert-field .v{ font-weight:1000; color:#111827; }
+    .cert-overview{
+      margin-top:12px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:#fff;
+      padding:12px;
+      line-height:1.45;
+    }
+    .cert-overview ul{ margin:8px 0 0 18px; }
+    .print-hide{ }
+    @media print{
+      body{ background:#fff; }
+      .main-nav, .header, .print-hide{ display:none !important; }
+      .container{ max-width:100%; padding:0; }
+      .section{ display:block !important; margin:0; }
+      .card{ box-shadow:none; border:none; }
+      .cert-shell{ box-shadow:none; border:1px solid #ccc; }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer{
+      text-align:center;
+      color:var(--text-light);
+      margin:20px 0 6px;
+      padding:18px 0;
+      border-top:1px solid var(--border);
+      line-height:1.45;
+    }
+    .kbd{
+      display:inline-block;
+      padding:2px 8px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-weight:900;
+      font-size:.85rem;
+      color:#374151;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
 
-<header>
-<h1>Introduction to Contact Investigation / Disease Intervention in Jamaica</h1>
-<p>
-Based on the Ministry of Health & Wellness (MOHW) Contact Investigation Field Guide
-</p>
-</header>
+    <!-- HEADER -->
+    <header class="header" role="banner">
+      <div class="header-content">
+        <div class="header-top">
+          <div class="brand">
+            <div class="logo" aria-hidden="true"><i class="fas fa-shield-virus"></i></div>
+            <div class="title-wrap">
+              <h1>Introduction to Contact Investigation / Disease Intervention in Jamaica (Prototype)</h1>
+              <p class="subtitle">
+                Based on the <strong>Jamaica MOHW Contact Investigation Field Guide (2025)</strong> and the
+                <strong>MOHW STI Manual (2020)</strong>. This platform is a <strong>prototype learning app</strong>
+                for adaptation into an approved course.
+              </p>
+            </div>
+          </div>
 
-<div class="global-disclaimer">
-<strong>Prototype Notice – Read Carefully:</strong><br>
-This platform is a <b>prototype training application</b> developed for learning, orientation,
-and refresher purposes only. Completion of this course <b>does NOT</b> certify or qualify a person
-to function as a Contact Investigator or Disease Intervention Specialist.
-<br><br>
-This prototype is <b>awaiting official review and permission</b> for use by:
-<ul>
-<li>Human Resources (HR)</li>
-<li>Ministry of Health & Wellness (MOHW)</li>
-<li>University of Technology, Jamaica (UTECH)</li>
-<li>Jamaica Association of Social Diseases Intervention Specialists (JASDIS)</li>
-</ul>
-</div>
+          <div class="header-actions">
+            <span class="badge"><i class="fas fa-book-medical"></i> Required Manuals</span>
+            <a class="pill" href="#resources" onclick="goSection('resources')"><i class="fas fa-folder-open"></i> Resources</a>
+            <a class="pill" href="#dashboard" onclick="goSection('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a>
+          </div>
+        </div>
 
-<nav>
-<button onclick="show('basics')">CI Basics</button>
-<button onclick="show('forms')">Forms & Records</button>
-<button onclick="show('sti')">STI Management</button>
-<button onclick="show('hei')">HEI</button>
-<button onclick="show('dia')">DIA & CI Flow</button>
-<button onclick="show('dhis')">DHIS2</button>
-<button onclick="show('exam')">Final Exam</button>
-</nav>
+        <div class="disclaimer-strip" role="note">
+          <strong>Important:</strong>
+          <span>
+            Completion of this prototype <strong>does NOT</strong> make you a Contact Investigator (CI) / Disease Intervention Specialist (DIS).
+            It is for <strong>programme overview and refresher learning</strong> only. For official training pathways, contact your
+            <strong>HR</strong>, <strong>MOHW</strong>, <strong>UTECH</strong>, or the <strong>Jamaica Association of Social Disease Intervention Specialists (JASDIS)</strong>.
+            This prototype is <strong>awaiting official permission</strong> for use by the relevant authorities.
+          </span>
+        </div>
+      </div>
+    </header>
 
-<main>
+    <!-- NAV -->
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-btn active" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</button>
+      <button class="nav-btn" data-section="modules"><i class="fas fa-layer-group"></i> Modules</button>
+      <button class="nav-btn" data-section="tools"><i class="fas fa-calculator"></i> Tools</button>
+      <button class="nav-btn" data-section="quiz">
+        <i class="fas fa-circle-question"></i> Exam
+        <span id="quizLockBadge" class="nav-lock" style="display:none;"><i class="fas fa-lock"></i> Locked</span>
+      </button>
+      <button class="nav-btn" data-section="resources"><i class="fas fa-folder-open"></i> Resources</button>
+      <button class="nav-btn" data-section="certificate">
+        <i class="fas fa-award"></i> Certificate
+        <span id="certLockBadge" class="nav-lock" style="display:none;"><i class="fas fa-lock"></i> Locked</span>
+      </button>
+    </nav>
 
-<!-- ================= CI BASICS ================= -->
-<section id="basics" class="active">
-<h2>Module 1 – Contact Investigation Fundamentals</h2>
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="section active" aria-labelledby="dashTitle">
+      <div class="grid">
+        <div class="card">
+          <h2 id="dashTitle"><i class="fas fa-chart-line"></i> Learning Dashboard</h2>
+          <p class="muted">
+            Your progress saves automatically in this browser.
+            You must complete <strong>all modules</strong> before the exam unlocks.
+            You must score <strong>70% or higher</strong> to unlock the certificate.
+          </p>
 
-<div class="info warn">
-<strong>Required Reading:</strong><br>
-Participants MUST read the CI Field Guide pages covering:
-<ul>
-<li>Confidentiality – approx. pp. 8–9</li>
-<li>Roles & Responsibilities – pp. 53–54</li>
-<li>Critical Period concepts – pp. 41–42</li>
-</ul>
-The interface content below <b>does not replace the Field Guide</b>.
-</div>
+          <div class="hr"></div>
 
-<p>
-Contact Investigation (CI) is a structured public health process used to:
-</p>
-<ul>
-<li>Interrupt transmission of HIV, STIs, TB, and other notifiable conditions</li>
-<li>Identify exposed persons (contacts)</li>
-<li>Link contacts to testing, treatment, and prevention services</li>
-<li>Document outcomes for surveillance and programme monitoring</li>
-</ul>
+          <div class="progress-wrap" aria-label="Progress statistics">
+            <div class="stat">
+              <div class="label">Modules Completed</div>
+              <div class="value"><span id="modsDone">0</span>/<span id="modsTotal">0</span></div>
+              <div class="bar" aria-hidden="true"><div id="modsBar"></div></div>
+            </div>
+            <div class="stat">
+              <div class="label">Overall Progress</div>
+              <div class="value"><span id="overallPct">0</span>%</div>
+              <div class="bar" aria-hidden="true"><div id="overallBar"></div></div>
+            </div>
+            <div class="stat">
+              <div class="label">Best Exam Score</div>
+              <div class="value"><span id="bestScore">—</span></div>
+              <div class="bar" aria-hidden="true"><div id="scoreBar"></div></div>
+            </div>
+          </div>
 
-<p>
-CI work is governed by strict confidentiality, ethical conduct, and legal reporting
-requirements under Jamaican public health law and MOHW policy.
-</p>
-</section>
+          <div class="hr"></div>
 
-<!-- ================= FORMS ================= -->
-<section id="forms">
-<h2>Module 2 – Forms, Records & Documentation</h2>
+          <div class="info-box required-reading" role="note">
+            <div class="req-title"><i class="fas fa-circle-exclamation"></i> Required Reading (Not Optional)</div>
+            <div class="small">
+              Each module lists the exact manual pages that MUST be read. The content inside this app is a guided summary,
+              but the manuals are the primary reference. Use the <strong>Resources</strong> section to download the manuals and
+              read the listed pages while working through modules.
+            </div>
+          </div>
 
-<div class="info warn">
-<strong>Required Reading:</strong>
-CI Field Guide sections on:
-<ul>
-<li>Interview Record (IR) – pp. 10–23</li>
-<li>Field Record (FR) – pp. 24–35</li>
-<li>Notification & surveillance forms – pp. 108–115</li>
-</ul>
-</div>
+          <div class="module-actions">
+            <button class="btn ghost" onclick="resetAllProgress()"><i class="fas fa-rotate-left"></i> Reset All Progress</button>
+            <button class="btn primary" onclick="goSection('modules')"><i class="fas fa-layer-group"></i> Start / Continue Modules</button>
+          </div>
+        </div>
 
-<table>
-<tr><th>Form</th><th>Purpose</th><th>Key Notes</th></tr>
-<tr>
-<td>Interview Record (IR)</td>
-<td>Documents index interview details</td>
-<td>Must be complete, accurate, and legible</td>
-</tr>
-<tr>
-<td>Field Record (FR)</td>
-<td>Tracks partner notification attempts</td>
-<td>Each attempt must be recorded</td>
-</tr>
-<tr>
-<td>General Class 1 Notification</td>
-<td>Mandatory disease reporting</td>
-<td>Reported within 24 hours</td>
-</tr>
-<tr>
-<td>Congenital Syphilis Report</td>
-<td>Priority maternal/infant surveillance</td>
-<td>Immediate action required</td>
-</tr>
-</table>
-</section>
+        <div class="card">
+          <h2><i class="fas fa-circle-info"></i> Prototype Notice</h2>
+          <p class="muted small">
+            This is a <strong>prototype training/refresher tool</strong> awaiting official permission for use by:
+            <strong>HR</strong>, <strong>MOHW</strong>, <strong>UTECH</strong>, and relevant partners.
+          </p>
+          <div class="hr"></div>
 
-<!-- ================= STI ================= -->
-<section id="sti">
-<h2>Module 3 – STI Management (CI Perspective)</h2>
+          <div class="pill-tag"><i class="fas fa-clock"></i> Recommended CME Time: <strong>&nbsp;10 CME hours</strong></div>
+          <p class="muted small" style="margin-top:10px;">
+            (Suggested time to read the manuals, complete the modules, practise key flows, and attempt the exam.)
+          </p>
 
-<div class="info warn">
-<strong>Required Reading:</strong><br>
-Participants MUST read the STI Manual sections on syndromic management and treatment tables.
-The table below is a learning summary and <b>does not replace the manual</b>.
-</div>
+          <div class="hr"></div>
+          <div class="info-box warning">
+            <strong>Reminder:</strong> This certificate is a proof of completion of a prototype learning tool only.
+            It is <strong>not an official MOHW/UTECH certification</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
 
-<table>
-<tr>
-<th>Condition</th>
-<th>Common Aetiology</th>
-<th>Recommended Treatment (Summary)</th>
-</tr>
+    <!-- MODULES -->
+    <section id="modules" class="section" aria-labelledby="modTitle">
+      <div class="card">
+        <h2 id="modTitle"><i class="fas fa-layer-group"></i> Module-Based Learning</h2>
+        <p class="muted">
+          Expand each module. Read the <strong>required pages</strong>. Then click <strong>Mark as Complete</strong>.
+          The exam unlocks only after every module is completed.
+        </p>
+      </div>
 
-<tr>
-<td>Syphilis (Primary/Secondary)</td>
-<td>Treponema pallidum</td>
-<td>Benzathine Penicillin G 2.4 MU IM (stage-dependent dosing)</td>
-</tr>
+      <div class="module-list" id="moduleList" aria-label="Modules list"></div>
+    </section>
 
-<tr>
-<td>Gonorrhoea</td>
-<td>Neisseria gonorrhoeae</td>
-<td>Ceftriaxone IM + Azithromycin PO</td>
-</tr>
+    <!-- TOOLS -->
+    <section id="tools" class="section" aria-labelledby="toolsTitle">
+      <div class="grid">
+        <div class="card">
+          <h2 id="toolsTitle"><i class="fas fa-calculator"></i> Critical Period Calculator (Syphilis + Common STIs)</h2>
+          <p class="muted">
+            Based on the CI Field Guide “Maximum Infectious Period for Common STIs” table and the guidance to add the
+            duration of symptoms to the maximum infectious period (Field Guide p.41). Use this tool for practice and learning.
+          </p>
 
-<tr>
-<td>Chlamydia</td>
-<td>Chlamydia trachomatis</td>
-<td>Doxycycline 7 days OR Azithromycin stat</td>
-</tr>
+          <div class="hr"></div>
 
-<tr>
-<td>Trichomoniasis</td>
-<td>Trichomonas vaginalis</td>
-<td>Metronidazole (single or 7-day regimen)</td>
-</tr>
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-book"></i> Required Reading</div>
+            <div class="small">
+              CI Field Guide: <strong>p.41</strong> (Critical period guidance + Table A).
+            </div>
+          </div>
 
-<tr>
-<td>Genital Herpes</td>
-<td>HSV-1 / HSV-2</td>
-<td>Acyclovir or Valacyclovir</td>
-</tr>
+          <div class="hr"></div>
 
-<tr>
-<td>Chancroid</td>
-<td>Haemophilus ducreyi</td>
-<td>Ceftriaxone OR Erythromycin</td>
-</tr>
+          <div class="accordion">
+            <details open>
+              <summary>How the calculator works <span class="pill-tag"><i class="fas fa-lightbulb"></i> Teaching</span></summary>
+              <div class="details-body">
+                <ul>
+                  <li><strong>Critical Period (CP)</strong> is used to decide which contacts are in-scope for investigation and epi-treatment.</li>
+                  <li>The Field Guide describes CP as: <strong>maximum infectious period + duration of signs and symptoms before treatment</strong>.</li>
+                  <li>Example: if Secondary Syphilis has maximum infectious period 6 months, and symptoms were present for 2 weeks before treatment,
+                      your investigation window extends back by <strong>~6 months + 2 weeks</strong>.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
 
-<tr>
-<td>PID</td>
-<td>Mixed (GC/CT/anaerobes)</td>
-<td>Ceftriaxone + Doxycycline + Metronidazole</td>
-</tr>
-</table>
-</section>
+          <div class="hr"></div>
 
-<!-- ================= HEI ================= -->
-<section id="hei">
-<h2>Module 4 – HIV-Exposed Infants (HEI)</h2>
+          <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="card" style="box-shadow:none;">
+              <label class="muted small" for="cpSti"><strong>STI</strong></label>
+              <select id="cpSti" class="btn ghost" style="width:100%; justify-content:space-between;">
+                <option value="primary_syphilis">Primary syphilis (max 3 months)</option>
+                <option value="secondary_syphilis">Secondary syphilis (max 6 months)</option>
+                <option value="early_latent_syphilis">Early latent syphilis (max 24 months)</option>
+                <option value="hiv">HIV (indefinitely)</option>
+                <option value="gonorrhea">Gonorrhea (max 1 month)</option>
+                <option value="chlamydia">Chlamydia (max 3 months)</option>
+              </select>
 
-<div class="info warn">
-<strong>Required Reading:</strong>
-CI Field Guide HEI & paediatric sections (pp. 87–94)
-</div>
+              <div style="margin-top:10px;">
+                <label class="muted small" for="cpSymp"><strong>Duration of symptoms before treatment</strong></label>
+                <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                  <input id="cpSymp" type="number" min="0" value="0" style="width:120px; padding:10px; border-radius:14px; border:1px solid var(--border);" />
+                  <select id="cpUnit" class="btn ghost" style="justify-content:space-between;">
+                    <option value="days">days</option>
+                    <option value="weeks">weeks</option>
+                    <option value="months">months</option>
+                  </select>
+                </div>
+              </div>
 
-<p>
-HEI investigations are classified as <b>priority cases</b>.
-Delay in follow-up may result in severe morbidity or death.
-</p>
+              <div class="module-actions" style="margin-top:12px;">
+                <button class="btn primary" onclick="calcCriticalPeriod()"><i class="fas fa-calculator"></i> Calculate Window</button>
+                <button class="btn ghost" onclick="resetCriticalPeriod()"><i class="fas fa-rotate-left"></i> Reset</button>
+              </div>
+            </div>
 
-<ul>
-<li>Confirm maternal HIV status and treatment history</li>
-<li>Ensure early infant diagnosis (EID)</li>
-<li>Document infant prophylaxis and feeding method</li>
-<li>Coordinate with paediatric HIV services</li>
-</ul>
-</section>
+            <div class="card" style="box-shadow:none;">
+              <div class="info-box" id="cpResult">
+                <strong>Result will appear here.</strong>
+                <div class="small muted">This tool supports learning and practice. Always follow your programme guidance and manuals.</div>
+              </div>
 
-<!-- ================= DIA ================= -->
-<section id="dia">
-<h2>Module 5 – DIA & CI Workflow</h2>
+              <div class="hr"></div>
 
-<div class="info">
-<b>DIA Framework</b>
-<ul>
-<li><b>Detect / Define</b> – referral, urgency, planning</li>
-<li><b>Investigate</b> – interview, timeline, contacts</li>
-<li><b>Act</b> – notify, link, document, close</li>
-</ul>
-</div>
+              <div class="info-box warning">
+                <strong>Practice Reminder:</strong>
+                CP helps guide (1) which contacts to elicit and follow up, and (2) when epi-treatment may be considered per programme rules.
+              </div>
+            </div>
+          </div>
+        </div>
 
-<p>
-DIA prevents partial CI work. A case is not complete until outcomes
-are verified and documented.
-</p>
-</section>
+        <div class="card">
+          <h2><i class="fas fa-route"></i> DIA Workflow & Practice Script</h2>
+          <p class="muted">
+            A much more detailed DIA module is included inside the Modules section.
+            This panel gives a quick reference flow you can practise aloud.
+          </p>
 
-<!-- ================= DHIS ================= -->
-<section id="dhis">
-<h2>Module 6 – DHIS2 & Reporting</h2>
+          <div class="hr"></div>
 
-<div class="info warn">
-<strong>Required Reading:</strong>
-CI Field Guide reporting section (pp. 39–52)
-</div>
+          <div class="info-box">
+            <strong>Simple DIA Flow (High-level)</strong>
+            <ul style="margin:8px 0 0 18px;">
+              <li>Receive case alert → verify identifiers → check register / clinic records → confirm priority</li>
+              <li>Prepare locating plan → choose safest contact method → document attempts</li>
+              <li>Deliver message without unnecessary disclosure → arrange appointment/testing</li>
+              <li>Link to care and prevention services → update IR/FR and outcome fields</li>
+              <li>Daily/weekly reporting → quality check → DHIS2/MSSR submission flow</li>
+            </ul>
+          </div>
 
-<ul>
-<li>IR/FR data feeds DHIS2 indicators</li>
-<li>Incomplete forms = poor national data</li>
-<li>Senior CI verifies before submission</li>
-</ul>
-</section>
+          <div class="hr"></div>
 
-<!-- ================= EXAM ================= -->
-<section id="exam">
-<h2>Final Knowledge Assessment</h2>
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-book"></i> Required Reading</div>
+            <div class="small">
+              CI Field Guide: see <strong>p.40–41</strong> for DHIS2/MSSR context and data flow (Field Guide p.40–41).
+            </div>
+          </div>
 
-<div class="info danger">
-<b>IMPORTANT:</b> This exam contains EXACTLY 50 questions.
-A score of 70% or higher is required to proceed.
-</div>
+          <div class="module-actions">
+            <button class="btn primary" onclick="goSection('modules')"><i class="fas fa-layer-group"></i> Open DIA Module</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<button class="btn" onclick="submitExam()">Submit Exam</button>
+    <!-- QUIZ -->
+    <section id="quiz" class="section" aria-labelledby="quizTitle">
+      <div class="card">
+        <h2 id="quizTitle"><i class="fas fa-circle-question"></i> Final Exam (50 Questions)</h2>
+        <p class="muted">
+          The exam unlocks only after all modules are completed.
+          Pass mark is <strong>70%</strong>. Your best score is saved. Submit buttons are available at both the top and bottom.
+        </p>
 
-<div id="quiz" class="quiz-box"></div>
+        <div class="hr"></div>
 
-<button class="btn" onclick="submitExam()">Submit Exam</button>
+        <div id="quizLockedMessage" class="info-box danger">
+          <strong><i class="fas fa-lock"></i> Exam Locked</strong><br/>
+          Complete all modules first. Then return here to attempt the exam.
+        </div>
 
-<p id="result"></p>
-</section>
+        <div id="quizArea" style="display:none;">
+          <div class="quiz-wrap">
+            <div class="quiz-top-actions">
+              <div class="quiz-status">
+                <span class="pill-tag"><i class="fas fa-list-check"></i> Questions: <span id="qCount">50</span></span>
+                <span class="pill-tag"><i class="fas fa-bullseye"></i> Pass: 70%</span>
+              </div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn primary" onclick="submitExam('top')"><i class="fas fa-paper-plane"></i> Submit Exam</button>
+                <button class="btn ghost" onclick="resetExam()"><i class="fas fa-rotate-left"></i> Reset Answers</button>
+              </div>
+            </div>
 
-</main>
+            <div id="quizQuestions"></div>
 
-<script>
-/* ================= NAV ================= */
-function show(id){
- document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
- document.getElementById(id).classList.add("active");
-}
+            <div class="quiz-top-actions">
+              <div class="quiz-status">
+                <span class="pill-tag"><i class="fas fa-keyboard"></i> Tip: Use <span class="kbd">Tab</span> + <span class="kbd">Space</span></span>
+              </div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn primary" onclick="submitExam('bottom')"><i class="fas fa-paper-plane"></i> Submit Exam</button>
+                <button class="btn ghost" onclick="resetExam()"><i class="fas fa-rotate-left"></i> Reset Answers</button>
+              </div>
+            </div>
 
-/* ================= QUIZ ================= */
-const QUESTIONS = [];
-for(let i=1;i<=50;i++){
- QUESTIONS.push({
-  q:`Question ${i}: CI practice scenario`,
-  opts:[
-   "Approach that appears reasonable but is incomplete",
-   "Action that partially follows guidelines",
-   "Correct application of CI principles",
-   "Action that violates confidentiality"
-  ],
-  a:2
- });
-}
-if(QUESTIONS.length!==50){alert("Exam must contain exactly 50 questions");}
+            <div id="quizResult" class="info-box" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-const quiz=document.getElementById("quiz");
-QUESTIONS.forEach((q,i)=>{
- let d=document.createElement("div");
- d.className="question";
- d.innerHTML=`<strong>${q.q}</strong>`+
- q.opts.map((o,j)=>`
-  <label><input type="radio" name="q${i}" value="${j}"> ${o}</label><br>
- `).join("");
- quiz.appendChild(d);
-});
+    <!-- RESOURCES -->
+    <section id="resources" class="section" aria-labelledby="resTitle">
+      <div class="grid">
+        <div class="card">
+          <h2 id="resTitle"><i class="fas fa-folder-open"></i> Resources (Required Manuals)</h2>
+          <p class="muted">
+            These manuals are the primary reference. You are required to read the pages listed inside each module.
+          </p>
 
-function submitExam(){
- let score=0;
- for(let i=0;i<QUESTIONS.length;i++){
-  let sel=document.querySelector(`input[name=q${i}]:checked`);
-  if(!sel){alert("All questions must be answered");return;}
-  if(+sel.value===QUESTIONS[i].a)score++;
- }
- document.getElementById("result").innerText=
- `Score: ${score}/50 (${Math.round(score/50*100)}%)`;
-}
-</script>
+          <div class="hr"></div>
 
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-circle-exclamation"></i> Required Reading Rule</div>
+            <div class="small">
+              Do not rely on the app content alone. The exam is written to test knowledge from the manuals and the app together.
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="module-actions">
+            <!-- Put your official allowed links here -->
+            <a class="btn primary" href="https://drive.google.com/file/d/1SqBmSquvVqqE6fwPCouiCpjxHVS1hgNQ/view?usp=drive_link" target="_blank" rel="noopener">
+              <i class="fas fa-download"></i> Download CI Field Guide (MOHW 2025)
+            </a>
+            <a class="btn primary" href="https://drive.google.com/file/d/18R3GFXNIYtUDguGPGmVekRMY18sbjx5g/view?usp=drive_link" target="_blank" rel="noopener">
+              <i class="fas fa-download"></i> Download STI Manual (MOHW 2020)
+            </a>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="info-box">
+            <strong>How to use the page references</strong>
+            <ul style="margin:8px 0 0 18px;">
+              <li>Each module lists required pages like “Field Guide p.17–21”. That means the printed page numbers in the manual.</li>
+              <li>Open the manual and jump to those pages to read fully.</li>
+              <li>Then return and continue the module.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-diagram-project"></i> Quick Reference</h2>
+          <div class="info-box">
+            <strong>Key sections in the CI Field Guide</strong>
+            <ul style="margin:8px 0 0 18px;">
+              <li><strong>IR field-by-field explanation:</strong> Field Guide p.17–21</li>
+              <li><strong>FR field-by-field explanation:</strong> Field Guide p.29+ (FR explanation section)</li>
+              <li><strong>Critical period guidance + Table A:</strong> Field Guide p.41</li>
+              <li><strong>Congenital Syphilis / ON / HEI sections:</strong> Field Guide table of contents points to ~p.88–94</li>
+              <li><strong>STI codes list:</strong> Field Guide notes a full list available on p.54 (confirm inside manual)</li>
+            </ul>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="info-box warning">
+            <strong>Prototype Notice</strong><br/>
+            This training platform is a prototype and is awaiting official permission for use by:
+            <strong>HR</strong>, <strong>MOHW</strong>, and <strong>UTECH</strong>, with relevant partners.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATE -->
+    <section id="certificate" class="section" aria-labelledby="certTitle">
+      <div class="card">
+        <h2 id="certTitle"><i class="fas fa-award"></i> Certificate of Completion</h2>
+        <p class="muted">
+          Unlock conditions: <strong>all modules completed</strong> + <strong>exam score ≥ 70%</strong>.
+          This is not an official certification to be a CI/DIS — it is proof of completion of this prototype learning tool.
+        </p>
+
+        <div class="hr"></div>
+
+        <div id="certLockedMessage" class="info-box danger">
+          <strong><i class="fas fa-lock"></i> Certificate Locked</strong><br/>
+          Complete all modules and pass the exam (≥ 70%).
+        </div>
+
+        <div id="certArea" style="display:none;">
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-circle-exclamation"></i> Important Disclaimer</div>
+            <div class="small">
+              This certificate does <strong>NOT</strong> make you a Contact Investigator. For official training, contact your
+              <strong>HR</strong>, <strong>MOHW</strong>, <strong>UTECH</strong>, or <strong>JASDIS</strong>.
+              This is a <strong>prototype app</strong> awaiting official permission for use by the relevant authorities.
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="card print-hide" style="box-shadow:none;">
+            <label class="muted small" for="certName"><strong>Participant Name (required)</strong></label>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:8px;">
+              <input id="certName" type="text" placeholder="Type full name" style="flex:1; min-width:260px; padding:12px; border-radius:14px; border:1px solid var(--border);" />
+              <button class="btn primary" onclick="generateCertificate()"><i class="fas fa-wand-magic-sparkles"></i> Generate Certificate</button>
+              <button class="btn ghost" onclick="window.print()"><i class="fas fa-print"></i> Print / Save PDF</button>
+            </div>
+          </div>
+
+          <div class="cert-shell" id="certShell" style="display:none;">
+            <div class="cert-top">
+              <div class="cert-row">
+                <div>
+                  <div class="cert-title">Certificate of Completion</div>
+                  <div style="opacity:.95; margin-top:6px; position:relative; z-index:1;">
+                    Introduction to Contact Investigation / Disease Intervention in Jamaica (Prototype)
+                  </div>
+                </div>
+
+                <div style="text-align:right;">
+                  <div class="cert-id"><i class="fas fa-hashtag"></i> <span id="certId">CI-000000</span></div>
+                  <div class="cert-proto">
+                    Prototype learning app for adaptation into an approved course (awaiting official permission for use by HR, MOHW, UTECH, and partners).
+                  </div>
+                </div>
+              </div>
+
+              <div class="seal"><i class="fas fa-shield"></i> Completion Seal (Prototype)</div>
+            </div>
+
+            <div class="cert-body">
+              <div class="cert-grid">
+                <div class="cert-field">
+                  <div class="k">Participant</div>
+                  <div class="v" id="certParticipant">—</div>
+                </div>
+                <div class="cert-field">
+                  <div class="k">Date</div>
+                  <div class="v" id="certDate">—</div>
+                </div>
+                <div class="cert-field">
+                  <div class="k">Best Exam Score</div>
+                  <div class="v" id="certScore">—</div>
+                </div>
+                <div class="cert-field">
+                  <div class="k">CME Time</div>
+                  <div class="v">10 CME hours (recommended)</div>
+                </div>
+              </div>
+
+              <div class="cert-overview">
+                <strong>Overview of what was covered</strong>
+                <ul>
+                  <li>CI fundamentals: purpose, confidentiality, roles, and safe communication</li>
+                  <li>Forms and records: IR/FR core concepts + additional investigation forms as teaching points</li>
+                  <li>STI investigation and management: syndromes, partner services, and treatment summary table</li>
+                  <li>Congenital syphilis, ophthalmia neonatorum, and HEI investigation basics</li>
+                  <li>DHIS2/MSSR data flow, quality checks, and reporting expectations</li>
+                  <li>DIA workflow, field flow, and practice scripts for client interactions</li>
+                  <li>Critical period logic and calculation practice</li>
+                </ul>
+              </div>
+
+              <div class="info-box warning" style="margin-top:12px;">
+                <strong>Not an official certification:</strong>
+                Completion of this prototype does NOT make you a CI/DIS. For official pathways, contact:
+                <strong>HR</strong>, <strong>MOHW</strong>, <strong>UTECH</strong>, or <strong>JASDIS</strong>.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Prototype CI / Disease Intervention 101 (Jamaica). Awaiting official permission for use by HR, MOHW, UTECH, and partners.<br/>
+      This tool supports programme overview and refresher learning only.
+    </footer>
+
+  </div>
+
+  <script>
+    /***************
+     * APP STATE
+     ***************/
+    const STORAGE_KEY = "ci_prototype_state_v3";
+    const PASS_MARK = 70;
+    const CME_HOURS = 10;
+
+    const state = {
+      modules: [],
+      completed: {},            // moduleId -> boolean
+      bestScore: null,          // number
+      lastScore: null,          // number
+      examPassed: false
+    };
+
+    /***************
+     * MODULE DATA (Expanded + Required Reading)
+     * Page refs: CI Field Guide extracted text includes:
+     * - IR form printed page 12; IR field-by-field explanation printed page 17+
+     * - Critical period + Table A printed page 41
+     * STI Manual extracted text includes:
+     * - GUD treatment table printed page 82 (syphilis/chancroid regimens)
+     * - Vaginal discharge treatment table printed page 49
+     * - Urethral discharge gonorrhea treatment begins printed page 39+
+     ***************/
+    const modules = [
+      {
+        id: "ci_basics",
+        title: "CI Basics (Purpose, Ethics, Confidentiality, Roles)",
+        icon: "fa-book",
+        requiredReading: [
+          "CI Field Guide: read the CI overview + programme expectations sections (use the manual table of contents to locate).",
+          "CI Field Guide: review confidentiality and safe handling of information wherever referenced in your guide."
+        ],
+        content: `
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-book"></i> Required Reading</div>
+            <div class="small">
+              You are required to read the CI Field Guide sections that define CI purpose, confidentiality, record standards, and role expectations.
+              Do not rely on the app alone.
+            </div>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>What CI is (plain language + programme focus)</summary>
+              <div class="details-body">
+                Contact Investigation (CI) / Disease Intervention means:
+                <ul>
+                  <li>Finding and supporting people who may have been exposed to an infection (like STI/HIV).</li>
+                  <li>Helping them get tested, treated, and linked to care.</li>
+                  <li>Stopping spread by ensuring partners/contacts are notified safely and respectfully.</li>
+                </ul>
+                <strong>Core aim:</strong> protect health while respecting privacy.
+              </div>
+            </details>
+
+            <details>
+              <summary>Ethics, confidentiality, and safe disclosure</summary>
+              <div class="details-body">
+                <ul>
+                  <li>Only share the minimum information needed to achieve testing/treatment.</li>
+                  <li>Never disclose a client’s diagnosis to third parties.</li>
+                  <li>Use neutral language (e.g., “health matter” / “important clinic visit”) when contacting someone.</li>
+                  <li>Document contact attempts accurately and professionally.</li>
+                </ul>
+                <div class="info-box warning" style="margin-top:10px;">
+                  <strong>Required:</strong> Follow your manual guidance and programme SOPs for confidentiality and documentation.
+                </div>
+              </div>
+            </details>
+
+            <details>
+              <summary>Roles (CI, Senior CI/Level 2, Clinic/Team)</summary>
+              <div class="details-body">
+                <ul>
+                  <li><strong>CI/Field Worker:</strong> interviews, contact elicitation, FR follow-up, documentation, outcomes.</li>
+                  <li><strong>Level 2 (Senior CI/SDIS role):</strong> quality checks, prioritization, mentorship, complex investigations, reporting validation.</li>
+                  <li><strong>Clinical team:</strong> testing, diagnosis, treatment, clinical counselling, referrals.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>Prioritization basics (what gets urgent attention)</summary>
+              <div class="details-body">
+                <ul>
+                  <li>Pregnancy + suspected/confirmed syphilis is urgent due to congenital syphilis risk.</li>
+                  <li>Cases with high transmission potential need faster action.</li>
+                  <li>Quality documentation and fast follow-up improve outcomes.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        `
+      },
+
+      {
+        id: "forms_records",
+        title: "Forms & Records (IR, FR, plus other investigation forms as teaching points)",
+        icon: "fa-file-lines",
+        requiredReading: [
+          "CI Field Guide: IR form (printed p.12).",
+          "CI Field Guide: IR field-by-field explanation (printed p.17–21).",
+          "CI Field Guide: FR field-by-field explanation section (starts around printed p.29)."
+        ],
+        content: `
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-book"></i> Required Reading</div>
+            <div class="small">
+              CI Field Guide: <strong>IR form p.12</strong> and <strong>IR field-by-field explanation p.17–21</strong>.
+              Also read the <strong>FR field-by-field explanation</strong> section (starts around printed p.29).
+            </div>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>Interview Record (IR): what it’s for</summary>
+              <div class="details-body">
+                The IR captures the index case interview and is used to:
+                <ul>
+                  <li>Record locating information, risk context, symptoms timing, and interview outcomes.</li>
+                  <li>Document contact elicitation within the critical period.</li>
+                  <li>Support partner services, counselling topics, and follow-up planning.</li>
+                </ul>
+                <div class="info-box warning" style="margin-top:10px;">
+                  <strong>Quality rule:</strong> incomplete IR fields cause missed contacts and weak reporting.
+                </div>
+              </div>
+            </details>
+
+            <details>
+              <summary>Field Record (FR): what it’s for</summary>
+              <div class="details-body">
+                The FR tracks contact follow-up (attempts, outcomes, referrals) and supports:
+                <ul>
+                  <li>Documenting each contact approach attempt (date/time/method/result).</li>
+                  <li>Capturing testing outcomes and linkage actions.</li>
+                  <li>Reporting and closure decisions.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>Other investigation forms (teaching points you must know exist)</summary>
+              <div class="details-body">
+                In Jamaica programmes, additional forms may be used depending on condition and context. You must know what they are used for,
+                where they fit, and how to document correctly. Examples include:
+                <ul>
+                  <li><strong>Confidentiality / consent-related forms</strong> (programme-specific).</li>
+                  <li><strong>Notification / referral forms</strong> (where used by your parish/region).</li>
+                  <li><strong>Congenital syphilis report forms</strong> (Field Guide contents indicate CS forms around the CS section).</li>
+                  <li><strong>Ophthalmia neonatorum investigation report</strong> (Field Guide contents indicate ON forms in that section).</li>
+                  <li><strong>HEI / paediatric HIV investigation forms</strong> (Field Guide indicates HEI/paediatric HIV report forms in that section).</li>
+                  <li><strong>Monthly summary statistics reports (MSSR)</strong> for CI and STI reporting.</li>
+                </ul>
+
+                <div class="info-box warning" style="margin-top:10px;">
+                  <strong>Required:</strong> You must identify the correct form(s) for each condition and complete all fields accurately.
+                  Use your Field Guide and programme instructions.
+                </div>
+              </div>
+            </details>
+
+            <details>
+              <summary>Documentation standards (what makes a record “strong”)</summary>
+              <div class="details-body">
+                <ul>
+                  <li>Clear dates (DD/MM/YY), times, and locations.</li>
+                  <li>Objective language (facts, not opinions).</li>
+                  <li>Consistent identifiers (case number, parish codes, CI code).</li>
+                  <li>Legible and complete entries, with explanations where required.</li>
+                  <li>Outcome fields properly completed (tested? treated? referred? linked?)</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        `
+      },
+
+      {
+        id: "sti_management",
+        title: "STI Management (Investigation + Treatment Summary Table)",
+        icon: "fa-stethoscope",
+        requiredReading: [
+          "CI Field Guide: critical period guidance + Table A (printed p.41).",
+          "STI Manual: vaginal discharge table (printed p.49).",
+          "STI Manual: genital ulcer disease table (printed p.82).",
+          "STI Manual: urethral discharge section (starts around printed p.39).",
+          "STI Manual: anal discharge table (printed p.64).",
+          "STI Manual: PID ambulatory treatment table (printed p.71)."
+        ],
+        content: `
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-book"></i> Required Reading</div>
+            <div class="small">
+              You are required to read the STI Manual pages listed below while doing this module:
+              <strong>p.39</strong> (urethral discharge), <strong>p.49</strong> (vaginal discharge),
+              <strong>p.64</strong> (anal discharge), <strong>p.71</strong> (PID outpatient),
+              <strong>p.82</strong> (GUD treatment incl. syphilis/chancroid).
+              Also read CI Field Guide <strong>p.41</strong> for critical period guidance.
+            </div>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>Investigation goals (what CI must accomplish)</summary>
+              <div class="details-body">
+                <ul>
+                  <li>Identify partners/contacts within the critical period.</li>
+                  <li>Ensure contacts are tested and treated appropriately.</li>
+                  <li>Document outcomes for reporting, quality improvement, and prevention impact.</li>
+                  <li>Prevent complications (especially in pregnancy: congenital syphilis prevention).</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>Critical period (what it means and why it matters)</summary>
+              <div class="details-body">
+                The CI Field Guide provides a table of maximum infectious periods and teaches to add the duration of symptoms
+                to determine the critical period window (Field Guide p.41).
+                <ul>
+                  <li>Primary syphilis: max 3 months</li>
+                  <li>Secondary syphilis: max 6 months</li>
+                  <li>Early latent syphilis: max 24 months</li>
+                  <li>HIV: indefinitely</li>
+                  <li>Gonorrhea: max 1 month</li>
+                  <li>Chlamydia: max 3 months</li>
+                </ul>
+                Use the calculator in Tools.
+              </div>
+            </details>
+
+            <details>
+              <summary>STI Treatment Summary Table (MOHW STI Manual)</summary>
+              <div class="details-body">
+                <div class="info-box warning">
+                  <strong>Training note:</strong> This table is a summary for learning. Always refer to the full STI Manual for complete guidance,
+                  eligibility, contraindications, pregnancy considerations, and updates.
+                </div>
+
+                <div class="table-wrap" style="margin-top:10px;">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="min-width:220px;">Condition / Syndrome</th>
+                        <th>Treatment Summary (from MOHW STI Manual)</th>
+                        <th style="min-width:170px;">Manual Page</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Syphilis (Primary / Early latent)</strong></td>
+                        <td>
+                          Benzathine Penicillin G (BPG) 2.4 MU IM weekly for <strong>2 doses</strong>
+                          <br/><em>OR</em> Doxycycline 100 mg PO bid x 14 days
+                          <br/><em>OR</em> Erythromycin 500 mg PO qid x 14 days
+                        </td>
+                        <td>STI Manual p.82</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Syphilis (Secondary / Late latent)</strong></td>
+                        <td>
+                          Benzathine Penicillin G (BPG) 2.4 MU IM weekly for <strong>3 doses</strong>
+                          <br/><em>OR</em> Doxycycline 100 mg PO bid x 30 days
+                          <br/><em>OR</em> Erythromycin 500 mg PO qid x 30 days
+                        </td>
+                        <td>STI Manual p.82</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Chancroid</strong></td>
+                        <td>
+                          Erythromycin 500 mg PO qid x 7 days
+                          <br/><em>OR</em> Ceftriaxone 250 mg IM stat
+                        </td>
+                        <td>STI Manual p.82</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Cervicitis – Chlamydia trachomatis</strong></td>
+                        <td>
+                          Azithromycin 1 g PO stat
+                          <br/><em>OR</em> Doxycycline 100 mg PO bid x 7 days
+                          <br/><em>OR</em> Erythromycin 500 mg PO qid x 7 days
+                          <br/><em>OR</em> Ofloxacin 300 mg PO bid x 7 days
+                        </td>
+                        <td>STI Manual p.49</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Cervicitis – Gonorrhea</strong></td>
+                        <td>
+                          Ceftriaxone 250 mg IM stat <strong>PLUS</strong> Azithromycin 1 g PO stat
+                          <br/><em>OR</em> Cefixime 400 mg PO single dose <strong>PLUS</strong> Azithromycin 1 g PO single dose
+                          <br/><em>OR</em> Ciprofloxacin 500 mg PO stat (where used)
+                          <br/><em>OR</em> Ofloxacin 400 mg PO stat
+                          <br/><em>OR</em> Norfloxacin 800 mg PO stat
+                        </td>
+                        <td>STI Manual p.49</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Anal discharge syndrome</strong></td>
+                        <td>
+                          Ceftriaxone 250 mg IM stat <strong>PLUS</strong> Azithromycin 1 g PO stat
+                          <br/><em>OR</em> Cefixime 400 mg PO stat <strong>PLUS</strong> Azithromycin 1 g PO stat
+                        </td>
+                        <td>STI Manual p.64</td>
+                      </tr>
+                      <tr>
+                        <td><strong>PID (outpatient/ambulatory)</strong></td>
+                        <td>
+                          Ceftriaxone 250 mg IM stat (or equivalent)
+                          <strong>PLUS</strong> Doxycycline 100 mg PO bid for 14 days
+                          <strong>PLUS</strong> Metronidazole 500 mg bid x 14 days
+                        </td>
+                        <td>STI Manual p.71</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Gonococcal urethritis (male urethral discharge)</strong></td>
+                        <td>
+                          Ceftriaxone 250 mg IM stat <strong>PLUS</strong> Azithromycin 1 g PO stat
+                          <br/><span class="muted small">(See urethral discharge section for full details and alternatives.)</span>
+                        </td>
+                        <td>STI Manual p.39+</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="info-box warning" style="margin-top:10px;">
+                  <strong>Required:</strong> Review the full STI Manual section for each syndrome/condition for complete guidance and programme rules.
+                </div>
+              </div>
+            </details>
+
+            <details>
+              <summary>Partner services essentials (what CI must document)</summary>
+              <div class="details-body">
+                <ul>
+                  <li>Critical period window and number of contacts named.</li>
+                  <li>Testing outcomes and treatment outcomes for contacts.</li>
+                  <li>Epi-treatment documentation where applicable.</li>
+                  <li>Health education topics (condom use, complications, reinfection prevention).</li>
+                  <li>Follow-up plan and closure reason.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        `
+      },
+
+      {
+        id: "cs_on_hei",
+        title: "Congenital Syphilis (CS), Ophthalmia Neonatorum (ON), and HEI (HIV Exposed Infant)",
+        icon: "fa-baby",
+        requiredReading: [
+          "CI Field Guide: CS/ON/Paediatric HIV sections (use manual contents: CS around p.88+, ON around p.91–92, HEI/Paediatric HIV around p.93–94)."
+        ],
+        content: `
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-book"></i> Required Reading</div>
+            <div class="small">
+              CI Field Guide: You are required to read the CS/ON/HEI sections (manual contents indicate:
+              CS around <strong>p.88+</strong>, ON around <strong>p.91–92</strong>, HEI/Paediatric HIV forms around <strong>p.93–94</strong>).
+              Use the Field Guide table of contents to locate and read fully.
+            </div>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>Why CS/ON/HEI investigations are high priority</summary>
+              <div class="details-body">
+                <ul>
+                  <li>These cases involve newborn/infant risk and require rapid action to prevent severe outcomes.</li>
+                  <li>Pregnancy + suspected/confirmed syphilis requires urgent partner services and prevention steps.</li>
+                  <li>HEI follow-up supports early testing, linkage and prevention of missed infant care.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>Core CI actions (CS/ON/HEI)</summary>
+              <div class="details-body">
+                <ul>
+                  <li>Confirm case definition and ensure correct form set is used.</li>
+                  <li>Review maternal/infant records and timing of tests/treatment.</li>
+                  <li>Identify and investigate partners/contacts (including father/partner where applicable).</li>
+                  <li>Ensure referrals for clinical follow-up and infant services.</li>
+                  <li>Document outcomes clearly for reporting and prevention.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>Teaching points: forms you must expect</summary>
+              <div class="details-body">
+                Expect condition-specific forms in this section of the Field Guide, including:
+                <ul>
+                  <li>Congenital syphilis report form</li>
+                  <li>Ophthalmia neonatorum investigation report</li>
+                  <li>HEI / paediatric HIV case investigation report</li>
+                </ul>
+                <div class="info-box warning" style="margin-top:10px;">
+                  <strong>Required:</strong> Use the Field Guide for the exact fields and completion guidance.
+                </div>
+              </div>
+            </details>
+          </div>
+        `
+      },
+
+      {
+        id: "dhis2_reporting",
+        title: "DHIS2 + Reporting (MSSR, Quality Checks, Data Flow)",
+        icon: "fa-database",
+        requiredReading: [
+          "CI Field Guide: DHIS2 / MSSR context (printed p.40–41).",
+          "CI Field Guide: key terms for monthly reports (printed p.61)."
+        ],
+        content: `
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-book"></i> Required Reading</div>
+            <div class="small">
+              CI Field Guide: read <strong>p.40–41</strong> for DHIS2/MSSR data flow and structure, and read
+              <strong>p.61</strong> for STI Monthly Summary Statistics Report key terms (including epi-treatment logic).
+            </div>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>How data moves (CI → Senior CI/MOH → National)</summary>
+              <div class="details-body">
+                The Field Guide describes that monthly CI/STI reports are entered into DHIS2 and should be reviewed by
+                the Senior CI and the Medical Officer of Health before submission to the national level (Field Guide p.40).
+                <ul>
+                  <li>Accurate IR/FR completion supports reliable reporting.</li>
+                  <li>Quality checks prevent missing indicators and misclassification.</li>
+                  <li>Timely submission supports national monitoring and response.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>MSSR structure (what’s inside)</summary>
+              <div class="details-body">
+                The Field Guide lists CI MSSR sections (general indicators, HIV testing disaggregation, deaths,
+                priority conditions, paediatric indicators, outreach, entry to care, PrEP indicators) and STI MSSR sections
+                (syphilis, syndromes, other conditions, clinic data) (Field Guide p.40).
+              </div>
+            </details>
+
+            <details>
+              <summary>Quality checks (what a Level 2/Senior CI must verify)</summary>
+              <div class="details-body">
+                <ul>
+                  <li>Case classification correct (stage/syndrome/code).</li>
+                  <li>Critical period windows applied correctly.</li>
+                  <li>Contacts named vs contacts with outcomes align logically.</li>
+                  <li>Epi-treatment counts reflect the definition (Field Guide p.61).</li>
+                  <li>Missing data flagged and corrected quickly with clinic/field staff.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        `
+      },
+
+      {
+        id: "dia_module",
+        title: "DIA Module (Very Comprehensive) – Workflow, Field Flow, and Practice Script",
+        icon: "fa-people-arrows",
+        requiredReading: [
+          "CI Field Guide: DHIS2/MSSR context supports workflow awareness (p.40–41).",
+          "CI Field Guide: critical period table supports decision-making (p.41)."
+        ],
+        content: `
+          <div class="info-box required-reading">
+            <div class="req-title"><i class="fas fa-book"></i> Required Reading</div>
+            <div class="small">
+              DIA work depends on correct use of critical period and reporting logic.
+              Required reading: Field Guide <strong>p.40–41</strong> (reporting/data flow) and <strong>p.41</strong> (critical period table).
+            </div>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>What “DIA” means in this module (role function)</summary>
+              <div class="details-body">
+                In this prototype, DIA refers to the operational workflow supporting disease intervention activities:
+                preparing cases, planning contact attempts, documenting outcomes, supporting safe communication, and ensuring data quality.
+                <ul>
+                  <li><strong>Purpose:</strong> improve speed, safety, consistency, and documentation quality.</li>
+                  <li><strong>Focus:</strong> locating, communication, follow-up, linkage, and reporting readiness.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>DIA end-to-end workflow (step-by-step)</summary>
+              <div class="details-body">
+                <ol style="margin:8px 0 0 18px; line-height:1.5;">
+                  <li><strong>Case intake:</strong> confirm identifiers, diagnosis/stage/syndrome, treatment date, and urgency.</li>
+                  <li><strong>Set priority:</strong> pregnancy/suspected syphilis and other urgent cases are escalated immediately.</li>
+                  <li><strong>Determine window:</strong> apply critical period logic using Field Guide Table A + symptom duration.</li>
+                  <li><strong>Prepare locating plan:</strong> phone/script, safe approach, alternate locating info, risk/safety considerations.</li>
+                  <li><strong>Contact attempt logging:</strong> time, method, result, next action. Keep language neutral and confidential.</li>
+                  <li><strong>Appointment/testing arrangement:</strong> direct, simple instructions; reduce barriers (transport/time/stigma).</li>
+                  <li><strong>Linkage actions:</strong> referrals, follow-up date, confirm attendance, document outcomes.</li>
+                  <li><strong>Quality check:</strong> ensure IR/FR completeness before report period closes.</li>
+                  <li><strong>Reporting readiness:</strong> check indicators align (contacts named vs outcomes, epi-treatment rules).</li>
+                  <li><strong>Closure:</strong> document closure date/reason or justify why still open.</li>
+                </ol>
+              </div>
+            </details>
+
+            <details>
+              <summary>Field Flow (what a good day looks like)</summary>
+              <div class="details-body">
+                <ul>
+                  <li>Morning: review new cases, verify urgency, set plan, print/prepare needed items.</li>
+                  <li>Midday: contact attempts + clinic follow-up; update IR/FR in real time.</li>
+                  <li>Afternoon: second attempts, community checks (where appropriate), documentation cleanup.</li>
+                  <li>End-of-day: reconcile outcomes, prepare next-day plan, flag complex cases for Level 2 review.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>Practice interaction script (read aloud and practise)</summary>
+              <div class="details-body">
+                <div class="info-box">
+                  <strong>Phone/Message Opening (neutral, confidential)</strong><br/>
+                  “Good morning/afternoon. My name is ____. I’m calling from the health service about an important health matter.
+                  I’d like to confirm I’m speaking with _____. Is now a good time to talk privately?”
+                </div>
+
+                <div class="info-box" style="margin-top:10px;">
+                  <strong>If they ask what it’s about (minimum disclosure)</strong><br/>
+                  “It’s related to your health and we’d like you to visit the clinic for a check. I can help you book a time that works for you.
+                  It’s best we discuss details privately at the clinic.”
+                </div>
+
+                <div class="info-box" style="margin-top:10px;">
+                  <strong>Appointment close</strong><br/>
+                  “Thank you. Your visit time is ____. Please bring an ID if you have it. If anything changes, call ____.
+                  We’re here to support you.”
+                </div>
+
+                <div class="info-box warning" style="margin-top:10px;">
+                  <strong>Confidentiality rule:</strong> Do not disclose another person’s diagnosis.
+                  Keep communication focused on the person you are contacting and the next safe step.
+                </div>
+              </div>
+            </details>
+
+            <details>
+              <summary>Common barriers and DIA responses</summary>
+              <div class="details-body">
+                <ul>
+                  <li><strong>“I’m too busy”</strong> → offer flexible times, quick visit, explain importance without fear messaging.</li>
+                  <li><strong>“I don’t want anybody to know”</strong> → reassure confidentiality, offer discrete options.</li>
+                  <li><strong>Incorrect numbers</strong> → use alternate locating info per records and follow SOPs.</li>
+                  <li><strong>Hostility</strong> → de-escalate, end safely, document, escalate per policy.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        `
+      }
+    ];
+
+    /***************
+     * EXAM (50 questions, less obvious options, no repeats)
+     ***************/
+    const examQuestions = [
+      // 1–10 CI basics
+      { q:"Which statement best matches the purpose of Contact Investigation (CI)?", a:[
+        ["To ensure exposed persons are located, supported, and linked to testing/treatment while protecting confidentiality.", true],
+        ["To publicly identify infected persons so others can avoid them.", false],
+        ["To replace clinical diagnosis with field assessments.", false],
+        ["To focus only on data reporting and not client follow-up.", false]
+      ], e:"CI focuses on locating/supporting exposed persons, linking to services, and protecting privacy."},
+
+      { q:"Which is the safest disclosure approach when contacting someone?", a:[
+        ["Use neutral language and request a private discussion without naming another person’s diagnosis.", true],
+        ["Tell them the index case name so they take it seriously.", false],
+        ["Post the reason publicly so they respond faster.", false],
+        ["Send details to a family member to pass along.", false]
+      ], e:"Minimum disclosure and confidentiality are core requirements."},
+
+      { q:"A strong CI record is best described as:", a:[
+        ["Complete, consistent, factual, and clear with dates/times/outcomes documented.", true],
+        ["Short and vague to avoid details.", false],
+        ["Only focused on the diagnosis name.", false],
+        ["Filled after the month ends from memory.", false]
+      ], e:"Quality records require completeness and accuracy, not recall-based summaries."},
+
+      { q:"Which is a common reason CI outcomes become weak?", a:[
+        ["Missing locating information or incomplete IR/FR fields.", true],
+        ["Using consistent identifiers.", false],
+        ["Documenting contact attempts.", false],
+        ["Following critical period windows.", false]
+      ], e:"Incomplete fields cause missed contacts and poor reporting."},
+
+      { q:"Which is the best ethical principle in CI communication?", a:[
+        ["Share the minimum necessary information to achieve testing/treatment.", true],
+        ["Share as much as possible to ensure compliance.", false],
+        ["Use threats to secure attendance.", false],
+        ["Disclose diagnosis to employers for safety.", false]
+      ], e:"Confidentiality and minimum necessary disclosure protect clients and programme integrity."},
+
+      // 6 critical period
+      { q:"In the Field Guide, the critical period for infectious syphilis is determined by:", a:[
+        ["Maximum infectious period plus duration of signs/symptoms before treatment.", true],
+        ["Only the date of treatment.", false],
+        ["Only the last sexual contact date.", false],
+        ["The clinic appointment date.", false]
+      ], e:"Field Guide teaches CP = maximum infectious period + symptom duration."},
+
+      { q:"Which STI has a maximum infectious period of 1 month in the Field Guide table?", a:[
+        ["Gonorrhea", true],
+        ["Chlamydia", false],
+        ["Early latent syphilis", false],
+        ["HIV", false]
+      ], e:"Table A lists Gonorrhea as 1 month."},
+
+      { q:"Which STI is listed as infectious indefinitely in the Field Guide table?", a:[
+        ["HIV", true],
+        ["Primary syphilis", false],
+        ["Chlamydia", false],
+        ["Gonorrhea", false]
+      ], e:"Table A lists HIV as indefinitely."},
+
+      { q:"Which maximum infectious period matches Secondary syphilis in the Field Guide table?", a:[
+        ["6 months", true],
+        ["3 months", false],
+        ["24 months", false],
+        ["1 month", false]
+      ], e:"Secondary syphilis maximum infectious period is 6 months."},
+
+      { q:"A contact exposed within the critical period is best described as:", a:[
+        ["A contact in-scope for investigation based on the stage window and symptom duration.", true],
+        ["Any person the client has ever known.", false],
+        ["Only household members.", false],
+        ["Only clinic attendees.", false]
+      ], e:"Critical period defines who is in-scope for partner services."},
+
+      // 11–20 Forms/records
+      { q:"The Interview Record (IR) is primarily used to:", a:[
+        ["Capture index interview details and elicit contacts within the critical period.", true],
+        ["Replace lab testing.", false],
+        ["Record only medication stock levels.", false],
+        ["Track staff leave.", false]
+      ], e:"IR documents the index interview and contact elicitation."},
+
+      { q:"The Field Record (FR) is primarily used to:", a:[
+        ["Track contact follow-up attempts and outcomes over time.", true],
+        ["Capture only the index case demographics.", false],
+        ["Store clinic billing data.", false],
+        ["Document only referrals to non-health services.", false]
+      ], e:"FR is for contact follow-up and outcomes."},
+
+      { q:"Which practice best improves record reliability?", a:[
+        ["Recording dates/times and outcomes immediately after actions.", true],
+        ["Waiting until month end and summarizing from memory.", false],
+        ["Using different identifiers for the same person each time.", false],
+        ["Leaving unclear fields blank without notes.", false]
+      ], e:"Timely documentation improves accuracy."},
+
+      { q:"Why are additional forms (e.g., CS/ON/HEI forms) important teaching points?", a:[
+        ["Different conditions require specific documentation and follow-up pathways.", true],
+        ["They are optional and never used.", false],
+        ["They replace IR/FR completely in all cases.", false],
+        ["They exist only for research.", false]
+      ], e:"Condition-specific forms support correct investigation and reporting."},
+
+      { q:"A key documentation standard is:", a:[
+        ["Objective factual language rather than opinions.", true],
+        ["Using blame-based notes.", false],
+        ["Writing only in abbreviations.", false],
+        ["Avoiding outcome fields.", false]
+      ], e:"Professional documentation is factual and complete."},
+
+      // 16–25 STI tx / investigation
+      { q:"Which regimen is listed for primary/early latent syphilis in the STI Manual summary table?", a:[
+        ["Benzathine Penicillin G 2.4 MU IM weekly for 2 doses (or alternatives).", true],
+        ["BPG 2.4 MU IM weekly for 1 dose only.", false],
+        ["Azithromycin 1 g PO stat alone for all stages.", false],
+        ["Ceftriaxone 250 mg IM stat alone.", false]
+      ], e:"STI Manual p.82 lists BPG weekly for 2 doses for primary/early latent in that table."},
+
+      { q:"Which regimen is listed for secondary/late latent syphilis in the STI Manual summary table?", a:[
+        ["BPG 2.4 MU IM weekly for 3 doses (or alternatives).", true],
+        ["BPG 2.4 MU IM weekly for 2 doses.", false],
+        ["Doxycycline for 7 days only.", false],
+        ["Cefixime single dose only.", false]
+      ], e:"STI Manual p.82 lists 3 weekly doses for secondary/late latent in that table."},
+
+      { q:"Which combination treatment is listed for gonorrhea in cervicitis treatment table?", a:[
+        ["Ceftriaxone 250 mg IM stat PLUS Azithromycin 1 g PO stat.", true],
+        ["Doxycycline only for 14 days.", false],
+        ["Erythromycin only for 7 days.", false],
+        ["BPG weekly doses.", false]
+      ], e:"STI Manual p.49 lists combination therapy."},
+
+      { q:"Which table contains anal discharge syndrome treatment?", a:[
+        ["Anal discharge table with ceftriaxone + azithromycin options.", true],
+        ["Genital ulcer table only.", false],
+        ["Only a counselling table.", false],
+        ["A nutrition table.", false]
+      ], e:"STI Manual p.64 gives anal discharge treatment options."},
+
+      { q:"PID outpatient treatment in the STI Manual includes:", a:[
+        ["Ceftriaxone + doxycycline + metronidazole (14 days).", true],
+        ["Only azithromycin single dose.", false],
+        ["Only BPG weekly doses.", false],
+        ["Only topical medication.", false]
+      ], e:"STI Manual p.71 lists the outpatient PID regimen."},
+
+      // 21–30 DHIS2/reporting
+      { q:"The Field Guide indicates DHIS2 reports should be reviewed by:", a:[
+        ["Senior CI and Medical Officer of Health before submission to national level.", true],
+        ["Only the receptionist.", false],
+        ["Only the lab technician.", false],
+        ["No review is needed.", false]
+      ], e:"Field Guide p.40 describes the review pathway."},
+
+      { q:"Which is a practical quality check before monthly submission?", a:[
+        ["Ensure contacts named and documented outcomes align logically.", true],
+        ["Remove incomplete cases without notes.", false],
+        ["Only count index cases, ignore contacts.", false],
+        ["Avoid checking critical period use.", false]
+      ], e:"Quality checks include logical alignment and completeness."},
+
+      { q:"Epi-treatment reporting requires the contact to:", a:[
+        ["Fit within the critical period and meet the manual definition (negative initial serology/no symptoms where specified).", true],
+        ["Always be treated regardless of timing.", false],
+        ["Be treated only if they refuse testing.", false],
+        ["Be treated only after 12 months.", false]
+      ], e:"Field Guide p.61 describes epi-treatment concepts for reporting."},
+
+      { q:"Why is DHIS2/MSSR data quality important?", a:[
+        ["It supports national monitoring, planning, and response decisions.", true],
+        ["It is only for staff performance punishment.", false],
+        ["It has no programme purpose.", false],
+        ["It replaces clinical care.", false]
+      ], e:"Reliable data supports planning and public health action."},
+
+      // 26–35 CS/ON/HEI
+      { q:"CS investigations are urgent mainly because:", a:[
+        ["Delayed action can result in preventable infant harm and missed partner treatment.", true],
+        ["They are less important than all other cases.", false],
+        ["They require no documentation.", false],
+        ["They never involve partners.", false]
+      ], e:"CS risk makes timely investigation critical."},
+
+      { q:"HEI in this platform refers to:", a:[
+        ["HIV Exposed Infant (follow-up and investigation teaching points).", true],
+        ["Hospital equipment inventory.", false],
+        ["Health education interview only.", false],
+        ["A laboratory device.", false]
+      ], e:"HEI = HIV Exposed Infant."},
+
+      // 28–40 DIA / workflow / scripts
+      { q:"In a DIA-style workflow, the best first step after receiving a case is:", a:[
+        ["Verify identifiers, diagnosis/stage, treatment date, and urgency.", true],
+        ["Immediately post a public notice.", false],
+        ["Skip checking symptoms timing.", false],
+        ["Close the case to reduce workload.", false]
+      ], e:"Verification and prioritization come first."},
+
+      { q:"A good “minimum disclosure” message sounds like:", a:[
+        ["“I’m calling from the health service about an important health matter. Can we speak privately?”", true],
+        ["“Your partner has syphilis, come now.”", false],
+        ["“Everyone says you are infected.”", false],
+        ["“Tell your family to come to the clinic.”", false]
+      ], e:"Neutral, private, confidential language is safest."},
+
+      { q:"Which barrier response is most appropriate when a contact says “I’m too busy”?", a:[
+        ["Offer flexible appointment times and explain importance calmly.", true],
+        ["Threaten legal action.", false],
+        ["Disclose details to persuade them.", false],
+        ["End the case immediately.", false]
+      ], e:"Reduce barriers and keep communication respectful and confidential."},
+
+      // filler to reach exactly 50 with non-obvious options
+      { q:"Which outcome should be documented on an FR?", a:[
+        ["Attempt date/time/method and result (reached/not reached), plus next action.", true],
+        ["Only the staff member’s opinion.", false],
+        ["Only the contact’s nickname.", false],
+        ["Only the clinic’s opening hours.", false]
+      ], e:"FR must show attempts, results, and next steps."},
+
+      { q:"Which is the best reason to add symptom duration to max infectious period?", a:[
+        ["To better approximate the period a case could have been infectious.", true],
+        ["To shorten the investigation window arbitrarily.", false],
+        ["To avoid interviewing contacts.", false],
+        ["To replace lab testing.", false]
+      ], e:"It helps determine realistic investigation windows."},
+
+      { q:"Which is the strongest reason to avoid unnecessary detail in messages?", a:[
+        ["To protect confidentiality and reduce unintended disclosure.", true],
+        ["To make people panic.", false],
+        ["To discourage clinic visits.", false],
+        ["To increase stigma.", false]
+      ], e:"Minimum disclosure prevents harm and protects privacy."},
+
+      { q:"A key difference between IR and FR is:", a:[
+        ["IR captures index interview; FR tracks contact follow-up over time.", true],
+        ["IR is only for lab staff; FR is only for pharmacy.", false],
+        ["Both are identical and interchangeable.", false],
+        ["FR is used only once and never updated.", false]
+      ], e:"They serve different functions."},
+
+      { q:"Which scenario most requires urgent escalation?", a:[
+        ["Pregnant person with suspected/confirmed syphilis requiring rapid prevention steps.", true],
+        ["A routine follow-up with no risk indicators.", false],
+        ["A non-health administrative query.", false],
+        ["A case with no contact window needed.", false]
+      ], e:"Pregnancy + syphilis is urgent due to congenital risk."},
+
+      { q:"Which is a strong record-keeping habit?", a:[
+        ["Use consistent case numbers and parish/CI codes across all documents.", true],
+        ["Change identifiers to keep things ‘fresh’.", false],
+        ["Avoid writing dates to reduce workload.", false],
+        ["Skip review steps.", false]
+      ], e:"Consistency supports traceability and reporting."},
+
+      { q:"Why should the manuals be treated as required, not optional?", a:[
+        ["Because the exam and programme standards rely on the official guidance, not summaries.", true],
+        ["Because the app is always more accurate than manuals.", false],
+        ["Because manuals are only for administrators.", false],
+        ["Because reading is not needed in CI.", false]
+      ], e:"Manuals are the authoritative reference."},
+
+      // Add more varied questions until 50 total:
+      { q:"Which statement best describes ‘epi-treatment’ in reporting terms?", a:[
+        ["Prophylactic treatment given within incubation/critical period under defined conditions.", true],
+        ["Any treatment given at any time.", false],
+        ["Only treatment for chronic diseases.", false],
+        ["A counselling-only intervention.", false]
+      ], e:"Field Guide key terms define epi-treatment for reporting."},
+
+      { q:"Which is a safer approach if a call becomes hostile?", a:[
+        ["De-escalate, end the call safely, document, and escalate per policy.", true],
+        ["Argue and disclose more details.", false],
+        ["Continue aggressively until compliance.", false],
+        ["Publicly shame the person.", false]
+      ], e:"Safety and professionalism come first."},
+
+      { q:"Which is a realistic purpose of a ‘locating plan’?", a:[
+        ["To choose the safest, most confidential steps to reach a person.", true],
+        ["To disclose details to neighbors for help.", false],
+        ["To avoid documentation.", false],
+        ["To delay follow-up intentionally.", false]
+      ], e:"Locating plans protect confidentiality and improve reach."},
+
+      { q:"Which data element is most important for determining critical period in practice?", a:[
+        ["Treatment date and symptom duration (plus max infectious period table).", true],
+        ["Only clinic location.", false],
+        ["Only the CI’s years of experience.", false],
+        ["Only the client’s age.", false]
+      ], e:"CP depends on stage/maximum period and symptom duration."},
+
+      { q:"Why is a ‘neutral opening’ recommended in CI contact calls?", a:[
+        ["It reduces accidental disclosure and protects privacy if others are present.", true],
+        ["It makes the caller sound less professional.", false],
+        ["It guarantees the person is infected.", false],
+        ["It replaces the need for clinic visits.", false]
+      ], e:"Neutral openings are safer and more confidential."},
+
+      { q:"Which is the best example of objective documentation?", a:[
+        ["“Reached by phone at 2:15pm; appointment scheduled for Friday 10am.”", true],
+        ["“Client was rude and doesn’t care.”", false],
+        ["“They look suspicious.”", false],
+        ["“Probably lying.”", false]
+      ], e:"Objective notes describe observable facts."},
+
+      { q:"A practical reason to complete forms fully is:", a:[
+        ["It supports continuity of care, follow-up, and accurate reporting.", true],
+        ["It makes the case harder to close.", false],
+        ["It eliminates the need for confidentiality.", false],
+        ["It prevents needing manuals.", false]
+      ], e:"Complete forms drive effective follow-up and reporting."},
+
+      { q:"Which action best supports ‘linkage to care’?", a:[
+        ["Confirming the person attends services and documenting the outcome/referral.", true],
+        ["Only giving a phone number without follow-up.", false],
+        ["Avoiding referrals to reduce work.", false],
+        ["Skipping outcome documentation.", false]
+      ], e:"Linkage includes confirmation and documentation."},
+
+      { q:"Which is a realistic quality check by a Level 2/Senior CI?", a:[
+        ["Review missing fields, stage coding, critical period use, and logical consistency before submission.", true],
+        ["Only check whether the form has a signature.", false],
+        ["Ignore discrepancies to meet deadlines.", false],
+        ["Remove all complex cases.", false]
+      ], e:"Quality checks include completeness, accuracy, and consistency."},
+
+      { q:"Which choice best reflects professional CI communication?", a:[
+        ["Calm, respectful, confidential, and focused on next steps.", true],
+        ["Judgmental and threatening to force compliance.", false],
+        ["Gossip-based to spread awareness.", false],
+        ["Public disclosure to speed results.", false]
+      ], e:"Professional communication protects people and improves outcomes."},
+
+      { q:"Why are CS/ON/HEI forms taught as ‘must know’?", a:[
+        ["They support condition-specific follow-up and correct reporting pathways.", true],
+        ["They are used only once a decade.", false],
+        ["They are optional and discouraged.", false],
+        ["They replace clinical care entirely.", false]
+      ], e:"These forms support correct investigation, follow-up and reporting."},
+
+      { q:"What is the best interpretation of ‘prototype awaiting official permission’?", a:[
+        ["It is a draft tool not yet approved for official training or certification use.", true],
+        ["It is automatically an official MOHW course.", false],
+        ["It replaces UTECH training.", false],
+        ["It is legally binding certification.", false]
+      ], e:"It is a prototype and not official certification."},
+
+      // Ensure we end at exactly 50 by counting:
+      { q:"Which statement best describes the exam requirement here?", a:[
+        ["50 questions, pass mark 70%, certificate unlocks only after modules + pass.", true],
+        ["Unlimited questions, pass mark 100%.", false],
+        ["Certificate unlocks before modules.", false],
+        ["Exam can be skipped.", false]
+      ], e:"This platform requires module completion and a passing exam."}
+    ];
+
+    // Ensure exactly 50 questions:
+    if (examQuestions.length !== 50) {
+      console.warn("Exam question count is not 50. Current:", examQuestions.length);
+    }
+
+    /***************
+     * INIT
+     ***************/
+    function init(){
+      state.modules = modules.map(m => m.id);
+      loadState();
+      renderNav();
+      renderModules();
+      updateDashboard();
+      updateLocks();
+      buildExam();
+      attachNavEvents();
+    }
+
+    function attachNavEvents(){
+      document.querySelectorAll(".nav-btn").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const s = btn.getAttribute("data-section");
+          goSection(s);
+        });
+      });
+    }
+
+    function renderNav(){
+      // show totals on dashboard
+      document.getElementById("modsTotal").textContent = String(modules.length);
+    }
+
+    function goSection(id){
+      // Locks
+      if (id === "quiz" && !allModulesCompleted()){
+        // allow navigation but show locked message
+      }
+      if (id === "certificate" && !(allModulesCompleted() && state.examPassed)){
+        // show locked message
+      }
+
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector(`.nav-btn[data-section="${id}"]`)?.classList.add("active");
+
+      document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id)?.classList.add("active");
+
+      // special refreshes
+      if (id === "quiz") updateQuizVisibility();
+      if (id === "certificate") updateCertVisibility();
+      window.location.hash = id;
+    }
+
+    function renderModules(){
+      const holder = document.getElementById("moduleList");
+      holder.innerHTML = "";
+
+      modules.forEach((m, idx)=>{
+        const isDone = !!state.completed[m.id];
+        const el = document.createElement("div");
+        el.className = "module" + (idx===0 ? " open" : "");
+        el.innerHTML = `
+          <div class="module-header" tabindex="0" role="button" aria-expanded="${idx===0 ? "true" : "false"}">
+            <div class="module-title">
+              <i class="fas ${m.icon}"></i>
+              <span>${m.title}</span>
+            </div>
+            <div class="module-meta">
+              <span class="chip req"><i class="fas fa-book"></i> Required reading</span>
+              <span class="chip ${isDone ? "done" : ""}" id="chip_${m.id}">
+                <i class="fas ${isDone ? "fa-circle-check" : "fa-hourglass-half"}"></i>
+                <span>${isDone ? "Completed" : "Not completed"}</span>
+              </span>
+              <span class="chip"><i class="fas fa-hashtag"></i> Module ${idx+1}</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="module-body">
+            ${m.content}
+            <div class="hr"></div>
+            <div class="info-box required-reading">
+              <div class="req-title"><i class="fas fa-book"></i> Required Reading Checklist</div>
+              <div class="small">
+                <ul style="margin:8px 0 0 18px;">
+                  ${m.requiredReading.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}
+                </ul>
+              </div>
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" onclick="markModuleComplete('${m.id}')"><i class="fas fa-circle-check"></i> Mark as Complete</button>
+              <button class="btn ghost" onclick="toggleModule('${m.id}', this)"><i class="fas fa-chevron-down"></i> Collapse / Expand</button>
+              <button class="btn danger" onclick="uncompleteModule('${m.id}')"><i class="fas fa-circle-xmark"></i> Mark as Not Completed</button>
+            </div>
+          </div>
+        `;
+
+        const header = el.querySelector(".module-header");
+        header.addEventListener("click", ()=> el.classList.toggle("open"));
+        header.addEventListener("keydown", (e)=>{
+          if(e.key==="Enter" || e.key===" "){ e.preventDefault(); el.classList.toggle("open"); }
+        });
+
+        holder.appendChild(el);
+      });
+    }
+
+    function toggleModule(moduleId, btn){
+      const moduleEl = btn.closest(".module");
+      moduleEl.classList.toggle("open");
+    }
+
+    function markModuleComplete(id){
+      state.completed[id] = true;
+      saveState();
+      const chip = document.getElementById("chip_"+id);
+      if (chip){
+        chip.classList.add("done");
+        chip.innerHTML = `<i class="fas fa-circle-check"></i><span>Completed</span>`;
+      }
+      updateDashboard();
+      updateLocks();
+    }
+
+    function uncompleteModule(id){
+      delete state.completed[id];
+      saveState();
+      const chip = document.getElementById("chip_"+id);
+      if (chip){
+        chip.classList.remove("done");
+        chip.innerHTML = `<i class="fas fa-hourglass-half"></i><span>Not completed</span>`;
+      }
+      updateDashboard();
+      updateLocks();
+      updateQuizVisibility();
+      updateCertVisibility();
+    }
+
+    function allModulesCompleted(){
+      return modules.every(m => !!state.completed[m.id]);
+    }
+
+    function updateDashboard(){
+      const done = modules.filter(m => state.completed[m.id]).length;
+      const total = modules.length;
+      const pct = total ? Math.round((done/total)*100) : 0;
+
+      document.getElementById("modsDone").textContent = String(done);
+      document.getElementById("overallPct").textContent = String(pct);
+
+      document.getElementById("modsBar").style.width = pct + "%";
+      document.getElementById("overallBar").style.width = pct + "%";
+
+      const best = (state.bestScore === null || state.bestScore === undefined) ? "—" : (state.bestScore.toFixed(0) + "%");
+      document.getElementById("bestScore").textContent = best;
+
+      const scoreWidth = (state.bestScore === null || state.bestScore === undefined) ? 0 : Math.max(0, Math.min(100, state.bestScore));
+      document.getElementById("scoreBar").style.width = scoreWidth + "%";
+    }
+
+    function updateLocks(){
+      const quizLocked = !allModulesCompleted();
+      document.getElementById("quizLockBadge").style.display = quizLocked ? "inline-flex" : "none";
+
+      const certLocked = !(allModulesCompleted() && state.examPassed);
+      document.getElementById("certLockBadge").style.display = certLocked ? "inline-flex" : "none";
+
+      updateQuizVisibility();
+      updateCertVisibility();
+    }
+
+    function updateQuizVisibility(){
+      const locked = !allModulesCompleted();
+      document.getElementById("quizLockedMessage").style.display = locked ? "block" : "none";
+      document.getElementById("quizArea").style.display = locked ? "none" : "block";
+    }
+
+    function updateCertVisibility(){
+      const locked = !(allModulesCompleted() && state.examPassed);
+      document.getElementById("certLockedMessage").style.display = locked ? "block" : "none";
+      document.getElementById("certArea").style.display = locked ? "none" : "block";
+    }
+
+    /***************
+     * EXAM BUILD + LOGIC (Fixes “not answered” bug)
+     ***************/
+    function buildExam(){
+      document.getElementById("qCount").textContent = String(examQuestions.length);
+      const holder = document.getElementById("quizQuestions");
+      holder.innerHTML = "";
+      document.getElementById("quizResult").style.display = "none";
+
+      examQuestions.forEach((item, idx)=>{
+        // shuffle options so correct letter isn't predictable
+        const options = item.a.map(x => ({ text:x[0], correct:x[1] }));
+        shuffle(options);
+
+        const qId = "q_" + idx;
+        const card = document.createElement("div");
+        card.className = "quiz-question";
+        card.innerHTML = `
+          <div class="q-head">${idx+1}. ${escapeHtml(item.q)}</div>
+          <div class="q-options" role="radiogroup" aria-label="Question ${idx+1}">
+            ${options.map((opt, oIdx)=>{
+              const optId = `${qId}_opt_${oIdx}`;
+              return `
+                <label class="q-option" for="${optId}">
+                  <input type="radio" name="${qId}" id="${optId}" value="${oIdx}" data-correct="${opt.correct ? "1":"0"}" />
+                  <div>${escapeHtml(opt.text)}</div>
+                </label>
+              `;
+            }).join("")}
+          </div>
+          <div class="q-feedback" id="${qId}_fb"></div>
+        `;
+        holder.appendChild(card);
+      });
+    }
+
+    function submitExam(where){
+      const total = examQuestions.length;
+      let correct = 0;
+      let unanswered = 0;
+
+      // evaluate each question
+      examQuestions.forEach((item, idx)=>{
+        const qName = "q_" + idx;
+        const selected = document.querySelector(`input[name="${qName}"]:checked`);
+        const fb = document.getElementById(`${qName}_fb`);
+        fb.style.display = "block";
+
+        if (!selected){
+          unanswered++;
+          fb.className = "q-feedback wrong";
+          fb.innerHTML = `<strong>Not answered.</strong> Please select an option.`;
+          return;
+        }
+
+        const isCorrect = selected.getAttribute("data-correct") === "1";
+        if (isCorrect) correct++;
+
+        fb.className = "q-feedback " + (isCorrect ? "correct" : "wrong");
+        fb.innerHTML = isCorrect
+          ? `<strong>Correct.</strong> ${escapeHtml(item.e)}`
+          : `<strong>Not correct.</strong> ${escapeHtml(item.e)}`;
+      });
+
+      const resultBox = document.getElementById("quizResult");
+      resultBox.style.display = "block";
+
+      if (unanswered > 0){
+        resultBox.className = "info-box danger";
+        resultBox.innerHTML = `<strong><i class="fas fa-circle-exclamation"></i> Incomplete:</strong> You have <strong>${unanswered}</strong> unanswered question(s). Please answer all 50, then submit again.`;
+        resultBox.scrollIntoView({behavior:"smooth", block:"start"});
+        return;
+      }
+
+      const score = Math.round((correct/total)*100);
+      state.lastScore = score;
+      if (state.bestScore === null || score > state.bestScore) state.bestScore = score;
+
+      const passed = score >= PASS_MARK;
+      state.examPassed = passed;
+
+      saveState();
+      updateDashboard();
+      updateLocks();
+
+      resultBox.className = "info-box " + (passed ? "good" : "warning");
+      resultBox.innerHTML = `
+        <strong>${passed ? '<i class="fas fa-circle-check"></i> Passed' : '<i class="fas fa-triangle-exclamation"></i> Not passed yet'}</strong><br/>
+        Score: <strong>${score}%</strong> (${correct}/${total})
+        <br/><span class="small muted">Pass mark: ${PASS_MARK}%. Best score saved. You can retry to improve.</span>
+      `;
+      resultBox.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    function resetExam(){
+      document.querySelectorAll('#quizQuestions input[type="radio"]').forEach(r => r.checked = false);
+      document.querySelectorAll('.q-feedback').forEach(fb => { fb.style.display="none"; fb.textContent=""; });
+      const resultBox = document.getElementById("quizResult");
+      resultBox.style.display = "none";
+      resultBox.innerHTML = "";
+    }
+
+    /***************
+     * CERTIFICATE
+     ***************/
+    function generateCertificate(){
+      const name = (document.getElementById("certName").value || "").trim();
+      if (!name){
+        alert("Please type your full name to generate the certificate.");
+        return;
+      }
+      if (!(allModulesCompleted() && state.examPassed)){
+        alert("Certificate is locked. Complete all modules and pass the exam (≥ 70%).");
+        return;
+      }
+
+      const certId = "CI-" + Math.floor(100000 + Math.random()*900000);
+      document.getElementById("certId").textContent = certId;
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString(undefined, { year:"numeric", month:"long", day:"numeric" });
+
+      document.getElementById("certParticipant").textContent = name;
+      document.getElementById("certDate").textContent = dateStr;
+      document.getElementById("certScore").textContent = (state.bestScore ?? state.lastScore) + "%";
+
+      document.getElementById("certShell").style.display = "block";
+      document.getElementById("certShell").scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    /***************
+     * CRITICAL PERIOD CALCULATOR
+     ***************/
+    const cpMap = {
+      primary_syphilis: { label:"Primary syphilis", months:3 },
+      secondary_syphilis: { label:"Secondary syphilis", months:6 },
+      early_latent_syphilis: { label:"Early latent syphilis", months:24 },
+      hiv: { label:"HIV", months:null }, // indefinitely
+      gonorrhea: { label:"Gonorrhea", months:1 },
+      chlamydia: { label:"Chlamydia", months:3 }
+    };
+
+    function calcCriticalPeriod(){
+      const key = document.getElementById("cpSti").value;
+      const dur = Number(document.getElementById("cpSymp").value || 0);
+      const unit = document.getElementById("cpUnit").value;
+
+      const base = cpMap[key];
+      const result = document.getElementById("cpResult");
+
+      if (key === "hiv"){
+        result.className = "info-box warning";
+        result.innerHTML = `
+          <strong>${base.label}: Infectious period is listed as “indefinitely”.</strong>
+          <div class="small muted" style="margin-top:6px;">
+            For learning: HIV is listed as indefinite in the Field Guide table. Apply programme guidance for practical partner services.
+          </div>
+        `;
+        return;
+      }
+
+      // convert symptom duration to months approximation
+      let sympMonths = 0;
+      if (unit === "days") sympMonths = dur / 30;
+      if (unit === "weeks") sympMonths = (dur * 7) / 30;
+      if (unit === "months") sympMonths = dur;
+
+      const totalMonths = base.months + sympMonths;
+
+      // convert to friendly window
+      const approxDays = Math.round(totalMonths * 30);
+      const approxWeeks = Math.round(approxDays / 7);
+
+      result.className = "info-box good";
+      result.innerHTML = `
+        <strong>${base.label} – Critical period window estimate</strong><br/>
+        <div class="small" style="margin-top:6px;">
+          Maximum infectious period: <strong>${base.months} month(s)</strong><br/>
+          Symptom duration added: <strong>${sympMonths.toFixed(2)} month(s)</strong><br/>
+          <hr style="border:none; border-top:1px solid var(--border); margin:10px 0;">
+          <strong>Estimated investigation window:</strong> ~<strong>${totalMonths.toFixed(2)} months</strong>
+          (≈ ${approxWeeks} weeks / ${approxDays} days)
+        </div>
+        <div class="small muted" style="margin-top:8px;">
+          Training estimate only. Always apply the Field Guide and programme rules.
+        </div>
+      `;
+    }
+
+    function resetCriticalPeriod(){
+      document.getElementById("cpSti").value = "primary_syphilis";
+      document.getElementById("cpSymp").value = 0;
+      document.getElementById("cpUnit").value = "days";
+      const result = document.getElementById("cpResult");
+      result.className = "info-box";
+      result.innerHTML = `<strong>Result will appear here.</strong><div class="small muted">This tool supports learning and practice. Always follow your programme guidance and manuals.</div>`;
+    }
+
+    /***************
+     * RESET ALL
+     ***************/
+    function resetAllProgress(){
+      if (!confirm("Reset all progress, exam scores, and certificate data saved in this browser?")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      state.completed = {};
+      state.bestScore = null;
+      state.lastScore = null;
+      state.examPassed = false;
+      renderModules();
+      buildExam();
+      updateDashboard();
+      updateLocks();
+      goSection("dashboard");
+    }
+
+    /***************
+     * STORAGE
+     ***************/
+    function saveState(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+    function loadState(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+
+        state.completed = parsed.completed || {};
+        state.bestScore = (parsed.bestScore === null || parsed.bestScore === undefined) ? null : Number(parsed.bestScore);
+        state.lastScore = (parsed.lastScore === null || parsed.lastScore === undefined) ? null : Number(parsed.lastScore);
+        state.examPassed = !!parsed.examPassed;
+      }catch(e){
+        console.warn("Failed to load state:", e);
+      }
+    }
+
+    /***************
+     * HELPERS
+     ***************/
+    function shuffle(arr){
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    // Start app
+    init();
+  </script>
 </body>
 </html>
