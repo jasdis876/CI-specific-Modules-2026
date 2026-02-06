@@ -1,0 +1,2549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Investigation (Disease Intervention) 101</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ===== CSS RESET & BASE ===== */
+    :root {
+      --primary-blue: #1a5f9e;
+      --primary-green: #2e8b57;
+      --primary-red: #c53030;
+      --primary-orange: #dd6b20;
+      --primary-purple: #6b46c1;
+      --light-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-dark: #2d3748;
+      --text-light: #718096;
+      --border-color: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);
+      --radius: 10px;
+      --transition: all .2s ease;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    body { background: var(--light-bg); color: var(--text-dark); line-height: 1.6; min-height: 100vh; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: linear-gradient(135deg, var(--primary-blue), #2c5282);
+      color: #fff;
+      padding: 30px;
+      border-radius: var(--radius);
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content:'';
+      position:absolute; inset:-50%;
+      background: radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1px);
+      background-size: 28px 28px;
+      animation: float 20s linear infinite;
+      opacity:.35;
+      pointer-events:none;
+    }
+    @keyframes float { 0%{transform:translate(0,0) rotate(0deg)} 100%{transform:translate(-28px,-28px) rotate(360deg)} }
+    .header-content { position: relative; z-index: 2; }
+    .logo { font-size: 2.8rem; margin-bottom: 12px; }
+    h1 { font-size: 2.2rem; margin-bottom: 8px; text-shadow:0 2px 4px rgba(0,0,0,.2); }
+    .subtitle { font-size: 1.05rem; opacity:.95; max-width: 900px; margin: 0 auto 14px; }
+    .badge-row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background: rgba(255,255,255,.18);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size:.9rem;
+    }
+    .badge a { color:#fff; text-decoration: underline; text-underline-offset: 3px; }
+    .badge a:hover { opacity:.9; }
+
+    /* ===== NAV ===== */
+    .main-nav {
+      display:flex; justify-content:center; flex-wrap:wrap; gap:10px;
+      margin: 0 0 22px 0;
+    }
+    .nav-btn {
+      background:#fff; border:1px solid var(--border-color);
+      padding: 12px 16px; border-radius: var(--radius);
+      font-weight:700; color:var(--text-dark); cursor:pointer;
+      transition: var(--transition);
+      display:flex; align-items:center; gap:10px;
+      box-shadow: var(--shadow);
+    }
+    .nav-btn:hover { transform: translateY(-2px); }
+    .nav-btn.active { background: var(--primary-blue); color:#fff; border-color: transparent; }
+
+    /* ===== SECTIONS ===== */
+    .content-section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 26px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+      display:none;
+    }
+    .content-section.active { display:block; animation: fadeIn .25s ease; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)} }
+
+    .section-title {
+      color: var(--primary-blue);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border-color);
+      display:flex; align-items:center; gap:12px;
+    }
+
+    /* ===== DASHBOARD ===== */
+    .dashboard-stats {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .stat-card {
+      background:#fff; border:1px solid var(--border-color);
+      padding: 18px; border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align:center;
+      transition: var(--transition);
+    }
+    .stat-card:hover { transform: translateY(-2px); }
+    .stat-icon { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary-blue); }
+    .stat-number { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+    .stat-label { color: var(--text-light); }
+
+    .module-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 14px;
+    }
+    .module-card {
+      background:#fff;
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--primary-blue);
+      transition: var(--transition);
+      border-left:1px solid var(--border-color);
+      border-right:1px solid var(--border-color);
+      border-bottom:1px solid var(--border-color);
+    }
+    .module-card:hover { transform: translateY(-2px); }
+    .module-header {
+      background:#f7fafc;
+      padding: 16px;
+      border-bottom: 1px solid var(--border-color);
+      display:flex; align-items:center; gap:12px;
+    }
+    .module-icon { font-size: 1.6rem; color: var(--primary-blue); }
+    .module-title { font-size: 1.15rem; font-weight: 800; }
+    .module-body { padding: 16px; }
+    .module-desc { color: var(--text-light); margin-bottom: 12px; }
+    .progress-container { margin-bottom: 10px; }
+    .progress-label { display:flex; justify-content:space-between; margin-bottom: 6px; font-size: .92rem; }
+    .progress-bar { height: 10px; background:#e2e8f0; border-radius: 999px; overflow:hidden; }
+    .progress-fill { height:100%; background: var(--primary-green); width:0%; transition: width .35s ease; }
+    .module-footer {
+      padding: 12px 16px;
+      background:#f7fafc;
+      border-top: 1px solid var(--border-color);
+      display:flex; justify-content: space-between; gap:10px; flex-wrap:wrap;
+    }
+
+    /* ===== LAYOUT ===== */
+    .content-grid { display:grid; grid-template-columns: 2fr 1fr; gap: 18px; }
+    @media (max-width: 992px){ .content-grid{ grid-template-columns:1fr; } }
+    .content-main, .content-sidebar {
+      background:#fff;
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid var(--border-color);
+      box-shadow: var(--shadow);
+    }
+    .info-box {
+      background:#f0f9ff;
+      border-left: 4px solid var(--primary-blue);
+      padding: 14px;
+      margin: 14px 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .info-box.warning { background:#fff5f5; border-left-color: var(--primary-red); }
+    .info-box.success { background:#f0fff4; border-left-color: var(--primary-green); }
+    .muted { color: var(--text-light); }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      padding: 10px 14px;
+      border:none;
+      border-radius: var(--radius);
+      font-weight: 800;
+      cursor:pointer;
+      transition: var(--transition);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      justify-content:center;
+      white-space: nowrap;
+    }
+    .btn:disabled { opacity: .55; cursor:not-allowed; }
+    .btn-primary { background: var(--primary-blue); color:#fff; }
+    .btn-primary:hover { filter: brightness(.95); }
+    .btn-secondary { background:#e2e8f0; color: var(--text-dark); }
+    .btn-secondary:hover { background:#cbd5e0; }
+    .btn-success { background: var(--primary-green); color:#fff; }
+    .btn-success:hover { filter: brightness(.95); }
+    .btn-danger { background: var(--primary-red); color:#fff; }
+    .btn-danger:hover { filter: brightness(.95); }
+
+    /* ===== TABLES ===== */
+    table { width:100%; border-collapse: collapse; }
+    th, td { border-bottom:1px solid var(--border-color); padding: 10px; text-align:left; vertical-align: top; }
+    thead th { background:#f7fafc; font-weight: 800; }
+    .table-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+
+    /* ===== FORMS ===== */
+    .form-simulator {
+      background:#fff;
+      border:1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 12px 0 18px 0;
+    }
+    .form-header {
+      background:#f7fafc;
+      padding: 12px;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary-blue);
+      margin-bottom: 12px;
+    }
+    .form-field { margin-bottom: 12px; }
+    .form-label { display:block; margin-bottom: 6px; font-weight: 800; }
+    .form-input, textarea {
+      width:100%;
+      padding: 10px 12px;
+      border:1px solid var(--border-color);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .form-input:focus, textarea:focus { outline:none; border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(26,95,158,.12); }
+    .form-group {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .radio-group, .checkbox-group { display:flex; flex-wrap:wrap; gap: 12px; margin-top: 8px; }
+    .radio-option, .checkbox-option { display:flex; align-items:center; gap: 8px; }
+
+    /* ===== QUIZ MODAL ===== */
+    .modal-backdrop {
+      position: fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 999;
+    }
+    .modal-backdrop.show { display:flex; }
+    .modal {
+      background:#fff;
+      width: min(920px, 100%);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 60px rgba(0,0,0,.25);
+      overflow:hidden;
+      border:1px solid var(--border-color);
+    }
+    .modal-header {
+      background: linear-gradient(135deg, var(--primary-blue), #2c5282);
+      color:#fff;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .modal-header h3 { font-size: 1.1rem; }
+    .modal-body { padding: 16px; }
+    .quiz-progress { display:flex; justify-content:space-between; gap: 10px; flex-wrap:wrap; margin-bottom: 10px; }
+    .pill {
+      background:#f7fafc;
+      border:1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 800;
+      font-size: .9rem;
+      color: var(--text-dark);
+    }
+    .quiz-question { font-size: 1.15rem; font-weight: 900; margin: 10px 0 12px 0; }
+    .quiz-options { display:grid; gap: 10px; margin: 12px 0 10px 0; }
+    .quiz-option {
+      padding: 14px;
+      background:#f7fafc;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      cursor:pointer;
+      transition: var(--transition);
+      display:flex;
+      align-items:flex-start;
+      gap: 10px;
+    }
+    .quiz-option:hover { border-color: var(--primary-blue); background:#edf2f7; }
+    .quiz-option.selected { border-color: var(--primary-green); background:#e6fffa; }
+    .quiz-option.correct { border-color: var(--primary-green); background:#c6f6d5; }
+    .quiz-option.incorrect { border-color: var(--primary-red); background:#fed7d7; }
+    .option-letter {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background:#e2e8f0;
+      display:flex; align-items:center; justify-content:center;
+      font-weight: 900;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+    .explain-box { display:none; margin-top: 10px; }
+    .explain-box.show { display:block; }
+
+    .modal-footer {
+      padding: 14px 16px;
+      border-top:1px solid var(--border-color);
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+      background:#f7fafc;
+    }
+
+    /* ===== CERTIFICATE ===== */
+    .certificate-container { background:#fff; border-radius: var(--radius); border:1px solid var(--border-color); box-shadow: var(--shadow); padding: 18px; }
+    .certificate-border {
+      border: 14px solid var(--primary-blue);
+      border-image: linear-gradient(45deg, var(--primary-blue), var(--primary-purple)) 1;
+      padding: 22px;
+      text-align:center;
+    }
+    .certificate-seal {
+      width: 92px; height: 92px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff;
+      font-size: 2.2rem;
+    }
+    .certificate-title { font-size: 2rem; color: var(--primary-blue); font-weight: 900; }
+    .certificate-name {
+      font-size: 1.6rem;
+      font-weight: 1000;
+      margin: 14px 0;
+      padding: 14px 0;
+      border-top:1px solid var(--border-color);
+      border-bottom:1px solid var(--border-color);
+      min-height: 56px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .certificate-details {
+      display:flex; justify-content:space-around; flex-wrap:wrap; gap: 12px;
+      margin: 14px 0 0 0;
+    }
+    .certificate-detail .detail-label { font-size: .9rem; color: var(--text-light); }
+    .certificate-detail .detail-value { font-size: 1.05rem; font-weight: 900; color: var(--primary-blue); }
+
+    /* ===== UTILS ===== */
+    .hidden { display:none !important; }
+    .mt-10 { margin-top: 10px; }
+    .mt-20 { margin-top: 20px; }
+    .mb-10 { margin-bottom: 10px; }
+    .mb-20 { margin-bottom: 20px; }
+    .full-width { width: 100%; }
+    .small { font-size: .92rem; }
+
+    /* ===== PRINT ===== */
+    @media print {
+      body { background:#fff; padding:0; }
+      .main-nav, .footer, .header, .no-print { display:none !important; }
+      .content-section { box-shadow:none; border:none; padding:0; }
+      .content-main, .content-sidebar, .form-simulator { box-shadow:none; }
+    }
+    .footer { text-align:center; padding: 22px 0; margin-top: 28px; color: var(--text-light); border-top:1px solid var(--border-color); }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo"><i class="fas fa-shield-virus"></i></div>
+        <h1>Contact Investigation (Disease Intervention) 101</h1>
+        <p class="subtitle">Interactive training for Contact Investigators (CIs): contact tracing, partner notification, testing, provider referral, forms, records and reporting.</p>
+
+        <div class="badge-row">
+          <div class="badge">
+            <i class="fas fa-book"></i>
+            Based on Jamaica MOHW Contact Investigation Field Guide (June 2025)
+          </div>
+          <div class="badge">
+            <i class="fas fa-link"></i>
+            <span>Open Field Guide:</span>
+            <!-- IMPORTANT:
+              Put the PDF in the SAME FOLDER as this HTML file.
+              Rename your PDF to exactly: Final CI Field Guide 17.06.25.pdf
+            -->
+            <a id="fieldGuideLink" href="Final CI Field Guide 17.06.25.pdf" target="_blank" rel="noopener">Final CI Field Guide 17.06.25.pdf</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav no-print">
+      <button class="nav-btn active" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</button>
+      <button class="nav-btn" data-section="ci-basics"><i class="fas fa-book"></i> CI Basics</button>
+      <button class="nav-btn" data-section="forms-records"><i class="fas fa-file-alt"></i> Forms & Records</button>
+      <button class="nav-btn" data-section="sti-management"><i class="fas fa-stethoscope"></i> Clinical & Syndromes</button>
+      <button class="nav-btn" data-section="case-simulation"><i class="fas fa-user-injured"></i> Case Simulation</button>
+      <button class="nav-btn" data-section="resources"><i class="fas fa-folder-open"></i> Resources</button>
+      <button class="nav-btn" data-section="certificate"><i class="fas fa-award"></i> Certificate</button>
+    </nav>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="content-section active">
+      <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> Learning Dashboard</h2>
+
+      <div class="dashboard-stats">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+          <div class="stat-number" id="completed-modules">0</div>
+          <div class="stat-label">Modules Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="stat-number" id="progress-percent">0%</div>
+          <div class="stat-label">Overall Progress</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-clock"></i></div>
+          <div class="stat-number" id="study-time">0m</div>
+          <div class="stat-label">Study Time</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-star"></i></div>
+          <div class="stat-number" id="quiz-score">0%</div>
+          <div class="stat-label">Average Quiz Score</div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3 class="mb-10"><i class="fas fa-map-signs"></i> What you’ll practice (aligned to the Field Guide)</h3>
+        <ul style="padding-left:20px;">
+          <li><strong>Core CI activities:</strong> contact tracing, partner notification, testing, and provider referral.</li>
+          <li><strong>Confidentiality & safety:</strong> private interviews, coding diagnoses, secure records, and IPV/stigma risk.</li>
+          <li><strong>Forms & reporting:</strong> IR and FR (purpose, routing, field-by-field completion), and monthly reporting timelines.</li>
+          <li><strong>Programme standards:</strong> priority cases, timelines, and expected outputs.</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Learning Modules</h3>
+
+      <div class="module-grid">
+        <!-- Module 1 -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon"><i class="fas fa-info-circle"></i></div>
+            <div class="module-title">1) CI Introduction, Confidentiality & Partner Notification</div>
+          </div>
+          <div class="module-body">
+            <p class="module-desc">What CI is, why confidentiality matters, and partner notification approaches (client-led vs assisted provider).</p>
+            <div class="progress-container">
+              <div class="progress-label"><span>Progress</span><span id="module1-progress">0%</span></div>
+              <div class="progress-bar"><div class="progress-fill" id="module1-fill"></div></div>
+            </div>
+          </div>
+          <div class="module-footer">
+            <button class="btn btn-secondary" onclick="startModule(1)"><i class="fas fa-play"></i> Start</button>
+            <button class="btn btn-primary" id="module1-quiz-btn" onclick="openQuiz(1)" disabled><i class="fas fa-question-circle"></i> Take Quiz</button>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon"><i class="fas fa-file-medical"></i></div>
+            <div class="module-title">2) Interview Record (IR): Field-by-Field + Practice</div>
+          </div>
+          <div class="module-body">
+            <p class="module-desc">Purpose, routing (IC/CC/CF), closure rules, and complete an IR practice form with download.</p>
+            <div class="progress-container">
+              <div class="progress-label"><span>Progress</span><span id="module2-progress">0%</span></div>
+              <div class="progress-bar"><div class="progress-fill" id="module2-fill"></div></div>
+            </div>
+          </div>
+          <div class="module-footer">
+            <button class="btn btn-secondary" onclick="startModule(2)"><i class="fas fa-play"></i> Start</button>
+            <button class="btn btn-primary" id="module2-quiz-btn" onclick="openQuiz(2)" disabled><i class="fas fa-question-circle"></i> Take Quiz</button>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div class="module-title">3) Field Record (FR): Disposition, Outcomes, Routing</div>
+          </div>
+          <div class="module-body">
+            <p class="module-desc">Initiate FRs for contacts/suspects/possible cases, record outcomes, and route copies correctly.</p>
+            <div class="progress-container">
+              <div class="progress-label"><span>Progress</span><span id="module3-progress">0%</span></div>
+              <div class="progress-bar"><div class="progress-fill" id="module3-fill"></div></div>
+            </div>
+          </div>
+          <div class="module-footer">
+            <button class="btn btn-secondary" onclick="startModule(3)"><i class="fas fa-play"></i> Start</button>
+            <button class="btn btn-primary" id="module3-quiz-btn" onclick="openQuiz(3)" disabled><i class="fas fa-question-circle"></i> Take Quiz</button>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon"><i class="fas fa-triangle-exclamation"></i></div>
+            <div class="module-title">4) Targets, Priority Conditions, STI Coding & Timelines</div>
+          </div>
+          <div class="module-body">
+            <p class="module-desc">Priority A/B, coding (A1/A2/A3/C13 etc), reporting deadlines, and performance expectations.</p>
+            <div class="progress-container">
+              <div class="progress-label"><span>Progress</span><span id="module4-progress">0%</span></div>
+              <div class="progress-bar"><div class="progress-fill" id="module4-fill"></div></div>
+            </div>
+          </div>
+          <div class="module-footer">
+            <button class="btn btn-secondary" onclick="startModule(4)"><i class="fas fa-play"></i> Start</button>
+            <button class="btn btn-primary" id="module4-quiz-btn" onclick="openQuiz(4)" disabled><i class="fas fa-question-circle"></i> Take Quiz</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box mt-20">
+        <h4 class="mb-10"><i class="fas fa-wrench"></i> What was fixed vs your old code</h4>
+        <ul style="padding-left:20px;">
+          <li><strong>No more random quiz grades:</strong> quizzes are real, questions are shuffled, score only appears after Submit.</li>
+          <li><strong>Downloads now work:</strong> IR/FR practice forms can download as <strong>JSON</strong> or <strong>CSV</strong>, plus <strong>Print/Save as PDF</strong>.</li>
+          <li><strong>Reset fixed:</strong> forms are real <code>&lt;form&gt;</code> elements (your old reset tried to reset a DIV).</li>
+          <li><strong>Field guide link added</strong> (top banner + resources section).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CI BASICS -->
+    <section id="ci-basics" class="content-section">
+      <h2 class="section-title"><i class="fas fa-book"></i> CI Basics</h2>
+
+      <div class="content-grid">
+        <div class="content-main">
+          <h3>What is Contact Investigation?</h3>
+          <p>
+            The CI Field Guide describes CI as a standardized set of field operations to support control of STIs and other infectious diseases,
+            focusing on <strong>contact tracing, partner notification, testing, and provider referral</strong>.
+          </p>
+
+          <div class="info-box">
+            <h4><i class="fas fa-bullseye"></i> Why CI matters</h4>
+            <p>
+              Control of STIs can’t be achieved only by treating people who show up with symptoms; CI helps break transmission by finding,
+              testing and treating contacts, while maintaining confidentiality.
+            </p>
+          </div>
+
+          <h3 class="mt-20">Partner Notification: 2 main routes</h3>
+          <div class="info-box">
+            <h4><i class="fas fa-users"></i> Client-led referral vs Assisted Provider Notification</h4>
+            <ul style="padding-left:20px; margin-top:8px;">
+              <li><strong>Client-led:</strong> counselling + interviewing motivates the patient to bring contacts for evaluation/treatment.</li>
+              <li><strong>Assisted provider:</strong> with consent, a trained provider supports disclosure or anonymous notification and offers testing.
+                Approaches include <strong>contract referral</strong>, <strong>provider referral</strong>, or <strong>dual referral</strong>.</li>
+            </ul>
+          </div>
+
+          <h3 class="mt-20">Confidentiality & Safety</h3>
+          <div class="info-box warning">
+            <h4><i class="fas fa-lock"></i> Non-negotiable</h4>
+            <p>
+              Confidentiality is “paramount” because breaches can cause stigma, discrimination, and even intimate partner violence.
+              Practical strategies include private interviewing, coding diagnosis, and secure storage/access protocols.
+            </p>
+          </div>
+
+          <div class="info-box success">
+            <h4><i class="fas fa-user-shield"></i> Professionalism is the best protection</h4>
+            <p>
+              The guide emphasizes that the character, judgment, integrity, and sensitivity of the CI is the strongest guarantee of privacy.
+            </p>
+          </div>
+
+          <div class="table-actions no-print">
+            <button class="btn btn-success" onclick="completeModuleAndUnlockQuiz(1)">
+              <i class="fas fa-check"></i> Mark Module 1 Complete
+            </button>
+            <button class="btn btn-primary" onclick="openQuiz(1)">
+              <i class="fas fa-question-circle"></i> Take Module 1 Quiz
+            </button>
+          </div>
+        </div>
+
+        <div class="content-sidebar">
+          <h3>Key Acronyms (from the guide)</h3>
+          <div class="info-box">
+            <ul style="padding-left:20px;">
+              <li><strong>CI:</strong> Contact Investigator</li>
+              <li><strong>IR:</strong> Interview Record</li>
+              <li><strong>FR:</strong> Field Record</li>
+              <li><strong>IC / CC / CF:</strong> Index Case / Case Closure / Case File copies</li>
+              <li><strong>CP:</strong> Critical Period</li>
+              <li><strong>DIA:</strong> Direct Interview Approach</li>
+              <li><strong>MSSR:</strong> Monthly Summary Statistics Report</li>
+              <li><strong>PrEP:</strong> Pre-Exposure Prophylaxis</li>
+            </ul>
+          </div>
+
+          <h3 class="mt-20">Quick operational reminders</h3>
+          <div class="info-box">
+            <ul style="padding-left:20px;">
+              <li>Use coding to protect diagnoses.</li>
+              <li>Do interviews in private.</li>
+              <li>Only share data per MOHW protocols and legal framework.</li>
+            </ul>
+          </div>
+
+          <div class="info-box success">
+            <strong>Tip:</strong> Keep the Field Guide PDF in the same folder as this HTML so the “Open Field Guide” link works.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMS & RECORDS (IR) -->
+    <section id="forms-records" class="content-section">
+      <h2 class="section-title"><i class="fas fa-file-alt"></i> Forms & Records: Interview Record (IR)</h2>
+
+      <div class="content-grid">
+        <div class="content-main">
+          <h3>Purpose of the Interview Record (IR)</h3>
+          <div class="info-box">
+            <ul style="padding-left:20px;">
+              <li>Compiles information about contacts/suspected contacts for analysis and planning.</li>
+              <li>Informs parish surveillance about patients with priority infections.</li>
+              <li>Helps prepare the Monthly Summary Statistics Report (MSSR).</li>
+              <li>Permanent record of interviews and outcomes for future investigations.</li>
+            </ul>
+          </div>
+
+          <h3 class="mt-20">IR Routing & Case Closure (Important)</h3>
+          <div class="info-box warning">
+            <p><strong>IR is completed in triplicate:</strong> IC (submitted after interview), CC (submitted at closure), CF (CI keeps as permanent record).</p>
+            <p class="mt-10">
+              Cases are generally closed when all FRs are dispositioned. The guide notes a cut-off after at least
+              <strong>four reasonable attempts</strong> to investigate—typically <strong>minimum three calls</strong> and <strong>at least three visits</strong>, usually within a <strong>three-month period</strong>.
+            </p>
+          </div>
+
+          <h3 class="mt-20">IR Practice Form (based on the guide’s fields)</h3>
+
+          <form class="form-simulator" id="irForm">
+            <div class="form-header">
+              <h4><i class="fas fa-clipboard-list"></i> STI Case Interview Record (IR) – Practice</h4>
+              <p class="small muted">Fill it out, validate, then download as JSON/CSV or print to PDF.</p>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">CI # / Name (e.g., SE02 – Your Name)</label>
+                <input class="form-input" name="ciCodeName" placeholder="SE02 - Glenroy Griffiths" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Parish (3-letter code where patient lives)</label>
+                <input class="form-input" name="parishCode" placeholder="HAN" maxlength="3" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Interview Date</label>
+                <input type="date" class="form-input" name="interviewDate" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">STI Code(s) (write all infections on one IR)</label>
+                <input class="form-input" name="stiCodes" placeholder="A2, C13" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Medical Record #</label>
+                <input class="form-input" name="medicalRecordNo" placeholder="Docket number" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Case # (Parish + sequence)</label>
+                <input class="form-input" name="caseNo" placeholder="HAN-0012" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Last Name</label>
+                <input class="form-input" name="lastName" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">First Name</label>
+                <input class="form-input" name="firstName" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Middle Initial</label>
+                <input class="form-input" name="middleInitial" maxlength="1" placeholder="M">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Pet Name / Alias</label>
+                <input class="form-input" name="alias" placeholder="Optional">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Sex at Birth</label>
+                <select class="form-input" name="sexAtBirth" required>
+                  <option value="">Select</option>
+                  <option value="M">Male (M)</option>
+                  <option value="F">Female (F)</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">DOB</label>
+                <input type="date" class="form-input" name="dob" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Age</label>
+                <input type="number" class="form-input" name="age" min="0" max="120" required>
+                <div class="checkbox-option mt-10">
+                  <input type="checkbox" name="ageEstimated" id="ageEstimated">
+                  <label for="ageEstimated">Age is estimated (circle age on paper form)</label>
+                </div>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Telephone #</label>
+                <input class="form-input" name="telephone" placeholder="876-xxx-xxxx" required>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Address</label>
+              <textarea name="address" class="form-input" placeholder="Full address or UNKNOWN" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Time at Address</label>
+                <input class="form-input" name="timeAtAddress" placeholder="e.g., 6 months" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Time in Area</label>
+                <input class="form-input" name="timeInArea" placeholder="e.g., 2 years" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Travel (during critical period)</label>
+                <input class="form-input" name="travel" placeholder="Parishes/countries visited + sexual encounter">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Living With (relationship)</label>
+                <input class="form-input" name="livingWith" placeholder="e.g., Partner (girlfriend)">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Other Locating Info / Work</label>
+                <input class="form-input" name="otherLocatingWork" placeholder="Where else the person can be found">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Locations Frequented</label>
+                <textarea class="form-input" name="locationsFrequented" placeholder="Places the person often visits"></textarea>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Recreational Activities (include drug use if relevant)</label>
+                <textarea class="form-input" name="recreationalActivities" placeholder="Hobbies/leisure"></textarea>
+              </div>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-user-friends"></i> Next of Kin / Emergency Contact</h4>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Next of Kin Last Name</label>
+                <input class="form-input" name="nokLastName">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Next of Kin First Name</label>
+                <input class="form-input" name="nokFirstName">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Next of Kin Alias</label>
+                <input class="form-input" name="nokAlias">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Next of Kin Telephone</label>
+                <input class="form-input" name="nokTelephone">
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Next of Kin Address</label>
+              <textarea class="form-input" name="nokAddress"></textarea>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-notes-medical"></i> Interview Details & Testing</h4>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Reason for Interview</label>
+                <select class="form-input" name="reasonForInterview" required>
+                  <option value="">Select</option>
+                  <option value="Antenatal">Antenatal</option>
+                  <option value="Reactor">Reactor</option>
+                  <option value="Symptoms">Symptoms</option>
+                  <option value="Contact">Contact / Referral</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label">Key Population</label>
+                <div class="radio-group">
+                  <div class="radio-option">
+                    <input type="radio" id="kpYes" name="keyPopulation" value="Yes">
+                    <label for="kpYes">Yes</label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="kpNo" name="keyPopulation" value="No" checked>
+                    <label for="kpNo">No</label>
+                  </div>
+                </div>
+                <input class="form-input mt-10" name="keyPopulationSpecify" placeholder="If yes, specify">
+              </div>
+
+              <div class="form-field">
+                <label class="form-label">Where Interview Occurred</label>
+                <select class="form-input" name="interviewLocation" required>
+                  <option value="">Select</option>
+                  <option value="Clinic">Clinic</option>
+                  <option value="Hospital">Hospital</option>
+                  <option value="Field">Field</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Symptoms Onset Date</label>
+                <input type="date" class="form-input" name="symptomOnsetDate">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Duration (days)</label>
+                <input type="number" class="form-input" name="symptomDurationDays" min="0">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Symptoms Description</label>
+                <input class="form-input" name="symptomDescription" placeholder="Short description">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Contact Period Start Date</label>
+                <input type="date" class="form-input" name="contactPeriodStart">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Number of Sex Contacts Named</label>
+                <input type="number" class="form-input" name="numContactsNamed" min="0" value="0" required>
+              </div>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-vial"></i> Syphilis Testing</h4>
+            </div>
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Tested for Syphilis?</label>
+                <select class="form-input" name="syphilisTested" required>
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  <option value="Refused">Refused</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">SD Bioline Result</label>
+                <input class="form-input" name="sdBiolineResult" placeholder="Reactive / Non-reactive / N/A">
+              </div>
+              <div class="form-field">
+                <label class="form-label">SD Bioline Date</label>
+                <input type="date" class="form-input" name="sdBiolineDate">
+              </div>
+              <div class="form-field">
+                <label class="form-label">TRUST/VDRL Result</label>
+                <input class="form-input" name="trustVdrlResult" placeholder="e.g., 1:8 / Non-reactive / N/A">
+              </div>
+              <div class="form-field">
+                <label class="form-label">TRUST/VDRL Date</label>
+                <input type="date" class="form-input" name="trustVdrlDate">
+              </div>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-virus"></i> HIV Testing</h4>
+            </div>
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Tested for HIV?</label>
+                <select class="form-input" name="hivTested" required>
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  <option value="Refused">Refused</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Final HIV Result</label>
+                <select class="form-input" name="hivFinalResult">
+                  <option value="">Select</option>
+                  <option value="Positive">Positive</option>
+                  <option value="Negative">Negative</option>
+                  <option value="Indeterminate">Indeterminate</option>
+                  <option value="Pending">Pending</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Date of Final Result</label>
+                <input type="date" class="form-input" name="hivFinalResultDate">
+              </div>
+              <div class="form-field">
+                <label class="form-label">HIV Test Type Used (tick)</label>
+                <div class="checkbox-group">
+                  <div class="checkbox-option"><input type="checkbox" name="hivTestType" value="HIVST" id="ht1"><label for="ht1">HIVST</label></div>
+                  <div class="checkbox-option"><input type="checkbox" name="hivTestType" value="Determine" id="ht2"><label for="ht2">Determine</label></div>
+                  <div class="checkbox-option"><input type="checkbox" name="hivTestType" value="Unigold" id="ht3"><label for="ht3">Unigold</label></div>
+                  <div class="checkbox-option"><input type="checkbox" name="hivTestType" value="ELISA" id="ht4"><label for="ht4">ELISA</label></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-syringe"></i> Rx / Treatment (can be multiple lines)</h4>
+            </div>
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Rx Line 1</label>
+                <input class="form-input" name="rx1" placeholder="Drug + dose">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Rx Date 1</label>
+                <input type="date" class="form-input" name="rxDate1">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Rx Line 2</label>
+                <input class="form-input" name="rx2" placeholder="Drug + dose">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Rx Date 2</label>
+                <input type="date" class="form-input" name="rxDate2">
+              </div>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-people-arrows"></i> Critical Period Contacts</h4>
+              <p class="small muted">Include Date LSI, Sex, whether FR initiated, and Parish to be worked.</p>
+            </div>
+
+            <div style="overflow-x:auto;">
+              <table id="cpContactsTable">
+                <thead>
+                  <tr>
+                    <th>Name / Address</th>
+                    <th>Date LSI</th>
+                    <th>Sex</th>
+                    <th>FR Initiated</th>
+                    <th>Parish to be worked</th>
+                    <th class="no-print">Action</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="table-actions no-print">
+              <button type="button" class="btn btn-secondary" onclick="addCpRow()"><i class="fas fa-plus"></i> Add Contact Row</button>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-network-wired"></i> Cluster Suspects (outside critical period)</h4>
+            </div>
+
+            <div style="overflow-x:auto;">
+              <table id="clusterTable">
+                <thead>
+                  <tr>
+                    <th>Name / Address</th>
+                    <th>Sex</th>
+                    <th>FR Initiated</th>
+                    <th>Parish to be worked</th>
+                    <th class="no-print">Action</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="table-actions no-print">
+              <button type="button" class="btn btn-secondary" onclick="addClusterRow()"><i class="fas fa-plus"></i> Add Cluster Row</button>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-comments"></i> Sexual Health Education (tick topics covered)</h4>
+            </div>
+            <div class="checkbox-group">
+              <div class="checkbox-option"><input type="checkbox" name="eduTopics" value="Severity" id="e1"><label for="e1">Severity & complications</label></div>
+              <div class="checkbox-option"><input type="checkbox" name="eduTopics" value="Transmission" id="e2"><label for="e2">Modes of transmission</label></div>
+              <div class="checkbox-option"><input type="checkbox" name="eduTopics" value="Symptoms" id="e3"><label for="e3">Recognizing signs/symptoms</label></div>
+              <div class="checkbox-option"><input type="checkbox" name="eduTopics" value="NoImmunity" id="e4"><label for="e4">No natural immunity</label></div>
+              <div class="checkbox-option"><input type="checkbox" name="eduTopics" value="OtherSTI" id="e5"><label for="e5">Higher risk of other STIs</label></div>
+              <div class="checkbox-option"><input type="checkbox" name="eduTopics" value="CondomUse" id="e6"><label for="e6">Condom use (correct/consistent)</label></div>
+              <div class="checkbox-option"><input type="checkbox" name="eduTopics" value="PartnersTestedTreated" id="e7"><label for="e7">Partners should test & treat</label></div>
+            </div>
+
+            <div class="form-header mt-20">
+              <h4><i class="fas fa-shield-heart"></i> PrEP & Disposition</h4>
+            </div>
+
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">Is the index case currently taking PrEP?</label>
+                <select class="form-input" name="prepTaking">
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Was the index case referred for PrEP?</label>
+                <select class="form-input" name="prepReferred">
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Was the case dispositioned (closed)?</label>
+                <select class="form-input" name="caseDispositioned" required>
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Date Closed (if yes)</label>
+                <input type="date" class="form-input" name="dateClosed">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">If not dispositioned, state reason</label>
+              <input class="form-input" name="notClosedReason" placeholder="Reason">
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Notes</label>
+              <textarea class="form-input" name="notes"></textarea>
+            </div>
+
+            <div class="table-actions no-print">
+              <button type="button" class="btn btn-primary" onclick="validateIR()"><i class="fas fa-check"></i> Validate IR</button>
+              <button type="button" class="btn btn-secondary" onclick="saveDraft('ir')"><i class="fas fa-save"></i> Save Draft</button>
+              <button type="button" class="btn btn-secondary" onclick="loadDraft('ir')"><i class="fas fa-folder-open"></i> Load Draft</button>
+              <button type="button" class="btn btn-success" onclick="downloadFormData('ir','json')"><i class="fas fa-download"></i> Download JSON</button>
+              <button type="button" class="btn btn-success" onclick="downloadFormData('ir','csv')"><i class="fas fa-download"></i> Download CSV</button>
+              <button type="button" class="btn btn-secondary" onclick="window.print()"><i class="fas fa-print"></i> Print / Save as PDF</button>
+            </div>
+
+            <div id="irValidationResult" class="info-box hidden"></div>
+          </form>
+
+          <div class="table-actions no-print">
+            <button class="btn btn-success" onclick="completeModuleAndUnlockQuiz(2)"><i class="fas fa-check"></i> Mark Module 2 Complete</button>
+            <button class="btn btn-primary" onclick="openQuiz(2)"><i class="fas fa-question-circle"></i> Take Module 2 Quiz</button>
+          </div>
+        </div>
+
+        <div class="content-sidebar">
+          <h3>Field-by-field reminders (from the guide)</h3>
+          <div class="info-box">
+            <ul style="padding-left:20px;">
+              <li><strong>CI #/Name:</strong> use the 4-character CI code (e.g., SE02) + your name.</li>
+              <li><strong>Parish:</strong> 3-letter code for where the patient lives.</li>
+              <li><strong>STI codes:</strong> write <strong>all</strong> infections on one IR.</li>
+              <li><strong># sex contacts named:</strong> not the same as # initiated on FR (important distinction).</li>
+              <li><strong>Critical period contacts:</strong> include date of last sex (LSI), sex, FR initiated Y/N, and parish to be worked.</li>
+              <li><strong>Disposition:</strong> close when contacts/suspects dispositioned with supervisor concurrence; attach closed FRs to CC IR copy.</li>
+            </ul>
+          </div>
+
+          <div class="info-box warning">
+            <h4><i class="fas fa-triangle-exclamation"></i> Closure attempts</h4>
+            <p>
+              The guide indicates a typical closure cut-off after at least <strong>3 calls</strong> and <strong>3 visits</strong> (within about <strong>3 months</strong>) if investigation cannot be completed.
+            </p>
+          </div>
+
+          <h3 class="mt-20">Download tip</h3>
+          <div class="info-box success">
+            <p class="small">
+              <strong>JSON</strong> is best for saving/rehydrating the form later. <strong>CSV</strong> is best for Excel. For a “PDF”, use <strong>Print → Save as PDF</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLINICAL & SYNDROMES -->
+    <section id="sti-management" class="content-section">
+      <h2 class="section-title"><i class="fas fa-stethoscope"></i> Clinical & Syndromes (CI-relevant)</h2>
+
+      <div class="content-grid">
+        <div class="content-main">
+          <h3>Priority conditions for investigation</h3>
+          <div class="info-box">
+            <p class="mb-10"><strong>Priority A</strong> conditions should receive highest investigation priority:</p>
+            <ul style="padding-left:20px;">
+              <li><strong>HIV/AIDS (C13)</strong></li>
+              <li><strong>Pregnant women with reactive serology</strong></li>
+              <li><strong>Early congenital syphilis (&lt; 1 year) (A7)</strong></li>
+              <li><strong>Infectious syphilis (A1, A2, A3)</strong></li>
+              <li><strong>Ophthalmia neonatorum</strong></li>
+              <li><strong>STI in childhood</strong></li>
+            </ul>
+          </div>
+
+          <div class="info-box warning">
+            <p class="mb-10"><strong>Priority B</strong> examples:</p>
+            <ul style="padding-left:20px;">
+              <li>Severe PID</li>
+              <li>Contacts / Referrals</li>
+              <li>Hepatitis B</li>
+              <li>Resistant gonorrhea</li>
+              <li>Other Genital Ulcer Disease (GUD)</li>
+            </ul>
+          </div>
+
+          <h3 class="mt-20">STI coding (quick reference)</h3>
+          <div class="info-box">
+            <p class="small muted">Coding supports confidentiality in records and CI.</p>
+            <ul style="padding-left:20px;">
+              <li><strong>A1</strong> Primary syphilis, <strong>A2</strong> Secondary, <strong>A3</strong> Early latent, <strong>A6</strong> Late/late latent, <strong>A7</strong> Congenital &lt; 1 year</li>
+              <li><strong>B1</strong> Post-pubertal gonorrhea</li>
+              <li><strong>C10</strong> Genital herpes</li>
+              <li><strong>C13</strong> HIV/AIDS</li>
+            </ul>
+          </div>
+
+          <h3 class="mt-20">CI timeline standards (from targets & expectations)</h3>
+          <div class="info-box success">
+            <ul style="padding-left:20px;">
+              <li><strong>Priority cases:</strong> assign to a CI and complete a field visit within <strong>72 hours</strong>.</li>
+              <li><strong>Class 1 notifiable illnesses:</strong> report within <strong>24 hours</strong> of suspicion/confirmation.</li>
+              <li><strong>Outputs:</strong> investigative outputs should be completed/submitted within <strong>6 weeks</strong> (targets include interviewing new cases and locating/testing locatable contacts).</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <p class="small">
+              This section is intentionally “CI-relevant” (what you need to do/record/route). For the full clinical algorithms,
+              open the Field Guide PDF and use the syndromes/algorithms pages.
+            </p>
+          </div>
+
+          <div class="table-actions no-print">
+            <button class="btn btn-success" onclick="completeModuleAndUnlockQuiz(4)"><i class="fas fa-check"></i> Mark Module 4 Complete</button>
+            <button class="btn btn-primary" onclick="openQuiz(4)"><i class="fas fa-question-circle"></i> Take Module 4 Quiz</button>
+          </div>
+        </div>
+
+        <div class="content-sidebar">
+          <h3>Reporting flow reminder</h3>
+          <div class="info-box">
+            <p>
+              Monthly CI/STI reports are entered into DHIS2. Regional reporting is due on the <strong>5th working day</strong> of the following month.
+              If late, an explanation should be provided.
+            </p>
+          </div>
+
+          <h3 class="mt-20">Quick links</h3>
+          <div class="info-box">
+            <p class="mb-10"><i class="fas fa-link"></i> Field Guide PDF:</p>
+            <a class="btn btn-primary" href="Final CI Field Guide 17.06.25.pdf" target="_blank" rel="noopener">
+              <i class="fas fa-book-open"></i> Open Field Guide
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE SIMULATION -->
+    <section id="case-simulation" class="content-section">
+      <h2 class="section-title"><i class="fas fa-user-injured"></i> Case Simulation</h2>
+
+      <div class="info-box">
+        <h3 class="mb-10"><i class="fas fa-scroll"></i> Scenario</h3>
+        <p>
+          A 24-year-old male presents with a rash on palms and soles, non-itchy, 2 weeks. Multiple partners, inconsistent condom use.
+          Exam: maculopapular rash on palms/soles, generalized nontender lymphadenopathy, no genital lesions.
+        </p>
+      </div>
+
+      <h3 class="mt-20">Choose your actions (select all that apply)</h3>
+
+      <div class="module-grid" id="simulationCards">
+        <div class="module-card sim-card" data-correct="true">
+          <div class="module-header">
+            <div class="module-icon"><i class="fas fa-vial"></i></div>
+            <div class="module-title">Order appropriate testing</div>
+          </div>
+          <div class="module-body">
+            <p class="module-desc">Syphilis serology + HIV testing, and STI screening as indicated.</p>
+          </div>
+        </div>
+
+        <div class="module-card sim-card" data-correct="true">
+          <div class="module-header">
+            <div class="module-icon"><i class="fas fa-comments"></i></div>
+            <div class="module-title">Interview + contact elicitation</div>
+          </div>
+          <div class="module-body">
+            <p class="module-desc">Complete IR; elicit critical period contacts; initiate FRs for all locatable contacts (unless supervisor approves otherwise).</p>
+          </div>
+        </div>
+
+        <div class="module-card sim-card" data-correct="false">
+          <div class="module-header">
+            <div class="module-icon"><i class="fas fa-house"></i></div>
+            <div class="module-title">Send home and “watch and wait”</div>
+          </div>
+          <div class="module-body">
+            <p class="module-desc">Advise to return if worse; no immediate action.</p>
+          </div>
+        </div>
+
+        <div class="module-card sim-card" data-correct="true">
+          <div class="module-header">
+            <div class="module-icon"><i class="fas fa-user-shield"></i></div>
+            <div class="module-title">Partner notification plan</div>
+          </div>
+          <div class="module-body">
+            <p class="module-desc">Discuss client-led referral and assisted provider approaches (contract/provider/dual referral).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box hidden mt-20" id="simulationFeedback">
+        <h4 class="mb-10"><i class="fas fa-chart-line"></i> Results</h4>
+        <div id="simulationText"></div>
+      </div>
+
+      <div class="table-actions mt-20 no-print">
+        <button class="btn btn-primary" onclick="evaluateSimulation()"><i class="fas fa-check-double"></i> Evaluate</button>
+        <button class="btn btn-secondary" onclick="resetSimulation()"><i class="fas fa-redo"></i> Reset</button>
+        <button class="btn btn-success" onclick="completeModuleAndUnlockQuiz(3)"><i class="fas fa-check"></i> Mark Module 3 Complete</button>
+        <button class="btn btn-primary" onclick="openQuiz(3)"><i class="fas fa-question-circle"></i> Take Module 3 Quiz</button>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources" class="content-section">
+      <h2 class="section-title"><i class="fas fa-folder-open"></i> Resources</h2>
+
+      <div class="content-grid">
+        <div class="content-main">
+          <h3>Field Guide</h3>
+          <div class="info-box">
+            <p class="mb-10">
+              This app is designed to work <strong>offline</strong> with the PDF placed in the same folder.
+              Click below to open it in a new tab:
+            </p>
+            <a class="btn btn-primary" href="Final CI Field Guide 17.06.25.pdf" target="_blank" rel="noopener">
+              <i class="fas fa-book-open"></i> Open Field Guide PDF
+            </a>
+          </div>
+
+          <h3 class="mt-20">Blank templates (offline downloads)</h3>
+          <p class="muted small">These downloads generate local files (HTML templates + CSV headers). Replace with your official PDFs if you want exact originals.</p>
+
+          <div class="module-grid mt-10">
+            <div class="module-card">
+              <div class="module-header">
+                <div class="module-icon"><i class="fas fa-file"></i></div>
+                <div class="module-title">Blank IR Template</div>
+              </div>
+              <div class="module-body">
+                <p class="module-desc">A printable IR template generated from this app.</p>
+              </div>
+              <div class="module-footer">
+                <button class="btn btn-primary" onclick="downloadTemplate('ir')"><i class="fas fa-download"></i> Download</button>
+              </div>
+            </div>
+
+            <div class="module-card">
+              <div class="module-header">
+                <div class="module-icon"><i class="fas fa-file"></i></div>
+                <div class="module-title">Blank FR Template</div>
+              </div>
+              <div class="module-body">
+                <p class="module-desc">A printable FR template generated from this app.</p>
+              </div>
+              <div class="module-footer">
+                <button class="btn btn-primary" onclick="downloadTemplate('fr')"><i class="fas fa-download"></i> Download</button>
+              </div>
+            </div>
+
+            <div class="module-card">
+              <div class="module-header">
+                <div class="module-icon"><i class="fas fa-table"></i></div>
+                <div class="module-title">CSV headers (Excel-ready)</div>
+              </div>
+              <div class="module-body">
+                <p class="module-desc">Simple CSV headers for IR/FR export structures.</p>
+              </div>
+              <div class="module-footer">
+                <button class="btn btn-primary" onclick="downloadCsvHeaders()"><i class="fas fa-download"></i> Download</button>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="mt-20">Parish codes</h3>
+          <div style="overflow-x:auto;" class="mt-10">
+            <table>
+              <thead>
+                <tr><th>Parish</th><th>Code</th><th>No.</th></tr>
+              </thead>
+              <tbody id="parishCodesBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="content-sidebar">
+          <h3>Quick reference</h3>
+          <div class="info-box">
+            <p class="mb-10"><strong>Priority A</strong> includes: HIV/AIDS (C13), pregnant women reactive, infectious syphilis (A1/A2/A3), early congenital syphilis (A7), ON, STI in childhood.</p>
+            <p class="small muted">Use “STI coding” to protect confidentiality in records.</p>
+          </div>
+
+          <div class="info-box success">
+            <strong>Reminder:</strong> The PDF link works only if the PDF is in the same folder as this HTML file and the filename matches.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATE -->
+    <section id="certificate" class="content-section">
+      <h2 class="section-title"><i class="fas fa-award"></i> Training Certificate</h2>
+
+      <div class="certificate-container">
+        <div class="certificate-border" id="certificateArea">
+          <div class="certificate-seal"><i class="fas fa-shield-alt"></i></div>
+          <div class="certificate-title">Certificate of Completion</div>
+          <p class="muted">Contact Investigation (Disease Intervention) 101 Training Program</p>
+
+          <p class="mt-10">This certifies that</p>
+          <div class="certificate-name" id="certNameDisplay">[Your Name Here]</div>
+
+          <p>has completed required modules and quizzes and demonstrated competency in CI fundamentals.</p>
+
+          <div class="certificate-details">
+            <div class="certificate-detail">
+              <div class="detail-label">Date</div>
+              <div class="detail-value" id="certDate">[Date]</div>
+            </div>
+            <div class="certificate-detail">
+              <div class="detail-label">Certificate ID</div>
+              <div class="detail-value" id="certId">CI101-00000000</div>
+            </div>
+            <div class="certificate-detail">
+              <div class="detail-label">Status</div>
+              <div class="detail-value" id="certStatus">In Progress</div>
+            </div>
+          </div>
+
+          <div class="mt-20">
+            <p class="small muted">Designed by Glenroy Griffiths | Based on Jamaica MOHW Contact Investigation Field Guide (June 2025)</p>
+          </div>
+        </div>
+
+        <div class="mt-20 no-print">
+          <div class="form-field" style="max-width:460px; margin: 0 auto;">
+            <label class="form-label">Enter your name for the certificate</label>
+            <input class="form-input" id="certNameInput" placeholder="Your Full Name">
+          </div>
+
+          <div class="table-actions" style="justify-content:center;">
+            <button class="btn btn-primary" onclick="setCertName()"><i class="fas fa-user-edit"></i> Update Name</button>
+            <button class="btn btn-success" id="btnDownloadCert" onclick="downloadCertificatePNG()" disabled><i class="fas fa-download"></i> Download (PNG)</button>
+            <button class="btn btn-secondary" onclick="checkCertificateEligibility()"><i class="fas fa-question-circle"></i> Check Eligibility</button>
+            <button class="btn btn-secondary" onclick="window.print()"><i class="fas fa-print"></i> Print / Save PDF</button>
+          </div>
+
+          <div id="certMsg" class="info-box hidden mt-10"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer no-print">
+      <p>Contact Investigation (Disease Intervention) 101</p>
+      <p class="small">Designed by Glenroy Griffiths | Offline-ready | Progress saved in your browser</p>
+      <div class="mt-10">
+        <button class="btn btn-danger" onclick="resetAllProgress()"><i class="fas fa-rotate"></i> Reset All Progress</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- QUIZ MODAL -->
+  <div class="modal-backdrop" id="quizBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <h3 id="quizTitle"><i class="fas fa-question-circle"></i> Quiz</h3>
+        <button class="btn btn-secondary" onclick="closeQuiz()"><i class="fas fa-xmark"></i> Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="quiz-progress">
+          <div class="pill" id="quizMeta">Module X • Question 1/10</div>
+          <div class="pill" id="quizSaved">Auto-saved</div>
+        </div>
+
+        <div class="quiz-question" id="quizQuestionText">Question text</div>
+        <div class="quiz-options" id="quizOptions"></div>
+
+        <div class="info-box explain-box" id="quizExplainBox">
+          <h4 class="mb-10"><i class="fas fa-lightbulb"></i> Explanation</h4>
+          <div id="quizExplainText"></div>
+        </div>
+
+        <div class="info-box hidden" id="quizResultBox"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="prevQuizQuestion()"><i class="fas fa-arrow-left"></i> Previous</button>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-secondary" onclick="resetQuizAttempt()"><i class="fas fa-rotate-right"></i> Restart Quiz</button>
+          <button class="btn btn-primary" id="btnSubmitQuiz" onclick="submitQuiz()"><i class="fas fa-check"></i> Submit Quiz</button>
+          <button class="btn btn-primary" onclick="nextQuizQuestion()"><i class="fas fa-arrow-right"></i> Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*****************************************************************
+      STATE (saved in localStorage)
+    ******************************************************************/
+    const STORAGE_KEY = "ci101_state_v2";
+
+    const defaultState = () => ({
+      completedModules: [false,false,false,false],
+      moduleProgress: [0,0,0,0],
+      quizScores: [0,0,0,0],           // 0 = not taken
+      quizCompleted: [false,false,false,false],
+      studyTimeMinutes: 0,
+      userName: "",
+      certificateEarned: false,
+      certificateId: "",
+      lastActiveISO: new Date().toISOString(),
+      drafts: { ir: null, fr: null },
+      quizAttempts: [0,0,0,0],
+      simulationAttempts: 0
+    });
+
+    let appState = defaultState();
+
+    /*****************************************************************
+      QUIZ BANK (real grading, no random scores)
+      NOTE: Options are shuffled per question each attempt.
+    ******************************************************************/
+    const QUIZ_BANK = {
+      1: [
+        {
+          q: "Which set best describes the core activities of Contact Investigation (CI) emphasized in the Field Guide?",
+          options: [
+            "Contact tracing, partner notification, testing, and provider referral",
+            "Only treating symptomatic clients at the clinic",
+            "Dispensing medications and filing only",
+            "Health promotion only, with no records"
+          ],
+          correct: 0,
+          explain: "The guide outlines CI core activities as contact tracing, partner notification, testing, and provider referral."
+        },
+        {
+          q: "Confidentiality is critical because breaches can lead to which harms?",
+          options: [
+            "Stigma, discrimination, and intimate partner violence",
+            "Only minor inconvenience",
+            "Faster reporting",
+            "Better clinic flow"
+          ],
+          correct: 0,
+          explain: "The guide warns that lack of confidentiality may contribute to stigma, discrimination, and intimate partner violence."
+        },
+        {
+          q: "Which is an example of an assisted partner notification approach?",
+          options: [
+            "Contract referral",
+            "Ignoring partner notification",
+            "Posting names publicly",
+            "Telling the community without consent"
+          ],
+          correct: 0,
+          explain: "Assisted partner notification can use contract referral, provider referral, or dual referral."
+        },
+        {
+          q: "A practical strategy to protect confidentiality is:",
+          options: [
+            "Interviewing in private and coding data to protect diagnosis",
+            "Sharing the diagnosis with friends so they can help",
+            "Keeping records on an unlocked phone",
+            "Discussing cases in public spaces"
+          ],
+          correct: 0,
+          explain: "The guide lists private interviews, coding diagnoses, and secure storage/access per MOHW protocols."
+        }
+      ],
+      2: [
+        {
+          q: "The Interview Record (IR) is completed in how many copies?",
+          options: ["Triplicate (IC, CC, CF)", "One copy only", "Two copies only", "Four copies"],
+          correct: 0,
+          explain: "The guide states the IR is completed in triplicate: Index Case (IC), Case Closure (CC), and Case File (CF)."
+        },
+        {
+          q: "Which statement about “number of sex contacts named” is correct?",
+          options: [
+            "It is NOT the same as the number initiated on Field Records (FRs).",
+            "It always equals the number initiated on FRs.",
+            "It means the number of phone calls made.",
+            "It means the number of visits made."
+          ],
+          correct: 0,
+          explain: "The guide emphasizes the distinction: contacts named ≠ FRs initiated."
+        },
+        {
+          q: "For each critical period contact on the IR, you should include:",
+          options: [
+            "Date LSI, Sex, FR initiated (Y/N), and Parish to be worked",
+            "Only the first name",
+            "Only the street name",
+            "Only the patient’s diagnosis"
+          ],
+          correct: 0,
+          explain: "The field-by-field guidance specifies Date LSI, Sex, FR initiated, and Parish to be worked."
+        },
+        {
+          q: "A case is generally closed when:",
+          options: [
+            "All Field Records (FRs) for the case have been dispositioned (with supervisory concurrence).",
+            "The CI feels tired",
+            "Only one call was made",
+            "The patient refuses to name anyone"
+          ],
+          correct: 0,
+          explain: "The guide notes closure occurs when contacts/suspects are dispositioned and supervisor agrees."
+        }
+      ],
+      3: [
+        {
+          q: "How many copies of the Field Record (FR) exist, and when are they initiated?",
+          options: [
+            "Three copies; all initiated at the same time (carbonized or with carbon paper).",
+            "One copy; initiated only after treatment.",
+            "Two copies; initiated only after the IR is closed.",
+            "Four copies; initiated weekly."
+          ],
+          correct: 0,
+          explain: "The guide states there are three FR copies initiated at the same time."
+        },
+        {
+          q: "Dispositioned (closed) second copies of FRs are generally submitted:",
+          options: ["Weekly to the supervisor", "Yearly to the national office", "Never", "Only when asked by the patient"],
+          correct: 0,
+          explain: "The guide says dispositioned second FR copies are submitted weekly."
+        },
+        {
+          q: "If an FR is marked NOT WORKED, what must be included?",
+          options: ["A reason/explanation must be given", "Nothing else is required", "Only a signature", "A photo of the contact"],
+          correct: 0,
+          explain: "The guide requires a reason for all FRs dispositioned as NOT WORKED."
+        },
+        {
+          q: "An example of NOT WORKED progress status is:",
+          options: ["Unable to locate", "Located, tested and treated", "Completed treatment", "Supervisor signed"],
+          correct: 0,
+          explain: "The guide lists NOT WORKED progress options including UNABLE TO LOCATE and other refusal/non-completion states."
+        }
+      ],
+      4: [
+        {
+          q: "Which set contains Priority A conditions?",
+          options: [
+            "HIV/AIDS (C13), pregnant women reactive, infectious syphilis (A1/A2/A3), early congenital syphilis (A7), ON, STI in childhood",
+            "Only warts (C11)",
+            "Only trichomoniasis (C6)",
+            "Only pubic lice (C9)"
+          ],
+          correct: 0,
+          explain: "The guide lists these as Priority A conditions for investigation."
+        },
+        {
+          q: "Priority cases should be assigned to a CI and receive a field visit within:",
+          options: ["72 hours", "6 months", "24 weeks", "10 days"],
+          correct: 0,
+          explain: "Targets/expectations specify field visit within 72 hours for priority cases."
+        },
+        {
+          q: "All Class 1 notifiable illnesses must be reported within:",
+          options: ["24 hours of suspicion/confirmation", "72 hours", "1 month", "Only at month-end"],
+          correct: 0,
+          explain: "The guide states Class 1 notifiable illnesses must be reported within 24 hours."
+        },
+        {
+          q: "Which is the correct code for HIV/AIDS in the Jamaican STI coding list?",
+          options: ["C13", "A3", "B1", "C10"],
+          correct: 0,
+          explain: "The STI coding section lists HIV/AIDS as C13."
+        }
+      ]
+    };
+
+    /*****************************************************************
+      QUIZ RUNTIME
+    ******************************************************************/
+    let quizRuntime = {
+      module: null,
+      questions: [],
+      index: 0,
+      answers: [],  // stores chosen option index per question (in current shuffled options order)
+      locked: false,
+      score: 0
+    };
+
+    /*****************************************************************
+      INIT
+    ******************************************************************/
+    document.addEventListener("DOMContentLoaded", () => {
+      loadState();
+      setupNavigation();
+      setupSimulationInteractivity();
+      populateParishCodes();
+      seedTables();
+      updateDashboard();
+      updateCertificateUI();
+
+      // Study timer (1 minute)
+      setInterval(() => {
+        appState.studyTimeMinutes += 1;
+        saveState();
+        updateDashboard();
+      }, 60000);
+
+      // Auto-save
+      setInterval(() => saveState(), 30000);
+    });
+
+    /*****************************************************************
+      NAV
+    ******************************************************************/
+    function setupNavigation(){
+      const navButtons = document.querySelectorAll(".nav-btn");
+      navButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          navButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const id = btn.getAttribute("data-section");
+          document.querySelectorAll(".content-section").forEach(sec => sec.classList.remove("active"));
+          document.getElementById(id).classList.add("active");
+
+          // Tiny engagement time add
+          appState.studyTimeMinutes += 1;
+          saveState();
+          updateDashboard();
+        });
+      });
+    }
+
+    function startModule(n){
+      const map = {1:"ci-basics", 2:"forms-records", 3:"case-simulation", 4:"sti-management"};
+      const target = map[n];
+      document.querySelectorAll(".nav-btn").forEach(b => {
+        if (b.getAttribute("data-section") === target) b.click();
+      });
+      // Add baseline progress
+      if (appState.moduleProgress[n-1] < 25) {
+        appState.moduleProgress[n-1] = 25;
+        saveState();
+        updateDashboard();
+      }
+    }
+
+    function completeModuleAndUnlockQuiz(n){
+      appState.completedModules[n-1] = true;
+      appState.moduleProgress[n-1] = 100;
+
+      // Enable quiz (but certificate needs quiz completion too)
+      const quizBtn = document.getElementById(`module${n}-quiz-btn`);
+      if (quizBtn) quizBtn.disabled = false;
+
+      saveState();
+      updateDashboard();
+      updateCertificateUI();
+      alert(`Module ${n} marked complete. Now take the quiz for Module ${n}.`);
+      // Go back to dashboard
+      document.querySelector('.nav-btn[data-section="dashboard"]').click();
+    }
+
+    /*****************************************************************
+      DASHBOARD
+    ******************************************************************/
+    function updateDashboard(){
+      const completedCount = appState.completedModules.filter(Boolean).length;
+      document.getElementById("completed-modules").textContent = completedCount;
+
+      const totalProgress = appState.moduleProgress.reduce((a,b)=>a+b,0);
+      const avgProgress = Math.round(totalProgress / appState.moduleProgress.length);
+      document.getElementById("progress-percent").textContent = `${avgProgress}%`;
+
+      const h = Math.floor(appState.studyTimeMinutes/60);
+      const m = appState.studyTimeMinutes%60;
+      document.getElementById("study-time").textContent = h>0 ? `${h}h ${m}m` : `${m}m`;
+
+      const scores = appState.quizScores.filter(s=>s>0);
+      const avgScore = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : 0;
+      document.getElementById("quiz-score").textContent = `${avgScore}%`;
+
+      for (let i=1; i<=4; i++){
+        const p = appState.moduleProgress[i-1];
+        const prog = document.getElementById(`module${i}-progress`);
+        const fill = document.getElementById(`module${i}-fill`);
+        if (prog) prog.textContent = `${p}%`;
+        if (fill) fill.style.width = `${p}%`;
+
+        const qb = document.getElementById(`module${i}-quiz-btn`);
+        if (qb){
+          // enabled only when module completed
+          qb.disabled = !appState.completedModules[i-1];
+        }
+      }
+    }
+
+    /*****************************************************************
+      IR TABLE SEED
+    ******************************************************************/
+    function seedTables(){
+      // Add 1 blank row each initially
+      addCpRow();
+      addClusterRow();
+    }
+
+    function addCpRow(){
+      const tbody = document.querySelector("#cpContactsTable tbody");
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><textarea class="form-input" name="cp_nameAddress" placeholder="Name + address"></textarea></td>
+        <td><input type="date" class="form-input" name="cp_dateLsi"></td>
+        <td>
+          <select class="form-input" name="cp_sex">
+            <option value="">Select</option><option value="M">M</option><option value="F">F</option>
+          </select>
+        </td>
+        <td>
+          <select class="form-input" name="cp_frInitiated">
+            <option value="">Select</option><option value="Y">Y</option><option value="N">N</option>
+          </select>
+        </td>
+        <td><input class="form-input" name="cp_parishWorked" placeholder="e.g., HAN"></td>
+        <td class="no-print"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    function addClusterRow(){
+      const tbody = document.querySelector("#clusterTable tbody");
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><textarea class="form-input" name="cl_nameAddress" placeholder="Name + address"></textarea></td>
+        <td>
+          <select class="form-input" name="cl_sex">
+            <option value="">Select</option><option value="M">M</option><option value="F">F</option>
+          </select>
+        </td>
+        <td>
+          <select class="form-input" name="cl_frInitiated">
+            <option value="">Select</option><option value="Y">Y</option><option value="N">N</option>
+          </select>
+        </td>
+        <td><input class="form-input" name="cl_parishWorked" placeholder="e.g., HAN"></td>
+        <td class="no-print"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    /*****************************************************************
+      IR VALIDATION + DOWNLOADS
+    ******************************************************************/
+    function validateIR(){
+      const form = document.getElementById("irForm");
+      const requiredFields = ["ciCodeName","parishCode","interviewDate","stiCodes","medicalRecordNo","caseNo","lastName","firstName","sexAtBirth","dob","age","telephone","address","reasonForInterview","interviewLocation","syphilisTested","hivTested","caseDispositioned","numContactsNamed"];
+      const errors = [];
+      const warnings = [];
+
+      const values = Object.fromEntries(new FormData(form).entries());
+
+      // Required
+      requiredFields.forEach(name => {
+        const v = (values[name] ?? "").toString().trim();
+        if (!v) errors.push(`• ${prettyName(name)} is required`);
+      });
+
+      // Parish code length
+      const pc = (values.parishCode ?? "").trim();
+      if (pc && pc.length !== 3) warnings.push("• Parish code should be 3 letters (e.g., HAN)");
+
+      // STI codes present
+      const codes = (values.stiCodes ?? "").trim();
+      if (codes && codes.length < 2) warnings.push("• STI codes look too short—ensure you enter valid codes (e.g., A2, C13).");
+
+      // If dispositioned = Yes, date closed recommended
+      if ((values.caseDispositioned ?? "") === "Yes" && !(values.dateClosed ?? "")) {
+        warnings.push("• Case is marked dispositioned but Date Closed is blank.");
+      }
+      // If dispositioned = No, reason recommended
+      if ((values.caseDispositioned ?? "") === "No" && !(values.notClosedReason ?? "").trim()) {
+        warnings.push("• Case is not dispositioned; include a reason.");
+      }
+
+      // Contact tables guidance
+      const cpRows = [...document.querySelectorAll("#cpContactsTable tbody tr")];
+      const anyCp = cpRows.some(r => r.querySelector('textarea[name="cp_nameAddress"]').value.trim());
+      if (!anyCp && Number(values.numContactsNamed||0) > 0) warnings.push("• You entered contacts named > 0 but the critical period contacts table is empty.");
+
+      const box = document.getElementById("irValidationResult");
+      box.classList.remove("hidden");
+
+      if (errors.length){
+        box.className = "info-box warning";
+        box.innerHTML = `<h4><i class="fas fa-triangle-exclamation"></i> Fix these first</h4>
+          <ul style="padding-left:20px; margin-top:8px;">${errors.map(e=>`<li>${e}</li>`).join("")}</ul>
+          ${warnings.length ? `<div class="mt-10"><strong>Notes:</strong><ul style="padding-left:20px; margin-top:6px;">${warnings.map(w=>`<li>${w}</li>`).join("")}</ul></div>`:""}
+        `;
+        return false;
+      }
+
+      box.className = "info-box success";
+      box.innerHTML = `<h4><i class="fas fa-check-circle"></i> IR looks complete</h4>
+        <p>Required fields are filled.</p>
+        ${warnings.length ? `<div class="mt-10"><strong>Notes:</strong><ul style="padding-left:20px; margin-top:6px;">${warnings.map(w=>`<li>${w}</li>`).join("")}</ul></div>`:""}
+      `;
+
+      // Add learning progress
+      if (appState.moduleProgress[1] < 75) appState.moduleProgress[1] = 75;
+      saveState();
+      updateDashboard();
+      return true;
+    }
+
+    function prettyName(name){
+      const map = {
+        ciCodeName:"CI # / Name",
+        parishCode:"Parish",
+        interviewDate:"Interview Date",
+        stiCodes:"STI Code(s)",
+        medicalRecordNo:"Medical Record #",
+        caseNo:"Case #",
+        lastName:"Last Name",
+        firstName:"First Name",
+        sexAtBirth:"Sex at Birth",
+        dob:"DOB",
+        age:"Age",
+        telephone:"Telephone #",
+        address:"Address",
+        reasonForInterview:"Reason for Interview",
+        interviewLocation:"Where Interview Occurred",
+        syphilisTested:"Syphilis Tested",
+        hivTested:"HIV Tested",
+        caseDispositioned:"Disposition",
+        numContactsNamed:"# Sex Contacts Named"
+      };
+      return map[name] || name;
+    }
+
+    function collectIRData(){
+      const form = document.getElementById("irForm");
+      const fd = new FormData(form);
+      const obj = {};
+
+      // Handle multi-check (eduTopics, hivTestType)
+      const multiFields = ["eduTopics","hivTestType"];
+      multiFields.forEach(f => obj[f] = []);
+
+      for (const [k,v] of fd.entries()){
+        if (multiFields.includes(k)) obj[k].push(v);
+        else obj[k] = v;
+      }
+
+      // Tables
+      obj.criticalPeriodContacts = [...document.querySelectorAll("#cpContactsTable tbody tr")].map(tr => ({
+        nameAddress: tr.querySelector('textarea[name="cp_nameAddress"]').value.trim(),
+        dateLSI: tr.querySelector('input[name="cp_dateLsi"]').value,
+        sex: tr.querySelector('select[name="cp_sex"]').value,
+        frInitiated: tr.querySelector('select[name="cp_frInitiated"]').value,
+        parishWorked: tr.querySelector('input[name="cp_parishWorked"]').value.trim()
+      })).filter(r => r.nameAddress || r.dateLSI || r.sex || r.frInitiated || r.parishWorked);
+
+      obj.clusterSuspects = [...document.querySelectorAll("#clusterTable tbody tr")].map(tr => ({
+        nameAddress: tr.querySelector('textarea[name="cl_nameAddress"]').value.trim(),
+        sex: tr.querySelector('select[name="cl_sex"]').value,
+        frInitiated: tr.querySelector('select[name="cl_frInitiated"]').value,
+        parishWorked: tr.querySelector('input[name="cl_parishWorked"]').value.trim()
+      })).filter(r => r.nameAddress || r.sex || r.frInitiated || r.parishWorked);
+
+      // Derived
+      obj.exportedAtISO = new Date().toISOString();
+      obj.formType = "IR";
+      return obj;
+    }
+
+    function downloadFormData(which, format){
+      if (which !== "ir") return;
+      // validate first
+      const ok = validateIR();
+      if (!ok) {
+        alert("Please fix required fields first (see validation box), then download.");
+        return;
+      }
+
+      const data = collectIRData();
+      const safeName = `${(data.lastName||"IR")}_${(data.firstName||"")}`.replace(/[^\w]+/g,"_").replace(/^_+|_+$/g,"");
+      if (format === "json"){
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+        triggerDownload(blob, `IR_${safeName}.json`);
+      } else if (format === "csv"){
+        const csv = irToCsv(data);
+        const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+        triggerDownload(blob, `IR_${safeName}.csv`);
+      }
+    }
+
+    function irToCsv(data){
+      // Flat core columns
+      const baseCols = [
+        "ciCodeName","parishCode","interviewDate","stiCodes","medicalRecordNo","caseNo",
+        "lastName","firstName","middleInitial","alias","sexAtBirth","dob","age","ageEstimated","telephone",
+        "address","timeAtAddress","timeInArea","travel","livingWith","otherLocatingWork",
+        "locationsFrequented","recreationalActivities",
+        "nokLastName","nokFirstName","nokAlias","nokTelephone","nokAddress",
+        "reasonForInterview","keyPopulation","keyPopulationSpecify","interviewLocation",
+        "symptomOnsetDate","symptomDurationDays","symptomDescription","contactPeriodStart",
+        "syphilisTested","sdBiolineResult","sdBiolineDate","trustVdrlResult","trustVdrlDate",
+        "hivTested","hivFinalResult","hivFinalResultDate","rx1","rxDate1","rx2","rxDate2",
+        "numContactsNamed","prepTaking","prepReferred","caseDispositioned","dateClosed","notClosedReason",
+        "notes","eduTopics","hivTestType"
+      ];
+
+      const header = baseCols.join(",") + ",cpContacts_json,clusterSuspects_json\n";
+      const row = baseCols.map(c => {
+        const v = (data[c] ?? "");
+        if (Array.isArray(v)) return csvEscape(v.join("; "));
+        return csvEscape(v);
+      }).join(",") + "," + csvEscape(JSON.stringify(data.criticalPeriodContacts||[])) + "," + csvEscape(JSON.stringify(data.clusterSuspects||[])) + "\n";
+      return header + row;
+    }
+
+    function csvEscape(v){
+      const s = (v ?? "").toString();
+      if (/[",\n]/.test(s)) return `"${s.replace(/"/g,'""')}"`;
+      return s;
+    }
+
+    function triggerDownload(blob, filename){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+
+      // engagement
+      appState.studyTimeMinutes += 2;
+      saveState();
+      updateDashboard();
+    }
+
+    function saveDraft(which){
+      if (which === "ir"){
+        const data = collectIRData();
+        appState.drafts.ir = data;
+        saveState();
+        alert("IR draft saved in this browser.");
+      }
+    }
+
+    function loadDraft(which){
+      if (which === "ir"){
+        if (!appState.drafts.ir){
+          alert("No IR draft found in this browser yet.");
+          return;
+        }
+        hydrateIR(appState.drafts.ir);
+        alert("IR draft loaded.");
+      }
+    }
+
+    function hydrateIR(data){
+      const form = document.getElementById("irForm");
+      // Simple fields
+      for (const [k,v] of Object.entries(data)){
+        if (k === "criticalPeriodContacts" || k === "clusterSuspects") continue;
+        if (k === "eduTopics" || k === "hivTestType") continue;
+        const el = form.querySelector(`[name="${k}"]`);
+        if (el) el.value = v;
+      }
+      // Checkboxes groups
+      ["eduTopics","hivTestType"].forEach(group => {
+        const values = Array.isArray(data[group]) ? data[group] : [];
+        form.querySelectorAll(`input[name="${group}"]`).forEach(cb => cb.checked = values.includes(cb.value));
+      });
+
+      // Tables
+      const cpBody = document.querySelector("#cpContactsTable tbody");
+      cpBody.innerHTML = "";
+      (data.criticalPeriodContacts || []).forEach(r => {
+        addCpRow();
+        const tr = cpBody.lastElementChild;
+        tr.querySelector('textarea[name="cp_nameAddress"]').value = r.nameAddress || "";
+        tr.querySelector('input[name="cp_dateLsi"]').value = r.dateLSI || "";
+        tr.querySelector('select[name="cp_sex"]').value = r.sex || "";
+        tr.querySelector('select[name="cp_frInitiated"]').value = r.frInitiated || "";
+        tr.querySelector('input[name="cp_parishWorked"]').value = r.parishWorked || "";
+      });
+      if (!cpBody.children.length) addCpRow();
+
+      const clBody = document.querySelector("#clusterTable tbody");
+      clBody.innerHTML = "";
+      (data.clusterSuspects || []).forEach(r => {
+        addClusterRow();
+        const tr = clBody.lastElementChild;
+        tr.querySelector('textarea[name="cl_nameAddress"]').value = r.nameAddress || "";
+        tr.querySelector('select[name="cl_sex"]').value = r.sex || "";
+        tr.querySelector('select[name="cl_frInitiated"]').value = r.frInitiated || "";
+        tr.querySelector('input[name="cl_parishWorked"]').value = r.parishWorked || "";
+      });
+      if (!clBody.children.length) addClusterRow();
+
+      // Hide validation box until user validates again
+      document.getElementById("irValidationResult").classList.add("hidden");
+    }
+
+    /*****************************************************************
+      SIMULATION
+    ******************************************************************/
+    function setupSimulationInteractivity(){
+      document.querySelectorAll(".sim-card").forEach(card => {
+        card.addEventListener("click", () => card.classList.toggle("selected"));
+      });
+    }
+
+    function evaluateSimulation(){
+      const selected = [...document.querySelectorAll(".sim-card.selected")];
+      if (!selected.length) { alert("Select at least one action."); return; }
+
+      const correct = selected.filter(c => c.getAttribute("data-correct")==="true").length;
+      const incorrect = selected.filter(c => c.getAttribute("data-correct")==="false").length;
+      const totalCorrect = [...document.querySelectorAll(".sim-card[data-correct='true']")].length;
+
+      const fb = document.getElementById("simulationFeedback");
+      const txt = document.getElementById("simulationText");
+
+      appState.simulationAttempts += 1;
+
+      if (correct === totalCorrect && incorrect === 0){
+        fb.className = "info-box success mt-20";
+        txt.innerHTML = `
+          <strong>Excellent.</strong> You selected all correct actions.<br><br>
+          Key CI steps here: testing, interview + contact elicitation (initiate FRs for locatable contacts), and a partner notification plan.
+        `;
+        if (appState.moduleProgress[2] < 75) appState.moduleProgress[2] = 75; // module 3 progress support
+      } else {
+        fb.className = "info-box warning mt-20";
+        txt.innerHTML = `
+          <strong>Not quite.</strong> You selected ${correct} correct and ${incorrect} incorrect action(s).<br><br>
+          For this scenario, avoid “watch and wait.” Focus on testing, interviewing, contact elicitation, and partner notification planning.
+        `;
+      }
+      fb.classList.remove("hidden");
+      saveState();
+      updateDashboard();
+    }
+
+    function resetSimulation(){
+      document.querySelectorAll(".sim-card").forEach(card => card.classList.remove("selected"));
+      document.getElementById("simulationFeedback").classList.add("hidden");
+    }
+
+    /*****************************************************************
+      PARISH CODES
+    ******************************************************************/
+    function populateParishCodes(){
+      const parishData = [
+        { parish:"Kingston & St Andrew", code:"KSA", number:1 },
+        { parish:"St Thomas", code:"STT", number:3 },
+        { parish:"Portland", code:"POR", number:4 },
+        { parish:"St Mary", code:"STM", number:5 },
+        { parish:"St Ann", code:"STA", number:6 },
+        { parish:"Trelawny", code:"TRE", number:7 },
+        { parish:"St James", code:"STJ", number:8 },
+        { parish:"Hanover", code:"HAN", number:9 },
+        { parish:"Westmoreland", code:"WES", number:10 },
+        { parish:"St Elizabeth", code:"STE", number:11 },
+        { parish:"Manchester", code:"MAN", number:12 },
+        { parish:"Clarendon", code:"CLA", number:13 },
+        { parish:"St Catherine", code:"STC", number:14 }
+      ];
+      const body = document.getElementById("parishCodesBody");
+      body.innerHTML = "";
+      parishData.forEach(p => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${p.parish}</td><td><strong>${p.code}</strong></td><td>${p.number}</td>`;
+        body.appendChild(tr);
+      });
+    }
+
+    /*****************************************************************
+      RESOURCES DOWNLOADS (templates)
+    ******************************************************************/
+    function downloadTemplate(which){
+      if (which === "ir"){
+        const html = `<!doctype html><html><head><meta charset="utf-8"><title>Blank IR Template</title></head>
+        <body><h2>Blank IR Template</h2><p>Use Print → Save as PDF.</p>
+        <p><strong>Tip:</strong> Use the full Field Guide for the official printed form.</p>
+        <hr>
+        <p>Fields include: CI#/Name, Parish, Interview date, STI code(s), Medical record#, Case#, Names/Alias, Sex at birth, DOB/Age, Telephone, Address, Locating info, Reason, Key pop, Interview location, Symptoms, Contact period start, Testing fields, Rx, Contacts tables, Education, PrEP, Disposition, Notes.</p>
+        </body></html>`;
+        triggerDownload(new Blob([html],{type:"text/html;charset=utf-8"}), "Blank_IR_Template.html");
+      }
+      if (which === "fr"){
+        const html = `<!doctype html><html><head><meta charset="utf-8"><title>Blank FR Template</title></head>
+        <body><h2>Blank FR Template</h2><p>Use Print → Save as PDF.</p>
+        <hr>
+        <p>FR routing: 3 copies; submit first copy with IR (contacts/suspects), submit dispositioned second copies weekly; third copy retained for field follow-up notes.</p>
+        </body></html>`;
+        triggerDownload(new Blob([html],{type:"text/html;charset=utf-8"}), "Blank_FR_Template.html");
+      }
+    }
+
+    function downloadCsvHeaders(){
+      const headers = [
+        "IR_headers: ciCodeName,parishCode,interviewDate,stiCodes,medicalRecordNo,caseNo,lastName,firstName,sexAtBirth,dob,age,telephone,address,numContactsNamed,prepTaking,prepReferred,caseDispositioned,dateClosed,notes",
+        "FR_headers: contactName,contactAddress,parishWorked,investigationStartDate,caseOutcome,dispositionDate,dateReferredOutOfParish,reasonNotWorked"
+      ].join("\n");
+      triggerDownload(new Blob([headers],{type:"text/plain;charset=utf-8"}), "CI_IR_FR_CSV_Headers.txt");
+    }
+
+    /*****************************************************************
+      QUIZ SYSTEM (modal)
+    ******************************************************************/
+    function openQuiz(moduleNumber){
+      // Only allow if module is completed
+      if (!appState.completedModules[moduleNumber-1]) {
+        alert("Complete the module first, then take the quiz.");
+        return;
+      }
+
+      quizRuntime.module = moduleNumber;
+      quizRuntime.index = 0;
+      quizRuntime.locked = false;
+
+      // Build a fresh quiz attempt with shuffled options per question
+      const base = QUIZ_BANK[moduleNumber] || [];
+      quizRuntime.questions = base.map((item) => {
+        const opts = item.options.map((text, idx) => ({ text, originalIndex: idx }));
+        shuffle(opts);
+        const correctIndex = opts.findIndex(o => o.originalIndex === item.correct);
+        return {
+          q: item.q,
+          options: opts.map(o => o.text),
+          correct: correctIndex,
+          explain: item.explain
+        };
+      });
+
+      quizRuntime.answers = new Array(quizRuntime.questions.length).fill(null);
+      document.getElementById("quizTitle").innerHTML = `<i class="fas fa-question-circle"></i> Module ${moduleNumber} Quiz`;
+      document.getElementById("quizResultBox").classList.add("hidden");
+      document.getElementById("quizExplainBox").classList.remove("show");
+      document.getElementById("btnSubmitQuiz").disabled = false;
+
+      renderQuizQuestion();
+      document.getElementById("quizBackdrop").classList.add("show");
+
+      appState.quizAttempts[moduleNumber-1] += 1;
+      saveState();
+    }
+
+    function closeQuiz(){
+      document.getElementById("quizBackdrop").classList.remove("show");
+    }
+
+    function renderQuizQuestion(){
+      const q = quizRuntime.questions[quizRuntime.index];
+      const meta = `Module ${quizRuntime.module} • Question ${quizRuntime.index+1}/${quizRuntime.questions.length}`;
+      document.getElementById("quizMeta").textContent = meta;
+      document.getElementById("quizQuestionText").textContent = q.q;
+
+      const optionsWrap = document.getElementById("quizOptions");
+      optionsWrap.innerHTML = "";
+
+      q.options.forEach((optText, idx) => {
+        const div = document.createElement("div");
+        div.className = "quiz-option";
+        const letter = String.fromCharCode(65+idx);
+        div.innerHTML = `<div class="option-letter">${letter}</div><div>${optText}</div>`;
+        div.addEventListener("click", () => {
+          if (quizRuntime.locked) return;
+          quizRuntime.answers[quizRuntime.index] = idx;
+          [...optionsWrap.children].forEach(c => c.classList.remove("selected"));
+          div.classList.add("selected");
+          saveState();
+        });
+
+        // Restore selection
+        if (quizRuntime.answers[quizRuntime.index] === idx) div.classList.add("selected");
+
+        optionsWrap.appendChild(div);
+      });
+
+      // When locked, show correct/incorrect styling
+      if (quizRuntime.locked){
+        applyQuizMarking();
+      } else {
+        document.getElementById("quizExplainBox").classList.remove("show");
+      }
+    }
+
+    function applyQuizMarking(){
+      const q = quizRuntime.questions[quizRuntime.index];
+      const chosen = quizRuntime.answers[quizRuntime.index];
+      const nodes = [...document.getElementById("quizOptions").children];
+
+      nodes.forEach((n, idx) => n.classList.remove("correct","incorrect","selected"));
+
+      nodes.forEach((n, idx) => {
+        if (idx === q.correct) n.classList.add("correct");
+        if (chosen !== null && idx === chosen && chosen !== q.correct) n.classList.add("incorrect");
+        if (chosen !== null && idx === chosen) n.classList.add("selected");
+      });
+
+      document.getElementById("quizExplainText").textContent = q.explain;
+      document.getElementById("quizExplainBox").classList.add("show");
+    }
+
+    function nextQuizQuestion(){
+      if (quizRuntime.index < quizRuntime.questions.length - 1){
+        quizRuntime.index += 1;
+        renderQuizQuestion();
+      } else {
+        alert("This is the last question. You can submit the quiz now.");
+      }
+    }
+
+    function prevQuizQuestion(){
+      if (quizRuntime.index > 0){
+        quizRuntime.index -= 1;
+        renderQuizQuestion();
+      }
+    }
+
+    function submitQuiz(){
+      // Ensure all answered
+      const unanswered = quizRuntime.answers.findIndex(a => a === null);
+      if (unanswered !== -1){
+        alert(`Please answer all questions. Missing: Question ${unanswered+1}.`);
+        return;
+      }
+
+      // Score
+      let correctCount = 0;
+      quizRuntime.questions.forEach((q, i) => {
+        if (quizRuntime.answers[i] === q.correct) correctCount++;
+      });
+      const scorePct = Math.round((correctCount / quizRuntime.questions.length) * 100);
+      quizRuntime.score = scorePct;
+      quizRuntime.locked = true;
+
+      // Save score
+      const m = quizRuntime.module;
+      appState.quizScores[m-1] = scorePct;
+      appState.quizCompleted[m-1] = true;
+
+      // Progress bumps
+      if (appState.moduleProgress[m-1] < 100) appState.moduleProgress[m-1] = 100;
+      appState.completedModules[m-1] = true;
+
+      saveState();
+      updateDashboard();
+      updateCertificateUI();
+
+      document.getElementById("btnSubmitQuiz").disabled = true;
+
+      const box = document.getElementById("quizResultBox");
+      box.classList.remove("hidden");
+      const pass = scorePct >= 80;
+      box.className = pass ? "info-box success" : "info-box warning";
+      box.innerHTML = `
+        <h4><i class="fas fa-flag-checkered"></i> Quiz Submitted</h4>
+        <p><strong>Score:</strong> ${scorePct}% (${correctCount}/${quizRuntime.questions.length})</p>
+        <p class="small muted">Review any question using Previous/Next to see correct answers + explanations.</p>
+        ${pass ? `<p><strong>Pass standard:</strong> 80%+ (met).</p>` : `<p><strong>Pass standard:</strong> 80%+ (not met). Restart quiz to try again.</p>`}
+      `;
+
+      applyQuizMarking();
+    }
+
+    function resetQuizAttempt(){
+      if (!confirm("Restart this quiz? Your previous answers in this attempt will be cleared.")) return;
+      openQuiz(quizRuntime.module);
+    }
+
+    function shuffle(arr){
+      for (let i=arr.length-1; i>0; i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [arr[i],arr[j]] = [arr[j],arr[i]];
+      }
+    }
+
+    /*****************************************************************
+      CERTIFICATE
+      Eligibility: ALL modules completed AND ALL quizzes completed AND avg score >= 80
+    ******************************************************************/
+    function updateCertificateUI(){
+      const now = new Date();
+      document.getElementById("certDate").textContent = now.toLocaleDateString(undefined, {year:"numeric", month:"long", day:"numeric"});
+
+      if (appState.userName){
+        document.getElementById("certNameDisplay").textContent = appState.userName;
+        document.getElementById("certNameInput").value = appState.userName;
+      }
+
+      const modulesDone = appState.completedModules.every(Boolean);
+      const quizzesDone = appState.quizCompleted.every(Boolean);
+      const scores = appState.quizScores.filter(s => s>0);
+      const avg = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : 0;
+
+      if (!appState.certificateId && modulesDone && quizzesDone){
+        appState.certificateId = `CI101-${Date.now().toString().slice(-8)}`;
+        saveState();
+      }
+      document.getElementById("certId").textContent = appState.certificateId || "CI101-00000000";
+
+      const eligible = modulesDone && quizzesDone && avg >= 80 && !!appState.userName;
+      appState.certificateEarned = eligible;
+
+      const statusEl = document.getElementById("certStatus");
+      const btn = document.getElementById("btnDownloadCert");
+
+      if (eligible){
+        statusEl.textContent = "Complete";
+        statusEl.style.color = "var(--primary-green)";
+        btn.disabled = false;
+      } else {
+        const md = appState.completedModules.filter(Boolean).length;
+        const qd = appState.quizCompleted.filter(Boolean).length;
+        statusEl.textContent = `${md}/4 modules • ${qd}/4 quizzes • Avg ${avg}%`;
+        statusEl.style.color = "var(--primary-orange)";
+        btn.disabled = true;
+      }
+    }
+
+    function setCertName(){
+      const name = document.getElementById("certNameInput").value.trim();
+      if (!name){ alert("Enter your name first."); return; }
+      appState.userName = name;
+      saveState();
+      updateCertificateUI();
+      alert("Name updated.");
+    }
+
+    function checkCertificateEligibility(){
+      const msg = document.getElementById("certMsg");
+      msg.classList.remove("hidden");
+
+      const modulesDone = appState.completedModules.every(Boolean);
+      const quizzesDone = appState.quizCompleted.every(Boolean);
+      const scores = appState.quizScores.filter(s => s>0);
+      const avg = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : 0;
+
+      const missingModules = appState.completedModules.map((d,i)=>!d?`Module ${i+1}`:null).filter(Boolean);
+      const missingQuizzes = appState.quizCompleted.map((d,i)=>!d?`Quiz ${i+1}`:null).filter(Boolean);
+
+      if (modulesDone && quizzesDone && avg >= 80 && appState.userName){
+        msg.className = "info-box success";
+        msg.innerHTML = `<h4><i class="fas fa-check-circle"></i> Eligible</h4>
+          <p>All modules + quizzes completed. Average quiz score: <strong>${avg}%</strong>.</p>`;
+      } else {
+        msg.className = "info-box warning";
+        msg.innerHTML = `<h4><i class="fas fa-circle-exclamation"></i> Not yet eligible</h4>
+          <ul style="padding-left:20px; margin-top:8px;">
+            ${missingModules.length ? `<li><strong>Finish modules:</strong> ${missingModules.join(", ")}</li>`:""}
+            ${missingQuizzes.length ? `<li><strong>Finish quizzes:</strong> ${missingQuizzes.join(", ")}</li>`:""}
+            ${avg < 80 ? `<li><strong>Average score:</strong> ${avg}% (needs 80%+)</li>`:""}
+            ${!appState.userName ? `<li><strong>Name:</strong> enter your name on the certificate</li>`:""}
+          </ul>`;
+      }
+    }
+
+    function downloadCertificatePNG(){
+      if (!appState.certificateEarned){
+        alert("Not eligible yet. Use ‘Check Eligibility’ to see what’s missing.");
+        return;
+      }
+
+      // Simple canvas render
+      const canvas = document.createElement("canvas");
+      canvas.width = 1400;
+      canvas.height = 900;
+      const ctx = canvas.getContext("2d");
+
+      // Background
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0,0,canvas.width, canvas.height);
+
+      // Border
+      ctx.strokeStyle = "#1a5f9e";
+      ctx.lineWidth = 18;
+      ctx.strokeRect(60, 60, canvas.width-120, canvas.height-120);
+
+      // Title
+      ctx.fillStyle = "#1a5f9e";
+      ctx.font = "bold 52px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("Certificate of Completion", canvas.width/2, 170);
+
+      ctx.fillStyle = "#718096";
+      ctx.font = "26px Arial";
+      ctx.fillText("Contact Investigation (Disease Intervention) 101", canvas.width/2, 220);
+
+      // Name
+      ctx.fillStyle = "#2d3748";
+      ctx.font = "bold 44px Arial";
+      ctx.fillText(appState.userName, canvas.width/2, 350);
+
+      ctx.fillStyle = "#4a5568";
+      ctx.font = "22px Arial";
+      ctx.fillText("has successfully completed all modules and quizzes", canvas.width/2, 410);
+      ctx.fillText("and demonstrated competency in CI fundamentals.", canvas.width/2, 440);
+
+      // Details
+      ctx.textAlign = "left";
+      ctx.fillStyle = "#2d3748";
+      ctx.font = "20px Arial";
+      ctx.fillText(`Certificate ID: ${appState.certificateId}`, 110, 560);
+      ctx.fillText(`Date: ${new Date().toLocaleDateString()}`, 110, 590);
+
+      ctx.textAlign = "right";
+      ctx.fillStyle = "#718096";
+      ctx.font = "18px Arial";
+      ctx.fillText("Designed by Glenroy Griffiths", canvas.width-110, 820);
+
+      const url = canvas.toDataURL("image/png");
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `CI101_Certificate_${appState.userName.replace(/\s+/g,"_")}.png`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    /*****************************************************************
+      RESET (fixed)
+    ******************************************************************/
+    function resetAllProgress(){
+      if (!confirm("Reset ALL progress (modules, quizzes, drafts, certificate)?")) return;
+
+      appState = defaultState();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+
+      // Reset UI bits
+      document.getElementById("irForm").reset();
+      document.querySelector("#cpContactsTable tbody").innerHTML = "";
+      document.querySelector("#clusterTable tbody").innerHTML = "";
+      seedTables();
+
+      document.getElementById("irValidationResult").classList.add("hidden");
+      resetSimulation();
+
+      updateDashboard();
+      updateCertificateUI();
+
+      document.querySelector('.nav-btn[data-section="dashboard"]').click();
+      alert("Progress reset.");
+    }
+
+    /*****************************************************************
+      STATE SAVE/LOAD
+    ******************************************************************/
+    function saveState(){
+      appState.lastActiveISO = new Date().toISOString();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      updateCertificateUI();
+    }
+
+    function loadState(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      try{
+        const parsed = JSON.parse(raw);
+        appState = Object.assign(defaultState(), parsed);
+
+        // restore module buttons
+        for (let i=1;i<=4;i++){
+          const qb = document.getElementById(`module${i}-quiz-btn`);
+          if (qb) qb.disabled = !appState.completedModules[i-1];
+        }
+
+        // restore cert name
+        if (appState.userName){
+          document.getElementById("certNameDisplay").textContent = appState.userName;
+          document.getElementById("certNameInput").value = appState.userName;
+        }
+      }catch(e){
+        console.warn("State load failed; using defaults.");
+      }
+    }
+  </script>
+</body>
+</html>
