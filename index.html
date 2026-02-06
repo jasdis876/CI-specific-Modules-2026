@@ -48,7 +48,7 @@
     .header-content{position:relative;z-index:1;}
     .logo{font-size:3rem;margin-bottom:10px;}
     h1{font-size:2.2rem;margin-bottom:8px;text-shadow:0 2px 4px rgba(0,0,0,0.18);}
-    .subtitle{font-size:1.02rem;opacity:.93;max-width:1000px;margin:0 auto 12px;}
+    .subtitle{font-size:1.02rem;opacity:.93;max-width:1040px;margin:0 auto 12px;}
     .badge{
       display:inline-block;background:rgba(255,255,255,0.2);padding:8px 18px;border-radius:999px;
       font-size:.9rem;margin-top:4px;
@@ -114,8 +114,6 @@
     .btn-secondary:hover{background:#cbd5e0;}
     .btn-success{background:var(--primary-green);color:#fff;}
     .btn-success:hover{background:#276749;}
-    .btn-danger{background:var(--primary-red);color:#fff;}
-    .btn-danger:hover{filter:brightness(0.95);}
 
     .content-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
     @media(max-width:992px){.content-grid{grid-template-columns:1fr;}}
@@ -150,13 +148,11 @@
     th,td{border:1px solid var(--border-color);padding:10px;vertical-align:top;}
     th{background:#f7fafc;text-align:left;}
 
-    /* Tabs */
     .tabbar{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 14px;}
     .tabbtn{border:1px solid var(--border-color);background:#fff;padding:10px 12px;border-radius:999px;font-weight:1000;cursor:pointer;transition:var(--transition);}
     .tabbtn.active{background:var(--primary-blue);color:#fff;border-color:transparent;}
     .tabbtn:focus-visible{outline:none;box-shadow:var(--shadow),var(--focus);}
 
-    /* Exam */
     .exam-meta{
       display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
       background:#f7fafc;border:1px solid var(--border-color);border-radius:14px;padding:12px;margin-bottom:12px;
@@ -191,7 +187,7 @@
       <div class="logo"><i class="fas fa-shield-heart"></i></div>
       <h1>Contact Investigation (Disease Intervention) 101</h1>
       <p class="subtitle">
-        Ultimate CI training & refresher tool for Jamaica. All learning content is inside the platform.
+        Ultimate CI training & refresher tool for Jamaica. Learning content is inside the platform.
         Use the manuals for deeper reading (download in <b>Resources</b>).
         Final exam: <strong>50 MCQs</strong>, pass mark <strong>70%</strong>.
       </p>
@@ -207,6 +203,7 @@
     <button class="nav-btn" data-section="sti-management"><i class="fas fa-stethoscope"></i> STI Management</button>
     <button class="nav-btn" data-section="maternal-infant"><i class="fas fa-baby"></i> CS / ON / PHIV</button>
     <button class="nav-btn" data-section="dhis2"><i class="fas fa-chart-column"></i> DHIS2 & Reporting</button>
+    <button class="nav-btn" data-section="dia-flow"><i class="fas fa-diagram-project"></i> DIA & CI Flow</button>
 
     <button class="nav-btn locked" id="nav-exam" data-section="exam" aria-disabled="true" title="Complete all modules to unlock">
       <i class="fas fa-clipboard-check"></i> Exam (Locked)
@@ -248,16 +245,28 @@
     <div class="info-box">
       <h4><i class="fas fa-graduation-cap"></i> CPD / CME Credit Assignment</h4>
       <p>
-        Estimated learning time: <strong>16 hours</strong> (expanded modules + DHIS2 + exam).
-        Recommended CPD/CME allocation: <strong>16 CME credits</strong>.
+        Estimated learning time: <strong>18 hours</strong> (expanded modules + DIA/Flow + DHIS2 + exam).
+        Recommended CPD/CME allocation: <strong>18 CME credits</strong>.
       </p>
       <p class="help">
-        Suggested breakdown: CI Basics 2.5h • Forms & Records 2.5h • Critical Period 1.5h • STI 4h • CS/ON/PHIV 3h • DHIS2 2.5h • Exam 1h
+        Suggested breakdown: CI Basics 2.5h • Forms & Records 2.5h • Critical Period 1.5h • STI 4h • CS/ON/PHIV 3h • DHIS2 2.5h • DIA/Flow 2h • Exam 1h
       </p>
       <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
         <button class="btn btn-secondary" onclick="goSection('ci-basics')"><i class="fas fa-play"></i> Start Module 1</button>
         <button class="btn btn-primary" onclick="goSection('resources')"><i class="fas fa-download"></i> Download Manuals</button>
       </div>
+    </div>
+
+    <div class="info-box warning" style="margin-top:14px;">
+      <h4><i class="fas fa-triangle-exclamation"></i> Important Notice (Not Official Certification)</h4>
+      <p class="help">
+        This platform is a <b>training overview / refresher tool</b>. It is <b>not an official certification</b> to practice as a Contact Investigator
+        or Disease Intervention Specialist.
+      </p>
+      <p class="help">
+        For official training and placement guidance, contact your local <b>HR</b>, the <b>Ministry of Health & Wellness (MOHW)</b>, <b>UTECH</b>,
+        or the <b>Jamaica Association of Social Diseases Intervention Specialists (JASDIS)</b>.
+      </p>
     </div>
 
     <div class="module-grid">
@@ -316,7 +325,7 @@
       <div class="module-card">
         <div class="module-header"><div class="module-icon"><i class="fas fa-stethoscope"></i></div><div class="module-title">STI Management</div></div>
         <div class="module-body">
-          <p class="module-desc">STI list + treatment summaries + CI actions for notification, linkage, prevention & reinfection.</p>
+          <p class="module-desc">STI list + workflow + CI actions for notification, linkage, prevention & reinfection.</p>
           <div class="progress-container">
             <div class="progress-label"><span>Progress</span><span id="m4p">0%</span></div>
             <div class="progress-bar"><div class="progress-fill" id="m4f" style="width:0%"></div></div>
@@ -333,7 +342,7 @@
       <div class="module-card">
         <div class="module-header"><div class="module-icon"><i class="fas fa-baby"></i></div><div class="module-title">CS / ON / PHIV</div></div>
         <div class="module-body">
-          <p class="module-desc">Maternal–infant urgent pathway: congenital syphilis (CS), newborn eye infection (ON), perinatal HIV (PHIV).</p>
+          <p class="module-desc">Maternal–infant urgent pathway: CS, ON, and perinatal HIV support actions.</p>
           <div class="progress-container">
             <div class="progress-label"><span>Progress</span><span id="m5p">0%</span></div>
             <div class="progress-bar"><div class="progress-fill" id="m5f" style="width:0%"></div></div>
@@ -350,16 +359,36 @@
       <div class="module-card">
         <div class="module-header"><div class="module-icon"><i class="fas fa-chart-column"></i></div><div class="module-title">DHIS2 & Reporting</div></div>
         <div class="module-body">
-          <p class="module-desc">How CI work becomes data: indicators, data sources, quality checks, common DHIS2 mistakes, reporting rhythm.</p>
+          <p class="module-desc">From field work to data: indicators, sources, quality checks, common reporting errors.</p>
           <div class="progress-container">
             <div class="progress-label"><span>Progress</span><span id="m6p">0%</span></div>
             <div class="progress-bar"><div class="progress-fill" id="m6f" style="width:0%"></div></div>
           </div>
-          <div class="ref">Refs: Use Field Guide + local MOHW reporting SOPs</div>
+          <div class="ref">Refs: Field Guide + local MOHW reporting SOPs</div>
         </div>
         <div class="module-footer">
           <button class="btn btn-secondary" onclick="goSection('dhis2')"><i class="fas fa-play"></i> Open</button>
           <button class="btn btn-success" onclick="markModuleComplete(6)"><i class="fas fa-check"></i> Mark Complete</button>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon"><i class="fas fa-diagram-project"></i></div>
+          <div class="module-title">DIA & CI Flow</div>
+        </div>
+        <div class="module-body">
+          <p class="module-desc">The DIA cycle + end-to-end workflow + interaction practice scripts (index + partner notification).</p>
+          <div class="progress-container">
+            <div class="progress-label"><span>Progress</span><span id="m7p">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="m7f" style="width:0%"></div></div>
+          </div>
+          <div class="ref">Refs: Field Guide workflow sections + local SOPs</div>
+        </div>
+        <div class="module-footer">
+          <button class="btn btn-secondary" onclick="goSection('dia-flow')"><i class="fas fa-play"></i> Open</button>
+          <button class="btn btn-success" onclick="markModuleComplete(7)"><i class="fas fa-check"></i> Mark Complete</button>
         </div>
       </div>
     </div>
@@ -367,13 +396,13 @@
     <div class="info-box orange" style="margin-top:14px;">
       <h4><i class="fas fa-lock"></i> Unlock Rules</h4>
       <ul style="padding-left:18px;">
-        <li><strong>Exam unlocks</strong> when all <strong>6</strong> modules are complete.</li>
+        <li><strong>Exam unlocks</strong> when all <strong>7</strong> modules are complete.</li>
         <li><strong>Certificate unlocks</strong> when exam is passed (≥70%).</li>
       </ul>
     </div>
   </section>
 
-  <!-- MODULE 1: CI BASICS (expanded) -->
+  <!-- MODULE 1 -->
   <section id="ci-basics" class="content-section">
     <h2 class="section-title"><i class="fas fa-book"></i> Module 1 — CI Basics (Expanded)</h2>
 
@@ -388,21 +417,21 @@
       <div class="content-main">
 
         <details class="accordion-item" open>
-          <summary>1) What CI is really trying to achieve <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>1) What CI is trying to achieve <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <div class="info-box">
               <ul style="padding-left:18px;">
-                <li><b>Break the chain</b>: exposed people get testing/treatment fast.</li>
-                <li><b>Reduce reinfection</b>: partners get treated so index doesn’t get it back.</li>
-                <li><b>Protect privacy</b>: strong confidentiality = better disclosure.</li>
-                <li><b>Build evidence</b>: your records show what was done and what happened.</li>
+                <li><b>Interrupt transmission</b>: exposed people get testing/treatment fast.</li>
+                <li><b>Reduce reinfection</b>: partners get treated so the index doesn’t get it back.</li>
+                <li><b>Protect privacy</b>: strong confidentiality = better disclosure and cooperation.</li>
+                <li><b>Show evidence</b>: records prove what was done and what happened (outcomes).</li>
               </ul>
             </div>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>2) Confidentiality: the rules + how it sounds in real life <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>2) Confidentiality: rules + real-life wording <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> CI Field Guide p.8</span></p>
             <div class="info-box success">
@@ -410,11 +439,11 @@
               <ul style="padding-left:18px;">
                 <li>“I’m calling because you may have been exposed to an infection. We recommend you get checked.”</li>
                 <li>“I can’t share personal information about anyone else, but I can help you access services.”</li>
-                <li>“We keep this private. Your results and details won’t be discussed publicly.”</li>
+                <li>“We keep this private. Your details won’t be discussed publicly.”</li>
               </ul>
             </div>
             <div class="info-box warning">
-              <h4><i class="fas fa-ban"></i> What to avoid</h4>
+              <h4><i class="fas fa-ban"></i> Avoid</h4>
               <ul style="padding-left:18px;">
                 <li>“Your girlfriend/boyfriend gave you…”</li>
                 <li>“X said you…”</li>
@@ -430,8 +459,8 @@
             <table>
               <thead><tr><th>Average interview</th><th>Strong interview</th></tr></thead>
               <tbody>
-                <tr><td>Rushes and collects few partners</td><td>Uses timeline prompts and “anchor events” to improve recall</td></tr>
-                <tr><td>Weak locator details</td><td>Gets landmarks, best time, work/school, alternate numbers</td></tr>
+                <tr><td>Collects few contacts</td><td>Uses timeline prompts + anchors to improve recall</td></tr>
+                <tr><td>Weak locator info</td><td>Gets landmarks, best time, work/school, alternate numbers</td></tr>
                 <tr><td>Vague notes</td><td>Objective notes + clear next steps + outcomes plan</td></tr>
                 <tr><td>Client feels judged</td><td>Supportive tone → better cooperation</td></tr>
               </tbody>
@@ -440,16 +469,31 @@
         </details>
 
         <details class="accordion-item">
-          <summary>4) Prioritisation: who you act on first (practical) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>4) Prioritisation: who you act on first <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <div class="info-box orange">
-              <p class="help"><b>Rule of thumb:</b> prioritise cases with urgent risk (pregnancy/infant), high spread potential (many partners), and low follow-up probability.</p>
+              <p class="help"><b>Rule of thumb:</b> prioritise urgent risk (pregnancy/infant), high transmission potential, and cases likely to be lost to follow-up.</p>
             </div>
             <ul style="padding-left:18px;">
-              <li>Pregnancy + syphilis → urgent (prevents congenital syphilis).</li>
-              <li>Newborn concerns (eye discharge, suspected congenital infection) → urgent referral and documentation.</li>
-              <li>Hard-to-find contacts: act quickly before phones change/people move.</li>
+              <li>Pregnancy + syphilis risk → urgent (prevents congenital syphilis).</li>
+              <li>Newborn concerns (eye discharge, suspected congenital infection) → urgent referral + documentation.</li>
+              <li>Hard-to-locate contacts → act early before numbers change.</li>
             </ul>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>5) Common mistakes (and quick fixes) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <table>
+              <thead><tr><th>Mistake</th><th>Fix</th></tr></thead>
+              <tbody>
+                <tr><td>Talking too much, not enough listening</td><td>Use short questions, pause, reflect back</td></tr>
+                <tr><td>Asking “any partners?” once</td><td>Use prompts: places, weekends, events, “on/off partner”</td></tr>
+                <tr><td>Not confirming privacy</td><td>Start every call with a privacy check</td></tr>
+                <tr><td>Weak locator details</td><td>Ask: best time, landmarks, backup number, workplace/school</td></tr>
+              </tbody>
+            </table>
           </div>
         </details>
 
@@ -471,7 +515,7 @@
     </div>
   </section>
 
-  <!-- MODULE 2: FORMS & RECORDS -->
+  <!-- MODULE 2 -->
   <section id="forms-records" class="content-section">
     <h2 class="section-title"><i class="fas fa-file-alt"></i> Module 2 — Forms & Records (Expanded Teach Points)</h2>
 
@@ -488,7 +532,7 @@
       <div class="content-main">
 
         <details class="accordion-item" open>
-          <summary>1) IR (Interview Record): what each section is really for <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>1) IR (Interview Record): what each section is for <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <table>
               <thead><tr><th>IR section</th><th>Goal</th><th>Quality check</th></tr></thead>
@@ -503,43 +547,58 @@
         </details>
 
         <details class="accordion-item">
-          <summary>2) FR (Field Record): attempt tracking that actually helps you later <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>2) FR (Field Record): attempt tracking that helps you later <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <div class="info-box">
               <ul style="padding-left:18px;">
                 <li><b>Every attempt</b> gets date/time/method/result.</li>
-                <li>Record “<b>best time to find</b>” and alternative contacts.</li>
-                <li>Final disposition must be clear and not vague.</li>
+                <li>Record “<b>best time to find</b>” and alternate contacts.</li>
+                <li>Final disposition must be clear (not “pending” forever).</li>
               </ul>
             </div>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>3) Other key investigation forms (teach points: when they matter) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>3) Other key investigation forms (teach points) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <table>
-              <thead><tr><th>Form</th><th>When it matters most</th><th>Manual ref</th></tr></thead>
+              <thead><tr><th>Form</th><th>When it matters</th><th>Manual ref</th></tr></thead>
               <tbody>
                 <tr><td><b>Class 1 Notification</b></td><td>Urgent notifiable event reporting and escalation</td><td>CI Field Guide <b>p.110</b></td></tr>
                 <tr><td><b>CS Investigation Report</b></td><td>Mother-baby pathway documentation; prevents missed follow-up</td><td>CI Field Guide <b>p.89</b></td></tr>
-                <tr><td><b>Confidentiality/consent forms (programme)</b></td><td>Where SOP requires proof confidentiality steps were completed</td><td>See local SOP + CI Field Guide <b>p.8</b></td></tr>
+                <tr><td><b>Confidentiality/consent forms (programme)</b></td><td>Where SOP requires proof confidentiality steps were completed</td><td>CI Field Guide <b>p.8</b> + local SOP</td></tr>
               </tbody>
             </table>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>4) Documentation language (what to write vs what not to write) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>4) Documentation language (do vs don’t) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <table>
               <thead><tr><th>Do write</th><th>Do NOT write</th></tr></thead>
               <tbody>
                 <tr><td>“Contact refused services after counselling; advised clinic attendance.”</td><td>“Contact ignorant and rude.”</td></tr>
-                <tr><td>“Client unsure of exact date; used ‘around Christmas’ anchor.”</td><td>“Client lying about dates.”</td></tr>
-                <tr><td>“Attempt #2: phone call, no answer; will retry 6pm.”</td><td>“Tried. Didn’t work.”</td></tr>
+                <tr><td>“Client unsure of date; used anchor event for estimate.”</td><td>“Client lying about dates.”</td></tr>
+                <tr><td>“Attempt #2: call 6:10pm, no answer; will retry 8am.”</td><td>“Tried again. No luck.”</td></tr>
               </tbody>
             </table>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>5) Quick QA checklist before you close a case <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box orange">
+              <ul style="padding-left:18px;">
+                <li>Is the timeline clear (dates or anchored estimates)?</li>
+                <li>Do contacts have usable locator details?</li>
+                <li>Are attempts recorded with date/time/method?</li>
+                <li>Are outcomes <b>verified</b> (tested/treated/refused/unknown)?</li>
+                <li>Is there a final disposition and closure note?</li>
+              </ul>
+            </div>
           </div>
         </details>
 
@@ -561,7 +620,7 @@
     </div>
   </section>
 
-  <!-- MODULE 3: CRITICAL PERIOD -->
+  <!-- MODULE 3 -->
   <section id="critical-period" class="content-section">
     <h2 class="section-title"><i class="fas fa-calendar-days"></i> Module 3 — Critical Period Interview (Teaching + Tool)</h2>
 
@@ -578,14 +637,29 @@
           <div class="accordion-body">
             <div class="info-box">
               <p>“We will focus on the time when you could have passed this infection to someone. That helps protect you and protect them.”</p>
-              <p class="help">Document unknowns and your assumptions clearly.</p>
+              <p class="help">If dates are unclear, use anchors and write your assumptions.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>2) Anchors that work in Jamaica <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box orange">
+              <ul style="padding-left:18px;">
+                <li>“Before/after Christmas”</li>
+                <li>“Around school reopening”</li>
+                <li>“Around Carnival/Grand Market”</li>
+                <li>“Around birthday/anniversary”</li>
+                <li>“When you changed jobs / moved house”</li>
+              </ul>
             </div>
           </div>
         </details>
 
         <div class="info-box orange">
           <h4><i class="fas fa-calculator"></i> Critical Period Calculator</h4>
-          <p class="help">Estimates earliest date using maximum infectious period plus symptom duration before treatment (see Field Guide p.41).</p>
+          <p class="help">Estimate using maximum infectious period plus symptom duration before treatment (see Field Guide p.41).</p>
         </div>
 
         <div class="info-box" style="border-left-color: var(--primary-green)">
@@ -632,11 +706,15 @@
           <h4><i class="fas fa-clock"></i> Suggested time</h4>
           <p><strong>1.5 hours</strong></p>
         </div>
+        <div class="info-box warning">
+          <h4><i class="fas fa-triangle-exclamation"></i> Common trap</h4>
+          <p class="help">If you don’t document your assumption, the next CI can’t follow your logic.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MODULE 4: STI MANAGEMENT -->
+  <!-- MODULE 4 -->
   <section id="sti-management" class="content-section">
     <h2 class="section-title"><i class="fas fa-stethoscope"></i> Module 4 — STI Management (Expanded)</h2>
 
@@ -661,20 +739,20 @@
               <li>Confirm partner notification plan and assist tracing.</li>
               <li>Support contacts to attend clinic for testing/treatment.</li>
               <li>Prevention messages to reduce reinfection.</li>
-              <li>Document outcomes clearly.</li>
+              <li>Document outcomes clearly (verified where possible).</li>
             </ul>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>2) STI conditions covered in services (broad list) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>2) STIs covered in services (broad list) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <ul style="padding-left:18px;">
               <li>Syphilis (all stages) + congenital</li>
               <li>Gonorrhoea, chlamydia</li>
               <li>Trichomoniasis / BV, candidiasis</li>
               <li>Genital herpes (HSV), genital warts (HPV)</li>
-              <li>Chancroid, LGV, granuloma inguinale</li>
+              <li>Chancroid, LGV, granuloma inguinale (where relevant)</li>
               <li>PID, epididymo-orchitis</li>
               <li>ON (newborn eye infection)</li>
             </ul>
@@ -682,21 +760,20 @@
         </details>
 
         <details class="accordion-item">
-          <summary>3) Treatment summary (always verify in STI Manual) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>3) Treatment awareness (CI-level summary — verify in STI Manual) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <p><span class="tag"><i class="fas fa-book"></i> STI Manual p.131–133</span></p>
             <div class="info-box orange">
-              <p class="help"><b>Important:</b> This section is a high-level summary so CI understands the workflow. Exact regimens/alternatives/pregnancy adjustments must be verified in the STI Manual.</p>
+              <p class="help"><b>Important:</b> This is CI-level awareness to understand workflow. Exact regimens/alternatives/pregnancy adjustments must be verified in the STI Manual.</p>
             </div>
             <table>
-              <thead><tr><th>Condition</th><th>Common treatment idea (summary)</th><th>CI follow-up priority</th></tr></thead>
+              <thead><tr><th>Condition</th><th>What CI should know</th><th>CI follow-up priority</th></tr></thead>
               <tbody>
-                <tr><td><b>Gonorrhoea</b></td><td>Commonly ceftriaxone IM stat (see manual)</td><td>Trace partners quickly; confirm clinic attendance</td></tr>
-                <tr><td><b>Chlamydia</b></td><td>Doxycycline course or alternative (see manual)</td><td>Partner management + reinfection prevention</td></tr>
-                <tr><td><b>Trichomoniasis/BV</b></td><td>Metronidazole regimens (see manual)</td><td>Adherence + return if persistent symptoms</td></tr>
-                <tr><td><b>Syphilis</b></td><td>BPG regimen depends on stage (see manual)</td><td>Correct stage timeframe + partner services</td></tr>
-                <tr><td><b>PID</b></td><td>Combination therapy (see manual)</td><td>Urgent follow-up; ensure partner services</td></tr>
-                <tr><td><b>HSV / HPV</b></td><td>Antivirals/management (see manual)</td><td>Counselling + prevention education</td></tr>
+                <tr><td><b>Gonorrhoea</b></td><td>Often treated same-day; partners need evaluation and treatment</td><td>Fast partner tracing; verify clinic attendance</td></tr>
+                <tr><td><b>Chlamydia</b></td><td>Course treatment; adherence matters</td><td>Prevention of reinfection; follow-up messaging</td></tr>
+                <tr><td><b>Syphilis</b></td><td>Stage determines management and timeframe for contacts</td><td>Correct critical period; partner services priority</td></tr>
+                <tr><td><b>PID</b></td><td>Can be urgent and needs close follow-up</td><td>Link quickly; ensure partner services are addressed</td></tr>
+                <tr><td><b>HSV / HPV</b></td><td>Often counselling + symptom control focus</td><td>Prevention, stigma-sensitive support, follow-up when needed</td></tr>
               </tbody>
             </table>
           </div>
@@ -716,6 +793,21 @@
           </div>
         </details>
 
+        <details class="accordion-item">
+          <summary>5) Mini-scenario: when a contact refuses <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box orange">
+              <p><b>Scenario:</b> You notify a contact. They say: “I don’t want no clinic.”</p>
+            </div>
+            <table>
+              <thead><tr><th>Best next move</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Offer a calm, private explanation + clinic options, and document refusal objectively.</td><td>Maintains confidentiality, reduces confrontation, preserves record and future follow-up.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
         <div style="text-align:center;margin-top:14px;">
           <button class="btn btn-success" onclick="markModuleComplete(4)"><i class="fas fa-check"></i> Mark Module 4 Complete</button>
         </div>
@@ -730,7 +822,7 @@
     </div>
   </section>
 
-  <!-- MODULE 5: CS / ON / PHIV (EXPANDED + TABS) -->
+  <!-- MODULE 5 -->
   <section id="maternal-infant" class="content-section">
     <h2 class="section-title"><i class="fas fa-baby"></i> Module 5 — Maternal & Infant Priority Cases (CS / ON / PHIV)</h2>
 
@@ -754,8 +846,8 @@
             <div class="accordion-body">
               <ul style="padding-left:18px;">
                 <li>CS is often preventable with timely maternal screening and treatment.</li>
-                <li>When missed, infant outcomes can be severe—so delays are high risk.</li>
-                <li>CI helps close gaps: partner services, documentation, follow-up evidence.</li>
+                <li>Delays increase risk of missed treatment and reinfection.</li>
+                <li>CI supports closure of gaps: partner services, documentation, follow-up evidence.</li>
               </ul>
             </div>
           </details>
@@ -780,8 +872,8 @@
             <summary>3) Common CS mistakes (and how to avoid them) <i class="fas fa-chevron-down chev"></i></summary>
             <div class="accordion-body">
               <ul style="padding-left:18px;">
-                <li><b>Missing dates</b> for maternal screening or treatment → always capture exact or anchored dates.</li>
-                <li><b>No partner documentation</b> → partner services strongly affect reinfection risk.</li>
+                <li><b>Missing dates</b> for maternal screening or treatment → capture exact or anchored dates.</li>
+                <li><b>No partner documentation</b> → reinfection risk remains high without partner action.</li>
                 <li><b>Infant follow-up not recorded</b> → ensure referral and next step is written clearly.</li>
               </ul>
             </div>
@@ -815,13 +907,13 @@
           </details>
 
           <details class="accordion-item">
-            <summary>2) What to do immediately (workflow) <i class="fas fa-chevron-down chev"></i></summary>
+            <summary>2) Immediate workflow (what to do) <i class="fas fa-chevron-down chev"></i></summary>
             <div class="accordion-body">
               <ol style="padding-left:18px;">
-                <li>Confirm infant symptoms and identify safest way to get baby seen promptly.</li>
-                <li>Link caregiver to clinic/hospital as advised in SOP.</li>
+                <li>Confirm caregiver can speak privately and safely.</li>
+                <li>Link caregiver to clinic/hospital promptly per SOP.</li>
                 <li>Document date/time, referral destination, and who accepted referral.</li>
-                <li>Record follow-up: did they attend? what was outcome documented?</li>
+                <li>Follow up: did they attend? outcome documented?</li>
               </ol>
             </div>
           </details>
@@ -831,8 +923,8 @@
             <div class="accordion-body">
               <ul style="padding-left:18px;">
                 <li>Write objective notes: “Caregiver reports eye discharge since yesterday.”</li>
-                <li>Document “referred to ____ at ____ time” and “follow-up plan.”</li>
-                <li>Keep confidentiality—avoid unnecessary personal details.</li>
+                <li>Document referral destination + time and next step plan.</li>
+                <li>Keep confidentiality—avoid unnecessary identifying details.</li>
               </ul>
             </div>
           </details>
@@ -854,8 +946,8 @@
             <div class="accordion-body">
               <div class="info-box">
                 <ul style="padding-left:18px;">
-                  <li><b>PHIV</b> refers to HIV linked to pregnancy/birth and infant exposure pathway.</li>
-                  <li>CI work supports: <b>rapid linkage</b>, <b>follow-up</b>, <b>partner services</b>, and <b>documentation</b>.</li>
+                  <li><b>PHIV</b> relates to maternal–infant HIV exposure pathway and follow-up.</li>
+                  <li>CI supports: <b>confidential linkage</b>, <b>retention support</b>, <b>partner services</b>, and <b>documentation</b>.</li>
                   <li>Mother–baby cases are high confidentiality and high urgency.</li>
                 </ul>
               </div>
@@ -868,17 +960,17 @@
               <table>
                 <thead><tr><th>Step</th><th>CI action</th><th>Documentation</th></tr></thead>
                 <tbody>
-                  <tr><td><b>Referral received</b></td><td>Confirm key identifiers; plan contact safely</td><td>Referral date/time + source</td></tr>
-                  <tr><td><b>Linkage</b></td><td>Support clinic attendance for mother/baby per programme pathway</td><td>Attendance outcome + next appointment</td></tr>
-                  <tr><td><b>Partner services</b></td><td>Support notification and testing of partner(s) per policy</td><td>Contacts + outcomes</td></tr>
-                  <tr><td><b>Retention support</b></td><td>Remind follow-up visits; reduce missed appointments</td><td>Attempts + client response</td></tr>
+                  <tr><td><b>Referral received</b></td><td>Confirm identifiers; plan contact safely</td><td>Referral date/time + source</td></tr>
+                  <tr><td><b>Linkage</b></td><td>Support clinic attendance per pathway</td><td>Attendance + next appointment plan</td></tr>
+                  <tr><td><b>Partner services</b></td><td>Support confidential notification/testing as per policy</td><td>Contacts + outcomes</td></tr>
+                  <tr><td><b>Retention support</b></td><td>Reduce missed visits; follow-up appropriately</td><td>Attempts + response</td></tr>
                 </tbody>
               </table>
             </div>
           </details>
 
           <details class="accordion-item">
-            <summary>3) PHIV communication (safe, respectful, confidential) <i class="fas fa-chevron-down chev"></i></summary>
+            <summary>3) PHIV communication (safe and confidential) <i class="fas fa-chevron-down chev"></i></summary>
             <div class="accordion-body">
               <div class="info-box success">
                 <p class="help"><b>Use:</b> “I’m calling about an important health follow-up. Can we speak privately?”</p>
@@ -901,7 +993,7 @@
     </div>
   </section>
 
-  <!-- MODULE 6: DHIS2 & REPORTING (NEW + COMPREHENSIVE) -->
+  <!-- MODULE 6 -->
   <section id="dhis2" class="content-section">
     <h2 class="section-title"><i class="fas fa-chart-column"></i> Module 6 — DHIS2 & Reporting (Comprehensive)</h2>
 
@@ -912,18 +1004,17 @@
 
     <div class="content-grid">
       <div class="content-main">
-
         <details class="accordion-item" open>
           <summary>1) DHIS2 in one sentence <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <div class="info-box">
-              <p><b>DHIS2 is the system used to compile and analyse routine health data</b>—so programme performance is measured using the numbers you help generate.</p>
+              <p><b>DHIS2 compiles routine health data</b>—so performance is measured using numbers supported by your source documents.</p>
             </div>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>2) CI data pipeline (from field work to report) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>2) CI data pipeline (field → report) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <ol style="padding-left:18px;">
               <li><b>Source documents</b>: IR/FR, clinic registers, appointment books, lab logs, notification forms.</li>
@@ -939,59 +1030,44 @@
           <summary>3) Common CI indicators (what’s usually measured) <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <table>
-              <thead><tr><th>Indicator idea</th><th>What it means</th><th>Common error</th></tr></thead>
+              <thead><tr><th>Indicator idea</th><th>Meaning</th><th>Frequent confusion</th></tr></thead>
               <tbody>
-                <tr><td><b>Index interviewed</b></td><td>Number of index clients successfully interviewed</td><td>Counting referrals instead of completed interviews</td></tr>
-                <tr><td><b>Contacts elicited</b></td><td>Total contacts named/recorded</td><td>Double-counting same person across cases without dedupe method</td></tr>
-                <tr><td><b>Contacts notified</b></td><td>Contacts reached and notified per protocol</td><td>Counting “attempted call” as notified</td></tr>
+                <tr><td><b>Index interviewed</b></td><td>Index clients successfully interviewed</td><td>Counting referrals instead of completed interviews</td></tr>
+                <tr><td><b>Contacts elicited</b></td><td>Total contacts named/recorded</td><td>Double-counting the same contact without a dedupe method</td></tr>
+                <tr><td><b>Contacts notified</b></td><td>Contacts reached/notified per protocol</td><td>Counting “attempted call” as “notified”</td></tr>
                 <tr><td><b>Contacts tested</b></td><td>Contacts who actually tested</td><td>Counting “told to test” as tested</td></tr>
                 <tr><td><b>Contacts treated</b></td><td>Contacts who received treatment</td><td>Mixing presumptive vs confirmed without definition</td></tr>
-                <tr><td><b>Disposition completeness</b></td><td>Cases with final outcomes recorded</td><td>Leaving cases open forever (“pending”) </td></tr>
               </tbody>
             </table>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>4) Data quality (DQ) checks you should do every month <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>4) Data quality checks to do monthly <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <div class="info-box orange">
-              <h4><i class="fas fa-check-double"></i> Quick DQ checklist</h4>
               <ul style="padding-left:18px;">
-                <li><b>Completeness:</b> are all expected sections filled?</li>
-                <li><b>Consistency:</b> contacts notified ≤ contacts elicited (usually).</li>
-                <li><b>Logic:</b> contacts tested ≤ contacts notified (usually).</li>
+                <li><b>Completeness:</b> all expected fields/totals present.</li>
+                <li><b>Logic:</b> notified ≤ elicited; tested often ≤ notified (depends on definition).</li>
+                <li><b>Consistency:</b> outcomes match source records.</li>
                 <li><b>Duplicates:</b> same contact counted twice?</li>
-                <li><b>Dates:</b> are interviews/attempts in the correct month?</li>
+                <li><b>Timeliness:</b> outcomes recorded in correct month.</li>
               </ul>
             </div>
           </div>
         </details>
 
         <details class="accordion-item">
-          <summary>5) How CI mistakes show up in DHIS2 (real-world) <i class="fas fa-chevron-down chev"></i></summary>
+          <summary>5) How field mistakes show up in DHIS2 <i class="fas fa-chevron-down chev"></i></summary>
           <div class="accordion-body">
             <table>
-              <thead><tr><th>Mistake</th><th>What DHIS2 shows</th><th>Fix</th></tr></thead>
+              <thead><tr><th>Mistake</th><th>DHIS2 symptom</th><th>Fix</th></tr></thead>
               <tbody>
-                <tr><td>Weak locator info</td><td>Low “notified/tested/treated” outputs</td><td>Improve locator detail collection; re-interview where allowed</td></tr>
-                <tr><td>Counting attempts as outcomes</td><td>Inflated performance then “audit failure” later</td><td>Only count verified outcomes</td></tr>
-                <tr><td>Missing closures</td><td>Backlog; inconsistent monthly totals</td><td>Follow closure protocol; update dispositions</td></tr>
-                <tr><td>Late entry</td><td>Month-to-month spikes/drops</td><td>Stick to reporting rhythm; submit by deadline</td></tr>
+                <tr><td>Weak locator info</td><td>Low verified notified/tested/treated outputs</td><td>Improve locator collection and re-contact where appropriate</td></tr>
+                <tr><td>Counting attempts as outcomes</td><td>Inflated numbers, later “audit failure”</td><td>Count only verified outcomes per definition</td></tr>
+                <tr><td>Missing closures</td><td>Backlog and unstable month-to-month totals</td><td>Close dispositions per protocol; document clearly</td></tr>
               </tbody>
             </table>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary>6) Reporting rhythm (how to stay on top of your month) <i class="fas fa-chevron-down chev"></i></summary>
-          <div class="accordion-body">
-            <ol style="padding-left:18px;">
-              <li><b>Weekly:</b> update FR outcomes; close what can be closed.</li>
-              <li><b>End of month:</b> reconcile with registers and lab sources.</li>
-              <li><b>Before submission:</b> run the DQ checklist and fix issues.</li>
-              <li><b>After submission:</b> keep a copy; note key challenges for QPR.</li>
-            </ol>
           </div>
         </details>
 
@@ -1007,7 +1083,181 @@
         </div>
         <div class="info-box warning">
           <h4><i class="fas fa-triangle-exclamation"></i> Key point</h4>
-          <p class="help">DHIS2 only looks “good” when source documents are complete and outcomes are verified.</p>
+          <p class="help">DHIS2 “good numbers” require good source documents + verified outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 7 -->
+  <section id="dia-flow" class="content-section">
+    <h2 class="section-title"><i class="fas fa-diagram-project"></i> Module 7 — DIA & CI Flow (Workflow + Practice Scripts)</h2>
+
+    <div class="info-box purple">
+      <h4><i class="fas fa-compass"></i> The DIA cycle (simple and usable)</h4>
+      <p class="help">
+        Use this practical cycle to avoid missed steps:
+        <b>D</b>etect/Define → <b>I</b>nvestigate → <b>A</b>ct (notify, link, document, follow-up).
+      </p>
+    </div>
+
+    <div class="content-grid">
+      <div class="content-main">
+
+        <details class="accordion-item" open>
+          <summary>1) DIA explained (CI in real life) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <table>
+              <thead><tr><th>Step</th><th>What it looks like</th><th>What you record</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><b>D — Detect / Define</b></td>
+                  <td>Receive referral; confirm identifiers; clarify condition; confirm urgency (pregnancy/infant/high risk).</td>
+                  <td>Referral source/date, case ID, condition, initial plan.</td>
+                </tr>
+                <tr>
+                  <td><b>I — Investigate</b></td>
+                  <td>Interview index; build timeline; elicit contacts; collect locator details; assess barriers/safety.</td>
+                  <td>Interview date, critical period assumptions, contact list + locator quality.</td>
+                </tr>
+                <tr>
+                  <td><b>A — Act</b></td>
+                  <td>Notify contacts; link to testing/treatment; document outcomes; follow-up; close disposition.</td>
+                  <td>Attempts/outcomes, verified testing/treatment, final disposition + closure notes.</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="info-box warning">
+              <p class="help"><b>Common failure point:</b> completing the interview (I) but not completing Action + closure (A).</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>2) End-to-end CI flow (no-gaps checklist) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <ol style="padding-left:18px;">
+              <li><b>Receive referral</b> → confirm details and urgency.</li>
+              <li><b>Plan contact</b> → privacy + safest method/time.</li>
+              <li><b>Index interview</b> → confidentiality, timeline, contacts + locator details.</li>
+              <li><b>Prioritise</b> → urgent/high risk/hard-to-find first.</li>
+              <li><b>Notify contacts</b> → neutral wording, identity protected.</li>
+              <li><b>Link to care</b> → testing/treatment attendance support.</li>
+              <li><b>Verify outcomes</b> → tested? treated? referred? refused?</li>
+              <li><b>Close disposition</b> → clear final status + next steps if needed.</li>
+              <li><b>Report</b> → ensure totals match source documents.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>3) Interaction practice script — Index interview (read-through) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box">
+              <p class="help"><b>Goal:</b> Build trust, get a usable timeline, and collect locator details that actually allow follow-up.</p>
+            </div>
+
+            <table>
+              <thead><tr><th>CI (you)</th><th>Client</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>“Hi, my name is ___ from the health team. Is now a private time to talk?”</td>
+                  <td>“Yes.” / “Not really.”</td>
+                  <td>Confidentiality gate.</td>
+                </tr>
+                <tr>
+                  <td>“What you share is private. I won’t name anyone else. I’m here to help you protect yourself and others.”</td>
+                  <td>“Okay.”</td>
+                  <td>Trust + cooperation.</td>
+                </tr>
+                <tr>
+                  <td>“Let’s focus on the time we need to check. Around when did symptoms start or when did you get tested?”</td>
+                  <td>Gives date / “not sure.”</td>
+                  <td>Build timeline.</td>
+                </tr>
+                <tr>
+                  <td>“If you’re not sure, we can use an event. Was it before or after Christmas / school reopening / your birthday?”</td>
+                  <td>“After Christmas.”</td>
+                  <td>Anchor technique.</td>
+                </tr>
+                <tr>
+                  <td>“During that time, who did you have sex with? Even if you don’t have the full name, any detail helps.”</td>
+                  <td>Names contacts.</td>
+                  <td>Elicitation without judgement.</td>
+                </tr>
+                <tr>
+                  <td>“For each person, what’s the best number, where can they be found, and what time is best?”</td>
+                  <td>Gives locator details.</td>
+                  <td>Locator quality.</td>
+                </tr>
+                <tr>
+                  <td>“I will contact them without using your name. Is there anyone who may react violently or put you at risk?”</td>
+                  <td>Yes/No.</td>
+                  <td>Safety screen.</td>
+                </tr>
+                <tr>
+                  <td>“What’s the safest way to reach you later? I won’t leave details in messages.”</td>
+                  <td>Confirms preference.</td>
+                  <td>Follow-up plan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>4) Interaction practice script — Contact notification (read-through) <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="accordion-body">
+            <div class="info-box warning">
+              <p class="help"><b>Rule:</b> Never reveal the index identity or diagnosis. Keep it neutral and service-focused.</p>
+            </div>
+
+            <table>
+              <thead><tr><th>CI (you)</th><th>Contact</th><th>Why it works</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>“Hi, I’m ___ calling from the health team. Is now a private time to speak?”</td>
+                  <td>Yes/No.</td>
+                  <td>Privacy first.</td>
+                </tr>
+                <tr>
+                  <td>“You may have been exposed to an infection. We recommend a check-up and testing.”</td>
+                  <td>“Exposed how?”</td>
+                  <td>Neutral statement.</td>
+                </tr>
+                <tr>
+                  <td>“I can’t share personal information about anyone else. I can help you access services quickly.”</td>
+                  <td>“Alright.”</td>
+                  <td>Protects identity + redirects.</td>
+                </tr>
+                <tr>
+                  <td>“The clinic is open __. Would tomorrow work? If not, what day is best?”</td>
+                  <td>Schedules.</td>
+                  <td>Moves to action.</td>
+                </tr>
+                <tr>
+                  <td>“If you have symptoms or concerns, please come sooner. I’ll follow up to confirm you got help.”</td>
+                  <td>Agrees.</td>
+                  <td>Supports urgency + follow-up.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <div style="text-align:center;margin-top:14px;">
+          <button class="btn btn-success" onclick="markModuleComplete(7)"><i class="fas fa-check"></i> Mark Module 7 Complete</button>
+        </div>
+      </div>
+
+      <div class="content-sidebar">
+        <div class="info-box orange">
+          <h4><i class="fas fa-clock"></i> Suggested time</h4>
+          <p><strong>2 hours</strong></p>
+        </div>
+        <div class="info-box warning">
+          <h4><i class="fas fa-triangle-exclamation"></i> Quick self-check</h4>
+          <p class="help">After every case ask: “Did I VERIFY outcomes or only attempt contact?” Verified outcomes drive real results.</p>
         </div>
       </div>
     </div>
@@ -1032,6 +1282,7 @@
     <div class="info-box">
       <h4><i class="fas fa-info-circle"></i> Instructions</h4>
       <p>Answer every question, then submit. You must score <strong>70% or higher</strong> to unlock the Certificate.</p>
+      <p class="help"><b>Note:</b> This exam supports learning. It does not replace official CI/SDIS training.</p>
     </div>
 
     <div id="exam-container"></div>
@@ -1045,6 +1296,17 @@
     <div class="info-box success">
       <h4><i class="fas fa-check-circle"></i> Requirements met</h4>
       <p>Completed all modules + passed the exam. Enter your name to download your certificate PDF.</p>
+    </div>
+
+    <div class="info-box warning">
+      <h4><i class="fas fa-triangle-exclamation"></i> Not an Official Certification</h4>
+      <p class="help">
+        This certificate confirms completion of a learning overview / refresher course.
+        It does <b>not</b> certify you as a Contact Investigator or Disease Intervention Specialist.
+      </p>
+      <p class="help">
+        For official training, contact your local <b>HR</b>, <b>MOHW</b>, <b>UTECH</b>, or <b>JASDIS</b>.
+      </p>
     </div>
 
     <div class="content-grid">
@@ -1070,8 +1332,8 @@
       <div class="content-sidebar">
         <div class="info-box orange">
           <h4><i class="fas fa-graduation-cap"></i> CPD / CME</h4>
-          <p><strong>16 CME credits</strong></p>
-          <p class="help">Based on ~16 hours structured learning + assessment.</p>
+          <p><strong>18 CME credits</strong></p>
+          <p class="help">Based on ~18 hours structured learning + assessment.</p>
         </div>
       </div>
     </div>
@@ -1089,8 +1351,15 @@
 
     <div class="info-box">
       <h4><i class="fas fa-download"></i> STI Manual (2020)</h4>
-      <p class="help">Download the STI Manual. Treatment tables referenced in STI module.</p>
+      <p class="help">Download the STI Manual. Treatment references cited in STI module.</p>
       <button class="btn btn-primary" onclick="downloadSTIManual()"><i class="fas fa-file-pdf"></i> Download STI Manual (PDF)</button>
+    </div>
+
+    <div class="info-box warning">
+      <h4><i class="fas fa-triangle-exclamation"></i> Reminder</h4>
+      <p class="help">
+        This platform is a learning tool. For official training routes, contact local <b>HR</b>, <b>MOHW</b>, <b>UTECH</b>, or <b>JASDIS</b>.
+      </p>
     </div>
   </section>
 
@@ -1115,89 +1384,192 @@
   };
 
   /***********************
-   * STATE (UPDATED: 6 modules)
+   * STATE (7 modules)
    ***********************/
-  const STORAGE_KEY = "ci101-training-state-v8";
+  const STORAGE_KEY = "ci101-training-state-v9";
   const appState = {
-    completedModules: [false,false,false,false,false,false],
-    moduleProgress:  [0,0,0,0,0,0],
+    completedModules: [false,false,false,false,false,false,false],
+    moduleProgress:  [0,0,0,0,0,0,0],
     examUnlocked: false,
     examScorePct: null,
     examPassed: false
   };
 
   /***********************
-   * EXAM BANK — EXACTLY 50 UNIQUE MCQs (counted)
-   * Format: {q, a:[4], c:index, e:explanation}
+   * EXAM BANK — EXACTLY 50 MCQs
+   * Less obvious options (plausible distractors)
    ***********************/
   const EXAM_QUESTIONS = [
     // 1–10 CI BASICS
-    {q:"Which statement best describes the core purpose of CI?",a:["To provide medication directly to all contacts","To interrupt transmission by notifying and linking exposed people while protecting confidentiality","To replace clinician diagnosis","To publicly warn communities about cases"],c:1,e:"CI aims to reduce spread by partner services, linkage, and confidentiality-protected notification."},
-    {q:"In CI terms, an index client is:",a:["The first contact reached","The diagnosed person interviewed to elicit contacts","The data entry clerk","Any person with symptoms"],c:1,e:"The index client is the diagnosed person whose interview identifies contacts."},
-    {q:"Which wording is most appropriate when notifying a contact?",a:["“You were named by your partner who has syphilis.”","“Someone said you are infected.”","“You may have been exposed to an infection; we recommend you attend for testing.”","“We know what you did—come now.”"],c:2,e:"Neutral exposure wording protects confidentiality and supports linkage."},
-    {q:"Which action most directly supports confidentiality during field work?",a:["Discussing cases in public spaces","Leaving forms visible in vehicles","Using private settings and securing records","Sharing case details with friends"],c:2,e:"Confidential settings and secured records reduce disclosure risk."},
-    {q:"A ‘disposition’ in CI records refers to:",a:["A clinic schedule","The final outcome/status of a contact or case","A lab test name","A drug regimen"],c:1,e:"Disposition is the final recorded outcome (tested, treated, refused, not located, etc.)."},
-    {q:"Which behaviour improves partner elicitation during interviews?",a:["Rushing the client","Using timeline prompts and anchor events","Avoiding confidentiality explanation","Asking only one question"],c:1,e:"Timeline prompts and anchors improve recall and disclosure."},
-    {q:"Which scenario most strongly requires safety planning and possible escalation?",a:["Client prefers phone call follow-up","Contact has history of threats/violence risk","Client wants printed appointment card","Contact lives near the clinic"],c:1,e:"Safety risks require planning and supervisor/protocol support."},
-    {q:"Which is the most professional documentation style?",a:["Judgmental labels about the client","Objective facts with dates/actions/outcomes","Vague statements like “tried”","Humorous slang and nicknames only"],c:1,e:"Objective, dated, action-based notes support follow-up and audit."},
-    {q:"A realistic CI programme goal is to:",a:["Locate 100% of contacts in every case","Notify and link as many contacts as possible using best practice and documentation","Avoid contact work and focus on reports only","Notify contacts by disclosing the index identity"],c:1,e:"CI aims for effective notification/linkage within confidentiality and real-world constraints."},
-    {q:"What is the strongest reason confidentiality improves CI outcomes?",a:["It reduces paperwork","It increases trust and disclosure during interviews","It shortens treatment regimens","It eliminates the need for records"],c:1,e:"Trust supports cooperation, partner naming, and follow-up."},
+    {q:"Which statement best matches the primary purpose of contact investigation (CI)?",
+     a:["To provide health education only, without any follow-up actions","To interrupt transmission by notifying and linking exposed persons while protecting confidentiality","To replace clinical diagnosis and prescribe treatment plans","To publish case details so communities can avoid specific individuals"],
+     c:1,e:"CI focuses on confidential notification, linkage to services, and documenting outcomes to reduce transmission."},
+    {q:"In CI terms, the “index client” is best described as:",
+     a:["The first contact successfully reached in the field","The person diagnosed (or newly identified) whose interview is used to elicit contacts","The person who enters data into DHIS2","Any person who reports symptoms at triage"],
+     c:1,e:"The index client is the diagnosed person interviewed to identify partners/contacts and guide follow-up."},
+    {q:"Which notification statement is most appropriate and confidentiality-protective?",
+     a:["“Your partner said you need to come in for syphilis.”","“Someone has named you and the clinic needs to talk to you.”","“You may have been exposed to an infection; we recommend you attend for testing and care.”","“We know you have an STI, come now.”"],
+     c:2,e:"Neutral exposure wording protects identity/diagnosis while guiding the person to services."},
+    {q:"Which practice best supports confidentiality during routine work?",
+     a:["Sharing limited details with friends to get location help quickly","Discussing cases in semi-public areas when the clinic is busy","Securing records and holding sensitive discussions in private settings","Leaving forms visible in vehicles for easy access"],
+     c:2,e:"Confidential environments and secure records reduce the risk of disclosure."},
+    {q:"“Disposition” in CI documentation most accurately refers to:",
+     a:["A contact’s preferred appointment time","The final recorded outcome/status for a contact or case","A laboratory test method","The medication regimen used by clinicians"],
+     c:1,e:"Disposition is the final outcome (e.g., tested, treated, refused, not located) as documented."},
+    {q:"What is a strong technique to improve partner recall during an interview?",
+     a:["Asking “Any partners?” once, then moving on","Using a timeline with anchor events and gentle prompting","Skipping confidentiality explanation to save time","Focusing only on the most recent partner"],
+     c:1,e:"Timeline prompts and anchors improve recall and completeness of contact elicitation."},
+    {q:"Which situation most strongly suggests you should apply additional safety planning/escalation?",
+     a:["The client asks for a different clinic day","The contact has a history of threats/violence or safety concerns are identified","The client prefers a phone follow-up instead of face-to-face","The client wants printed information for later"],
+     c:1,e:"Safety risks require planning, protocol adherence, and possible supervisor support."},
+    {q:"Which style is most appropriate for CI case notes?",
+     a:["Personal opinions about a client’s attitude","Objective, dated actions and outcomes written professionally","Short vague statements (e.g., “tried”) to save time","Humorous notes to keep team morale high"],
+     c:1,e:"Objective, dated documentation supports continuity, audits, and quality improvement."},
+    {q:"A realistic CI programme expectation is:",
+     a:["100% contact location in every case","Maximising verified outcomes using best practices and clear documentation","Avoiding partner services and focusing only on reporting","Improving speed by revealing index identity to contacts"],
+     c:1,e:"CI aims for strong verified outcomes while respecting confidentiality and real-world constraints."},
+    {q:"Why does strong confidentiality often improve CI outcomes?",
+     a:["It reduces the number of records needed","It increases trust, which improves disclosure and cooperation","It removes the need for follow-up calls","It shortens infectious periods automatically"],
+     c:1,e:"Trust is a key driver of cooperation, partner naming, and follow-through."},
 
     // 11–20 FORMS & RECORDS
-    {q:"The IR (Interview Record) is mainly used to document:",a:["Contact attempts only","The index client interview and contact elicitation","Monthly DHIS2 totals","Medicine stock"],c:1,e:"IR captures the index interview details and contacts named."},
-    {q:"The FR (Field Record) is mainly used to document:",a:["Index diagnosis","Attempts and outcomes for locating/notifying contacts","Clinic opening hours","Lab reagent expiry"],c:1,e:"FR tracks attempts and outcomes over time."},
-    {q:"Which example shows ‘usable locator information’?",a:["Nickname only","Phone number plus clear address/landmark and best time to find","A rumour from a neighbour","Social media handle only"],c:1,e:"Usable locator details increase success of locating contacts."},
-    {q:"Which is a common documentation error that harms follow-up?",a:["Recording dates of attempts","Vague outcomes and missing dates","Writing objective notes","Keeping forms secured"],c:1,e:"Missing dates and vague outcomes weaken continuity and monitoring."},
-    {q:"Best practice when information is unknown is to:",a:["Leave it blank without comment","Write “unknown” clearly and document what was attempted","Guess an exact date","Avoid recording the field"],c:1,e:"Clear ‘unknown’ + attempt documentation is preferable to blanks or guessing."},
-    {q:"When should a record be closed (generally)?",a:["After the first attempt only","Once a final disposition/outcome is documented per protocol","When the contact is angry","When the phone is switched off"],c:1,e:"Closure requires a recorded final outcome following programme procedures."},
-    {q:"A professional note for refusal is:",a:["“Contact rude and ignorant.”","“Contact refused services after counselling; advised clinic attendance; refusal documented.”","“Contact wicked.”","No note is needed."],c:1,e:"Document refusals objectively with counselling and advice noted."},
-    {q:"A ‘Class 1 Notification’ form is best described as:",a:["A partner list","Urgent notifiable event/condition reporting tool","A clinic payment form","A counselling script"],c:1,e:"Notification forms support urgent reporting requirements."},
-    {q:"Which habit best supports audits and supervision?",a:["Recording only successes","Recording each attempt with date/time/method/result","Writing from memory weeks later","Skipping outcomes to save time"],c:1,e:"Attempt logs show what was done and support review."},
-    {q:"Which should never appear in a contact notification script?",a:["A clinic recommendation","An exposure statement","Index identity or diagnosis details","Confidentiality reassurance"],c:2,e:"Never reveal the index client’s identity or diagnosis."},
+    {q:"The Interview Record (IR) is mainly used to document:",
+     a:["Only field attempts to locate contacts","The index interview details and elicited contacts","Monthly DHIS2 totals for STI indicators","Medication stock movement"],
+     c:1,e:"The IR captures the index client interview and the contact list/timeline details."},
+    {q:"The Field Record (FR) is mainly used to document:",
+     a:["The clinician’s diagnosis notes","Attempts and outcomes for locating/notifying contacts over time","The client’s laboratory method used","Facility maintenance issues"],
+     c:1,e:"The FR tracks contact tracing attempts, results, and dispositions."},
+    {q:"Which example best represents “usable locator information”?",
+     a:["Nickname and parish only","Phone number plus clear address/landmark and best time to find","A friend’s guess of where they might be","An old social media profile name only"],
+     c:1,e:"Good locator info increases successful notification and follow-up."},
+    {q:"Which documentation issue most commonly weakens follow-up and supervision review?",
+     a:["Recording attempt dates and times","Leaving outcomes vague or missing dates/next steps","Including clinic location in notes","Writing clearly and objectively"],
+     c:1,e:"Missing dates/outcomes prevents effective follow-up and quality checks."},
+    {q:"When important information is unknown, the best practice is to:",
+     a:["Leave it blank without explanation","Write “unknown” clearly and document what was attempted to clarify it","Choose an exact value to avoid gaps","Exclude the field from the record"],
+     c:1,e:"Clear unknowns + attempt notes are better than blanks or guessing."},
+    {q:"In general, a case/contact record should be closed when:",
+     a:["At least one attempt was made","A final outcome/disposition is documented according to protocol","The client becomes difficult to reach","The contact seems unconcerned"],
+     c:1,e:"Closure requires a final disposition recorded per programme expectations."},
+    {q:"Which is the most professional way to document a refusal?",
+     a:["“Contact rude; wasted time.”","“Contact declined services after counselling; clinic options provided; refusal documented.”","“Contact is careless.”","No note is needed if the person refused."],
+     c:1,e:"Document refusals objectively with counselling and options noted."},
+    {q:"A “Class 1 Notification” form is best described as:",
+     a:["A routine follow-up call log","A form for urgent notifiable event/condition reporting and escalation","A contact locator worksheet","A client education leaflet"],
+     c:1,e:"Notification forms support required reporting pathways for urgent events/conditions."},
+    {q:"Which practice best supports audits and supervision?",
+     a:["Recording only successful outcomes","Recording each attempt with date/time/method/result and updating dispositions","Updating forms from memory at month-end only","Avoiding documentation until a case is fully complete"],
+     c:1,e:"A complete attempt trail supports continuity, auditing, and quality improvement."},
+    {q:"Which item should be avoided in any contact notification documentation?",
+     a:["Clinic attendance recommendation","Neutral exposure wording","Index identity or diagnosis details","A follow-up plan date"],
+     c:2,e:"Never record or reveal information that could identify the index to the contact."},
 
     // 21–28 CRITICAL PERIOD
-    {q:"Critical period guidance is used primarily to:",a:["Decide who to blame","Define the timeframe for partner tracing based on infectious risk","Replace clinical staging","Avoid partner notification"],c:1,e:"It guides which partners to focus on based on likely infectious period."},
-    {q:"When dates are unclear, the best approach is to:",a:["Stop the interview","Use anchors (events) and document assumptions/unknowns","Guess an exact date","Record only one partner"],c:1,e:"Anchors and documentation support consistency without guessing."},
-    {q:"Why is documenting assumptions important in timeframe decisions?",a:["It hides errors","It improves clarity and consistency for follow-up and review","It makes the record longer for no reason","It replaces the manual"],c:1,e:"Assumptions explain decision-making and support consistent follow-up."},
-    {q:"In the Field Guide critical period table, HIV is generally described as:",a:["Exactly 1 month","Exactly 6 months","Indefinite (use programme guidance)","Not included"],c:2,e:"HIV timeframe is indefinite; apply programme guidance and context."},
-    {q:"A clear client-friendly explanation of critical period is:",a:["“Name everyone you ever met.”","“We’ll focus on the time you could have passed this infection to someone.”","“This is none of your business.”","“Contacts decide the time period.”"],c:1,e:"Supportive explanation improves cooperation and clarity."},
-    {q:"If symptom duration is unknown in the tool, the best approach is to:",a:["Enter 0 and document ‘unknown duration’","Enter 30 days by default","Leave blank and submit","Avoid calculation"],c:0,e:"Entering 0 with documentation is better than guessing."},
-    {q:"Why does critical period improve efficiency?",a:["It narrows work to the most relevant timeframe","It removes documentation requirements","It reduces confidentiality protections","It prevents partner services"],c:0,e:"It focuses efforts where transmission risk is most relevant."},
-    {q:"After calculating a timeframe, you should:",a:["Keep it secret from the record","Use it to guide partner questions and document it clearly","Ignore it if busy","Only use it for exams"],c:1,e:"Timeframe should guide interview and be documented."},
+    {q:"Critical period guidance is mainly used to:",
+     a:["Assign blame for infection","Define the timeframe for partner services based on likely infectious risk","Replace clinical staging decisions","Avoid interviewing about partners"],
+     c:1,e:"Critical period helps focus partner services on relevant timeframes."},
+    {q:"When a client is unsure of exact dates, the best approach is to:",
+     a:["Stop the interview until dates are exact","Use anchors (events) and document assumptions/unknowns clearly","Pick a midpoint date to simplify","Only ask about the last partner"],
+     c:1,e:"Anchors and transparent assumptions support consistent, defensible timeframes."},
+    {q:"Why is documenting assumptions important in timeframe decisions?",
+     a:["It makes the file longer than necessary","It improves clarity for follow-up, handover, and review","It prevents future interviews","It replaces the need for a manual"],
+     c:1,e:"Assumptions explain the basis for decisions and help others follow your logic."},
+    {q:"In guidance tables, HIV timeframes are often described as:",
+     a:["Fixed at 1 month","Fixed at 6 months","Indefinite—apply programme guidance and context","Not relevant to partner services"],
+     c:2,e:"HIV is not limited to a short fixed timeframe; apply programme guidance and document rationale."},
+    {q:"Which is a good client-friendly explanation of critical period?",
+     a:["“Name everyone you ever met.”","“We’ll focus on the time you could have passed this infection to someone.”","“This is not something we discuss.”","“The clinic decides later.”"],
+     c:1,e:"Clear, supportive explanation improves cooperation and completeness."},
+    {q:"If symptom duration is unknown and you use a calculator, the best approach is to:",
+     a:["Enter 0 and document “unknown duration” in notes","Enter 14 days as a default standard","Leave the field blank and submit anyway","Avoid any timeframe discussion"],
+     c:0,e:"Entering 0 with clear documentation is better than guessing."},
+    {q:"A key benefit of critical period guidance is that it:",
+     a:["Eliminates the need for partner services","Helps focus effort on the most relevant period for notification and follow-up","Reduces confidentiality requirements","Removes the need to record outcomes"],
+     c:1,e:"It narrows work to the most relevant period while maintaining confidentiality and documentation."},
+    {q:"After estimating a timeframe, the next best step is to:",
+     a:["Keep it off the record to avoid confusion","Use it to guide partner questions and document it clearly","Ignore it if the client is stressed","Use it only for reporting later"],
+     c:1,e:"Timeframe should guide the interview and be recorded clearly."},
 
     // 29–38 STI MANAGEMENT + CI ACTIONS
-    {q:"After an STI diagnosis, a CI’s key role is to:",a:["Prescribe the regimen","Support partner services and linkage to testing/treatment","Perform lab testing","Change clinic schedules"],c:1,e:"Clinicians prescribe; CI supports partner services, linkage, prevention, and documentation."},
-    {q:"Why is partner management important for many STIs?",a:["It increases gossip","It prevents reinfection and ongoing spread","It avoids clinic visits","It reduces counselling time"],c:1,e:"Untreated partners drive reinfection and continued transmission."},
-    {q:"Which statement fits CI scope best?",a:["“I will change your medication dose.”","“I can help you and partners access services and document outcomes.”","“No one needs follow-up after treatment.”","“I’ll disclose the index name to speed this up.”"],c:1,e:"CI supports linkage and documentation; prescribing is clinician responsibility."},
-    {q:"A strong reinfection prevention message includes:",a:["“Don’t tell your partner.”","“Ensure partners get treated and follow clinic advice; use condoms.”","“Skip follow-up.”","“It can’t happen again.”"],c:1,e:"Partner treatment + prevention advice reduces reinfection."},
-    {q:"A high-priority STI situation that often needs urgent escalation is:",a:["Seasonal allergies","Pregnancy with syphilis risk","Mild headache","Muscle cramp"],c:1,e:"Pregnancy + syphilis risk is urgent due to congenital risk."},
-    {q:"For genital ulcer disease (GUD), which infections are commonly considered in programmes?",a:["Syphilis and HSV among others","Hypertension and diabetes","Typhoid and influenza","Arthritis only"],c:0,e:"GUD often includes syphilis and HSV in differential/management pathways."},
-    {q:"What should CI documentation focus on after contact attends clinic?",a:["Only feelings about the visit","Verified outcomes: tested/treated/referred + dates","Index identity disclosure","Unverified rumours"],c:1,e:"Document verified outcomes and dates for monitoring and follow-up."},
-    {q:"If a client says “I treated but my partner didn’t,” the best CI response is:",a:["“Then you’re done.”","“You can get it back; encourage partner clinic attendance for testing/treatment.”","“Expose your partner publicly.”","“Stop all follow-up.”"],c:1,e:"Partner treatment reduces reinfection and ongoing spread."},
-    {q:"Which newborn-related condition requires urgent linkage to clinical care?",a:["ON (newborn eye infection)","Teething","Mild colic only","Runny nose without concerns"],c:0,e:"Newborn eye discharge requires urgent clinical assessment per guidance."},
-    {q:"Why should CI avoid leaving detailed voicemails about an STI?",a:["It wastes time","It can breach confidentiality if someone else hears it","It improves outcomes too much","It is required by policy"],c:1,e:"Neutral messaging protects confidentiality."},
-    {q:"Which action best supports syndromic management outcomes (CI side)?",a:["Ignoring partner services","Helping contacts attend care promptly and documenting outcomes","Changing lab results","Skipping records"],c:1,e:"Fast linkage and documentation support care and monitoring."},
+    {q:"After an STI diagnosis, a CI’s key role is to:",
+     a:["Select and prescribe the exact regimen","Support partner services, linkage to testing/treatment, and document outcomes","Perform laboratory confirmation tests","Approve medication procurement"],
+     c:1,e:"CI supports notification/linkage and documentation; clinicians prescribe."},
+    {q:"Partner management is important because it:",
+     a:["Guarantees no reinfection in all cases","Reduces reinfection risk and ongoing transmission in the network","Removes the need for counselling","Ensures lab results return faster"],
+     c:1,e:"Untreated partners can reinfect the index and continue transmission."},
+    {q:"Which statement best fits CI scope and professionalism?",
+     a:["“I will change your dose if you feel worse.”","“I can help you and partners access services and document outcomes; clinicians handle prescriptions.”","“Once you’re treated, no follow-up is ever needed.”","“I will share who exposed you so you can confront them.”"],
+     c:1,e:"CI supports access and documentation within confidentiality; prescribing and confrontation are not CI roles."},
+    {q:"A strong reinfection-prevention message includes:",
+     a:["“Don’t mention this to anyone.”","“Ensure partners are treated; follow clinic advice before restarting sex; use condoms.”","“Stop clinic visits to avoid stigma.”","“You can’t get the same infection again.”"],
+     c:1,e:"Partner treatment + prevention guidance reduces reinfection risk."},
+    {q:"Which scenario generally needs urgent attention in STI partner services work?",
+     a:["Routine follow-up with no symptoms","Pregnancy with syphilis risk or suspected infection","A client requesting a work letter","A contact who prefers weekend clinic"],
+     c:1,e:"Pregnancy + syphilis risk is urgent due to congenital infection prevention."},
+    {q:"For genital ulcer presentations, programme management often considers:",
+     a:["Only fungal causes","Syphilis and HSV among likely causes to be addressed","Dental infection spread","Hypertension complications"],
+     c:1,e:"Syphilis and HSV are common considerations in genital ulcer syndromes."},
+    {q:"After a contact attends clinic, CI documentation should focus on:",
+     a:["Only how the contact felt about the visit","Verified outcomes (tested/treated/referred) with dates, where possible","Index identity details for clarity","Unverified statements from third parties"],
+     c:1,e:"Verified outcomes and dates support monitoring, reporting, and follow-up."},
+    {q:"If an index client says, “I got treated but my partner didn’t,” the best CI response is:",
+     a:["“That is fine as long as you took your treatment.”","“You can get it back; encourage partner clinic attendance for testing/treatment and document plan.”","“Expose your partner on social media to force them.”","“Stop all partner follow-up because it’s personal.”"],
+     c:1,e:"Partner treatment reduces reinfection and protects the network; keep approach confidential and supportive."},
+    {q:"Which newborn-related concern requires urgent linkage to clinical care?",
+     a:["Mild hiccups after feeding","Eye discharge/redness consistent with ON concerns","A baby sleeping longer than usual once","Small dry skin patches"],
+     c:1,e:"Newborn eye infection concerns require prompt clinical assessment per guidance."},
+    {q:"Why should CI avoid leaving detailed diagnosis information in messages?",
+     a:["It increases clinic wait time","It can breach confidentiality if someone else hears it","It reduces the need for follow-up","It improves partner recall"],
+     c:1,e:"Neutral messaging protects confidentiality and trust."},
+    {q:"Which action best supports syndromic management outcomes from a CI standpoint?",
+     a:["Avoiding partner services to reduce workload","Helping contacts attend promptly and documenting outcomes clearly","Changing lab testing priorities","Keeping cases open indefinitely"],
+     c:1,e:"Rapid linkage and clear documentation strengthen outcomes and reporting."},
 
     // 39–44 CS / ON / PHIV
-    {q:"A congenital syphilis (CS) investigation should verify:",a:["Only the baby’s nickname","Maternal screening/treatment history + partner services + infant follow-up plan","Only clinic fees","Only father’s address"],c:1,e:"CS investigation centers on the mother–baby pathway and partner services."},
-    {q:"Which is a major avoidable driver of congenital syphilis?",a:["Missed/delayed maternal screening and treatment","Baby sleeping too much","Mother drinking water","Clinic paint colour"],c:0,e:"Delayed or missed maternal screening/treatment increases CS risk."},
-    {q:"For ON cases, the most appropriate CI priority is to:",a:["Wait to see if it clears","Ensure urgent linkage to care and document actions/outcomes","Provide home remedies","Close the case immediately"],c:1,e:"Urgent linkage and documentation are key CI actions."},
-    {q:"PHIV-related CI work should emphasize:",a:["Public disclosure to reduce stigma","Confidential linkage, retention support, partner services, and documentation","Avoiding follow-up","Only counting referrals as outcomes"],c:1,e:"PHIV requires confidentiality-protected linkage and retention support."},
-    {q:"Which documentation approach is best for mother–infant cases?",a:["Blame statements","Objective notes with dates, actions, referrals, outcomes","Humour and slang","No documentation"],c:1,e:"Objective documentation protects clients and supports follow-up."},
-    {q:"A key PHIV communication practice by phone is to:",a:["State diagnosis immediately to whoever answers","Confirm privacy first and use neutral messaging","Leave detailed voicemail with condition name","Use speakerphone in public"],c:1,e:"Confirm privacy and keep messaging neutral to protect confidentiality."},
+    {q:"A congenital syphilis (CS) investigation should confirm:",
+     a:["Only infant symptoms and ignore maternal history","Maternal screening/treatment timeline + partner services + infant follow-up/referral actions","Only the father’s employment status","Only the pharmacy where medication was collected"],
+     c:1,e:"CS investigations require the mother–baby pathway and partner services review, plus follow-up documentation."},
+    {q:"A common preventable driver of congenital syphilis is:",
+     a:["Late or missed maternal screening and/or treatment during pregnancy","Baby receiving formula feeds","Mother attending ANC too frequently","Infant vaccination schedule changes"],
+     c:0,e:"Timely screening and treatment are key to preventing CS."},
+    {q:"For ON concerns, the most appropriate CI priority is to:",
+     a:["Wait a week to see if it improves","Ensure urgent linkage to care and document actions/outcomes","Provide advice for home remedies only","Close the record once a referral is suggested"],
+     c:1,e:"ON requires prompt clinical assessment and clear documentation of linkage/outcome."},
+    {q:"PHIV-related CI work should emphasize:",
+     a:["Public disclosure to reduce community transmission quickly","Confidential linkage, retention support, partner services, and objective documentation","Avoiding follow-up to reduce stigma","Counting referrals as outcomes regardless of attendance"],
+     c:1,e:"Mother–infant pathways require confidentiality-protective linkage and retention support."},
+    {q:"Which documentation approach is best for mother–infant priority cases?",
+     a:["Blame language to show seriousness","Objective notes with dates, actions, referrals, and outcomes","Humour and nicknames for team understanding","No documentation until final outcome"],
+     c:1,e:"Objective, dated documentation supports safe follow-up and accountability."},
+    {q:"A key PHIV phone practice is to:",
+     a:["State HIV details to whoever answers to reduce delays","Confirm privacy first and use neutral wording until in a private conversation","Leave a voicemail naming the condition to prompt quick call-back","Send diagnosis details by text to ensure delivery"],
+     c:1,e:"Privacy checks + neutral wording protect confidentiality."},
 
-    // 45–50 DHIS2 & REPORTING
-    {q:"In the CI data pipeline, DHIS2 data should ultimately be supported by:",a:["Unverified stories","Source documents like IR/FR/registers/lab logs","Social media messages","Memory only"],c:1,e:"DHIS2 numbers must be traceable to source documents."},
-    {q:"Which is a common DHIS2 reporting mistake for CI indicators?",a:["Counting ‘attempted calls’ as ‘contacts notified’","Using dates","Recording outcomes","Dedupe checks"],c:0,e:"Notified requires actual contact reached/notified, not just an attempt."},
-    {q:"Which logic check is generally expected in partner services reporting?",a:["Contacts tested should usually be greater than contacts notified","Contacts notified should usually be less than or equal to contacts elicited","Contacts treated must always be zero","No checks are needed"],c:1,e:"Notified typically ≤ elicited; tested often ≤ notified (depending on programme definitions)."},
-    {q:"Why do late updates and missing closures distort monthly DHIS2 trends?",a:["They make charts prettier","They shift outcomes into later months and create spikes/drops","They reduce documentation requirements","They improve audit results"],c:1,e:"Delayed entry and open cases push outcomes into different months, distorting trends."},
-    {q:"A practical monthly data quality action before submission is to:",a:["Submit without checking","Reconcile outcomes with registers/lab sources and run a completeness/logic review","Delete older records","Only count referrals"],c:1,e:"Reconciliation and basic DQ checks reduce errors."},
-    {q:"Which best describes how CI field performance shows up in DHIS2?",a:["DHIS2 ignores CI work","Poor locator info and documentation often produce lower verified outcomes","Only clinician work is visible","More attempts always means higher verified outcomes"],c:1,e:"Weak locator/detail and documentation lowers verified notified/tested/treated outcomes."},
+    // 45–50 DHIS2 & DIA/FLOW
+    {q:"In the CI reporting chain, DHIS2 totals should ultimately be supported by:",
+     a:["Team recollection at month-end","Source documents (IR/FR/registers/lab logs/notification forms)","Community reports shared on WhatsApp","Only appointment book notes"],
+     c:1,e:"DHIS2 totals should be traceable to source documents."},
+    {q:"Which reporting error is most likely to inflate “contacts notified”?",
+     a:["Counting attempted calls as notified without confirmation","Recording verified clinic attendance as tested","Using dates consistently","Running a deduplication check"],
+     c:0,e:"Notified requires a confirmed notification, not just an attempt."},
+    {q:"Which logic check is generally expected when reviewing partner services numbers?",
+     a:["Contacts tested should always be higher than contacts elicited","Contacts notified should generally not exceed contacts elicited","Contacts treated must always be zero until lab confirms","No logic checks apply to CI work"],
+     c:1,e:"Notified usually cannot exceed elicited; other relationships depend on definitions but basic logic should hold."},
+    {q:"Why can late updates and missing closures distort monthly trends?",
+     a:["They make the dashboard look smoother","They shift verified outcomes into later months and create artificial spikes/drops","They reduce the number of referrals","They improve audit outcomes automatically"],
+     c:1,e:"Delayed entry and open cases move outcomes across months, distorting trends and performance interpretation."},
+    {q:"In the DIA cycle, the “Act” step most directly involves:",
+     a:["Receiving referrals and sorting files","Notifying contacts, linking to care, documenting outcomes, follow-up, and closing dispositions","Designing policy documents for national rollout","Entering lab results into a machine"],
+     c:1,e:"Act includes notification, linkage, documentation, follow-up, and closure."},
+    {q:"Which situation best illustrates a ‘gap’ in the CI flow?",
+     a:["Index interview completed, contacts listed, but no attempts/outcomes documented afterwards","Index interview completed and contacts notified with documented outcomes","Contacts notified and referred with follow-up documented","Case closed with a final disposition note"],
+     c:0,e:"A common gap is completing investigation without action/outcome verification and closure."},
   ];
 
-  // Safety check: must be exactly 50
+  // Hard guard: must be exactly 50
   if (EXAM_QUESTIONS.length !== 50) {
-    console.warn("Exam bank length is not 50:", EXAM_QUESTIONS.length);
+    alert(`Configuration error: Exam bank must be exactly 50 questions. Current: ${EXAM_QUESTIONS.length}`);
+    console.error("Exam bank length error:", EXAM_QUESTIONS.length);
   }
 
   /***********************
@@ -1219,7 +1591,7 @@
         const sectionId = btn.getAttribute("data-section");
 
         if(sectionId === "exam" && !appState.examUnlocked){
-          alert("Exam is locked. Complete all 6 modules first.");
+          alert("Exam is locked. Complete all 7 modules first.");
           return;
         }
         if(sectionId === "certificate" && !appState.examPassed){
@@ -1245,14 +1617,14 @@
     if(!saved) return;
     try{
       const parsed = JSON.parse(saved);
-      // Defensive: if older state had 5 modules, expand to 6
-      if (parsed?.completedModules?.length === 5) {
-        parsed.completedModules.push(false);
-        parsed.moduleProgress.push(0);
-      }
+
+      while (parsed?.completedModules && parsed.completedModules.length < 7) parsed.completedModules.push(false);
+      while (parsed?.moduleProgress && parsed.moduleProgress.length < 7) parsed.moduleProgress.push(0);
+
       Object.assign(appState, parsed);
     }catch(_){}
   }
+
   function resetAllProgress(){
     if(!confirm("Reset ALL progress (modules + exam)?")) return;
     localStorage.removeItem(STORAGE_KEY);
@@ -1268,7 +1640,8 @@
 
     const map = [
       ["m1p","m1f",0],["m2p","m2f",1],["m3p","m3f",2],
-      ["m4p","m4f",3],["m5p","m5f",4],["m6p","m6f",5]
+      ["m4p","m4f",3],["m5p","m5f",4],["m6p","m6f",5],
+      ["m7p","m7f",6]
     ];
     map.forEach(([p,f,i])=>{
       const val = Math.max(0,Math.min(100,appState.moduleProgress[i]||0));
@@ -1409,7 +1782,7 @@
   }
 
   /***********************
-   * EXAM RENDER / SUBMIT (FIXED: validate before grading)
+   * EXAM RENDER / SUBMIT
    ***********************/
   function renderExam(){
     const container = document.getElementById("exam-container");
@@ -1470,27 +1843,26 @@
 
   function submitExam(){
     if(!appState.examUnlocked){
-      alert("Exam is locked. Complete all 6 modules first.");
+      alert("Exam is locked. Complete all 7 modules first.");
       return;
     }
 
-    // 1) Validate ALL answered BEFORE doing any grading/marking
+    // Validate all answered BEFORE grading
     for(let idx=0; idx<EXAM_QUESTIONS.length; idx++){
       const selected = document.querySelector(`input[name="q${idx}"]:checked`);
       if(!selected){
         alert("You must answer all questions before submitting.");
-        // Scroll to first unanswered question
         const card = document.querySelector(`.q-card[data-qindex="${idx}"]`);
         if(card) card.scrollIntoView({behavior:"smooth", block:"center"});
         return;
       }
     }
 
-    // 2) Clear previous grading styles
+    // Clear previous grading styles
     document.querySelectorAll(".choice").forEach(el => el.classList.remove("correct","wrong"));
     document.querySelectorAll(".explain").forEach(el => el.classList.add("hidden"));
 
-    // 3) Grade
+    // Grade
     let correct = 0;
 
     EXAM_QUESTIONS.forEach((item, idx) => {
@@ -1546,7 +1918,7 @@
   }
 
   /***********************
-   * CERTIFICATE PDF (fixed overlap)
+   * CERTIFICATE PDF (overview + disclaimer + layout)
    ***********************/
   function generateCertificatePDF(){
     if(!appState.examPassed){
@@ -1606,25 +1978,60 @@
 
     doc.setFont("helvetica","normal");
     doc.setFontSize(13);
-    doc.text(`Final Exam Score: ${appState.examScorePct}%  •  CPD/CME Credits: 16`, W/2, 360, { align:"center" });
+    doc.text(`Final Exam Score: ${appState.examScorePct}%  •  CPD/CME Credits: 18`, W/2, 360, { align:"center" });
+
+    // Overview of coverage
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(12);
+    doc.setTextColor(45,55,72);
+    doc.text("Course Overview (Covered Topics):", W/2, 392, { align:"center" });
+
+    doc.setFont("helvetica","normal");
+    doc.setFontSize(10);
+    const overviewLines = [
+      "• CI basics: confidentiality, ethics, prioritisation, interview quality",
+      "• Forms & records: IR/FR documentation, outcomes, disposition closure",
+      "• Critical period: timeframe logic + documentation of unknown dates",
+      "• STI management support: partner services, linkage, reinfection prevention",
+      "• Maternal & infant priority cases: CS, ON, PHIV workflow support",
+      "• DHIS2 & reporting: indicators, data quality checks, common errors",
+      "• DIA & CI flow: detect–investigate–act cycle + practice scripts"
+    ];
+    let y = 410;
+    overviewLines.forEach(line => { doc.text(line, W/2, y, { align:"center" }); y += 12; });
+
+    // Not official certification disclaimer
+    doc.setFont("helvetica","italic");
+    doc.setFontSize(9);
+    doc.setTextColor(113,128,150);
+    doc.text(
+      "This certificate confirms completion of a training overview/refresher and is NOT an official certification to practice as a CI/SDIS.",
+      W/2, y + 12, { align:"center" }
+    );
+    doc.text(
+      "For official training, contact your local HR, MOHW, UTECH, or JASDIS.",
+      W/2, y + 26, { align:"center" }
+    );
 
     // Footer (no overlap)
     doc.setFont("helvetica","normal");
     doc.setFontSize(11);
+    doc.setTextColor(45,55,72);
     doc.text(`Completion Date: ${dateStr}`, margin + 12, H - 96);
     doc.text(`Certificate ID: ${certId}`, margin + 12, H - 78);
     doc.setFont("helvetica","italic");
     doc.text(`Designed by Glenroy Griffiths`, margin + 12, H - 60);
 
+    // Seal
     doc.setDrawColor(26,95,158);
     doc.setLineWidth(2);
     doc.circle(W - margin - 90, H - 88, 42);
     doc.setFont("helvetica","bold");
     doc.setFontSize(10);
     doc.setTextColor(26,95,158);
-    doc.text("OFFICIAL", W - margin - 90, H - 98, { align:"center" });
-    doc.text("TRAINING", W - margin - 90, H - 82, { align:"center" });
-    doc.text("CERTIFIED", W - margin - 90, H - 66, { align:"center" });
+    doc.text("TRAINING", W - margin - 90, H - 98, { align:"center" });
+    doc.text("OVERVIEW", W - margin - 90, H - 82, { align:"center" });
+    doc.text("COMPLETED", W - margin - 90, H - 66, { align:"center" });
 
     const safeName = name.replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "_");
     doc.save(`CI101_Certificate_${safeName}.pdf`);
